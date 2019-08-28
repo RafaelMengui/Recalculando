@@ -7,7 +7,6 @@ namespace Interpretar_HTML
     public class AbrirArchivo
     {
         public string ubicacion { get; set; }
-
         public AbrirArchivo(string Ubicacion)
         {
             this.ubicacion = Ubicacion;
@@ -20,7 +19,7 @@ namespace Interpretar_HTML
 
             while (!UbicacionValida())
             {
-                Console.WriteLine($"\nError al leer el archivo - {this.ubicacion} - Verifique la ruta y la extension del mismo:");
+                Console.WriteLine($"\nError al leer el archivo < {this.ubicacion} > Verifique la ruta y la extension del mismo:");
                 this.ubicacion = Console.ReadLine();
             }
 

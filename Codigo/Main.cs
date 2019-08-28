@@ -5,7 +5,7 @@ namespace Interpretar_HTML
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             LeerArchivo.ImprimirArchivo();
         }
