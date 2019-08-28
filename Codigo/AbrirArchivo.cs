@@ -20,7 +20,7 @@ namespace Interpretar_HTML
 
             while (!UbicacionValida())
             {
-                Console.WriteLine($"\nError al leer el archivo - {this.ubicacion} - Verifique la ruta y que la extension sea .html:");
+                Console.WriteLine($"\nError al leer el archivo - {this.ubicacion} - Verifique la ruta y la extension del mismo:");
                 this.ubicacion = Console.ReadLine();
             }
 
