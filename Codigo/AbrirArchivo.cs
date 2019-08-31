@@ -35,7 +35,6 @@ namespace Interpretar_HTML
                 return ListaLineas;
             }
         }
-
         public bool UbicacionValida()
         {
             //Chequea que la extension del archivo sea .html, y si el archivo ingresado existe.
