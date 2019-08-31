@@ -1,24 +1,34 @@
 using System;
-using System.IO;
-using System.Collections;
 
 namespace Interpretar_HTML
 {
     public class Etiqueta
     {
-        public Etiqueta(string NombreTag, string Atributo, string Contenido)
+        public Etiqueta(string NombreTag, string Atributo)
         {
-            this.NombreTag = nombretag;
-            this.Atributo = atributo;
-            this.Contenido = contenido;
+            this.NombreTag = NombreTag;
+            this.Atributo = Atributo;
         }
-
-        private string nombretag;
-        private string atributo;
-        private string contenido;
 
         public string NombreTag { get; set; }
         public string Atributo { get; set; }
-        public string Contenido { get; set; }
+
+        public void OrdenarYImprimirAtributos()
+        {
+            string x = "";
+            string atr = this.Atributo;
+            foreach (char c in atr)
+            {
+                if (c == ' ')
+                {
+                    x += "\n";
+                }
+                else
+                {
+                    x += c;
+                }
+            }
+            Console.WriteLine(x);
+        }
     }
 }
