@@ -4,12 +4,15 @@ namespace Interpretar_HTML
 {
     public class Etiqueta
     {
+        //Definimos un constructor para la clase etiqueta
         public Etiqueta(string NombreTag, string Atributo)
         {
             this.NombreTag = NombreTag;
             this.Atributo = Atributo;
         }
-
+        /* Definimos metodos de instancias para poder cambiar el nombre de la etiqueta y 
+        su atributo  el valor (set), o obtenerlo (get)
+        */
         public string NombreTag { get; set; }
         public string Atributo { get; set; }
 
