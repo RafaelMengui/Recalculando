@@ -16,7 +16,7 @@ namespace Interpretar_HTML
         public string NombreTag { get; set; }
         public string Atributo { get; set; }
 
-        public void OrdenarYImprimirAtributos()
+        public void OrdenarEImprimirAtributos()
         {
             string x = "";
             string atr = this.Atributo;

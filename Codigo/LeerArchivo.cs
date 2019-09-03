@@ -3,13 +3,13 @@ using System.Collections;
 
 namespace Interpretar_HTML
 {
-    public class LeerArchivo
-    {
         /*Busca un archivo html e imprime todas las etiquetas del mismo,
         por principio de SRP, separamos el codigo en varias clases para que la 
-        clase tenga una unica razón para cambiar
+        clase tenga una unica razón de cambio.
         */  
-        public static void ImprimirArchivo()
+    public class LeerArchivo
+    {
+        public static void LeerEImprimirArchivo()
         {
             Console.Write("Ubicacion del Archivo: "); string ub = Console.ReadLine();
             AbrirArchivo A1 = new AbrirArchivo(ub);
