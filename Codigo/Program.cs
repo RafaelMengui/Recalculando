@@ -4,6 +4,10 @@ using System.Collections;
 
 namespace Interpretar_HTML
 {
+    
+    /*
+    Utilizamos el patrón Creator para crear lob objetos Etiqueta 
+     */
     class Program
     {
         static ArrayList ListaLineas = new ArrayList();
