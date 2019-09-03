@@ -11,7 +11,6 @@ namespace Interpretar_HTML
         {
             this.ubicacion = Ubicacion;
         }
-
         // La funcion retorna un Arraylist, siendo cada item una linea del archivo.
         public ArrayList LeerArchivo()
         {

@@ -5,7 +5,7 @@ namespace Interpretar_HTML
 {
     public class LeerArchivo
     {
-        public static void ImprimirArchivo()
+        public static void LeerEImprimirArchivo()
         {
             Console.Write("Ubicacion del Archivo: "); string ub = Console.ReadLine();
             AbrirArchivo A1 = new AbrirArchivo(ub);

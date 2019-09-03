@@ -44,7 +44,7 @@ namespace Interpretar_HTML
         }
         static void Main()
         {
-            Console.Write("Introduzca la Ubicacion: "); string ubicacion = Console.ReadLine();
+            Console.Write("Introduzca la Ubicación: "); string ubicacion = Console.ReadLine();
             AbrirYLeer(ubicacion);
 
             foreach (Etiqueta tag in Program.ListaLineas)
@@ -52,7 +52,7 @@ namespace Interpretar_HTML
                 Console.WriteLine(tag.NombreTag);
                 if (tag.Atributo != "")
                 {
-                    tag.OrdenarYImprimirAtributos();
+                    tag.OrdenarEImprimirAtributos();
                 }
             }
         }
