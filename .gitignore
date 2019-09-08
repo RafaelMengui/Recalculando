@@ -1,4 +1,4 @@
-/Codigo/bin
-/Codigo/obj
-/Codigo/Interpretar HTML.csproj
-/Codigo/.vscode
+/src/bin
+/src/obj
+/src/src.csproj
+.vscode
