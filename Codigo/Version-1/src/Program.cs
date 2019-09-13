@@ -8,7 +8,7 @@ namespace src
     {
         static void Main()
         {
-            const string Archivo = @"..\..\..\..\HTML-Prueba\test.html";
+            const string Archivo = @"..\..\..\..\..\HTML-Prueba\test.html";
 
             List<Tag> tags = Filtro.FiltrarTexto(LeerLineas.RetornarLineas(Archivo));
 
