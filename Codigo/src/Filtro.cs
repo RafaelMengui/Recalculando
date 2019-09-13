@@ -1,14 +1,15 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace src
 {
     //La Clase Filtro, realiza la lectura del texto, para serpararlo en sus respectivos tipos(atributo, tag)
     public class Filtro
     {
-        public static ArrayList FiltrarTexto(ArrayList Texto)
+        public static List<Tag> FiltrarTexto(List<string> Texto)
         {
-            ArrayList ListaTag = new ArrayList();
+            List<Tag> ListaTag = new List<Tag>();
 
             string nombreTag = "";
             string Atributo = "";
@@ -17,14 +18,13 @@ namespace src
 
             foreach (string linea in Texto)
             {
-                //Primero se fija que sea la primera vez que aparece el tag y que no sea nulo. 
-                ArrayList ListaAtributos = new ArrayList();
+                List<Atributos> ListaAtributos = new List<Atributos>();
                 if (linea != null && linea[0] == '<' && linea[1] != '/')
                 {
-                    int x = linea.IndexOf(' ');
+                    int index = linea.IndexOf(' ');
 
                     // Para saber si contiene atributos buscamos un espacio, utilizando la función IndexOf.
-                    if (x != -1)
+                    if (index != -1)
                     {
                         // Se toma como el nombre hasta el primer espacio, lo restante serán atributos.
                         nombreTag = linea.Substring(0, linea.IndexOf(' ')).Replace("<", "").Replace("/", "");
@@ -39,7 +39,7 @@ namespace src
                             ListaAtributos.Add(A);
                         }
 
-                        // Se crean los objetos tag(nombreTag, Lista con objetos atributos), y se formatea la lista atributos
+                        // Se crean los objetos tag(nombreTag, Lista con objetos atributos)
                         Tag T = new Tag(nombreTag, ListaAtributos);
                         ListaTag.Add(T);
                     }
@@ -49,7 +49,7 @@ namespace src
                         if (!linea.Contains('='))
                         {
                             nombreTag = linea.Replace("<", "").Replace(">", "").Replace("/", "");
-                            ArrayList vacia = new ArrayList();
+                            List<Atributos> vacia = new List<Atributos>();
                             Tag A = new Tag(nombreTag, vacia);
                             ListaTag.Add(A);
                         }

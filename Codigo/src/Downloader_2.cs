@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace src
 {
@@ -35,7 +36,7 @@ namespace src
         /// Descarga contenido de la ubicación de la cual descargar
         /// </summary>
         /// <returns>Retorna el contenido descargado en una lista de lineas</returns>
-        public ArrayList Download()
+        public List<string> Download()
         {
             // Creamos una nueva solicitud para el recurso especificado por la URL recibida
             WebRequest request = WebRequest.Create(url);
@@ -48,7 +49,7 @@ namespace src
             // Abrimos la stream con un lector para accederla más fácilmente
             StreamReader reader = new StreamReader(stream);
             // Leemos el contenido
-            ArrayList result = new ArrayList();
+            List<string> result = new List<string>();
             string linea = "";
             while (linea != "</html>")
             {

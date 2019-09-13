@@ -1,6 +1,3 @@
-/src/bin
-/src/obj
-/src/src.csproj
+/Codigo/src/bin
+/Codigo/src/obj
 .vscode
-
---

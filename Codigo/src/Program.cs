@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace src
 {
@@ -7,8 +8,11 @@ namespace src
     {
         static void Main()
         {
-            ArrayList Lineas = Filtro.FiltrarTexto(LeerLineas.RetornarLineas());
-            foreach (Tag T in Lineas)
+            const string Archivo = @"..\..\..\..\HTML-Prueba\test.html";
+
+            List<Tag> tags = Filtro.FiltrarTexto(LeerLineas.RetornarLineas(Archivo));
+
+            foreach (Tag T in tags)
             {
                 Console.WriteLine(T.Nombre);
                 T.ImprimirAtributos();
@@ -22,5 +26,5 @@ namespace src
 - Clase imprimir: Para cambiar destino de impresion.
 - Clase Formato_impresion: La razon de cambio debe ser el tipo de formato que se va a imprimir.
 
-    Tag -> Formato_impresino -> Impresion.
+    Tag -> Formato_impresion -> Impresion.
 */
