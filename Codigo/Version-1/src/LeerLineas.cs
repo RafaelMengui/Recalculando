@@ -19,12 +19,19 @@ namespace Version1
 			String path = Path.Combine( Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), fileName);
 			UriBuilder builder = new UriBuilder("file", "", 0, path);
 			String uri = builder.Uri.ToString();
-			// Creamos un nuevo descargador pasándole una ubicación.
+			/// <summary>
+			/// Creamos un nuevo descargador pasándole una ubicación
+			/// </summary>
+
 			Downloader downloader = new Downloader(uri);
-			// Pedimos al descargador que descargue el contenido
+			/// <summary>
+			/// Pedimos al descargador que descargue el contenido
+			/// </summary>
 			List<string> content;
 			content = downloader.Download();
-			// Retorna una lista, con lineas del html
+			/// <summary>
+			/// Retorna una lista, con lineas del html
+			/// </summary>
 			return content;
 		}
 	}
