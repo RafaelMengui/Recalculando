@@ -7,20 +7,13 @@ namespace Version1
     class Program
     {
         /// <summary>
-        /// El programa inicial es el que imprime por consola el HTML final 
+        /// El programa inicial utiliza las demas clases para imprimir el HTML final 
         /// </summary>
         static void Main()
         {
-            const string ArchivoHTML = @"..\..\..\..\..\HTML-Prueba\test.html";
+            const string ArchivoHTML = @"..\..\..\..\..\HTML-Prueba\test4.html";
 
-            List<Tag> tags = Filtro.FiltrarTexto(LeerLineas.RetornarLineas(ArchivoHTML));
-
-            foreach (Tag T in tags)
-            {
-                Console.WriteLine(T.Nombre);
-                T.ImprimirAtributos();
-            }
+            Console.WriteLine(Formato.Imprimir(ArchivoHTML));
         }
     }
 }
-
