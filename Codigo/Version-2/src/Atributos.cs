@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Version1
+namespace Version2
 {
     public class Atributos
     {

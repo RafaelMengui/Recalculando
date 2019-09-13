@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Version1
+namespace Version2
 {
     public class Tag
     {
@@ -26,6 +26,10 @@ namespace Version1
         {
             this.Nombre = nombre;
             this.Atributos = atributos;
+        }
+        public Tag(string nombre)
+        {
+            this.Nombre = nombre;
         }
 
         // Metodo que imprime todos los atributos de un tag.

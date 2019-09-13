@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace src
+namespace Version1
 {
 	/// <summary>
 	/// Pequeño programa para probar el funcionamiento de la clase Downloader.
@@ -24,7 +24,7 @@ namespace src
 			// Pedimos al descargador que descargue el contenido
 			List<string> content;
 			content = downloader.Download();
-			// Retorna un array, con lineas del html
+			// Retorna una lista, con lineas del html
 			return content;
 		}
 	}

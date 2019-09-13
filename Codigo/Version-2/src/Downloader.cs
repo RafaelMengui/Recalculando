@@ -1,10 +1,8 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Collections;
-using System.Collections.Generic;
 
-namespace Version1
+namespace Version2
 {
     /// <summary>
     /// Descarga archivos de una ubicación de la forma "http://server/directory/file" o
@@ -35,8 +33,8 @@ namespace Version1
         /// <summary>
         /// Descarga contenido de la ubicación de la cual descargar
         /// </summary>
-        /// <returns>Retorna el contenido descargado en una lista de lineas</returns>
-        public List<string> Download()
+        /// <returns>Retorna el contenido descargado</returns>
+        public string Download()
         {
             // Creamos una nueva solicitud para el recurso especificado por la URL recibida
             WebRequest request = WebRequest.Create(url);
@@ -49,13 +47,7 @@ namespace Version1
             // Abrimos la stream con un lector para accederla más fácilmente
             StreamReader reader = new StreamReader(stream);
             // Leemos el contenido
-            List<string> result = new List<string>();
-            string linea = "";
-            while (linea != "</html>")
-            {
-                linea = reader.ReadLine().Trim();
-                result.Add(linea);
-            }
+            string result = reader.ReadToEnd();
             // Limpiamos cerrando lo que abrimos
             reader.Close();
             stream.Close();

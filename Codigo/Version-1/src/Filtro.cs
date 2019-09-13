@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace src
+namespace Version1
 {
     //La Clase Filtro, realiza la lectura del texto, para serpararlo en sus respectivos tipos(atributo, tag)
     public class Filtro
