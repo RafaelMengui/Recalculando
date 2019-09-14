@@ -8,6 +8,9 @@ namespace Version1
         /// <summary>
         /// Retorna el string del HTML final, ya formateado.
         /// </summary>
+        
+        //Usamos el principio de SRP teniendo una sola razón de cambio.   
+        
         public static string Imprimir(string ArchivoHTML)
         {
             List<Tag> tags = Filtro.FiltrarTexto(LeerLineas.RetornarLineas(ArchivoHTML));

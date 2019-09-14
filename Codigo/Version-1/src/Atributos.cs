@@ -2,12 +2,13 @@
 
 namespace Version1
 {
-    public class Atributos
-    {
         /// <summary>
         /// Clase atributo, nos permite guardar el atributo en clave y valor.
         /// </summary>
-        /// <value></value>
+
+    public class Atributos
+    {
+
         public string Clave { get; set; }
         public string Valor { get; set; }
 

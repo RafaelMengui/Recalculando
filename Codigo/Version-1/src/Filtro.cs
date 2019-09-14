@@ -3,16 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Version1
-{
-    public class Filtro
-    {
+{       
         /// <summary>
         /// La Clase Filtro, realiza la lectura del texto, para serpararlo 
         /// en sus respectivos tipos(atributo, tag)
         /// </summary>
-        /// <param name="Texto"></param>
-        /// <returns ListaTag></returns>
-        
+
+    public class Filtro
+    {
+        //El Filtro es nustra clase experta en crear objetos Tag y Atributo 
         public static List<Tag> FiltrarTexto(List<string> Texto)
         {
             List<Tag> ListaTag = new List<Tag>();
