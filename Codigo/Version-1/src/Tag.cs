@@ -29,12 +29,14 @@ namespace Version1
         }
 
         // Metodo que imprime todos los atributos de un tag.
-        public void ImprimirAtributos()
+        public string RetornarAtributos()
         {
+            string atributos = "";
             foreach (Atributos Atr in this.Atributos)
             {
-                Console.WriteLine(Atr.Clave + "=" + Atr.Valor);
+                atributos += Atr.Clave + "=" + Atr.Valor + "\n";
             }
+            return atributos;
         }
     }
 }
