@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Library LeerHTML\LeerHTML.csproj" />
+    <ProjectReference Include="..\Library Modelado\Library Modelado.csproj" />
   </ItemGroup>
 
   <ItemGroup>
