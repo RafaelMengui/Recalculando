@@ -27,12 +27,11 @@ namespace LeerHTML
             this.Nombre = nombre;
             this.Atributos = atributos;
         }
-        public Tag(string nombre)
-        {
-            this.Nombre = nombre;
-        }
 
-        // Metodo que retorna todos los atributos de un tag.
+        /// <summary>
+        /// Retorna un string de los atributos de un tag en formato "clave=valor".
+        /// </summary>
+        /// <returns></returns>
         public string RetornarAtributos()
         {
             string atributos = "";

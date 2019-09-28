@@ -6,7 +6,7 @@ namespace LeerHTML
     public class Imprimir
     {
         /// <summary>
-        /// Retorna el string del HTML final, ya formateado.
+        /// Formatea el archivo HTML para su impresion.
         /// </summary>
 
         public static string Formato(string ArchivoHTML)
