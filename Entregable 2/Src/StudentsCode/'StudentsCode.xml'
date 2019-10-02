@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StudentsCode</name>
+    </assembly>
+    <members>
+        <member name="T:Proyecto.StudentsCode.Builder">
+            <summary>
+            Clase que implementa la interfaz IBuilder.
+            Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
+            </summary>
+        </member>
+        <member name="M:Proyecto.StudentsCode.Builder.Build(Proyecto.Common.IMainViewAdapter)">
+            <summary>
+            Construye una interfaz de usuario interactiva utilizando.
+            un <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
+            </summary>
+            <param name="adapter">Un <see cref="T:Proyecto.Common.IMainViewAdapter"/> que permite construir
+            una interfaz de usuario interactiva.</param>
+        </member>
+        <member name="T:Proyecto.StudentsCode.Items">
+            <summary>
+            Clase abstracta de Items.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Items.name">
+            <summary>
+            Nombre del Item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Items.level">
+            <summary>
+            Nivel al que pertenece el Item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Items.positionX">
+            <summary>
+            Posicion en eje Horizontal en pixeles.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Items.positionY">
+            <summary>
+            Posicion en eje Vertical en pixeles.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Items.width">
+            <summary>
+            Ancho en Pixeles.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Items.height">
+            <summary>
+            Altura en pixeles.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Items.draggable">
+            <summary>
+            Bool que define si un item es arrastable o no.
+            </summary>
+        </member>
+        <member name="M:Proyecto.StudentsCode.Items.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Inicializa una instancia de Item.
+            </summary>
+            <param name="Name">Nombre del Item.</param>
+            <param name="Level">Nivel al que pertence.</param>
+            <param name="PositionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="PositionY">Posicion en eje vertical en pixeles.</param>
+            <param name="Width">Ancho en pixeles.</param>
+            <param name="Height">Altura en pixeles.</param>
+            <param name="Draggable">Item arrastrable.</param>
+        </member>
+        <member name="P:Proyecto.StudentsCode.Items.Name">
+            <summary>
+            Gets or sets del nombre del item.
+            </summary>
+            <value>String nombre del item.</value>
+        </member>
+        <member name="P:Proyecto.StudentsCode.Items.Level">
+            <summary>
+            Gets or sets del Nivel al que pertenece el Item.
+            </summary>
+            <value>String nivel al que pertence.</value>
+        </member>
+        <member name="P:Proyecto.StudentsCode.Items.PositionX">
+            <summary>
+            Gets or sets de Posicion en eje Horizontal en pixeles.
+            </summary>
+            <value>String posicion en eje horizontal.</value>
+        </member>
+        <member name="P:Proyecto.StudentsCode.Items.PositionY">
+            <summary>
+            Gets or sets dePosicion en eje Vertical en pixeles.
+            </summary>
+            <value>String posicion en eje vertical.</value>
+        </member>
+        <member name="P:Proyecto.StudentsCode.Items.Width">
+            <summary>
+            Gets or sets de Ancho en Pixeles.
+            </summary>
+            <value>String ancho en pixeles.</value>
+        </member>
+        <member name="P:Proyecto.StudentsCode.Items.Height">
+            <summary>
+            Gets or sets de Altura en pixeles.
+            </summary>
+            <value>String altura en pixeles.</value>
+        </member>
+        <member name="P:Proyecto.StudentsCode.Items.Draggable">
+            <summary>
+            Gets or sets a value indicating whether un item es arrastable o no.
+            Escribo algunas partes en ingles porque el docfx me obliga a que aparezca esa
+            frase.
+            </summary>
+            <value>Bool de si es arrastrable.</value>
+        </member>
+    </members>
+</doc>

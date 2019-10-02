@@ -1,13 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <DebugType>portable</DebugType>
+    <!-- <RuntimeIdentifier>win10-x64</RuntimeIdentifier> -->
+    <DocumentationFile>'$(MSBuildProjectName).xml'</DocumentationFile>
+  </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Library LeerHTML\LeerHTML.csproj" />
-    <ProjectReference Include="..\..\..\..\PII_Proyecto2019\Common\src\Common.csproj" />
+    <ProjectReference Include="..\..\..\..\UnityCode\Common\src\Common.csproj" />
   </ItemGroup>
 
-  <PropertyGroup>
-     <TargetFramework>net472</TargetFramework>
-    <RootNamespace>StudentsCode</RootNamespace>
-  </PropertyGroup>
+  <Target Name="CopyFiles" AfterTargets="Build">
+    <ItemGroup>
+      <AllLibraries Include="$(OutDir)\*.dll" />
+    </ItemGroup>
 
+    <Message Text="Copying output file: @(AllLibraries) to: ..\..\..\..\UnityCode\Unity\Assets" Importance="High" />
+    <Copy SourceFiles="@(AllLibraries)" DestinationFolder="..\..\..\..\UnityCode\Unity\Assets" />
+  </Target> 
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup> 
 </Project>
