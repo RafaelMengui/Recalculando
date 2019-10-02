@@ -2,11 +2,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Library LeerHTML\LeerHTML.csproj" />
+    <ProjectReference Include="..\..\..\..\PII_Proyecto2019\Common\src\Common.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Library_Modelado</RootNamespace>
+     <TargetFramework>net472</TargetFramework>
+    <RootNamespace>StudentsCode</RootNamespace>
   </PropertyGroup>
 
 </Project>
