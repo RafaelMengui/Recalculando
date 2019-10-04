@@ -4,7 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-namespace Proyecto.StudentsCode
+namespace Proyecto
 {
     /// <summary>
     /// Clase abstracta de Items.

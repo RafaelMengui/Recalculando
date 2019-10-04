@@ -1,3 +1,11 @@
-//Por si tiene que tener algo adentro
-
 using System;
+
+namespace Proyecto
+{
+    public interface IBotones 
+    {
+        void Click(); 
+    }
+        
+}
+
