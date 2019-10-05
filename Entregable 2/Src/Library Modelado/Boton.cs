@@ -8,14 +8,12 @@ using  System.Collections.Generic;
 namespace Proyecto
 {
     /// <summary>
-    /// Niveles 
+    /// Botones
     /// </summary>
-    public class Level : Espacio
-     {
-        public Level ()
-        {
+    public class Boton : Items
+    {
+        public Boton () {
 
-        }
-
+    }
     }
 }

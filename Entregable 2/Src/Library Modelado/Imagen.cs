@@ -8,11 +8,10 @@ using  System.Collections.Generic;
 namespace Proyecto
 {
     /// <summary>
-    /// Niveles 
+    /// Imagenes
     /// </summary>
-    public class Level : Espacio
-     {
-        public Level ()
+    public class Imagen : Items{
+        public Imagen ()
         {
 
         }
