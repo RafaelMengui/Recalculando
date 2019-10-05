@@ -1,4 +1,4 @@
-using LeerHTML;
+using Proyecto.LeerHTML;
 using Proyecto;
 namespace Proyecto.Pipes
 {

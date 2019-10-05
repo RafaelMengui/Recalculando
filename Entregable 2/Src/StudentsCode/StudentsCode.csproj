@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library LeerHTML\LeerHTML.csproj" />
     <ProjectReference Include="..\..\..\..\UnityCode\Common\src\Common.csproj" />
+    <ProjectReference Include="..\Library Modelado\Library Modelado.csproj" />
+    <ProjectReference Include="..\Library LeerHTML\LeerHTML.csproj" />
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">

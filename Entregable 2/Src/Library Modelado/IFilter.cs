@@ -1,4 +1,4 @@
-using LeerHTML;
+using Proyecto.LeerHTML;
 namespace Proyecto
 {
     /// <summary>

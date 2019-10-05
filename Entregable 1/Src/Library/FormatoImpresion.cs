@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LeerHTML
+namespace Proyecto.LeerHTML
 {
     public class Imprimir
     {
