@@ -12,8 +12,9 @@ namespace Proyecto
     /// </summary>
     public class Boton : Items
     {
-        public Boton () {
-
-    }
+        public Boton(string Name, string Level, string PositionX, string PositionY, string Width, string Height, bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
+        {
+        }
+        
     }
 }

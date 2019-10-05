@@ -12,10 +12,8 @@ namespace Proyecto
     /// </summary>
     public class Level : Espacio
      {
-        public Level ()
+         public Level(string Name, string Submundo, string Size, System.Collections.Generic.IList ListaDeEspacios) : base(Name, Submundo, Size, ListaDeEspacios)
         {
-
         }
-
-    }
+     }
 }
