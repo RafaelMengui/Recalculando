@@ -14,8 +14,16 @@ namespace Proyecto
     public abstract class Space
     {
         /// <summary>
-        /// Nombre del Espacio.
+        /// Nombre del Mundo al que Pertencen.
         /// </summary>
+        private World world;
+
+
+        /// <summary>
+        /// Nombre del Espacio.
+        /// 
+        /// </summary>
+        /// 
         private string name;
 
         /// <summary>
@@ -33,18 +41,27 @@ namespace Proyecto
         /// </summary>
         /// <param name="Name">Nombre del Espacio.</param>
         /// <param name="Size">Tamaño del espacio.</param>
+        /// <param name="World">Mundo al que pertenece.</param>
         /// <param name="SpaceList">Lista de Subespacios.</param>
-        public Space(string Name, string Size, List<Space> SpaceList)
+        /// 
+        public Space(string Name, string Size, List<Space> SpaceList, World world)
         {
             this.name = Name;
             this.size = Size;
+            this.world = World; 
         }
+
+         /// <summary>
+        /// Gets or sets del nombre del espacio.
+        /// </summary>
+        /// <value>String nombre del espacio.</value>
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets del nombre del espacio.
         /// </summary>
         /// <value>String nombre del espacio.</value>
-        public string Name { get; set; }
+        public World World { get; set; }
 
         /// <summary>
         /// Gets or sets del tamaño del espacio.

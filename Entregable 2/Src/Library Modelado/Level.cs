@@ -12,7 +12,7 @@ namespace Proyecto
     /// </summary>
     public class Level : Space
     {
-        public Level(string Name, string Size, List<Space> SpaceList) : base(Name, Size, SpaceList)
+        public Level(string Name, string Size, List<Space> SpaceList, World world) : base(Name, Size, SpaceList, world)
         {
         }
     }

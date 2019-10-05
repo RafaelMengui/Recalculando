@@ -19,7 +19,7 @@ namespace Proyecto
         /// <summary>
         /// Nivel al que pertenece el Item.
         /// </summary>
-        private string level;
+        private Level level;
 
         /// <summary>
         /// Posicion en eje Horizontal en pixeles.
@@ -56,7 +56,7 @@ namespace Proyecto
         /// <param name="Width">Ancho en pixeles.</param>
         /// <param name="Height">Altura en pixeles.</param>
         /// <param name="Draggable">Item arrastrable.</param>
-        public Items(string Name, string Level, string PositionX, string PositionY, string Width, string Height, bool Draggable)
+        public Items(string Name, Level Level, string PositionX, string PositionY, string Width, string Height, bool Draggable)
         {
             this.name = Name;
             this.level = Level;
@@ -77,7 +77,7 @@ namespace Proyecto
         /// Gets or sets del Nivel al que pertenece el Item.
         /// </summary>
         /// <value>String nivel al que pertence.</value>
-        public string Level { get; set; }
+        public Level Level { get; set; }
 
         /// <summary>
         /// Gets or sets de Posicion en eje Horizontal en pixeles.

@@ -5,7 +5,7 @@ namespace Proyecto
     public class FilterLevel : IFilter
     {
         public Level level; 
-        public Tag WorldCreator(Tag tag)
+        public Tag Creator(Tag tag)
         {
             return tag;
         }
