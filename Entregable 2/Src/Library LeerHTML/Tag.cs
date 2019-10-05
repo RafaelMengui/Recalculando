@@ -21,11 +21,11 @@ namespace LeerHTML
                 }
             }
         }
-        public List<Atributos> Atributos { get; set; }
+        public List<Atributos> atributos { get; set; }
         public Tag(string nombre, List<Atributos> atributos)
         {
-            this.Nombre = nombre;
-            this.Atributos = atributos;
+            this.nombre = nombre;
+            this.atributos = atributos;
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace LeerHTML
         public string RetornarAtributos()
         {
             string atributos = "";
-            foreach (Atributos Atr in this.Atributos)
+            foreach (Atributos atr in this.atributos)
             {
-                atributos += Atr.Clave + "=" + Atr.Valor + "\n";
+                atributos += atr.clave + "=" + atr.valor + "\n";
             }
             return atributos;
         }

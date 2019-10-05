@@ -4,25 +4,25 @@ using System.Collections.Generic;
 
 namespace LeerHTML
 {
-
+    
     /// <summary>
     /// La Clase Filtro es nuestra Creator de Tag y Atributos.
     /// </summary>
     public class Filtro
     {
-        public static List<Tag> FiltrarHTML(string Texto)
+        public static List<Tag> FiltrarHTML(string texto)
         {
-            List<Tag> ListaTag = new List<Tag>();
+            List<Tag> listaTag = new List<Tag>();
 
             string nombreTag = "";
-            string Atributo = "";
+            string atributo = "";
             string clave = "";
             string valor = "";
-            string[] texto = Texto.Split('<');
+            string[] arrayTexto = texto.Split('<');
 
-            foreach (string tag in texto)
+            foreach (string tag in arrayTexto)
             {
-                List<Atributos> ListaAtributos = new List<Atributos>();
+                List<Atributos> listaAtributos = new List<Atributos>();
 
                 if (!tag.Trim().StartsWith("/"))
                 {
@@ -31,9 +31,9 @@ namespace LeerHTML
                     if (index != -1)
                     {
                         nombreTag = tag.Substring(0, index).Replace("/", "");
-                        Atributo = tag.Substring(index + 1, tag.Length - index - tag.Substring(tag.IndexOf('>')).Length - 1);
+                        atributo = tag.Substring(index + 1, tag.Length - index - tag.Substring(tag.IndexOf('>')).Length - 1);
 
-                        foreach (string atr in Atributo.Split(' '))
+                        foreach (string atr in atributo.Split(' '))
                         {
                             
                             /// <summary>
@@ -49,14 +49,14 @@ namespace LeerHTML
                             }
 
                             Atributos A = new Atributos(clave, valor);
-                            ListaAtributos.Add(A);
+                            listaAtributos.Add(A);
                         }
 
                         /// <summary>
                         /// Se crean los objetos tag(nombreTag, Lista con objetos atributos)
                         /// </summary>
-                        Tag T = new Tag(nombreTag, ListaAtributos);
-                        ListaTag.Add(T);
+                        Tag T = new Tag(nombreTag, listaAtributos);
+                        listaTag.Add(T);
                     }
                     else
                     {
@@ -68,12 +68,12 @@ namespace LeerHTML
                             nombreTag = tag.Substring(0, tag.IndexOf('>')).Replace("/", "");
                             List<Atributos> vacia = new List<Atributos>();
                             Tag A = new Tag(nombreTag, vacia);
-                            ListaTag.Add(A);
+                            listaTag.Add(A);
                         }
                     }
                 }
             }
-            return ListaTag;
+            return listaTag;
         }
     }
 }

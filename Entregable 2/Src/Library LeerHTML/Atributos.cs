@@ -7,13 +7,13 @@ namespace LeerHTML
     /// </summary>
     public class Atributos
     {
-        public string Clave { get; set; }
-        public string Valor { get; set; }
+        public string clave { get; set; }
+        public string valor { get; set; }
 
         public Atributos(string clave, string valor)
         {
-            this.Clave = clave;
-            this.Valor = valor;
+            this.clave = clave;
+            this.valor = valor;
         }
     }
 }
