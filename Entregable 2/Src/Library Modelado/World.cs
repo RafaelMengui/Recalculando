@@ -8,13 +8,12 @@ using  System.Collections.Generic;
 namespace Proyecto
 {
     /// <summary>
-    /// Botones
+    /// Modelo del mundo.
     /// </summary>
-    public class Boton : Items
+    public class World : Space
     {
-        public Boton(string Name, string Level, string PositionX, string PositionY, string Width, string Height, bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
+        public World(string Name, string Size, List<Space> SpaceList) : base(Name, Size, SpaceList)
         {
         }
-        
     }
 }

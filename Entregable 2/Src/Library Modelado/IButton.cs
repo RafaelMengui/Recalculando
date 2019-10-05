@@ -2,7 +2,7 @@ using System;
 
 namespace Proyecto
 {
-    public interface IBotones 
+    public interface IButton 
     {
         void Click(); 
     }

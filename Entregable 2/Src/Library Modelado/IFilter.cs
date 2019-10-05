@@ -1,6 +1,4 @@
-using System;
 using LeerHTML;
-
 namespace Proyecto
 {
     /// <summary>
