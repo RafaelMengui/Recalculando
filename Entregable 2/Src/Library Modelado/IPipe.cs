@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using LeerHTML;
 
 namespace Proyecto
 {
@@ -13,7 +14,7 @@ namespace Proyecto
         /// Envia la imagen a traves de la caneria.
         /// </summary>
         /// <param name="picture">la imagen a enviar</param>
-        IPicture Send(IPicture picture);
+        Tag Send(Tag tag);
 
     }
 }
