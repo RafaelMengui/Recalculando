@@ -1,12 +1,12 @@
 using LeerHTML;
-namespace Proyecto.Filters
+
+namespace Proyecto
 {
-    public class FilterWorld : IFilter
+    public class FilterLevel : IFilter
     {
-        public World world;
+        public Level level; 
         public Tag WorldCreator(Tag tag)
         {
-            
             return tag;
         }
     }
