@@ -8,12 +8,13 @@ using  System.Collections.Generic;
 namespace Proyecto
 {
     /// <summary>
-    /// Imagenes
+    /// Botones
     /// </summary>
-    public class Imagen : Items
+    public class Button : Items
     {
-        public Imagen(string Name, string Level, string PositionX, string PositionY, string Width, string Height, bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
+        public Button(string Name, string Level, string PositionX, string PositionY, string Width, string Height, bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
         {
         }
+        
     }
 }
