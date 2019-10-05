@@ -6,6 +6,5 @@ namespace Proyecto
     {
         void Click(); 
     }
-        
 }
 

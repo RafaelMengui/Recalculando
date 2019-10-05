@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace LeerHTML.test
+namespace Proyecto.LeerHTML.test
 {
     public class UnitTestLeerHTML
     {

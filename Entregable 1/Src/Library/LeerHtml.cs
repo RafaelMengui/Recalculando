@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace LeerHTML
+namespace Proyecto.LeerHTML
 {
     public static class LeerHtml
     {

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Net;
 
-namespace LeerHTML
+namespace Proyecto.LeerHTML
 {
     /// <summary>
     /// Descarga archivos de una ubicación de la forma "http://server/directory/file" o

@@ -5,7 +5,11 @@
 //--------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using Proyecto.LeerHTML;
 using Proyecto.Common;
+using Proyecto.Filters;
+using Proyecto.Pipes;
 
 namespace Proyecto.StudentsCode
 {
@@ -23,10 +27,11 @@ namespace Proyecto.StudentsCode
         /// una interfaz de usuario interactiva.</param>
         public void Build(IMainViewAdapter adapter)
         {
-            FilterWorld WorldCreator = new FilterWorld();
-            
-            WorldCreator.World
-        }
+            string XMLfile = @"..\..\..\Archivos HTML\Ejemplo.xml";
+            List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
 
+            FilterWorld World = new FilterWorld();
+            World.Creator(tags[0]);
+        }
     }
 }

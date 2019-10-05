@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LeerHTML
+namespace Proyecto.LeerHTML
 {
     /// <summary>
     /// Clase atributo, nos permite guardar el atributo en clave y valor.

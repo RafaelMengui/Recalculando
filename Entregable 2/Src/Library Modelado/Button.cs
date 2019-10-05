@@ -10,11 +10,15 @@ namespace Proyecto
     /// <summary>
     /// Botones
     /// </summary>
-    public class Button : Items
+    public class Button : Items, IButton
     {
         public Button(string Name, Level Level, string PositionX, string PositionY, string Width, string Height, bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
         {
         }
         
+        public void Click()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

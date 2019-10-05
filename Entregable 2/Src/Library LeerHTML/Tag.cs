@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace LeerHTML
+namespace Proyecto.LeerHTML
 {
     public class Tag
     {
@@ -21,7 +21,18 @@ namespace LeerHTML
                 }
             }
         }
+
+        /// <summary>
+        /// Lista de todos los Objetos Atributos del Tag.
+        /// </summary>
+        /// <value>List<Atributos></value>
         public List<Atributos> atributos { get; set; }
+
+        /// <summary>
+        /// Constructor de Tag.
+        /// </summary>
+        /// <param name="nombre">string Nombre del Tag</param>
+        /// <param name="atributos">Lista de objetos atributos pertenecientes al tag.</param>
         public Tag(string nombre, List<Atributos> atributos)
         {
             this.nombre = nombre;

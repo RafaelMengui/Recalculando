@@ -12,19 +12,20 @@ namespace Proyecto
     /// </summary>
     public class World 
     {
-
-
         /// <summary>
         /// Nombre del World.
-        /// 
         /// </summary>
-        /// 
         private string name;
 
         /// <summary>
-        /// Tamaño del World.
+        /// Ancho del World en pixeles.
         /// </summary>
-        private string size;
+        private string width;
+
+        /// <summary>
+        /// Altura del World en pixeles.
+        /// </summary>
+        private string height;
 
         /// <summary>
         /// Lista de Levels.
@@ -35,25 +36,32 @@ namespace Proyecto
         /// Inicializa una instancia de World.
         /// </summary>
         /// <param name="Name">Nombre del World.</param>
-        /// <param name="Size">Tamaño del World.</param>
+        /// <param name="Width">Ancho del World.</param>
         /// <param name="SpaceList">Lista de Levels.</param>
-        /// 
-        public World(string Name, string Size, List<Space> SpaceList)
+        public World(string Name, string Width, string Height, List<Space> SpaceList)
         {
             this.name = Name;
-            this.size = Size; 
+            this.width = Width;
+            this.height = Height;
+            this.spacelist = SpaceList;
         }
 
-         /// <summary>
+        /// <summary>
         /// Gets or sets del nombre del espacio.
         /// </summary>
         /// <value>String nombre del espacio.</value>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets del tamaño del espacio.
+        /// Gets or sets del Ancho del espacio.
         /// </summary>
-        /// <value>Tamaño del Espacio.</value>
-        public string Size { get; set; }
+        /// <value>Ancho del Espacio.</value>
+        public string Width { get; set; }
+
+        /// <summary>
+        /// Gets or sets de la altura del espacio.
+        /// </summary>
+        /// <value>Ancho del Espacio.</value>
+        public string Height { get; set; }
     }
 }
