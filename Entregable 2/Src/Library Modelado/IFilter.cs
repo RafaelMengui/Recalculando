@@ -9,6 +9,6 @@ namespace Proyecto
     /// </remarks>
     public interface IFilter
     {
-        Tag CrearObjeto(Tag tag);
+        Tag Creator(Tag tag);
     }
 }

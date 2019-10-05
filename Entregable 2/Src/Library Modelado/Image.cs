@@ -12,7 +12,7 @@ namespace Proyecto
     /// </summary>
     public class Image : Items
     {
-        public Image(string Name, string Level, string PositionX, string PositionY, string Width, string Height, bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
+        public Image(string Name, Level Level, string PositionX, string PositionY, string Width, string Height, bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
         {
         }
     }

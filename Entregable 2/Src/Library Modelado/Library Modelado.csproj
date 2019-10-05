@@ -1,12 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Library LeerHTML\LeerHTML.csproj" />
+    <ProjectReference Include="..\LibraryLeerHTML\LeerHTML.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-    <RootNamespace>Proyecto</RootNamespace>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
 </Project>

@@ -23,6 +23,10 @@ namespace Proyecto.StudentsCode
         /// una interfaz de usuario interactiva.</param>
         public void Build(IMainViewAdapter adapter)
         {
+            FilterWorld WorldCreator = new FilterWorld();
+            
+            WorldCreator.World
         }
+
     }
 }
