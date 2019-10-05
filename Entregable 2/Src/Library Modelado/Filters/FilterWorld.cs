@@ -2,7 +2,6 @@ using Proyecto.LeerHTML;
 using System.Collections.Generic;
 using System;
 
-
 namespace Proyecto.Filters
 {
     /// <summary>
@@ -10,6 +9,17 @@ namespace Proyecto.Filters
     /// </summary>
     public class FilterWorld : IFilter
     {
+
+        Creatable creatableTag;
+        public FilterWorld(Tag tag)
+        {
+            this.creatableTag = new Creatable(tag, "World");
+        }
+        public bool Result
+        {
+            get { return this.creatableTag.CanCreate(); }
+        }
+
         /// <summary>
         /// Filtro creador de objetos de World.
         /// </summary>
@@ -21,8 +31,8 @@ namespace Proyecto.Filters
             string width = "";
             string height = "";
             List<Space> listSpace = new List<Space>();
-            
-            if (tag.Nombre == "NewWorld")
+
+            if (this.Result)
             {
                 foreach (Atributos atributo in tag.atributos)
                 {
@@ -37,12 +47,8 @@ namespace Proyecto.Filters
                         height = size[1];
                     }
                 }
-                if (!string.IsNullOrEmpty(name))
-                {
-                    World world = new World(name, width, height, listSpace);
-                    return null;
-                }
-                return tag;
+                World world = new World(name, width, height, listSpace);
+                return null;
             }
             else
             {

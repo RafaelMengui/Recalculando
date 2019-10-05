@@ -10,6 +10,7 @@ using Proyecto.LeerHTML;
 using Proyecto.Common;
 using Proyecto.Filters;
 using Proyecto.Pipes;
+using Proyecto.Item;
 
 namespace Proyecto.StudentsCode
 {
@@ -30,8 +31,25 @@ namespace Proyecto.StudentsCode
             string XMLfile = @"..\..\..\Archivos HTML\Ejemplo.xml";
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
 
-            FilterWorld World = new FilterWorld();
-            World.Creator(tags[0]);
+            IFilter World = new FilterWorld();
+            IFilter Level = new FilterLevel();
+            IFilter Button = new FilterButton();
+            IFilter Image = new FilterImage();
+            IFilter Destination = new FilterDestination();
+            IFilter Source = new FilterSource();
+
+            IPipe pipeNull = new PipeNull();
+            IPipe pipeSix = new PipeSerial(Source, pipeNull);
+            IPipe pipeFive = new PipeSerial(Destination, pipeSix);
+            IPipe pipeFour = new PipeSerial(Image, pipeFive);
+            IPipe pipeThree = new PipeSerial(Button, pipeFour);
+            IPipe pipeTwo = new PipeSerial(Level, pipeThree);
+            IPipe pipeOne = new PipeSerial(World, pipeTwo);
+
+            foreach (Tag tag in tags)
+            {
+                pipeOne.Send(tag);
+            }
         }
     }
 }

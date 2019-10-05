@@ -5,14 +5,21 @@
 //--------------------------------------------------------------------------------
 using  System.Collections.Generic;
 
-namespace Proyecto
+namespace Proyecto.Item
 {
     /// <summary>
     /// Botones
     /// </summary>
     public class Button : Items, IButton
     {
-        public Button(string Name, Level Level, string PositionX, string PositionY, string Width, string Height, bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
+        public Button(
+            string Name,
+            Level Level,
+            string PositionX,
+            string PositionY,
+            string Width,
+            string Height,
+            bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
         {
         }
         
