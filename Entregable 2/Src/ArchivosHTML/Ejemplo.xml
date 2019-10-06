@@ -1,4 +1,4 @@
-<square-world size="50" name="world1">
+<square-world height="50" width="520" name="world1">
 	<level name="level1" world="world1">
 		<button name="button1" level="level1" position_x="10" position_y="20" size="20x30">
 	</level>

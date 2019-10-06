@@ -8,15 +8,20 @@ using System;
 using System.Collections.Generic;
 using Proyecto.LeerHTML;
 using Proyecto.Common;
-using Proyecto.Filters;
-using Proyecto.Pipes;
+using Proyecto.LibraryModelado;
+
+
+
 
 namespace Proyecto.StudentsCode
 {
+
+
     /// <summary>
     /// Clase que implementa la interfaz IBuilder.
     /// Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
     /// </summary>
+    /// 
     public class Builder : IBuilder
     {
         /// <summary>
@@ -30,8 +35,28 @@ namespace Proyecto.StudentsCode
             string XMLfile = @"..\..\..\Archivos HTML\Ejemplo.xml";
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
 
-            FilterWorld World = new FilterWorld();
-            World.Creator(tags[0]);
+
+
+
+
+
+
+            foreach (Tag tag in tags)
+            {
+                switch (tag.Nombre)
+                {
+                    case "World":
+                        var world = Creator.AddWorld(tag);
+                    break;
+                    case "Level":
+                        Console.WriteLine("The color is green");
+                        break;
+                    case "Items":
+                        Console.WriteLine("The color is blue");
+                        break;
+                }
+
+            }
         }
     }
 }

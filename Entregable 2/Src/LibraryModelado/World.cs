@@ -3,14 +3,14 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using  System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace Proyecto
+namespace Proyecto.LibraryModelado
 {
     /// <summary>
     /// Modelo del mundo.
     /// </summary>
-    public class World 
+    public class World
     {
         /// <summary>
         /// Nombre del World.
@@ -37,6 +37,7 @@ namespace Proyecto
         /// </summary>
         /// <param name="Name">Nombre del World.</param>
         /// <param name="Width">Ancho del World.</param>
+        /// <param name="Height">Altura del World.</param>
         /// <param name="SpaceList">Lista de Levels.</param>
         public World(string Name, string Width, string Height, List<Space> SpaceList)
         {
@@ -61,7 +62,7 @@ namespace Proyecto
         /// <summary>
         /// Gets or sets de la altura del espacio.
         /// </summary>
-        /// <value>Ancho del Espacio.</value>
+        /// <value>Altura del Espacio.</value>
         public string Height { get; set; }
     }
 }
