@@ -114,5 +114,7 @@ namespace Proyecto.LibraryModelado
         public bool Draggable { get; set; }
 
         public abstract string CreateUnityItem(IMainViewAdapter adapter);
+
+        protected string unityItem {get; set;}
     }
 }

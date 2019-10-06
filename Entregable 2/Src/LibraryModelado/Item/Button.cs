@@ -40,8 +40,8 @@ namespace Proyecto.Item
 
         public override string CreateUnityItem(IMainViewAdapter adapter)
         {
-            adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.color, this.Click);
-
+            unityItem = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.color, this.Click);
+            adapter.SetImage(unityItem, this.Name);
             return this.Name;
         }
     }

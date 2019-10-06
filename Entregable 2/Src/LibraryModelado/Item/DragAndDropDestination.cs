@@ -12,7 +12,7 @@ namespace Proyecto.Item
     /// <summary>
     /// Botones
     /// </summary>
-     public class DragAndDropDestination : Items
+    public class DragAndDropDestination : Items
     {
         public DragAndDropDestination(string Name, Space Level, int PositionX, int PositionY, int Width, int Height, bool Draggable) :
         base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
@@ -21,8 +21,8 @@ namespace Proyecto.Item
 
         public override string CreateUnityItem(IMainViewAdapter adapter)
         {
-            adapter.CreateDragAndDropDestination(this.PositionX, this.PositionY, this.Width, this.Height);
-
+            unityItem = adapter.CreateDragAndDropDestination(this.PositionX, this.PositionY, this.Width, this.Height);
+            adapter.SetImage(unityItem, this.Name);
             return this.Name;
         }
     }

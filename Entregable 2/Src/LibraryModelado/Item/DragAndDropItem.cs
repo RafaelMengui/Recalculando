@@ -21,9 +21,10 @@ namespace Proyecto.Item
 
         public override string CreateUnityItem(IMainViewAdapter adapter)
         {
-            adapter.CreateDragAndDropItem(this.PositionX, this.PositionY, this.Width, this.Height);
-
+            unityItem = adapter.CreateDragAndDropItem(this.PositionX, this.PositionY, this.Width, this.Height);
+            adapter.SetImage(unityItem, this.Name);
             return this.Name;
+
         }
     }
 }

@@ -81,5 +81,7 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <value>Altura del Espacio.</value>
         public int Height { get; set; }
+
+        public List<Items> ItemList {get; set;}
     }
 }

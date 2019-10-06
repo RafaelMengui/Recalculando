@@ -21,8 +21,8 @@ namespace Proyecto.Item
 
         public override string CreateUnityItem(IMainViewAdapter adapter)
         {
-              adapter.CreateImage(PositionX, PositionY, Width, Height);
-              
+              unityItem = adapter.CreateImage(PositionX, PositionY, Width, Height);
+              adapter.SetImage(unityItem, this.Name);
               return Name;
         }
     }
