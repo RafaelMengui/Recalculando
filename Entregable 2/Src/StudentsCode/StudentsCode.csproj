@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <DebugType>portable</DebugType>
     <!-- <RuntimeIdentifier>win10-x64</RuntimeIdentifier> -->
     <DocumentationFile>'$(MSBuildProjectName).xml'</DocumentationFile>
@@ -8,8 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\UnityCode\Common\src\Common.csproj" />
-    <ProjectReference Include="..\Library Modelado\Library Modelado.csproj" />
-    <ProjectReference Include="..\Library LeerHTML\LeerHTML.csproj" />
+    <ProjectReference Include="..\LibraryModelado\LibraryModelado.csproj" />
+    <ProjectReference Include="..\LibraryLeerHTML\LeerHTML.csproj" />
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">

@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using Proyecto.LeerHTML;
 
-namespace Proyecto
+namespace Proyecto.LibraryModelado
 {
     public class Creator 
     {
+
+
         public static World AddWorld(Tag tag)
         {
             string name = "";

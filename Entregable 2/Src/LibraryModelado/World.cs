@@ -3,14 +3,14 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using  System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace Proyecto
+namespace Proyecto.LibraryModelado
 {
     /// <summary>
     /// Modelo del mundo.
     /// </summary>
-    public class World 
+    public class World
     {
         /// <summary>
         /// Nombre del World.

@@ -5,7 +5,7 @@
 //--------------------------------------------------------------------------------
 using System.Collections.Generic;
 
-namespace Proyecto
+namespace Proyecto.LibraryModelado
 {
     /// <summary>
     /// Niveles 

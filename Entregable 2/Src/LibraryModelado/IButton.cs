@@ -1,6 +1,6 @@
 using System;
 
-namespace Proyecto
+namespace Proyecto.LibraryModelado
 {
     public interface IButton 
     {

@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-namespace Proyecto
+namespace Proyecto.LibraryModelado
 {
     /// <summary>
     /// Clase abstracta de Espacio.
@@ -48,10 +48,10 @@ namespace Proyecto
         {
             this.name = Name;
             this.size = Size;
-            this.world = World; 
+            this.world = World;
         }
 
-         /// <summary>
+        /// <summary>
         /// Gets or sets del nombre del espacio.
         /// </summary>
         /// <value>String nombre del espacio.</value>
