@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <RootNamespace>test_LeerHTML</RootNamespace>
 
     <IsPackable>false</IsPackable>
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\Library LeerHTML\LeerHTML.csproj" />
+    <ProjectReference Include="..\..\Src\LibraryLeerHTML\LeerHTML.csproj" />
   </ItemGroup>
 
 </Project>

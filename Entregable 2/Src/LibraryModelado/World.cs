@@ -20,12 +20,12 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Ancho del World en pixeles.
         /// </summary>
-        private string width;
+        private int width;
 
         /// <summary>
         /// Altura del World en pixeles.
         /// </summary>
-        private string height;
+        private int height;
 
         /// <summary>
         /// Lista de Levels.
@@ -39,7 +39,7 @@ namespace Proyecto.LibraryModelado
         /// <param name="Width">Ancho del World.</param>
         /// <param name="Height">Altura del World.</param>
         /// <param name="SpaceList">Lista de Levels.</param>
-        public World(string Name, string Width, string Height, List<Space> SpaceList)
+        public World(string Name, int Width, int Height, List<Space> SpaceList)
         {
             this.name = Name;
             this.width = Width;
@@ -57,12 +57,12 @@ namespace Proyecto.LibraryModelado
         /// Gets or sets del Ancho del espacio.
         /// </summary>
         /// <value>Ancho del Espacio.</value>
-        public string Width { get; set; }
+        public int Width { get; set; }
 
         /// <summary>
         /// Gets or sets de la altura del espacio.
         /// </summary>
         /// <value>Altura del Espacio.</value>
-        public string Height { get; set; }
+        public int Height { get; set; }
     }
 }

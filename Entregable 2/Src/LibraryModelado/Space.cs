@@ -27,28 +27,35 @@ namespace Proyecto.LibraryModelado
         private string name;
 
         /// <summary>
-        /// Tamaño del espacio.
+        /// Ancho del espacio.
         /// </summary>
-        private string size;
+        private int width;
+
+        /// <summary>
+        /// Altura del espacio.
+        /// </summary>
+        private int height;
 
         /// <summary>
         /// Lista de Subespacios.
         /// </summary>
-        internal List<Space> spacelist = new List<Space>(); //Tipo Espacio
+        internal List<Items> itemList = new List<Items>(); //Tipo Espacio
 
         /// <summary>
         /// Inicializa una instancia de Espacios.
         /// </summary>
         /// <param name="Name">Nombre del Espacio.</param>
-        /// <param name="Size">Tamaño del espacio.</param>
+        /// <param name="Width">Ancho del espacio.</param>
+        /// /// <param name="Height">Altura del espacio.</param>
         /// <param name="World">Mundo al que pertenece.</param>
         /// <param name="SpaceList">Lista de Subespacios.</param>
-        /// 
-        public Space(string Name, string Size, List<Space> SpaceList, World world)
+        public Space(string Name, int Width, int Height, List<Items> ItemList, World world)
         {
             this.name = Name;
-            this.size = Size;
+            this.width = Width;
+            this.height = Height;
             this.world = World;
+            this.itemList = ItemList;
         }
 
         /// <summary>
@@ -64,9 +71,15 @@ namespace Proyecto.LibraryModelado
         public World World { get; set; }
 
         /// <summary>
-        /// Gets or sets del tamaño del espacio.
+        /// Gets or sets del Ancho del espacio.
         /// </summary>
-        /// <value>Tamaño del Espacio.</value>
-        public string Size { get; set; }
+        /// <value>Ancho del Espacio.</value>
+        public int Width { get; set; }
+
+        /// <summary>
+        /// Gets or sets de la Altura del espacio.
+        /// </summary>
+        /// <value>Altura del Espacio.</value>
+        public int Height { get; set; }
     }
 }

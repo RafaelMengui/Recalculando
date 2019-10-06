@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <RootNamespace>test_Modelado</RootNamespace>
 
     <IsPackable>false</IsPackable>
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\Library Modelado\Library Modelado.csproj" />
+    <ProjectReference Include="..\..\Src\LibraryModelado\LibraryModelado.csproj" />
   </ItemGroup>
 
 </Project>

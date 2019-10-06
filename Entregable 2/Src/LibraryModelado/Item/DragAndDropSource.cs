@@ -14,7 +14,8 @@ namespace Proyecto.Item
     /// </summary>
      public class DragAndDropSource : Items
     {
-        public DragAndDropSource(string Name, Level Level, int PositionX, int PositionY, int Width, int Height, bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
+        public DragAndDropSource(string Name, Space Level, int PositionX, int PositionY, int Width, int Height, bool Draggable) :
+        base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
         {
         }
 

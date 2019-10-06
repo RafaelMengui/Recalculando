@@ -10,13 +10,8 @@ using Proyecto.LeerHTML;
 using Proyecto.Common;
 using Proyecto.LibraryModelado;
 
-
-
-
 namespace Proyecto.StudentsCode
 {
-
-
     /// <summary>
     /// Clase que implementa la interfaz IBuilder.
     /// Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
@@ -35,12 +30,6 @@ namespace Proyecto.StudentsCode
             string XMLfile = @"..\..\..\Archivos HTML\Ejemplo.xml";
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
 
-
-
-
-
-
-
             foreach (Tag tag in tags)
             {
                 switch (tag.Nombre)
@@ -55,7 +44,6 @@ namespace Proyecto.StudentsCode
                         Console.WriteLine("The color is blue");
                         break;
                 }
-
             }
         }
     }

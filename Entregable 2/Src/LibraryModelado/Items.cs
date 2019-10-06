@@ -21,7 +21,7 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Nivel al que pertenece el Item.
         /// </summary>
-        private Level level;
+        private Space level;
 
         /// <summary>
         /// Posicion en eje Horizontal en pixeles.
@@ -58,7 +58,7 @@ namespace Proyecto.LibraryModelado
         /// <param name="Width">Ancho en pixeles.</param>
         /// <param name="Height">Altura en pixeles.</param>
         /// <param name="Draggable">Item arrastrable.</param>
-        public Items(string Name, Level Level, int PositionX, int PositionY, int Width, int Height, bool Draggable)
+        public Items(string Name, Space Level, int PositionX, int PositionY, int Width, int Height, bool Draggable)
         {
             this.name = Name;
             this.level = Level;
@@ -79,7 +79,7 @@ namespace Proyecto.LibraryModelado
         /// Gets or sets del Nivel al que pertenece el Item.
         /// </summary>
         /// <value>Level al que pertence.</value>
-        public Level Level { get; set; }
+        public Space Level { get; set; }
 
         /// <summary>
         /// Gets or sets de Posicion en eje Horizontal en pixeles.
