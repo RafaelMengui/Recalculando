@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using Proyecto.Common;
 
 namespace Proyecto
 {
@@ -110,5 +111,7 @@ namespace Proyecto
         /// </summary>
         /// <value>Bool de si es arrastrable.</value>
         public bool Draggable { get; set; }
+
+        protected abstract override CreateUnityItem(IMainViewAdapter adapter);
     }
 }
