@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace LeerHTML
+namespace Proyecto.LeerHTML
 {
     public class Tag
     {
@@ -21,11 +21,22 @@ namespace LeerHTML
                 }
             }
         }
-        public List<Atributos> Atributos { get; set; }
+
+        /// <summary>
+        /// Lista de todos los Objetos Atributos del Tag.
+        /// </summary>
+        /// <value>List<Atributos></value>
+        public List<Atributos> atributos { get; set; }
+
+        /// <summary>
+        /// Constructor de Tag.
+        /// </summary>
+        /// <param name="nombre">string Nombre del Tag</param>
+        /// <param name="atributos">Lista de objetos atributos pertenecientes al tag.</param>
         public Tag(string nombre, List<Atributos> atributos)
         {
-            this.Nombre = nombre;
-            this.Atributos = atributos;
+            this.nombre = nombre;
+            this.atributos = atributos;
         }
 
         /// <summary>
@@ -35,9 +46,9 @@ namespace LeerHTML
         public string RetornarAtributos()
         {
             string atributos = "";
-            foreach (Atributos Atr in this.Atributos)
+            foreach (Atributos atr in this.atributos)
             {
-                atributos += Atr.Clave + "=" + Atr.Valor + "\n";
+                atributos += atr.clave + "=" + atr.valor + "\n";
             }
             return atributos;
         }

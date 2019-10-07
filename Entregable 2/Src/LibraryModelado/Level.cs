@@ -3,16 +3,17 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using  System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace Proyecto
+namespace Proyecto.LibraryModelado
 {
     /// <summary>
-    /// Modelo del mundo.
+    /// Niveles 
     /// </summary>
-    public class Mundo : Espacio
+    public class Level : Space
     {
-        public Mundo(string Name, string Submundo, string Size, System.Collections.Generic.IList ListaDeEspacios) : base(Name, Submundo, Size, ListaDeEspacios)
+        public Level(string Name, int Width, int Height, List<Items> ItemList, World world) 
+        : base(Name, Width, Height, ItemList, world)
         {
         }
     }

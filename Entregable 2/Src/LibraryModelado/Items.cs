@@ -3,8 +3,10 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using Proyecto.Common;
 
-namespace Proyecto.StudentsCode
+
+namespace Proyecto.LibraryModelado
 {
     /// <summary>
     /// Clase abstracta de Items.
@@ -19,27 +21,27 @@ namespace Proyecto.StudentsCode
         /// <summary>
         /// Nivel al que pertenece el Item.
         /// </summary>
-        private string level;
+        private Space level;
 
         /// <summary>
         /// Posicion en eje Horizontal en pixeles.
         /// </summary>
-        private string positionX;
+        private int positionX;
 
         /// <summary>
         /// Posicion en eje Vertical en pixeles.
         /// </summary>
-        private string positionY;
+        private int positionY;
 
         /// <summary>
         /// Ancho en Pixeles.
         /// </summary>
-        private string width;
+        private int width;
 
         /// <summary>
         /// Altura en pixeles.
         /// </summary>
-        private string height;
+        private int height;
 
         /// <summary>
         /// Bool que define si un item es arrastable o no.
@@ -56,7 +58,7 @@ namespace Proyecto.StudentsCode
         /// <param name="Width">Ancho en pixeles.</param>
         /// <param name="Height">Altura en pixeles.</param>
         /// <param name="Draggable">Item arrastrable.</param>
-        public Items(string Name, string Level, string PositionX, string PositionY, string Width, string Height, bool Draggable)
+        public Items(string Name, Space Level, int PositionX, int PositionY, int Width, int Height, bool Draggable)
         {
             this.name = Name;
             this.level = Level;
@@ -76,39 +78,43 @@ namespace Proyecto.StudentsCode
         /// <summary>
         /// Gets or sets del Nivel al que pertenece el Item.
         /// </summary>
-        /// <value>String nivel al que pertence.</value>
-        public string Level { get; set; }
+        /// <value>Level al que pertence.</value>
+        public Space Level { get; set; }
 
         /// <summary>
         /// Gets or sets de Posicion en eje Horizontal en pixeles.
         /// </summary>
-        /// <value>String posicion en eje horizontal.</value>
-        public string PositionX { get; set; }
+        /// <value>Int posicion en eje horizontal.</value>
+        public int PositionX { get; set; }
 
         /// <summary>
         /// Gets or sets dePosicion en eje Vertical en pixeles.
         /// </summary>
-        /// <value>String posicion en eje vertical.</value>
-        public string PositionY { get; set; }
+        /// <value>Int posicion en eje vertical.</value>
+        public int PositionY { get; set; }
 
         /// <summary>
         /// Gets or sets de Ancho en Pixeles.
         /// </summary>
-        /// <value>String ancho en pixeles.</value>
-        public string Width { get; set; }
+        /// <value>Int ancho en pixeles.</value>
+        public int Width { get; set; }
 
         /// <summary>
         /// Gets or sets de Altura en pixeles.
         /// </summary>
-        /// <value>String altura en pixeles.</value>
-        public string Height { get; set; }
+        /// <value>Int altura en pixeles.</value>
+        public int Height { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether un item es arrastable o no.
         /// Escribo algunas partes en ingles porque el docfx me obliga a que aparezca esa
         /// frase.
         /// </summary>
-        /// <value>Bool de si es arrastrable.</value>
+        /// <value>Int de si es arrastrable.</value>
         public bool Draggable { get; set; }
+
+        public abstract string CreateUnityItem(IMainViewAdapter adapter);
+
+        protected string unityItem {get; set;}
     }
 }
