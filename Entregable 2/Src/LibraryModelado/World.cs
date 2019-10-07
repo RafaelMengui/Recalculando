@@ -30,7 +30,7 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Lista de Levels.
         /// </summary>
-        internal List<Space> spacelist = new List<Space>(); //Tipo Space
+        public List<Space> spacelist = new List<Space>(); //Tipo Space
 
         /// <summary>
         /// Inicializa una instancia de World.

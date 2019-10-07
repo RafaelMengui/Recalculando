@@ -39,7 +39,7 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Lista de Subespacios.
         /// </summary>
-        internal List<Items> itemList = new List<Items>(); //Tipo Espacio
+        public List<Items> itemList = new List<Items>(); //Tipo Espacio
 
         /// <summary>
         /// Inicializa una instancia de Espacios.

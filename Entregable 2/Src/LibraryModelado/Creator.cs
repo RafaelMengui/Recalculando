@@ -7,10 +7,15 @@ namespace Proyecto.LibraryModelado
 {
     public class Creator
     {
-        static World world;
-        static Space level;
+        public World world;
+        public Space level;
+        public Items button;
+        public Items image;
+        public Items container;
+        public Items draggableItem;
 
-        public static World AddWorld(Tag tag)
+
+        public World AddWorld(Tag tag)
         {
             string name = "";
             int width = 0;
@@ -21,7 +26,7 @@ namespace Proyecto.LibraryModelado
             {
                 switch (atributo.clave)
                 {
-                    case "World":
+                    case "Name":
                         name = atributo.valor;
                         break;
                     case "Width":
@@ -31,12 +36,13 @@ namespace Proyecto.LibraryModelado
                         height = Convert.ToInt32(atributo.valor);
                         break;
                 }
+                world = new World(tag.Nombre, width, height, listSpace);
+
             }
-            world = new World(tag.Nombre, width, height, listSpace);
             return world;
         }
 
-        public static Space AddLevel(Tag tag)
+        public Space AddLevel(Tag tag)
         {
             string name = "";
             int width = 0;
@@ -47,7 +53,7 @@ namespace Proyecto.LibraryModelado
             {
                 switch (atributo.clave)
                 {
-                    case "Level":
+                    case "Name":
                         name = atributo.valor;
                         break;
                     case "Width":
@@ -57,14 +63,14 @@ namespace Proyecto.LibraryModelado
                         height = Convert.ToInt32(atributo.valor);
                         break;
                 }
-            }
+                level = new Level(tag.Nombre, width, height, listItems, world);
+                world.spacelist.Add(level);
 
-            level = new Level(tag.Nombre, width, height, listItems, world);
-            world.spacelist.Add(level);
+            }
             return level;
         }
 
-        public static Items AddButton(Tag tag)
+        public Items AddButton(Tag tag)
         {
             string name = "";
             string color = "";
@@ -76,7 +82,7 @@ namespace Proyecto.LibraryModelado
             {
                 switch (atributo.clave)
                 {
-                    case "Button":
+                    case "Name":
                         name = atributo.valor;
                         break;
                     case "Level":
@@ -98,13 +104,14 @@ namespace Proyecto.LibraryModelado
                         color = atributo.valor;
                         break;
                 }
+                Items button = new Button(tag.Nombre, level, positionX, positionY, width, height, false, color);
+                level.ItemList.Add(button);
+
             }
-            Items button = new Button(tag.Nombre, level, positionX, positionY, width, height, false, color);
-            level.itemList.Add(button);
             return button;
         }
 
-        public static Items AddImage(Tag tag)
+        public Items AddImage(Tag tag)
         {
             string name = "";
             int width = 0;
@@ -116,7 +123,7 @@ namespace Proyecto.LibraryModelado
             {
                 switch (atributo.clave)
                 {
-                    case "Image":
+                    case "Name":
                         name = atributo.valor;
                         break;
                     case "Level":
@@ -141,13 +148,14 @@ namespace Proyecto.LibraryModelado
                         }
                         break;
                 }
+                Items image = new Image(tag.Nombre, level, positionX, positionY, width, height, draggable);
+                level.ItemList.Add(image);
+
             }
-            Items image = new Image(tag.Nombre, level, positionX, positionY, width, height, draggable);
-            level.itemList.Add(image);
             return image;
         }
 
-        public static Items AddDragAndDropSource(Tag tag)
+        public Items AddDragAndDropSource(Tag tag)
         {
             string name = "";
             int width = 0;
@@ -158,7 +166,7 @@ namespace Proyecto.LibraryModelado
             {
                 switch (atributo.clave)
                 {
-                    case "DragAndDropSource":
+                    case "Name":
                         name = atributo.valor;
                         break;
                     case "Level":
@@ -177,13 +185,52 @@ namespace Proyecto.LibraryModelado
                         positionY = Convert.ToInt32(atributo.valor);
                         break;
                 }
+                Items container = new DragAndDropSource(tag.Nombre, level, positionX, positionY, width, height, false);
+                level.ItemList.Add(container);
+
             }
-            Items container = new DragAndDropSource(tag.Nombre, level, positionX, positionY, width, height, false);
-            level.itemList.Add(container);
+            return container;
+
+        }
+
+        public Items AddDragAndDropDestination(Tag tag)
+        {
+            string name = "";
+            int width = 0;
+            int height = 0;
+            int positionX = 0;
+            int positionY = 0;
+            foreach (Atributos atributo in tag.atributos)
+            {
+                switch (atributo.clave)
+                {
+                    case "Name":
+                        name = atributo.valor;
+                        break;
+                    case "Level":
+                        level = world.spacelist.Find(delegate (Space L) { return L.Name == atributo.valor; });
+                        break;
+                    case "Width":
+                        width = Convert.ToInt32(atributo.valor);
+                        break;
+                    case "Height":
+                        height = Convert.ToInt32(atributo.valor);
+                        break;
+                    case "PositionX":
+                        positionX = Convert.ToInt32(atributo.valor);
+                        break;
+                    case "PositionY":
+                        positionY = Convert.ToInt32(atributo.valor);
+                        break;
+                }
+                Items container = new DragAndDropDestination(tag.Nombre, level, positionX, positionY, width, height, false);
+                level.ItemList.Add(container);
+
+            }
             return container;
         }
 
-        public static Items AddDragAndDropDestination(Tag tag)
+        public Items AddDragAndDropItem(Tag tag)
         {
             string name = "";
             int width = 0;
@@ -194,7 +241,7 @@ namespace Proyecto.LibraryModelado
             {
                 switch (atributo.clave)
                 {
-                    case "DragAndDropDestination":
+                    case "Name":
                         name = atributo.valor;
                         break;
                     case "Level":
@@ -213,45 +260,10 @@ namespace Proyecto.LibraryModelado
                         positionY = Convert.ToInt32(atributo.valor);
                         break;
                 }
-            }
-            Items container = new DragAndDropDestination(tag.Nombre, level, positionX, positionY, width, height, false);
-            level.itemList.Add(container);
-            return container;
-        }
+                Items draggableItem = new DragAndDropItem(tag.Nombre, level, positionX, positionY, width, height, true);
+                level.ItemList.Add(draggableItem);
 
-        public static Items AddDragAndDropItem(Tag tag)
-        {
-            string name = "";
-            int width = 0;
-            int height = 0;
-            int positionX = 0;
-            int positionY = 0;
-            foreach (Atributos atributo in tag.atributos)
-            {
-                switch (atributo.clave)
-                {
-                    case "DragAndDropItem":
-                        name = atributo.valor;
-                        break;
-                    case "Level":
-                        level = world.spacelist.Find(delegate (Space L) { return L.Name == atributo.valor; });
-                        break;
-                    case "Width":
-                        width = Convert.ToInt32(atributo.valor);
-                        break;
-                    case "Height":
-                        height = Convert.ToInt32(atributo.valor);
-                        break;
-                    case "PositionX":
-                        positionX = Convert.ToInt32(atributo.valor);
-                        break;
-                    case "PositionY":
-                        positionY = Convert.ToInt32(atributo.valor);
-                        break;
-                }
             }
-            Items draggableItem = new DragAndDropItem(tag.Nombre, level, positionX, positionY, width, height, true);
-            level.itemList.Add(draggableItem);
             return draggableItem;
         }
     }

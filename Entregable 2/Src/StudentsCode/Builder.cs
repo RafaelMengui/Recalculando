@@ -24,6 +24,7 @@ namespace Proyecto.StudentsCode
         private string nextPageName;      
 
         static World world;  
+        Creator Creator = new Creator();
 //////////////////////////////////////////////////////////////////////////////
         /// /// <summary>
         /// Construye una interfaz de usuario interactiva utilizando.
@@ -45,7 +46,7 @@ namespace Proyecto.StudentsCode
             
 
 
-            string XMLfile = @"..\..\..\Archivos HTML\Ejemplo.xml";
+            string XMLfile = @"C:\Users\nicop\Desktop\Nueva carpeta (3)\Code\Entregable 2\Src\ArchivosHTML\MartinitoX.xml";
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
 
             foreach (Tag tag in tags) //Se crean los objetos C#
