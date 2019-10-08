@@ -28,23 +28,18 @@ namespace Proyecto.LibraryModelado
         private int height;
 
         /// <summary>
-        /// Lista de Levels.
-        /// </summary>
-        public List<Space> spacelist = new List<Space>(); //Tipo Space
-
-        /// <summary>
         /// Inicializa una instancia de World.
         /// </summary>
-        /// <param name="Name">Nombre del World.</param>
-        /// <param name="Width">Ancho del World.</param>
-        /// <param name="Height">Altura del World.</param>
-        /// <param name="SpaceList">Lista de Levels.</param>
-        public World(string Name, int Width, int Height, List<Space> SpaceList)
+        /// <param name="name">Nombre del World.</param>
+        /// <param name="width">Ancho del World.</param>
+        /// <param name="height">Altura del World.</param>
+        /// <param name="spaceList">Lista de Levels.</param>
+        public World(string name, int width, int height)
         {
-            this.name = Name;
-            this.width = Width;
-            this.height = Height;
-            this.spacelist = SpaceList;
+            this.Name = name;
+            this.Width = width;
+            this.Height = height;
+            this.SpaceList = new List<Space>();
         }
 
         /// <summary>

@@ -58,15 +58,15 @@ namespace Proyecto.LibraryModelado
         /// <param name="Width">Ancho en pixeles.</param>
         /// <param name="Height">Altura en pixeles.</param>
         /// <param name="Draggable">Item arrastrable.</param>
-        public Items(string Name, Space Level, int PositionX, int PositionY, int Width, int Height, bool Draggable)
+        public Items(string name, Space level, int positionX, int positionY, int width, int height, bool draggable)
         {
-            this.name = Name;
-            this.level = Level;
-            this.positionX = PositionX;
-            this.positionY = PositionY;
-            this.width = Width;
-            this.height = Height;
-            this.draggable = Draggable;
+            this.Name = name;
+            this.Level = level;
+            this.PositionX = positionX;
+            this.PositionY = positionY;
+            this.Width = width;
+            this.Height = height;
+            this.Draggable = draggable;
         }
 
         /// <summary>

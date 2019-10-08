@@ -24,7 +24,7 @@ namespace Proyecto.LibraryModelado
         /// 
         /// </summary>
         /// 
-        private string name;
+        private string name {get;set;}
 
         /// <summary>
         /// Ancho del espacio.
@@ -37,25 +37,19 @@ namespace Proyecto.LibraryModelado
         private int height;
 
         /// <summary>
-        /// Lista de Subespacios.
-        /// </summary>
-        public List<Items> itemList = new List<Items>(); //Tipo Espacio
-
-        /// <summary>
         /// Inicializa una instancia de Espacios.
         /// </summary>
-        /// <param name="Name">Nombre del Espacio.</param>
-        /// <param name="Width">Ancho del espacio.</param>
-        /// /// <param name="Height">Altura del espacio.</param>
-        /// <param name="World">Mundo al que pertenece.</param>
-        /// <param name="SpaceList">Lista de Subespacios.</param>
-        public Space(string Name, int Width, int Height, List<Items> ItemList, World world)
+        /// <param name="name">Nombre del Espacio.</param>
+        /// <param name="width">Ancho del espacio.</param>
+        /// <param name="height">Altura del espacio.</param>
+        /// <param name="world">Mundo al que pertenece.</param>
+        public Space(string name, int width, int height)
         {
-            this.name = Name;
-            this.width = Width;
-            this.height = Height;
-            this.world = World;
-            this.itemList = ItemList;
+            this.Name = name;
+            this.Width = width;
+            this.Height = height;
+            this.World = world;
+            this.ItemList = new List<Items>();
         }
 
         /// <summary>
@@ -82,6 +76,6 @@ namespace Proyecto.LibraryModelado
         /// <value>Altura del Espacio.</value>
         public int Height { get; set; }
 
-        public List<Items> ItemList {get; set;}
+        public List<Items> ItemList { get; set; }
     }
 }

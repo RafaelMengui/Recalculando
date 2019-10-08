@@ -14,8 +14,8 @@ namespace Proyecto.Item
     /// </summary>
     public class DragAndDropDestination : Items
     {
-        public DragAndDropDestination(string Name, Space Level, int PositionX, int PositionY, int Width, int Height, bool Draggable) :
-        base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
+        public DragAndDropDestination(string name, Space level, int positionX, int positionY, int width, int height, bool draggable) :
+        base(name, level, positionX, positionY, width, height, draggable)
         {
         }
 

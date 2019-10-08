@@ -14,24 +14,15 @@ namespace Proyecto.Item
     /// </summary>
     public class Button : Items, IButton
     {
-        public Button(string Name, Space Level, int PositionX, int PositionY, int Width, int Height, bool Draggable, string Color)
-        : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
+        public Button(string name, Space level, int positionX, int positionY, int width, int height, bool draggable, string color)
+        : base(name, level, positionX, positionY, width, height, draggable)
         {
-            this.color = Color;
+            this.Color = color;
         }
 
         private string color;
-        public string Color
-        {
-            get
-            {
-                return this.color;
-            }
-            set
-            {
-                this.color = value;
-            }
-        }
+        public string Color { get; set; }
+
         public void Click()
         {
             // No hay que implementar comportamiento.
@@ -40,7 +31,7 @@ namespace Proyecto.Item
 
         public override string CreateUnityItem(IMainViewAdapter adapter)
         {
-            unityItem = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.color, this.Click);
+            unityItem = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
             adapter.SetImage(unityItem, this.Name);
             return this.Name;
         }
