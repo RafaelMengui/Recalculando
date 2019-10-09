@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LeerHTML</name>
+    </assembly>
+    <members>
+        <member name="T:Proyecto.LeerHTML.Atributos">
+            <summary>
+            Clase atributo, nos permite guardar el atributo en clave y valor.
+            </summary>
+        </member>
+        <member name="T:Proyecto.LeerHTML.Downloader">
+            <summary>
+            Descarga archivos de una ubicación de la forma "http://server/directory/file" o
+            "file:///drive:/directory/file"
+            </summary>
+        </member>
+        <member name="P:Proyecto.LeerHTML.Downloader.Url">
+            <summary>
+            La ubicación de la cual descargar
+            </summary>
+        </member>
+        <member name="M:Proyecto.LeerHTML.Downloader.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia asignando la ubicación de la cual descargar
+            </summary>
+            <param name="url"></param>
+        </member>
+        <member name="M:Proyecto.LeerHTML.Downloader.Download">
+            <summary>
+            Descarga contenido de la ubicación de la cual descargar
+            </summary>
+            <returns>Retorna el contenido descargado</returns>
+        </member>
+        <member name="T:Proyecto.LeerHTML.Filtro">
+            <summary>
+            La Clase Filtro es nuestra Creator de Tag y Atributos.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LeerHTML.Imprimir.Formato(System.String)">
+            <summary>
+            Devuelve un string que contiene solamente los tags y sus respectivos atributos,
+            separados por el caracter '\n', es decir, un tag o atributo por linea.
+            </summary>
+            <param name="archivoHTML">Ruta al archivo XML/HTML</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Proyecto.LeerHTML.LeerHtml.RetornarHTML(System.String)">
+            <summary>
+            Retorna todo el Archivo HTML en formato string
+            </summary>
+            <param name="fileName"></param>
+            <returns>string</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Proyecto.LeerHTML.Tag.atributos" -->
+        <member name="M:Proyecto.LeerHTML.Tag.#ctor(System.String,System.Collections.Generic.List{Proyecto.LeerHTML.Atributos})">
+            <summary>
+            Constructor de Tag.
+            </summary>
+            <param name="nombre">string Nombre del Tag</param>
+            <param name="atributos">Lista de objetos atributos pertenecientes al tag.</param>
+        </member>
+        <member name="M:Proyecto.LeerHTML.Tag.RetornarAtributos">
+            <summary>
+            Retorna un string de los atributos de un tag en formato "clave=valor".
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

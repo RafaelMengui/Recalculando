@@ -14,15 +14,15 @@ namespace Proyecto.Item
     /// </summary>
     public class DragAndDropItem : Items
     {
-        public DragAndDropItem(string name, Space level, int positionX, int positionY, int width, int height, bool draggable) :
-        base(name, level, positionX, positionY, width, height, draggable)
+        public DragAndDropItem(string name, Space level, int positionX, int positionY, int width, int height, bool draggable, string image) :
+        base(name, level, positionX, positionY, width, height, draggable, image)
         {
         }
 
         public override string CreateUnityItem(IMainViewAdapter adapter)
         {
             unityItem = adapter.CreateDragAndDropItem(this.PositionX, this.PositionY, this.Width, this.Height);
-            adapter.SetImage(unityItem, this.Name);
+            adapter.SetImage(unityItem, this.Image);
             return this.Name;
 
         }

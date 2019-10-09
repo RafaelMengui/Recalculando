@@ -1,12 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <DebugType>portable</DebugType>
+    <!-- <RuntimeIdentifier>win10-x64</RuntimeIdentifier> -->
+    <DocumentationFile>'$(MSBuildProjectName).xml'</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup> 
+
   <ItemGroup>
     <ProjectReference Include="..\LibraryLeerHTML\LeerHTML.csproj" />
     <ProjectReference Include="..\..\..\..\UnityCode\Common\src\Common.csproj" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-  </PropertyGroup>
 
 </Project>

@@ -1,0 +1,12 @@
+<World Height="100" Width="520" Name="world1">
+	<Level Name="level1" World="world1" Width="50" Height="20">
+
+		<Button Name="boton" PositionX="100" PositionY="20" Width="100" Height="75" Color="#008F39" Photo="m.jpg"/>	
+		<Image Name="imagen" PositionX="30" PositionY="70" Width="70" Height="70" Photo="m.jpg"/>
+		<DragAndDropSource Name="source" PositionX="60" PositionY="60" Width="50" Height="50" Photo="m.jpg"/>
+		<DragAndDropDestination Name="destination" PositionX="70" PositionY="10" Width="60" Height="60" Photo="m.jpg"/>
+		<DragAndDropItem Name="itemDD" PositionX="100" PositionY="20" Width="40" Height="40" Photo="m.jpg"/>
+		<Button Name="boton2" PositionX="450" PositionY="250" Width="300" Height="50" Color="#00FF39" Photo="m.jpg"/>	
+
+	</Level>
+</World>

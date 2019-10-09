@@ -48,6 +48,8 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         private bool draggable;
 
+        private string image;
+
         /// <summary>
         /// Inicializa una instancia de Item.
         /// </summary>
@@ -58,7 +60,7 @@ namespace Proyecto.LibraryModelado
         /// <param name="Width">Ancho en pixeles.</param>
         /// <param name="Height">Altura en pixeles.</param>
         /// <param name="Draggable">Item arrastrable.</param>
-        public Items(string name, Space level, int positionX, int positionY, int width, int height, bool draggable)
+        public Items(string name, Space level, int positionX, int positionY, int width, int height, bool draggable, string image)
         {
             this.Name = name;
             this.Level = level;
@@ -67,6 +69,7 @@ namespace Proyecto.LibraryModelado
             this.Width = width;
             this.Height = height;
             this.Draggable = draggable;
+            this.Image = image;
         }
 
         /// <summary>
@@ -110,11 +113,12 @@ namespace Proyecto.LibraryModelado
         /// Escribo algunas partes en ingles porque el docfx me obliga a que aparezca esa
         /// frase.
         /// </summary>
-        /// <value>Int de si es arrastrable.</value>
+        /// <value>Bool de si es arrastrable.</value>
         public bool Draggable { get; set; }
 
-        public abstract string CreateUnityItem(IMainViewAdapter adapter);
+        public string Image { get; set; }
 
-        protected string unityItem {get; set;}
+        public abstract string CreateUnityItem(IMainViewAdapter adapter);
+        protected string unityItem { get; set; }
     }
 }

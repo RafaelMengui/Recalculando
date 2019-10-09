@@ -12,6 +12,14 @@ namespace Proyecto.LibraryModelado
 
         private World world;
         private Space level;
+        string name;
+        string color;
+        int width;
+        int height;
+        int positionX;
+        int positionY;
+        string image;
+
 
         public Creator()
         {
@@ -21,9 +29,9 @@ namespace Proyecto.LibraryModelado
 
         public World AddWorld(Tag tag)
         {
-            string name = (tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor);
-            int width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            int height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
+            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
+            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
+            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
 
             this.World = new World(name, width, height);
             return this.World;
@@ -31,9 +39,9 @@ namespace Proyecto.LibraryModelado
 
         public Space AddLevel(Tag tag)
         {
-            string name = (tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor);
-            int width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            int height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
+            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
+            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
+            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
 
             this.Level = new Level(name, width, height);
             this.World.SpaceList.Add(this.Level);
@@ -42,71 +50,71 @@ namespace Proyecto.LibraryModelado
 
         public Items AddButton(Tag tag)
         {
+            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
+            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
+            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
+            positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
+            positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
+            color = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Color"; }).valor;
+            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
 
-            string name = (tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor);
-            int width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            int height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
-            int positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
-            int positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
-            string color = (tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Color"; }).valor);
-
-            //Console.WriteLine(name + " " + width + " " + height + " " + PositionX + " " + PositionY + " " + Color + " " + this.Level.Name);
-            Items button = new Button(name, this.Level, positionX, positionY, width, height, false, color);
+            Items button = new Button(name, this.Level, positionX, positionY, width, height, false, image, color);
             this.Level.ItemList.Add(button);
             return button;
         }
 
         public Items AddImage(Tag tag)
         {
+            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
+            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
+            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
+            positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
+            positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
+            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
 
-            string name = (tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor);
-            int width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            int height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
-            int positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
-            int positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
-
-            Items image = new Image(name, this.Level, positionX, positionY, width, height, false);
-            this.Level.ItemList.Add(image);
-            return image;
+            Items _image = new Image(name, this.Level, positionX, positionY, width, height, false, image);
+            this.Level.ItemList.Add(_image);
+            return _image;
         }
 
         public Items AddDragAndDropSource(Tag tag)
         {
-            string name = (tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor);
-            int width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            int height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
-            int positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
-            int positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
+            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
+            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
+            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
+            positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
+            positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
+            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
 
-            Items container = new DragAndDropSource(name, this.Level, positionX, positionY, width, height, false);
+            Items container = new DragAndDropSource(name, this.Level, positionX, positionY, width, height, false, image);
             this.Level.ItemList.Add(container);
             return container;
         }
 
-
         public Items AddDragAndDropDestination(Tag tag)
         {
-            string name = (tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor);
-            int width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            int height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
-            int positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
-            int positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
+            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
+            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
+            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
+            positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
+            positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
+            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
 
-            Items container = new DragAndDropDestination(name, this.Level, positionX, positionY, width, height, false);
+            Items container = new DragAndDropDestination(name, this.Level, positionX, positionY, width, height, false, image);
             this.Level.ItemList.Add(container);
             return container;
         }
 
         public Items AddDragAndDropItem(Tag tag)
         {
-            string name = (tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor);
-            int width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            int height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
-            int positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
-            int positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
+            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
+            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
+            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
+            positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
+            positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
+            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
 
-            Items draggableItem = new DragAndDropItem(name, this.Level, positionX, positionY, width, height, true);
-            Console.WriteLine(draggableItem.Name);
+            Items draggableItem = new DragAndDropItem(name, this.Level, positionX, positionY, width, height, true, image);
             this.Level.ItemList.Add(draggableItem);
             return draggableItem;
         }

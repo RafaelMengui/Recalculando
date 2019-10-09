@@ -9,12 +9,10 @@
             Clase que implementa la interfaz IBuilder.
             Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
             </summary>
-            
         </member>
         <member name="M:Proyecto.StudentsCode.Builder.Build(Proyecto.Common.IMainViewAdapter)">
-            /// <summary>
-            Construye una interfaz de usuario interactiva utilizando.
-            un <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
+            <summary>
+            Construye una interfaz de usuario interactiva utilizando un <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
             </summary>
             <param name="providedAdapter">Un <see cref="T:Proyecto.Common.IMainViewAdapter"/> que permite construir
             una interfaz de usuario interactiva.</param>

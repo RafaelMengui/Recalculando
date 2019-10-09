@@ -3,7 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using System.Collections.Generic;
+using System;
 using Proyecto.Common;
 using Proyecto.LibraryModelado;
 
@@ -14,8 +14,8 @@ namespace Proyecto.Item
     /// </summary>
     public class Button : Items, IButton
     {
-        public Button(string name, Space level, int positionX, int positionY, int width, int height, bool draggable, string color)
-        : base(name, level, positionX, positionY, width, height, draggable)
+        public Button(string name, Space level, int positionX, int positionY, int width, int height, bool draggable, string image,string color)
+        : base(name, level, positionX, positionY, width, height, draggable, image)
         {
             this.Color = color;
         }
@@ -25,14 +25,12 @@ namespace Proyecto.Item
 
         public void Click()
         {
-            // No hay que implementar comportamiento.
-            throw new System.NotImplementedException();
         }
 
         public override string CreateUnityItem(IMainViewAdapter adapter)
         {
             unityItem = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
-            adapter.SetImage(unityItem, this.Name);
+            adapter.SetImage(unityItem, this.Image);
             return this.Name;
         }
     }

@@ -15,31 +15,28 @@ namespace Proyecto.StudentsCode
     /// Clase que implementa la interfaz IBuilder.
     /// Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
     /// </summary>
-    /// 
     public class Builder : IBuilder
     {
         private string firstPageName;
         private IMainViewAdapter adapter;
-        private string nextPageName;      
+        private string nextPageName;     
+        Creator Creator = new Creator(); 
 
-//////////////////////////////////////////////////////////////////////////////
-        /// /// <summary>
-        /// Construye una interfaz de usuario interactiva utilizando.
-        /// un <see cref="IMainViewAdapter"/>.
+        /// <summary>
+        /// Construye una interfaz de usuario interactiva utilizando un <see cref="IMainViewAdapter"/>.
         /// </summary>
         /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir
         /// una interfaz de usuario interactiva.</param>
         public void Build(IMainViewAdapter providedAdapter)
         {
+            const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Codigo1.xml";
 
-            this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            this.adapter.ToDoAfterBuild(this.AfterBuildShowFirstPage);
-            this.firstPageName = this.adapter.AddPage();
-            this.adapter.ChangeLayout(Layout.ContentSizeFitter);         
+            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
+            adapter.ToDoAfterBuild(this.AfterBuildShowFirstPage);
+            firstPageName = adapter.AddPage();
+            adapter.ChangeLayout(Layout.ContentSizeFitter);         
 
-            string XMLfile = @"C:\Users\nicop\Desktop\git\pii_2019_2_equipo4\Entregable 2\Src\ArchivosHTML\MartinitoX.xml";
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
-            Creator Creator = new Creator();
 
             foreach (Tag tag in tags) //Se crean los objetos C#
             {
@@ -84,19 +81,19 @@ namespace Proyecto.StudentsCode
         /// </summary>
         public void AfterBuildShowFirstPage()
         {
-            this.adapter.ShowPage(this.firstPageName);
+            adapter.ShowPage(firstPageName);
         }
 
         private void GoToFirstPage()
         {
-            this.adapter.ShowPage(this.firstPageName);
-            //this.adapter.PlayAudio("Speech On.wav");
+            adapter.ShowPage(firstPageName);
+            adapter.PlayAudio("p.wav");
         }
 
         private void GoToNextPage()
         {
-            this.adapter.ShowPage(this.nextPageName);
-            //his.adapter.PlayAudio("Speech Off.wav");
+            adapter.ShowPage(nextPageName);
+            adapter.PlayAudio("p.wav");
         }
     }
 }

@@ -18,12 +18,9 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         private World world;
 
-
         /// <summary>
         /// Nombre del Espacio.
-        /// 
-        /// </summary>
-        /// 
+        /// </summary> 
         private string name {get;set;}
 
         /// <summary>
@@ -42,7 +39,6 @@ namespace Proyecto.LibraryModelado
         /// <param name="name">Nombre del Espacio.</param>
         /// <param name="width">Ancho del espacio.</param>
         /// <param name="height">Altura del espacio.</param>
-        /// <param name="world">Mundo al que pertenece.</param>
         public Space(string name, int width, int height)
         {
             this.Name = name;
