@@ -1,11 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-
   <ItemGroup>
     <ProjectReference Include="..\LibraryLeerHTML\LeerHTML.csproj" />
     <ProjectReference Include="..\..\..\..\UnityCode\Common\src\Common.csproj" />
   </ItemGroup>
-
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>

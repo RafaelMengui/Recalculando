@@ -15,15 +15,16 @@ namespace Proyecto.Item
     /// </summary>
     public class Image : Items
     {
-        public Image(string Name, Space Level, int PositionX, int PositionY, int Width, int Height, bool Draggable) : base(Name, Level, PositionX, PositionY, Width, Height, Draggable)
+        public Image(string name, Space level, int positionX, int positionY, int width, int height, bool draggable)
+        : base(name, level, positionX, positionY, width, height, draggable)
         {
         }
 
         public override string CreateUnityItem(IMainViewAdapter adapter)
         {
-              unityItem = adapter.CreateImage(PositionX, PositionY, Width, Height);
+              unityItem = adapter.CreateImage(this.PositionX, this.PositionY, this.Width, this.Height);
               adapter.SetImage(unityItem, this.Name);
-              return Name;
+              return this.Name;
         }
     }
 }

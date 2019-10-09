@@ -3,7 +3,6 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-
 using System;
 using System.Collections.Generic;
 using Proyecto.LeerHTML;
@@ -23,8 +22,6 @@ namespace Proyecto.StudentsCode
         private IMainViewAdapter adapter;
         private string nextPageName;      
 
-        static World world;  
-        Creator Creator = new Creator();
 //////////////////////////////////////////////////////////////////////////////
         /// /// <summary>
         /// Construye una interfaz de usuario interactiva utilizando.
@@ -36,28 +33,23 @@ namespace Proyecto.StudentsCode
         {
 
             this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-
             this.adapter.ToDoAfterBuild(this.AfterBuildShowFirstPage);
-
             this.firstPageName = this.adapter.AddPage();
-
             this.adapter.ChangeLayout(Layout.ContentSizeFitter);         
 
-            
-
-
-            string XMLfile = @"C:\Users\nicop\Desktop\Nueva carpeta (3)\Code\Entregable 2\Src\ArchivosHTML\MartinitoX.xml";
+            string XMLfile = @"C:\Users\nicop\Desktop\git\pii_2019_2_equipo4\Entregable 2\Src\ArchivosHTML\MartinitoX.xml";
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
+            Creator Creator = new Creator();
 
             foreach (Tag tag in tags) //Se crean los objetos C#
             {
                 switch (tag.Nombre)
                 {
                     case "World":
-                        world = Creator.AddWorld(tag);
+                        Creator.World = Creator.AddWorld(tag);
                         break;
                     case "Level":
-                        Space level = Creator.AddLevel(tag);
+                        Creator.Level = Creator.AddLevel(tag);
                         break;
                     case "Button":
                         Items button = Creator.AddButton(tag);
@@ -74,20 +66,17 @@ namespace Proyecto.StudentsCode
                     case "DragAndDropItem":
                         Items DragAndDropItem = Creator.AddDragAndDropItem(tag);
                         break;
-
                 }
             }
 
             //Crear los objetos Unity            
-            foreach (Space level in world.SpaceList)
+            foreach (Space level in Creator.World.SpaceList)
             {
-                foreach (Items unityItem in level.ItemList)
+                foreach (Items unityItem in Creator.Level.ItemList)
                 {
                     unityItem.CreateUnityItem(adapter);
                 }
             }
-
-
         }
 
         /// <summary>
@@ -101,15 +90,13 @@ namespace Proyecto.StudentsCode
         private void GoToFirstPage()
         {
             this.adapter.ShowPage(this.firstPageName);
-            this.adapter.PlayAudio("Speech On.wav");
+            //this.adapter.PlayAudio("Speech On.wav");
         }
 
         private void GoToNextPage()
         {
             this.adapter.ShowPage(this.nextPageName);
-            this.adapter.PlayAudio("Speech Off.wav");
+            //his.adapter.PlayAudio("Speech Off.wav");
         }
-
-
     }
 }
