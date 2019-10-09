@@ -3,7 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using System.Collections.Generic;
+using Proyecto.Common;
 
 namespace Proyecto.LibraryModelado
 {
@@ -12,9 +12,25 @@ namespace Proyecto.LibraryModelado
     /// </summary>
     public class Level : Space
     {
-        public Level(string name, int width, int height)
+        public string Image{get;set;}
+        private string image;
+        public string unityItem { get; set; }
+
+        public Level(string name, int width, int height, string image)
         : base(name, width, height)
         {
+            this.Image = image;
+        }
+
+        public override string CreateUnityLevel(IMainViewAdapter adapter)
+        {
+            unityItem = adapter.AddPage();
+            this.ID = unityItem;
+
+            string backgroundID = adapter.CreateImage(0,0, 1270, 540);
+            adapter.SetImage(backgroundID, this.Image);
+
+            return this.Name;
         }
     }
 }

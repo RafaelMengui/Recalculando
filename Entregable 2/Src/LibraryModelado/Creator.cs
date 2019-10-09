@@ -19,6 +19,7 @@ namespace Proyecto.LibraryModelado
         int positionX;
         int positionY;
         string image;
+        string containerID;
 
 
         public Creator()
@@ -42,8 +43,9 @@ namespace Proyecto.LibraryModelado
             name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
             width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
             height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
+            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Background"; }).valor;
 
-            this.Level = new Level(name, width, height);
+            this.Level = new Level(name, width, height, image);
             this.World.SpaceList.Add(this.Level);
             return this.Level;
         }
@@ -58,7 +60,7 @@ namespace Proyecto.LibraryModelado
             color = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Color"; }).valor;
             image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
 
-            Items button = new Button(name, this.Level, positionX, positionY, width, height, false, image, color);
+            Items button = new Button(name, this.Level, positionX, positionY, width, height, image, color);
             this.Level.ItemList.Add(button);
             return button;
         }
@@ -72,7 +74,7 @@ namespace Proyecto.LibraryModelado
             positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
             image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
 
-            Items _image = new Image(name, this.Level, positionX, positionY, width, height, false, image);
+            Items _image = new Image(name, this.Level, positionX, positionY, width, height, image);
             this.Level.ItemList.Add(_image);
             return _image;
         }
@@ -86,7 +88,7 @@ namespace Proyecto.LibraryModelado
             positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
             image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
 
-            Items container = new DragAndDropSource(name, this.Level, positionX, positionY, width, height, false, image);
+            Items container = new DragAndDropSource(name, this.Level, positionX, positionY, width, height, image);
             this.Level.ItemList.Add(container);
             return container;
         }
@@ -100,7 +102,7 @@ namespace Proyecto.LibraryModelado
             positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
             image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
 
-            Items container = new DragAndDropDestination(name, this.Level, positionX, positionY, width, height, false, image);
+            Items container = new DragAndDropDestination(name, this.Level, positionX, positionY, width, height, image);
             this.Level.ItemList.Add(container);
             return container;
         }
@@ -113,8 +115,11 @@ namespace Proyecto.LibraryModelado
             positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
             positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
             image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
+            
+            string containerName = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Container"; }).valor;
+            Items container = this.Level.ItemList.Find(delegate (Items item) {return item.Name == containerName;});
 
-            Items draggableItem = new DragAndDropItem(name, this.Level, positionX, positionY, width, height, true, image);
+            Items draggableItem = new DragAndDropItem(name, this.Level, positionX, positionY, width, height, image, container);
             this.Level.ItemList.Add(draggableItem);
             return draggableItem;
         }

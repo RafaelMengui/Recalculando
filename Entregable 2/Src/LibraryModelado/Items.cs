@@ -23,6 +23,8 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         private Space level;
 
+        private string id;
+
         /// <summary>
         /// Posicion en eje Horizontal en pixeles.
         /// </summary>
@@ -43,11 +45,6 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         private int height;
 
-        /// <summary>
-        /// Bool que define si un item es arrastable o no.
-        /// </summary>
-        private bool draggable;
-
         private string image;
 
         /// <summary>
@@ -59,16 +56,15 @@ namespace Proyecto.LibraryModelado
         /// <param name="PositionY">Posicion en eje vertical en pixeles.</param>
         /// <param name="Width">Ancho en pixeles.</param>
         /// <param name="Height">Altura en pixeles.</param>
-        /// <param name="Draggable">Item arrastrable.</param>
-        public Items(string name, Space level, int positionX, int positionY, int width, int height, bool draggable, string image)
+        public Items(string name, Space level, int positionX, int positionY, int width, int height, string image)
         {
             this.Name = name;
             this.Level = level;
+            this.ID = id;
             this.PositionX = positionX;
             this.PositionY = positionY;
             this.Width = width;
             this.Height = height;
-            this.Draggable = draggable;
             this.Image = image;
         }
 
@@ -83,6 +79,8 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <value>Level al que pertence.</value>
         public Space Level { get; set; }
+
+        public string ID{get;set;}
 
         /// <summary>
         /// Gets or sets de Posicion en eje Horizontal en pixeles.
@@ -107,14 +105,6 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <value>Int altura en pixeles.</value>
         public int Height { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether un item es arrastable o no.
-        /// Escribo algunas partes en ingles porque el docfx me obliga a que aparezca esa
-        /// frase.
-        /// </summary>
-        /// <value>Bool de si es arrastrable.</value>
-        public bool Draggable { get; set; }
 
         public string Image { get; set; }
 

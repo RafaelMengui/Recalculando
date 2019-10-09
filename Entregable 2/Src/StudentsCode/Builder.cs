@@ -30,12 +30,6 @@ namespace Proyecto.StudentsCode
         public void Build(IMainViewAdapter providedAdapter)
         {
             const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Codigo1.xml";
-
-            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            adapter.ToDoAfterBuild(this.AfterBuildShowFirstPage);
-            firstPageName = adapter.AddPage();
-            adapter.ChangeLayout(Layout.ContentSizeFitter);         
-
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
 
             foreach (Tag tag in tags) //Se crean los objetos C#
@@ -66,14 +60,20 @@ namespace Proyecto.StudentsCode
                 }
             }
 
+            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
+            adapter.ToDoAfterBuild(this.AfterBuildShowFirstPage);
+
             //Crear los objetos Unity            
             foreach (Space level in Creator.World.SpaceList)
             {
+                level.CreateUnityLevel(adapter);
                 foreach (Items unityItem in Creator.Level.ItemList)
                 {
                     unityItem.CreateUnityItem(adapter);
                 }
             }
+            firstPageName = Creator.World.SpaceList[0].ID;
+            adapter.ChangeLayout(Layout.ContentSizeFitter); 
         }
 
         /// <summary>

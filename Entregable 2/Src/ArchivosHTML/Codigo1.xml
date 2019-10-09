@@ -1,12 +1,12 @@
-<World Height="100" Width="520" Name="world1">
-	<Level Name="level1" World="world1" Width="50" Height="20">
+<World Height="0" Width="0" Name="world1">
+	<Level Name="firstpage" World="world1" Width="0" Height="0" Background="firstpage.png">
 
-		<Button Name="boton" PositionX="100" PositionY="20" Width="100" Height="75" Color="#008F39" Photo="m.jpg"/>	
-		<Image Name="imagen" PositionX="30" PositionY="70" Width="70" Height="70" Photo="m.jpg"/>
-		<DragAndDropSource Name="source" PositionX="60" PositionY="60" Width="50" Height="50" Photo="m.jpg"/>
-		<DragAndDropDestination Name="destination" PositionX="70" PositionY="10" Width="60" Height="60" Photo="m.jpg"/>
-		<DragAndDropItem Name="itemDD" PositionX="100" PositionY="20" Width="40" Height="40" Photo="m.jpg"/>
-		<Button Name="boton2" PositionX="450" PositionY="250" Width="300" Height="50" Color="#00FF39" Photo="m.jpg"/>	
+		<Button Name="boton" PositionX="-470" PositionY="200" Width="250" Height="120" Color="#F6F4F3" Photo="ibm.png"/>	
+		<Image Name="boy" PositionX="100" PositionY="-150" Width="240" Height="270" Photo="character1.png"/>
+		<Image Name="girl" PositionX="-200" PositionY="-190" Width="140" Height="170" Photo="character2.png"/>
+		<DragAndDropSource Name="source" PositionX="1000" PositionY="300" Width="300" Height="280" Photo="windows.jpg"/>
+		<DragAndDropDestination Name="destination" PositionX="200" PositionY="300" Width="150" Height="140" Photo="windows.jpg"/>
+		<DragAndDropItem Name="apple" PositionX="0" PositionY="0" Width="250" Height="250" Photo="apple.png" Container="source"/>
 
 	</Level>
 </World>

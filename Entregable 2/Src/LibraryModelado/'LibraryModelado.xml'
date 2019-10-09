@@ -39,12 +39,7 @@
             Altura en pixeles.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Items.draggable">
-            <summary>
-            Bool que define si un item es arrastable o no.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Items.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.String)">
+        <member name="M:Proyecto.LibraryModelado.Items.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
             <summary>
             Inicializa una instancia de Item.
             </summary>
@@ -54,7 +49,6 @@
             <param name="PositionY">Posicion en eje vertical en pixeles.</param>
             <param name="Width">Ancho en pixeles.</param>
             <param name="Height">Altura en pixeles.</param>
-            <param name="Draggable">Item arrastrable.</param>
         </member>
         <member name="P:Proyecto.LibraryModelado.Items.Name">
             <summary>
@@ -91,14 +85,6 @@
             Gets or sets de Altura en pixeles.
             </summary>
             <value>Int altura en pixeles.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Items.Draggable">
-            <summary>
-            Gets or sets a value indicating whether un item es arrastable o no.
-            Escribo algunas partes en ingles porque el docfx me obliga a que aparezca esa
-            frase.
-            </summary>
-            <value>Bool de si es arrastrable.</value>
         </member>
         <member name="T:Proyecto.LibraryModelado.Level">
             <summary>

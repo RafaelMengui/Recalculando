@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Proyecto.Common;
 
 namespace Proyecto.LibraryModelado
 {
@@ -21,7 +22,7 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Nombre del Espacio.
         /// </summary> 
-        private string name {get;set;}
+        private string name { get; set; }
 
         /// <summary>
         /// Ancho del espacio.
@@ -33,6 +34,9 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         private int height;
 
+        public string ID { get; set; }
+        private string id;
+
         /// <summary>
         /// Inicializa una instancia de Espacios.
         /// </summary>
@@ -42,6 +46,7 @@ namespace Proyecto.LibraryModelado
         public Space(string name, int width, int height)
         {
             this.Name = name;
+            this.ID = id;
             this.Width = width;
             this.Height = height;
             this.World = world;
@@ -73,5 +78,8 @@ namespace Proyecto.LibraryModelado
         public int Height { get; set; }
 
         public List<Items> ItemList { get; set; }
+
+
+        public abstract string CreateUnityLevel(IMainViewAdapter adapter);
     }
 }
