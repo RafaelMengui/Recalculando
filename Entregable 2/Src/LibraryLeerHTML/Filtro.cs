@@ -1,15 +1,17 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Proyecto.LeerHTML
 {
-    
     /// <summary>
-    /// La Clase Filtro es nuestra Creator de Tag y Atributos.
+    /// La Clase Filtro es la Creator de Tag y Atributos.
     /// </summary>
     public class Filtro
     {
+        /// <summary>
+        /// Metodo que extrae informacion de los tags (Nombre, clave y valor de los atributos).
+        /// </summary>
+        /// <param name="texto">Texto XML/HTML a filtrar.</param>
+        /// <returns>Lista de objetos Tag.</returns>
         public static List<Tag> FiltrarHTML(string texto)
         {
             List<Tag> listaTag = new List<Tag>();
@@ -35,11 +37,7 @@ namespace Proyecto.LeerHTML
 
                         foreach (string atr in atributo.Split(' '))
                         {
-                            
-                            /// <summary>
-                            /// Se separan los atributos por clave y valor, se crea el objeto Atributo y 
-                            /// se guarda en un array.
-                            /// </summary>
+                            // Se separan los atributos por clave y valor, se crea el objeto Atributo y se guarda en un array.
                             clave = atr.Split('=')[0];
                             valor = atr.Split('=')[1].Replace(@"""", "");
 
@@ -52,17 +50,13 @@ namespace Proyecto.LeerHTML
                             listaAtributos.Add(A);
                         }
 
-                        /// <summary>
-                        /// Se crean los objetos tag(nombreTag, Lista con objetos atributos)
-                        /// </summary>
+                        // Se crean los objetos tag(nombreTag, Lista con objetos atributos)
                         Tag T = new Tag(nombreTag, listaAtributos);
                         listaTag.Add(T);
                     }
                     else
                     {
-                        /// <summary>
-                        ///  Si no tiene atributos, y no contiene un =, se creara un tag con solo el nombre.
-                        /// </summary>
+                        // Si no tiene atributos, y no contiene un =, se creara un tag con solo el nombre.
                         if (!string.IsNullOrEmpty(tag) && !tag.Contains("="))
                         {
                             nombreTag = tag.Substring(0, tag.IndexOf('>')).Replace("/", "");

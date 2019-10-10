@@ -1,9 +1,8 @@
 //--------------------------------------------------------------------------------
-// <copyright file="Items.cs" company="mio Católica del Uruguay">
+// <copyright file="Space.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-
 using System.Collections.Generic;
 using Proyecto.Common;
 
@@ -34,7 +33,9 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         private int height;
 
-        public string ID { get; set; }
+        /// <summary>
+        /// Unity ID del Espacio.
+        /// </summary>
         private string id;
 
         /// <summary>
@@ -60,6 +61,12 @@ namespace Proyecto.LibraryModelado
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets del Unity ID del espacio.
+        /// </summary>
+        /// <value>String Unity ID</value>
+        public string ID { get; set; }
+
+        /// <summary>
         /// Gets or sets del nombre del espacio.
         /// </summary>
         /// <value>String nombre del espacio.</value>
@@ -77,9 +84,16 @@ namespace Proyecto.LibraryModelado
         /// <value>Altura del Espacio.</value>
         public int Height { get; set; }
 
+        /// <summary>
+        /// Gets or sets de la lista de items pertenecientes a un espacio.
+        /// </summary>
+        /// <value>Lista de objetos tipo <see cref="Items"/>.</value>
         public List<Items> ItemList { get; set; }
 
-
-        public abstract string CreateUnityLevel(IMainViewAdapter adapter);
+        /// <summary>
+        /// Metodo abstracto para crear Espacios en Unity.
+        /// </summary>
+        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/></param>
+        public abstract void CreateUnityLevel(IMainViewAdapter adapter);
     }
 }

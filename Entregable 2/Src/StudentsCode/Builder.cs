@@ -29,6 +29,9 @@ namespace Proyecto.StudentsCode
         /// una interfaz de usuario interactiva.</param>
         public void Build(IMainViewAdapter providedAdapter)
         {
+            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
+            adapter.ToDoAfterBuild(this.AfterBuildShowFirstPage);
+
             const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Codigo1.xml";
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
 
@@ -60,9 +63,6 @@ namespace Proyecto.StudentsCode
                 }
             }
 
-            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            adapter.ToDoAfterBuild(this.AfterBuildShowFirstPage);
-
             //Crear los objetos Unity            
             foreach (Space level in Creator.World.SpaceList)
             {
@@ -72,15 +72,15 @@ namespace Proyecto.StudentsCode
                     unityItem.CreateUnityItem(adapter);
                 }
             }
-            firstPageName = Creator.World.SpaceList[0].ID;
-            adapter.ChangeLayout(Layout.ContentSizeFitter); 
         }
 
         /// <summary>
-        /// After Build Show First Page
+        /// Actions
         /// </summary>
         public void AfterBuildShowFirstPage()
         {
+            firstPageName = Creator.World.SpaceList[0].ID;
+            adapter.ChangeLayout(Layout.ContentSizeFitter); 
             adapter.ShowPage(firstPageName);
         }
 

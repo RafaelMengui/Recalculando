@@ -19,7 +19,7 @@
         </member>
         <member name="M:Proyecto.StudentsCode.Builder.AfterBuildShowFirstPage">
             <summary>
-            After Build Show First Page
+            Actions
             </summary>
         </member>
     </members>

@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="Items.cs" company="Universidad Católica del Uruguay">
+// <copyright file="DragAndDropDestination.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -10,21 +10,33 @@ using Proyecto.LibraryModelado;
 namespace Proyecto.Item
 {
     /// <summary>
-    /// Botones
+    /// Clase DragAndDropDestination. Hereda de <see cref="Items"/>.
     /// </summary>
     public class DragAndDropDestination : Items
     {
-        public DragAndDropDestination(string name, Space level, int positionX, int positionY, int width, int height, string image) :
-        base(name, level, positionX, positionY, width, height, image)
+        /// <summary>
+        /// Constructor. Instancia Objetos DragAndDropDestination.
+        /// </summary>
+        /// <param name="name">Nombre del Item.</param>
+        /// <param name="level">Nivel al que pertence.</param>
+        /// <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+        /// <param name="positionY">Posicion en eje vertical en pixeles.</param>
+        /// <param name="width">Ancho en pixeles.</param>
+        /// <param name="height">Altura en pixeles.</param>
+        /// <param name="image">Imagen del Item.</param>
+        public DragAndDropDestination(string name, Space level, int positionX, int positionY, int width, int height, string image)
+        : base(name, level, positionX, positionY, width, height, image)
         {
         }
 
-        public override string CreateUnityItem(IMainViewAdapter adapter)
+        /// <summary>
+        /// Metodo para crear DragAndDropDestination en Unity.
+        /// </summary>
+        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
+        public override void CreateUnityItem(IMainViewAdapter adapter)
         {
-            unityItem = adapter.CreateDragAndDropDestination(this.PositionX, this.PositionY, this.Width, this.Height);
-            this.ID = unityItem;
-            adapter.SetImage(unityItem, this.Image);
-            return this.Name;
+            this.ID = adapter.CreateDragAndDropDestination(this.PositionX, this.PositionY, this.Width, this.Height);
+            adapter.SetImage(this.ID, this.Image);
         }
     }
 }

@@ -1,8 +1,10 @@
-using System;
 using System.Collections.Generic;
 
 namespace Proyecto.LeerHTML
 {
+    /// <summary>
+    /// Clase Imprimir. Contiene metodos para imprimir los tags y atributos en ciertos formatos.
+    /// </summary>
     public class Imprimir
     {
         /// <summary>
@@ -10,7 +12,7 @@ namespace Proyecto.LeerHTML
         /// separados por el caracter '\n', es decir, un tag o atributo por linea.
         /// </summary>
         /// <param name="archivoHTML">Ruta al archivo XML/HTML</param>
-        /// <returns>string</returns>
+        /// <returns>string Texto formateado.</returns>
         public static string Formato(string archivoHTML)
         {
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(archivoHTML));
