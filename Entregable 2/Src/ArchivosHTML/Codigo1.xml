@@ -1,12 +1,20 @@
 <World Height="0" Width="0" Name="world1">
-	<Level Name="firstpage" World="world1" Width="0" Height="0" Background="firstpage.png">
+	<Level Name="firstpage" World="world1" Width="0" Height="0" Background="page5.png">
 
-		<Button Name="boton" PositionX="-470" PositionY="200" Width="250" Height="120" Color="#F6F4F3" Photo="ibm.png"/>	
-		<Image Name="boy" PositionX="100" PositionY="-150" Width="240" Height="270" Photo="character1.png"/>
-		<Image Name="girl" PositionX="-200" PositionY="-190" Width="140" Height="170" Photo="character2.png"/>
-		<DragAndDropSource Name="source" PositionX="1000" PositionY="300" Width="300" Height="280" Photo="windows.jpg"/>
-		<DragAndDropDestination Name="destination" PositionX="200" PositionY="300" Width="150" Height="140" Photo="windows.jpg"/>
-		<DragAndDropItem Name="apple" PositionX="0" PositionY="0" Width="250" Height="250" Photo="apple.png" Container="source"/>
+		<Image Name="cocinera" PositionX="465" PositionY="-85" Width="300" Height="380" Photo="cocinera.png"/>
+		
+		<Image Name="mesa" PositionX="0" PositionY="-60" Width="300" Height="300" Photo="table.png"/>
+		<DragAndDropDestination Name="bowl" PositionX="635" PositionY="365" Width="150" Height="100" Photo="bowl.png"/>
+
+		<DragAndDropSource Name="bananaContainer" PositionX="65" PositionY="200" Width="115" Height="115" Photo="recuadro.png"/>
+		<DragAndDropSource Name="chocolateContainer" PositionX="180" PositionY="200" Width="115" Height="115" Photo="recuadro.png"/>
+		<DragAndDropSource Name="polloContainer" PositionX="65" PositionY="85" Width="115" Height="115" Photo="recuadro.png"/>
+		<DragAndDropSource Name="carneContainer" PositionX="180" PositionY="85" Width="115" Height="115" Photo="recuadro.png"/>
+
+		<DragAndDropItem Name="banana" PositionX="0" PositionY="0" Width="85" Height="85" Photo="banana.png" Container="bananaContainer"/>
+		<DragAndDropItem Name="chocolate" PositionX="0" PositionY="0" Width="85" Height="85" Photo="chocolate.png" Container="chocolateContainer"/>
+		<DragAndDropItem Name="pollo" PositionX="0" PositionY="0" Width="85" Height="85" Photo="pollo.png" Container="polloContainer"/>
+		<DragAndDropItem Name="carne" PositionX="0" PositionY="0" Width="85" Height="85" Photo="carne.png" Container="carneContainer"/>
 
 	</Level>
 </World>
