@@ -40,6 +40,16 @@
             Atributos String utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Creator.audio">
+            <summary>
+            Atributos String utilizados para instanciar tipo World, Level, Items.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Creator.pageName">
+            <summary>
+            Atributos String utilizados para instanciar tipo World, Level, Items.
+            </summary>
+        </member>
         <member name="F:Proyecto.LibraryModelado.Creator.width">
             <summary>
             Atributos Int utilizados para instanciar tipo World, Level, Items.
@@ -103,6 +113,14 @@
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Button.
             Agrega el Boton creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+            </summary>
+            <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Creator.AddButtonAudio(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto ButtonAudio.
+            Agrega el Boton de audio creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
             </summary>
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
@@ -293,6 +311,12 @@
             </summary>
             <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
         </member>
+        <member name="M:Proyecto.LibraryModelado.Level.ShowLevelItems(Proyecto.Common.IMainViewAdapter)">
+            <summary>
+            Metodo que crea los items pertenecientes al nivel.
+            </summary>
+            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
+        </member>
         <member name="T:Proyecto.LibraryModelado.Space">
             <summary>
             Clase abstracta de Espacio.
@@ -370,6 +394,12 @@
         <member name="M:Proyecto.LibraryModelado.Space.CreateUnityLevel(Proyecto.Common.IMainViewAdapter)">
             <summary>
             Metodo abstracto para crear Espacios en Unity.
+            </summary>
+            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Space.ShowLevelItems(Proyecto.Common.IMainViewAdapter)">
+            <summary>
+            Metodo abstracto para crear todos los items de un nivel en Unity.
             </summary>
             <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
         </member>
@@ -464,6 +494,63 @@
             Metodo para crear Botones en Unity.
             </summary>
             <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+        </member>
+        <member name="T:Proyecto.Item.ButtonAudio">
+            <summary>
+            Clase de Botones. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.ButtonAudio._event">
+            <summary>
+            Accion de reproducir el sonido.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.ButtonAudio.color">
+            <summary>
+            Color del Boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.ButtonAudio.audioFile">
+            <summary>
+            Audio a reproducir por el boton.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.ButtonAudio.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Constructor. Instancia Objetos Button.
+            </summary>
+            <param name="name">Nombre del boton.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del boton.</param>
+            <param name="color">Color del boton en Hexadecimal.</param>
+            <param name="audioFile">Audio a reproducir por el boton.</param>
+        </member>
+        <member name="P:Proyecto.Item.ButtonAudio.Color">
+            <summary>
+            Gets or sets del Color del Boton.
+            </summary>
+            <value>string codigo en hexadecimal.</value>
+        </member>
+        <member name="P:Proyecto.Item.ButtonAudio.AudioFile">
+            <summary>
+            Gets or sets del Audio del boton.
+            </summary>
+            <value>string nombre del audio.</value>
+        </member>
+        <member name="M:Proyecto.Item.ButtonAudio.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+            <summary>
+            Metodo para crear Botones en Unity.
+            </summary>
+            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+        </member>
+        <member name="M:Proyecto.Item.ButtonAudio.Click">
+            <summary>
+            Acciones realizadas por el boton.
+            </summary>
         </member>
         <member name="T:Proyecto.Item.DragAndDropDestination">
             <summary>

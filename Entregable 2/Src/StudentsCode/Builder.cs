@@ -17,25 +17,25 @@ namespace Proyecto.StudentsCode
     /// </summary>
     public class Builder : IBuilder
     {
-        private string firstPageName;
         private IMainViewAdapter adapter;
-        private string nextPageName;     
-        Creator Creator = new Creator(); 
+        Creator Creator = new Creator();
+        private Space firstPage;
 
         /// <summary>
         /// Construye una interfaz de usuario interactiva utilizando un <see cref="IMainViewAdapter"/>.
         /// </summary>
-        /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir
-        /// una interfaz de usuario interactiva.</param>
+        /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
         public void Build(IMainViewAdapter providedAdapter)
         {
             adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            adapter.ToDoAfterBuild(this.AfterBuildShowFirstPage);
+            adapter.ToDoAfterBuild(AfterBuildShowFirstPage);
+            // AfterBuild = Setup;      AfterBuild();
 
-            const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Codigo1.xml";
+            const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
 
-            foreach (Tag tag in tags) //Se crean los objetos C#
+            //Se crean los objetos C#
+            foreach (Tag tag in tags)
             {
                 switch (tag.Nombre)
                 {
@@ -48,6 +48,9 @@ namespace Proyecto.StudentsCode
                     case "Button":
                         Items button = Creator.AddButton(tag);
                         break;
+                    case "ButtonAudio":
+                        Items buttonAudio = Creator.AddButtonAudio(tag);
+                        break;
                     case "Image":
                         Items image = Creator.AddImage(tag);
                         break;
@@ -55,22 +58,20 @@ namespace Proyecto.StudentsCode
                         Items dragAndDropSource = Creator.AddDragAndDropSource(tag);
                         break;
                     case "DragAndDropDestination":
-                        Items DragAndDropDestination = Creator.AddDragAndDropDestination(tag);
+                        Items dragAndDropDestination = Creator.AddDragAndDropDestination(tag);
                         break;
                     case "DragAndDropItem":
-                        Items DragAndDropItem = Creator.AddDragAndDropItem(tag);
+                        Items dragAndDropItem = Creator.AddDragAndDropItem(tag);
                         break;
                 }
             }
+
+            firstPage = Creator.World.SpaceList[0];
 
             //Crear los objetos Unity            
             foreach (Space level in Creator.World.SpaceList)
             {
                 level.CreateUnityLevel(adapter);
-                foreach (Items unityItem in Creator.Level.ItemList)
-                {
-                    unityItem.CreateUnityItem(adapter);
-                }
             }
         }
 
@@ -79,21 +80,52 @@ namespace Proyecto.StudentsCode
         /// </summary>
         public void AfterBuildShowFirstPage()
         {
-            firstPageName = Creator.World.SpaceList[0].ID;
-            adapter.ChangeLayout(Layout.ContentSizeFitter); 
-            adapter.ShowPage(firstPageName);
-        }
-
-        private void GoToFirstPage()
-        {
-            adapter.ShowPage(firstPageName);
-            adapter.PlayAudio("p.wav");
-        }
-
-        private void GoToNextPage()
-        {
-            adapter.ShowPage(nextPageName);
-            adapter.PlayAudio("p.wav");
+            adapter.ChangeLayout(Layout.Vertical); 
+            adapter.ShowPage(firstPage.ID);
+            firstPage.ShowLevelItems(adapter);
         }
     }
 }
+
+/*
+Funcionalidad de botones:
+
+1) Un solo AddButton:
+    con type = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Type"; }).Valor;
+    switch(type) { case "Audio": Items ab = new AudioButton() };
+
+Ej:
+    <Button Name="" Type="Audio" AudioFile="audio.wav" Width="" Height="" PositionX="" PositionY="" Color="" Image=""/>
+    
+    Type="Audio" -> AudioFile="audio.wav"
+    Type="GoToPage" -> Page="level1"
+
+
+2) Diferentes AddButton:
+
+<ButtonAudio Name="" AudioFile="audio.wav" Width="" Height="" PositionX="" PositionY="" Color="" Image=""/>
+<ButtonGoTo Name="" GoToPage="level1" Width="" Height="" PositionX="" PositionY="" Color="" Image=""/>
+
+AddButtonAudio() {}
+AddButtonGoTo() {}
+
+
+3) Mas de un evento al hacer click en un boton.
+------------------------------------------------------------------------------------------------------------------
+
+Pantalla en vertical
+Unity a iPhone
+
+------------------------------------------------------------------------------------------------------------------
+
+Version Nueva de repo
+ToDoAfterBuild (obsoleto) / Action AfterBuild
+
+------------------------------------------------------------------------------------------------------------------
+
+Texto fijo
+
+------------------------------------------------------------------------------------------------------------------
+
+Borrar items al cambiar de pagina.
+*/

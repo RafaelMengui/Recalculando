@@ -47,5 +47,17 @@ namespace Proyecto.LibraryModelado
             string backgroundID = adapter.CreateImage(0, 0, 1280, 550);
             adapter.SetImage(backgroundID, this.Image);
         }
+
+        /// <summary>
+        /// Metodo que crea los items pertenecientes al nivel.
+        /// </summary>
+        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/></param>
+        public override void ShowLevelItems(IMainViewAdapter adapter)
+        {
+            foreach (Items unityItem in this.ItemList)
+            {
+                unityItem.CreateUnityItem(adapter);
+            }
+        }
     }
 }

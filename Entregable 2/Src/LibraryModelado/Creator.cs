@@ -29,7 +29,7 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Atributos String utilizados para instanciar tipo World, Level, Items.
         /// </summary>
-        string name, color, image, containerName;
+        string name, color, image, containerName, audio, pageName;
 
         /// <summary>
         /// Atributos Int utilizados para instanciar tipo World, Level, Items.
@@ -50,10 +50,10 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <param name="world">Tipo World.</param>
         /// <param name="level">Tipo Level.</param>
-        public Creator(World world, Space level) 
+        public Creator(World world, Space level)
         {
             this.World = world;
-            this.Level = level; 
+            this.Level = level;
         }
 
         /// <summary>
@@ -120,6 +120,28 @@ namespace Proyecto.LibraryModelado
             Items button = new Button(name, this.Level, positionX, positionY, width, height, image, color);
             this.Level.ItemList.Add(button);
             return button;
+        }
+
+        /// <summary>
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto ButtonAudio.
+        /// Agrega el Boton de audio creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+        /// </summary>
+        /// <param name="tag"><see cref="Tag"/>.</param>
+        /// <returns><see cref="Items"/>.</returns>
+        public Items AddButtonAudio(Tag tag)
+        {
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            color = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Color"; }).Valor;
+            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+            audio = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Audio"; }).Valor;
+
+            Items buttonAudio = new ButtonAudio(name, this.Level, positionX, positionY, width, height, image, color, audio);
+            this.Level.ItemList.Add(buttonAudio);
+            return buttonAudio;
         }
 
         /// <summary>
