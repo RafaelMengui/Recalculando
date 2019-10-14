@@ -1,3 +1,8 @@
+//--------------------------------------------------------------------------------
+// <copyright file="Creator.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
 using Proyecto.LeerHTML;
@@ -5,116 +10,219 @@ using Proyecto.Item;
 
 namespace Proyecto.LibraryModelado
 {
+    /// <summary>
+    /// Clase Creator. Contiene los metodos para crear objetos de tipo:
+    /// <see cref="World"/>, <see cref="Space"/>, <see cref="Items"/>.
+    /// </summary>
     public class Creator
     {
-        public World World { get; set; }
-        public Space Level { get; set; }
-
+        /// <summary>
+        /// Objeto World asignado al Creator. <see cref="World"/>.
+        /// </summary>
         private World world;
+
+        /// <summary>
+        /// Objeto Space asignado al Creator (Nivel). <see cref="Space"/>.
+        /// </summary>
         private Space level;
-        string name;
-        string color;
-        int width;
-        int height;
-        int positionX;
-        int positionY;
-        string image;
 
+        /// <summary>
+        /// Atributos String utilizados para instanciar tipo World, Level, Items.
+        /// </summary>
+        string name, color, image, containerName, audio, pageName;
 
+        /// <summary>
+        /// Atributos Int utilizados para instanciar tipo World, Level, Items.
+        /// </summary>
+        int width, height, positionX, positionY;
+
+        /// <summary>
+        /// Constructor. Instancia un objeto Creator.
+        /// </summary>
         public Creator()
         {
             this.World = world;
             this.Level = level;
         }
 
+        /// <summary>
+        /// Constructor. Instancia un objeto tipo Creator.
+        /// </summary>
+        /// <param name="world">Tipo World.</param>
+        /// <param name="level">Tipo Level.</param>
+        public Creator(World world, Space level)
+        {
+            this.World = world;
+            this.Level = level;
+        }
+
+        /// <summary>
+        /// Gets or sets el objeto World asignado al Creator.
+        /// </summary>
+        /// <value>Tipo World.</value>
+        public World World { get; set; }
+
+        /// <summary>
+        /// Gets or sets el objeto Level asignado al Creator.
+        /// </summary>
+        /// <value>Tipo Level.</value>
+        public Space Level { get; set; }
+
+        /// <summary>
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Mundo.
+        /// </summary>
+        /// <param name="tag"><see cref="Tag"/>.</param>
+        /// <returns><see cref="World"/>.</returns>
         public World AddWorld(Tag tag)
         {
-            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
-            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
 
             this.World = new World(name, width, height);
             return this.World;
         }
 
+        /// <summary>
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Level.
+        /// Agrega el nivel creado a la lista de niveles pertenecientes al mundo asignado en el Creator.
+        /// </summary>
+        /// <param name="tag"><see cref="Tag"/>.</param>
+        /// <returns><see cref="Space"/>.</returns>
         public Space AddLevel(Tag tag)
         {
-            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
-            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Background"; }).Valor;
 
-            this.Level = new Level(name, width, height);
+            this.Level = new Level(name, width, height, image);
             this.World.SpaceList.Add(this.Level);
             return this.Level;
         }
 
+        /// <summary>
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Button.
+        /// Agrega el Boton creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+        /// </summary>
+        /// <param name="tag"><see cref="Tag"/>.</param>
+        /// <returns><see cref="Items"/>.</returns>
         public Items AddButton(Tag tag)
         {
-            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
-            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
-            positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
-            positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
-            color = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Color"; }).valor;
-            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            color = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Color"; }).Valor;
+            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
 
-            Items button = new Button(name, this.Level, positionX, positionY, width, height, false, image, color);
+            Items button = new Button(name, this.Level, positionX, positionY, width, height, image, color);
             this.Level.ItemList.Add(button);
             return button;
         }
 
+        /// <summary>
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto ButtonAudio.
+        /// Agrega el Boton de audio creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+        /// </summary>
+        /// <param name="tag"><see cref="Tag"/>.</param>
+        /// <returns><see cref="Items"/>.</returns>
+        public Items AddButtonAudio(Tag tag)
+        {
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            color = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Color"; }).Valor;
+            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+            audio = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Audio"; }).Valor;
+
+            Items buttonAudio = new ButtonAudio(name, this.Level, positionX, positionY, width, height, image, color, audio);
+            this.Level.ItemList.Add(buttonAudio);
+            return buttonAudio;
+        }
+
+        /// <summary>
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Image.
+        /// Agrega la imagen creada a la lista de Items pertenecientes al Nivel asignado en el Creator.
+        /// </summary>
+        /// <param name="tag"><see cref="Tag"/>.</param>
+        /// <returns><see cref="Items"/>.</returns>
         public Items AddImage(Tag tag)
         {
-            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
-            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
-            positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
-            positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
-            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
 
-            Items _image = new Image(name, this.Level, positionX, positionY, width, height, false, image);
+            Items _image = new Image(name, this.Level, positionX, positionY, width, height, image);
             this.Level.ItemList.Add(_image);
             return _image;
         }
 
+        /// <summary>
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropSource.
+        /// Agrega el container creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+        /// </summary>
+        /// <param name="tag"><see cref="Tag"/>.</param>
+        /// <returns><see cref="Items"/>.</returns>
         public Items AddDragAndDropSource(Tag tag)
         {
-            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
-            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
-            positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
-            positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
-            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
 
-            Items container = new DragAndDropSource(name, this.Level, positionX, positionY, width, height, false, image);
+            Items container = new DragAndDropSource(name, this.Level, positionX, positionY, width, height, image);
             this.Level.ItemList.Add(container);
             return container;
         }
 
+        /// <summary>
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropDestination.
+        /// Agrega el container creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+        /// </summary>
+        /// <param name="tag"><see cref="Tag"/>.</param>
+        /// <returns><see cref="Items"/>.</returns>
         public Items AddDragAndDropDestination(Tag tag)
         {
-            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
-            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
-            positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
-            positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
-            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
 
-            Items container = new DragAndDropDestination(name, this.Level, positionX, positionY, width, height, false, image);
+            Items container = new DragAndDropDestination(name, this.Level, positionX, positionY, width, height, image);
             this.Level.ItemList.Add(container);
             return container;
         }
 
+        /// <summary>
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropItem.
+        /// Agrega el item creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+        /// Agrega el item creado a un container DragAndDropSource, especificado en el Xml.
+        /// </summary>
+        /// <param name="tag"><see cref="Tag"/>.</param>
+        /// <returns><see cref="Items"/>.</returns>
         public Items AddDragAndDropItem(Tag tag)
         {
-            name = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Name"; }).valor;
-            width = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Width"; }).valor);
-            height = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Height"; }).valor);
-            positionX = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionX"; }).valor);
-            positionY = Convert.ToInt32(tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "PositionY"; }).valor);
-            image = tag.atributos.Find(delegate (Atributos atr) { return atr.clave == "Photo"; }).valor;
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+            containerName = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Container"; }).Valor;
 
-            Items draggableItem = new DragAndDropItem(name, this.Level, positionX, positionY, width, height, true, image);
+            Items container = this.Level.ItemList.Find(delegate (Items item) { return item.Name == containerName; });
+            Items draggableItem = new DragAndDropItem(name, this.Level, positionX, positionY, width, height, image, container);
             this.Level.ItemList.Add(draggableItem);
             return draggableItem;
         }

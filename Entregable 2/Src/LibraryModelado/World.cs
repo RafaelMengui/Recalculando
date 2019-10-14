@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="Items.cs" company="Universidad Católica del Uruguay">
+// <copyright file="World.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -8,32 +8,31 @@ using System.Collections.Generic;
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
-    /// Modelo del mundo.
+    /// Clase Modelo del mundo.
     /// </summary>
     public class World
     {
         /// <summary>
-        /// Nombre del World.
+        /// Nombre del Mundo.
         /// </summary>
         private string name;
 
         /// <summary>
-        /// Ancho del World en pixeles.
+        /// Ancho del mundo en pixeles.
         /// </summary>
         private int width;
 
         /// <summary>
-        /// Altura del World en pixeles.
+        /// Altura del mundo en pixeles.
         /// </summary>
         private int height;
 
         /// <summary>
-        /// Inicializa una instancia de World.
+        /// Constructor. Inicializa una instancia de World.
         /// </summary>
-        /// <param name="name">Nombre del World.</param>
-        /// <param name="width">Ancho del World.</param>
-        /// <param name="height">Altura del World.</param>
-        /// <param name="spaceList">Lista de Levels.</param>
+        /// <param name="name">Nombre del mundo.</param>
+        /// <param name="width">Ancho del mundo.</param>
+        /// <param name="height">Altura del mundo.</param>
         public World(string name, int width, int height)
         {
             this.Name = name;
@@ -43,23 +42,27 @@ namespace Proyecto.LibraryModelado
         }
 
         /// <summary>
-        /// Gets or sets del nombre del espacio.
+        /// Gets or sets del nombre del mundo.
         /// </summary>
-        /// <value>String nombre del espacio.</value>
+        /// <value>String nombre del mundo.</value>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets del Ancho del espacio.
+        /// Gets or sets del Ancho del mundo.
         /// </summary>
-        /// <value>Ancho del Espacio.</value>
+        /// <value>Ancho del mundo.</value>
         public int Width { get; set; }
 
         /// <summary>
-        /// Gets or sets de la altura del espacio.
+        /// Gets or sets de la altura del mundo.
         /// </summary>
-        /// <value>Altura del Espacio.</value>
+        /// <value>Altura del mundo.</value>
         public int Height { get; set; }
 
-        public List<Space> SpaceList {get; set;}
+        /// <summary>
+        /// Gets or sets de la lista de espacios pertenecientes a un mundo.
+        /// </summary>
+        /// <value>Lista de Objetos <see cref="Space"/>.</value>
+        public List<Space> SpaceList { get; set; }
     }
 }

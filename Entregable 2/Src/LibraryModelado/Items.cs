@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------
 using Proyecto.Common;
 
-
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
@@ -22,6 +21,11 @@ namespace Proyecto.LibraryModelado
         /// Nivel al que pertenece el Item.
         /// </summary>
         private Space level;
+
+        /// <summary>
+        /// Unity ID del item.
+        /// </summary>
+        private string id;
 
         /// <summary>
         /// Posicion en eje Horizontal en pixeles.
@@ -44,31 +48,29 @@ namespace Proyecto.LibraryModelado
         private int height;
 
         /// <summary>
-        /// Bool que define si un item es arrastable o no.
+        /// Imagen del Item.
         /// </summary>
-        private bool draggable;
-
         private string image;
 
         /// <summary>
-        /// Inicializa una instancia de Item.
+        /// Constructor. Inicializa una instancia de Items.
         /// </summary>
-        /// <param name="Name">Nombre del Item.</param>
-        /// <param name="Level">Nivel al que pertence.</param>
-        /// <param name="PositionX">Posicion en eje horizontal en pixeles.</param>
-        /// <param name="PositionY">Posicion en eje vertical en pixeles.</param>
-        /// <param name="Width">Ancho en pixeles.</param>
-        /// <param name="Height">Altura en pixeles.</param>
-        /// <param name="Draggable">Item arrastrable.</param>
-        public Items(string name, Space level, int positionX, int positionY, int width, int height, bool draggable, string image)
+        /// <param name="name">Nombre del Item.</param>
+        /// <param name="level">Nivel al que pertence.</param>
+        /// <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+        /// <param name="positionY">Posicion en eje vertical en pixeles.</param>
+        /// <param name="width">Ancho en pixeles.</param>
+        /// <param name="height">Altura en pixeles.</param>
+        /// <param name="image">Imagen del Item.</param>
+        public Items(string name, Space level, int positionX, int positionY, int width, int height, string image)
         {
             this.Name = name;
             this.Level = level;
+            this.ID = id;
             this.PositionX = positionX;
             this.PositionY = positionY;
             this.Width = width;
             this.Height = height;
-            this.Draggable = draggable;
             this.Image = image;
         }
 
@@ -83,6 +85,12 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <value>Level al que pertence.</value>
         public Space Level { get; set; }
+
+        /// <summary>
+        /// Gets or sets del UnityID del Objeto.
+        /// </summary>
+        /// <value>Unity ID.</value>
+        public string ID { get; set; }
 
         /// <summary>
         /// Gets or sets de Posicion en eje Horizontal en pixeles.
@@ -109,16 +117,15 @@ namespace Proyecto.LibraryModelado
         public int Height { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether un item es arrastable o no.
-        /// Escribo algunas partes en ingles porque el docfx me obliga a que aparezca esa
-        /// frase.
+        /// Gets or sets la imagen del item.
         /// </summary>
-        /// <value>Bool de si es arrastrable.</value>
-        public bool Draggable { get; set; }
-
+        /// <value>String path to image.</value>
         public string Image { get; set; }
 
-        public abstract string CreateUnityItem(IMainViewAdapter adapter);
-        protected string unityItem { get; set; }
+        /// <summary>
+        /// Metodo abstracto para crear objetos en Unity.
+        /// </summary>
+        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/></param>
+        public abstract void CreateUnityItem(IMainViewAdapter adapter);
     }
 }
