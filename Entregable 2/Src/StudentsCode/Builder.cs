@@ -22,10 +22,14 @@ namespace Proyecto.StudentsCode
         private Space firstPage;
 
         /// <summary>
-        /// Metodo que crea todos los objetos obtenidos del html, en C#.
+        /// Construye una interfaz de usuario interactiva utilizando un <see cref="IMainViewAdapter"/>.
         /// </summary>
-        public void BuilderCreator()
+        /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
+        public void Build(IMainViewAdapter providedAdapter)
         {
+            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
+            adapter.AfterBuild = Setup;
+
             const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
             List<Tag> tags = Parser.ParserHTML(LeerHtml.RetornarHTML(XMLfile));
 
@@ -64,19 +68,6 @@ namespace Proyecto.StudentsCode
                 }
             }
             firstPage = Creator.World.SpaceList[0];
-        }
-
-        /// <summary>
-        /// Construye una interfaz de usuario interactiva utilizando un <see cref="IMainViewAdapter"/>.
-        /// Crea los objetos obtenidos por el metodo <see cref="BuilderCreator"/>, en el juego.
-        /// </summary>
-        /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
-        public void Build(IMainViewAdapter providedAdapter)
-        {
-            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            adapter.AfterBuild = Setup;
-
-            BuilderCreator();
 
             //Crear los objetos en el juego.
             foreach (Space level in Creator.World.SpaceList)
