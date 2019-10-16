@@ -31,7 +31,7 @@ namespace Proyecto.StudentsCode
             adapter.AfterBuild = Setup;
 
             const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
-            List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
+            List<Tag> tags = Parser.ParserHTML(LeerHtml.RetornarHTML(XMLfile));
 
             //Se crean los objetos C#
             foreach (Tag tag in tags)

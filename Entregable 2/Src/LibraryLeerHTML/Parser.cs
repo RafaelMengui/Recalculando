@@ -3,16 +3,16 @@ using System.Collections.Generic;
 namespace Proyecto.LeerHTML
 {
     /// <summary>
-    /// La Clase Filtro es la Creator de Tag y Atributos.
+    /// La Clase Parser es la Creator de Tag y Atributos.
     /// </summary>
-    public class Filtro
+    public class Parser
     {
         /// <summary>
         /// Metodo que extrae informacion de los tags (Nombre, clave y valor de los atributos).
         /// </summary>
         /// <param name="texto">Texto XML/HTML a filtrar.</param>
         /// <returns>Lista de objetos Tag.</returns>
-        public static List<Tag> FiltrarHTML(string texto)
+        public static List<Tag> ParserHTML(string texto)
         {
             List<Tag> listaTag = new List<Tag>();
 
