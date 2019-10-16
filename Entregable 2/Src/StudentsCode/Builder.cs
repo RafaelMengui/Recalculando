@@ -30,7 +30,7 @@ namespace Proyecto.StudentsCode
             adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
             adapter.AfterBuild = Setup;
 
-            const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
+            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
             List<Tag> tags = Parser.ParserHTML(LeerHtml.RetornarHTML(XMLfile));
 
             //Se crean los objetos C#
@@ -69,7 +69,7 @@ namespace Proyecto.StudentsCode
             }
             firstPage = Creator.World.SpaceList[0];
 
-            //Crear los objetos Unity            
+            //Crear los objetos en el juego.
             foreach (Space level in Creator.World.SpaceList)
             {
                 level.CreateUnityLevel(adapter);
