@@ -16,9 +16,9 @@
             </summary>
             <param name="providedAdapter">Un <see cref="T:Proyecto.Common.IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
         </member>
-        <member name="M:Proyecto.StudentsCode.Builder.AfterBuildShowFirstPage">
+        <member name="M:Proyecto.StudentsCode.Builder.Setup">
             <summary>
-            Actions
+            Accion a realizar luego de Compilar el programa. Muestra la primera pagina en Unity.
             </summary>
         </member>
     </members>

@@ -28,8 +28,7 @@ namespace Proyecto.StudentsCode
         public void Build(IMainViewAdapter providedAdapter)
         {
             adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            adapter.ToDoAfterBuild(AfterBuildShowFirstPage);
-            // AfterBuild = Setup;      AfterBuild();
+            adapter.AfterBuild = Setup;
 
             const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
             List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
@@ -51,6 +50,9 @@ namespace Proyecto.StudentsCode
                     case "ButtonAudio":
                         Items buttonAudio = Creator.AddButtonAudio(tag);
                         break;
+                    case "ButtonGoToPage":
+                        Items ButtonGoTo = Creator.AddButtonGoToPage(tag);
+                        break;
                     case "Image":
                         Items image = Creator.AddImage(tag);
                         break;
@@ -65,67 +67,27 @@ namespace Proyecto.StudentsCode
                         break;
                 }
             }
-
             firstPage = Creator.World.SpaceList[0];
 
             //Crear los objetos Unity            
             foreach (Space level in Creator.World.SpaceList)
             {
                 level.CreateUnityLevel(adapter);
+                foreach (Items unityItem in level.ItemList)
+                {
+                    unityItem.CreateUnityItem(adapter);
+                }
             }
+            adapter.AfterBuild();
         }
 
         /// <summary>
-        /// Actions
+        /// Accion a realizar luego de Compilar el programa. Muestra la primera pagina en Unity.
         /// </summary>
-        public void AfterBuildShowFirstPage()
+        private void Setup()
         {
-            adapter.ChangeLayout(Layout.Vertical); 
+            adapter.ChangeLayout(Layout.ContentSizeFitter);
             adapter.ShowPage(firstPage.ID);
-            firstPage.ShowLevelItems(adapter);
         }
     }
 }
-
-/*
-Funcionalidad de botones:
-
-1) Un solo AddButton:
-    con type = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Type"; }).Valor;
-    switch(type) { case "Audio": Items ab = new AudioButton() };
-
-Ej:
-    <Button Name="" Type="Audio" AudioFile="audio.wav" Width="" Height="" PositionX="" PositionY="" Color="" Image=""/>
-    
-    Type="Audio" -> AudioFile="audio.wav"
-    Type="GoToPage" -> Page="level1"
-
-
-2) Diferentes AddButton:
-
-<ButtonAudio Name="" AudioFile="audio.wav" Width="" Height="" PositionX="" PositionY="" Color="" Image=""/>
-<ButtonGoTo Name="" GoToPage="level1" Width="" Height="" PositionX="" PositionY="" Color="" Image=""/>
-
-AddButtonAudio() {}
-AddButtonGoTo() {}
-
-
-3) Mas de un evento al hacer click en un boton.
-------------------------------------------------------------------------------------------------------------------
-
-Pantalla en vertical
-Unity a iPhone
-
-------------------------------------------------------------------------------------------------------------------
-
-Version Nueva de repo
-ToDoAfterBuild (obsoleto) / Action AfterBuild
-
-------------------------------------------------------------------------------------------------------------------
-
-Texto fijo
-
-------------------------------------------------------------------------------------------------------------------
-
-Borrar items al cambiar de pagina.
-*/
