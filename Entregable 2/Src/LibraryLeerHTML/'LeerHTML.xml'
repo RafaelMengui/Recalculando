@@ -61,18 +61,6 @@
             </summary>
             <returns>Retorna el contenido descargado</returns>
         </member>
-        <member name="T:Proyecto.LeerHTML.Filtro">
-            <summary>
-            La Clase Filtro es la Creator de Tag y Atributos.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LeerHTML.Filtro.FiltrarHTML(System.String)">
-            <summary>
-            Metodo que extrae informacion de los tags (Nombre, clave y valor de los atributos).
-            </summary>
-            <param name="texto">Texto XML/HTML a filtrar.</param>
-            <returns>Lista de objetos Tag.</returns>
-        </member>
         <member name="T:Proyecto.LeerHTML.Imprimir">
             <summary>
             Clase Imprimir. Contiene metodos para imprimir los tags y atributos en ciertos formatos.
@@ -97,6 +85,18 @@
             </summary>
             <param name="fileName">String ubicacion del archivo HTML.</param>
             <returns>string contenido del archivo.</returns>
+        </member>
+        <member name="T:Proyecto.LeerHTML.Parser">
+            <summary>
+            La Clase Parser es la Creator de Tag y Atributos.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LeerHTML.Parser.ParserHTML(System.String)">
+            <summary>
+            Metodo que extrae informacion de los tags (Nombre, clave y valor de los atributos).
+            </summary>
+            <param name="texto">Texto XML/HTML a filtrar.</param>
+            <returns>Lista de objetos Tag.</returns>
         </member>
         <member name="T:Proyecto.LeerHTML.Tag">
             <summary>
