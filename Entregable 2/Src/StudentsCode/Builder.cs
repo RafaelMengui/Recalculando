@@ -22,15 +22,11 @@ namespace Proyecto.StudentsCode
         private Space firstPage;
 
         /// <summary>
-        /// Construye una interfaz de usuario interactiva utilizando un <see cref="IMainViewAdapter"/>.
+        /// Metodo que crea todos los objetos obtenidos del html, en C#.
         /// </summary>
-        /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
-        public void Build(IMainViewAdapter providedAdapter)
+        public void BuilderCreator()
         {
-            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            adapter.AfterBuild = Setup;
-
-            const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
+            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
             List<Tag> tags = Parser.ParserHTML(LeerHtml.RetornarHTML(XMLfile));
 
             //Se crean los objetos C#
@@ -68,8 +64,21 @@ namespace Proyecto.StudentsCode
                 }
             }
             firstPage = Creator.World.SpaceList[0];
+        }
 
-            //Crear los objetos Unity            
+        /// <summary>
+        /// Construye una interfaz de usuario interactiva utilizando un <see cref="IMainViewAdapter"/>.
+        /// Crea los objetos obtenidos por el metodo <see cref="BuilderCreator"/>, en el juego.
+        /// </summary>
+        /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
+        public void Build(IMainViewAdapter providedAdapter)
+        {
+            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
+            adapter.AfterBuild = Setup;
+
+            BuilderCreator();
+
+            //Crear los objetos en el juego.
             foreach (Space level in Creator.World.SpaceList)
             {
                 level.CreateUnityLevel(adapter);
