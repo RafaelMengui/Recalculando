@@ -627,7 +627,7 @@
             <summary>
             Metodo para crear DragAndDropDestination en Unity.
             </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="adapter">Adapter del tipo.<see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
         </member>
         <member name="T:Proyecto.Item.DragAndDropItem">
             <summary>
