@@ -25,3 +25,5 @@ Cordenadas Graficas en la pantalla de unity:
 
 1)
 2)
+Path a Carpeta de ArchivosHTML:
+    const string fileXML = "..\..\..\Code\Entregable 2\Src\ArchivosHTML\ ...";

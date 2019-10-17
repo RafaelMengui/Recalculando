@@ -101,6 +101,7 @@ namespace Proyecto.LibraryModelado
             image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Background"; }).Valor;
 
             this.Level = new Level(name, width, height, image);
+            this.Level.World = this.World;
             this.World.SpaceList.Add(this.Level);
             return this.Level;
         }
@@ -146,6 +147,28 @@ namespace Proyecto.LibraryModelado
             Items buttonAudio = new ButtonAudio(name, this.Level, positionX, positionY, width, height, image, color, audio);
             this.Level.ItemList.Add(buttonAudio);
             return buttonAudio;
+        }
+
+        /// <summary>
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto ButtonGoToPage.
+        /// Agrega el Boton creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+        /// </summary>
+        /// <param name="tag"><see cref="Tag"/>.</param>
+        /// <returns><see cref="Items"/>.</returns>
+        public Items AddButtonGoToPage(Tag tag)
+        {
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            color = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Color"; }).Valor;
+            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+            pageName = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "GoToPage"; }).Valor;
+
+            Items buttonGoToPage = new ButtonGoToPage(name, this.Level, positionX, positionY, width, height, image, color, pageName);
+            this.Level.ItemList.Add(buttonGoToPage);
+            return buttonGoToPage;
         }
 
         /// <summary>

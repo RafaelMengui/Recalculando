@@ -15,7 +15,7 @@ namespace Proyecto.LeerHTML
         /// <returns>string Texto formateado.</returns>
         public static string Formato(string archivoHTML)
         {
-            List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(archivoHTML));
+            List<Tag> tags = Parser.ParserHTML(LeerHtml.RetornarHTML(archivoHTML));
             string textoFormato = "";
 
             foreach (Tag T in tags)
