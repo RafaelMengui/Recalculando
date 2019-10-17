@@ -69,16 +69,16 @@ namespace Proyecto.StudentsCode
             }
             firstPage = Creator.World.SpaceList[0];
 
-            //Crear los objetos en el juego.
-            foreach (Space level in Creator.World.SpaceList)
-            {
-                level.CreateUnityLevel(adapter);
-                foreach (Items unityItem in level.ItemList)
-                {
-                    unityItem.CreateUnityItem(adapter);
-                }
-            }
-            adapter.AfterBuild();
+            // //Crear los objetos en el juego.
+            // foreach (Space level in Creator.World.SpaceList)
+            // {
+            //     level.CreateUnityLevel(adapter);
+            //     foreach (Items unityItem in level.ItemList)
+            //     {
+            //         unityItem.CreateUnityItem(adapter);
+            //     }
+            // }
+            // adapter.AfterBuild();
         }
 
         /// <summary>
