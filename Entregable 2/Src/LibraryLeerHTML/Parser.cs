@@ -3,7 +3,11 @@ using System.Collections.Generic;
 namespace Proyecto.LeerHTML
 {
     /// <summary>
-    /// La Clase Parser es la Creator de Tag y Atributos.
+    /// La Clase Parser es la CREATOR de Tag y Atributos.
+    /// La elegimos como Creator debido a que la clase es abierta
+    /// a la extensión pero cerrada a la modificación.
+    /// Esto se realiza de esta forma ya que, siempre crearemos los objetos Tag de la misma forma y no debemos modificarlo,
+    /// en caso de querer crear otro tipo de objetos, podemos realizarlo debido a que si es abierto a la extensión.
     /// </summary>
     public class Parser
     {
