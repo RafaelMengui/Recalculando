@@ -4,11 +4,11 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using Proyecto.Common;
-
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
     /// Clase abstracta de Items.
+    /// Esta clase implementa Herencia*1
     /// </summary>
     public abstract class Items
     {
