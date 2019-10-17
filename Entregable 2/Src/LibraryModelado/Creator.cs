@@ -11,7 +11,11 @@ using Proyecto.Item;
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
-    /// Clase Creator. Contiene los metodos para crear objetos de tipo:
+    /// Clase CREATOR.
+    /// Esta es la clase Creator, debido a que, es la responsable de crear los objetos de tipo.
+    /// Especificamente se le llama Creator, porque es abierta a la extensión pero cerrada a la modificación.
+    /// Si en un futuro quisieramos crear más objetos podríamos hacerlo, pero no modificar lo ya creado que 
+    /// funciona de forma adecuada.
     /// <see cref="World"/>, <see cref="Space"/>, <see cref="Items"/>.
     /// </summary>
     public class Creator
