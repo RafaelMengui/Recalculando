@@ -3,20 +3,20 @@ using System.Collections.Generic;
 namespace Proyecto.LeerHTML
 {
     /// <summary>
-    /// La Clase Filtro es la CREATOR de Tag y Atributos.
+    /// La Clase Parser es la CREATOR de Tag y Atributos.
     /// La elegimos como Creator debido a que la clase es abierta
     /// a la extensión pero cerrada a la modificación.
     /// Esto se realiza de esta forma ya que, siempre crearemos los objetos Tag de la misma forma y no debemos modificarlo,
-    /// en caso de querer crear otro tipo de objetos, podemos realizarlo debido a que si es abierto a la extensión.!-- 
+    /// en caso de querer crear otro tipo de objetos, podemos realizarlo debido a que si es abierto a la extensión.
     /// </summary>
-    public class Filtro
+    public class Parser
     {
         /// <summary>
         /// Metodo que extrae informacion de los tags (Nombre, clave y valor de los atributos).
         /// </summary>
         /// <param name="texto">Texto XML/HTML a filtrar.</param>
         /// <returns>Lista de objetos Tag.</returns>
-        public static List<Tag> FiltrarHTML(string texto)
+        public static List<Tag> ParserHTML(string texto)
         {
             List<Tag> listaTag = new List<Tag>();
 

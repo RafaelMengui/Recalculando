@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="ButtonAudio.cs" company="Universidad Católica del Uruguay">
+// <copyright file="ButtonGoToPage.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -10,24 +10,24 @@ using Proyecto.LibraryModelado;
 namespace Proyecto.Item
 {
     /// <summary>
-    /// Clase de Botones de audio. Hereda de <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
+    /// Clase de Botones que reedirigen a otra pagina. Hereda de <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
     /// </summary>
-    public class ButtonAudio : Items, IButton
+    public class ButtonGoToPage : Items, IButton
     {
         /// <summary>
-        /// Accion de reproducir el sonido.
+        /// Accion de mostrar otra pagina.
         /// </summary>
         private Action<string> _event;
-        
+
         /// <summary>
         /// Color del Boton.
         /// </summary>
         private string color;
 
         /// <summary>
-        /// Audio a reproducir por el boton.
+        /// Pagina que muestra el boton.
         /// </summary>
-        private string audioFile;
+        private string pageName;
 
         /// <summary>
         /// Constructor. Instancia Objetos Button.
@@ -40,12 +40,12 @@ namespace Proyecto.Item
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del boton.</param>
         /// <param name="color">Color del boton en Hexadecimal.</param>
-        /// <param name="audioFile">Audio a reproducir por el boton.</param>
-        public ButtonAudio(string name, Space level, int positionX, int positionY, int width, int height, string image, string color, string audioFile)
+        /// <param name="pageName">Pagina para mostrar.</param>
+        public ButtonGoToPage(string name, Space level, int positionX, int positionY, int width, int height, string image, string color, string pageName)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Color = color;
-            this.AudioFile = audioFile;
+            this.PageName = pageName;
         }
 
         /// <summary>
@@ -55,10 +55,10 @@ namespace Proyecto.Item
         public string Color { get; set; }
 
         /// <summary>
-        /// Gets or sets del Audio del boton.
+        /// Gets or sets de la pagina a mostrar.
         /// </summary>
-        /// <value>string nombre del audio.</value>
-        public string AudioFile { get; set; }
+        /// <value>string nombre del la pagina.</value>
+        public string PageName { get; set; }
 
         /// <summary>
         /// Metodo para crear Botones en Unity.
@@ -66,17 +66,18 @@ namespace Proyecto.Item
         /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
         public override void CreateUnityItem(IMainViewAdapter adapter)
         {
-            _event = adapter.PlayAudio;
+            _event = adapter.ShowPage;
             this.ID = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
             adapter.SetImage(this.ID, this.Image);
         }
 
         /// <summary>
         /// Acciones realizadas por el boton.
+        /// Busca el nivel que coincida con el nivel que mostrara al ser apretado, y obtiene su ID.
         /// </summary>
         public void Click()
         {
-            _event(this.AudioFile);
+            _event(this.Level.World.SpaceList.Find(delegate (Space level) { return level.Name == this.PageName; }).ID);
         }
     }
 }

@@ -10,15 +10,21 @@
             Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
             </summary>
         </member>
+        <member name="M:Proyecto.StudentsCode.Builder.BuilderCreator">
+            <summary>
+            Metodo que crea todos los objetos obtenidos del html, en C#.
+            </summary>
+        </member>
         <member name="M:Proyecto.StudentsCode.Builder.Build(Proyecto.Common.IMainViewAdapter)">
             <summary>
             Construye una interfaz de usuario interactiva utilizando un <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
+            Crea los objetos obtenidos por el metodo <see cref="M:Proyecto.StudentsCode.Builder.BuilderCreator"/>, en el juego.
             </summary>
             <param name="providedAdapter">Un <see cref="T:Proyecto.Common.IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
         </member>
-        <member name="M:Proyecto.StudentsCode.Builder.AfterBuildShowFirstPage">
+        <member name="M:Proyecto.StudentsCode.Builder.Setup">
             <summary>
-            Actions
+            Accion a realizar luego de Compilar el programa. Muestra la primera pagina en Unity.
             </summary>
         </member>
     </members>

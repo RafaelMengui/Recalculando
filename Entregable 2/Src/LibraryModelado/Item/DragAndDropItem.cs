@@ -52,5 +52,7 @@ namespace Proyecto.Item
             adapter.SetImage(this.ID, this.Image);
             adapter.AddItemToDragAndDropSource(this.Container.ID, this.ID);
         }
+
+
     }
 }

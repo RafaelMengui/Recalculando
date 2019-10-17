@@ -95,11 +95,5 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/></param>
         public abstract void CreateUnityLevel(IMainViewAdapter adapter);
-
-        /// <summary>
-        /// Metodo abstracto para crear todos los items de un nivel en Unity.
-        /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/></param>
-        public abstract void ShowLevelItems(IMainViewAdapter adapter);
     }
 }

@@ -125,6 +125,14 @@
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
+        <member name="M:Proyecto.LibraryModelado.Creator.AddButtonGoToPage(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto ButtonGoToPage.
+            Agrega el Boton creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+            </summary>
+            <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Creator.AddImage(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Image.
@@ -311,12 +319,6 @@
             </summary>
             <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Level.ShowLevelItems(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo que crea los items pertenecientes al nivel.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
-        </member>
         <member name="T:Proyecto.LibraryModelado.Space">
             <summary>
             Clase abstracta de Espacio.
@@ -394,12 +396,6 @@
         <member name="M:Proyecto.LibraryModelado.Space.CreateUnityLevel(Proyecto.Common.IMainViewAdapter)">
             <summary>
             Metodo abstracto para crear Espacios en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Space.ShowLevelItems(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo abstracto para crear todos los items de un nivel en Unity.
             </summary>
             <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
         </member>
@@ -497,7 +493,7 @@
         </member>
         <member name="T:Proyecto.Item.ButtonAudio">
             <summary>
-            Clase de Botones. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
+            Clase de Botones de audio. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Item.ButtonAudio._event">
@@ -552,6 +548,64 @@
             Acciones realizadas por el boton.
             </summary>
         </member>
+        <member name="T:Proyecto.Item.ButtonGoToPage">
+            <summary>
+            Clase de Botones que reedirigen a otra pagina. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.ButtonGoToPage._event">
+            <summary>
+            Accion de mostrar otra pagina.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.ButtonGoToPage.color">
+            <summary>
+            Color del Boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.ButtonGoToPage.pageName">
+            <summary>
+            Pagina que muestra el boton.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.ButtonGoToPage.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Constructor. Instancia Objetos Button.
+            </summary>
+            <param name="name">Nombre del boton.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del boton.</param>
+            <param name="color">Color del boton en Hexadecimal.</param>
+            <param name="pageName">Pagina para mostrar.</param>
+        </member>
+        <member name="P:Proyecto.Item.ButtonGoToPage.Color">
+            <summary>
+            Gets or sets del Color del Boton.
+            </summary>
+            <value>string codigo en hexadecimal.</value>
+        </member>
+        <member name="P:Proyecto.Item.ButtonGoToPage.PageName">
+            <summary>
+            Gets or sets de la pagina a mostrar.
+            </summary>
+            <value>string nombre del la pagina.</value>
+        </member>
+        <member name="M:Proyecto.Item.ButtonGoToPage.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+            <summary>
+            Metodo para crear Botones en Unity.
+            </summary>
+            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+        </member>
+        <member name="M:Proyecto.Item.ButtonGoToPage.Click">
+            <summary>
+            Acciones realizadas por el boton.
+            Busca el nivel que coincida con el nivel que mostrara al ser apretado, y obtiene su ID.
+            </summary>
+        </member>
         <member name="T:Proyecto.Item.DragAndDropDestination">
             <summary>
             Clase DragAndDropDestination. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
@@ -573,7 +627,7 @@
             <summary>
             Metodo para crear DragAndDropDestination en Unity.
             </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="adapter">Adapter del tipo.<see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
         </member>
         <member name="T:Proyecto.Item.DragAndDropItem">
             <summary>
