@@ -15,7 +15,7 @@ namespace Proyecto.Item
     public class DragAndDropDestination : Items
     {
         /// <summary>
-        /// Constructor. Instancia Objetos DragAndDropDestination.
+        /// Constructor, Instancia Objetos DragAndDropDestination.
         /// </summary>
         /// <param name="name">Nombre del Item.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -34,6 +34,6 @@ namespace Proyecto.Item
         /// Gets or sets de los objetos DragAndDropItem guardados en el container.
         /// </summary>
         /// <value><see cref="DragAndDropItem"/>.</value>
-        public List<DragAndDropItem> SavedItems {get; set;}     
+        public List<DragAndDropItem> SavedItems { get; set; }
     }
 }

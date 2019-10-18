@@ -59,7 +59,7 @@ namespace Proyecto.Item
         /// </summary>
         public void Click(string text)
         {
-            this.Event("");
+            this.Event(string.Empty);
         }
     }
 }

@@ -1,7 +1,11 @@
+//--------------------------------------------------------------------------------
+// <copyright file="Food.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
 using System;
 using Proyecto.Common;
 using Proyecto.LibraryModelado;
-
 namespace Proyecto.Item.NivelCocina
 {   
     /// <summary>

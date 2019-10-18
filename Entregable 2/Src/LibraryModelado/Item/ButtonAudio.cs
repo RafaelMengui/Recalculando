@@ -17,7 +17,7 @@ namespace Proyecto.Item
         /// <summary>
         /// Accion de reproducir el sonido.
         /// </summary>
-        private Action<string> _event;
+        private Action<string> event_;
 
         /// <summary>
         /// Color del Boton.
@@ -46,7 +46,7 @@ namespace Proyecto.Item
         {
             this.Color = color;
             this.AudioFile = audioFile;
-            this.Event = _event;
+            this.Event = event_;
         }
 
         /// <summary>

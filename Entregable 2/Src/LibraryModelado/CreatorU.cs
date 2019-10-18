@@ -4,7 +4,6 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
-using Proyecto.LibraryModelado;
 using Proyecto.Item;
 using Proyecto.Common;
 
@@ -15,7 +14,14 @@ namespace Proyecto.LibraryModelado
     /// </summary>
     public class CreatorU
     {
-        CreatorC CreatorC = Singleton<CreatorC>.Instance;
+        /// <summary>
+        /// SINGLETON.
+        /// </summary>
+        private CreatorC creatorC = Singleton<CreatorC>.Instance;
+
+        /// <summary>
+        /// Tipos utilizados para castear los items.
+        /// </summary>
         Button button; ButtonAudio buttonAudio; ButtonGoToPage buttonGoToPage; Image image; DraggableItem draggableItem;
         DragAndDropDestination dragAndDropDestination; DragAndDropSource dragAndDropSource; DragAndDropItem dragAndDropItem;
 
@@ -25,7 +31,7 @@ namespace Proyecto.LibraryModelado
         /// <param name="adapter"></param>
         public void CreateUnityItems(IMainViewAdapter adapter)
         {
-            foreach (Space level in CreatorC.World.SpaceList)
+            foreach (Space level in creatorC.World.SpaceList)
             {
                 level.CreateUnityLevel(adapter);
                 foreach (Items item in level.ItemList)

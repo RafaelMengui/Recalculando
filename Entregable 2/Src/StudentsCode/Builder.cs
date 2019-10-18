@@ -18,8 +18,8 @@ namespace Proyecto.StudentsCode
     public class Builder : IBuilder
     {
         private IMainViewAdapter adapter;
-        CreatorC creatorC = Singleton<CreatorC>.Instance;
-        CreatorU creatorU = Singleton<CreatorU>.Instance;
+        private CreatorC creatorC = Singleton<CreatorC>.Instance;
+        private CreatorU creatorU = Singleton<CreatorU>.Instance;
         private Space firstPage;
 
         /// <summary>
@@ -28,8 +28,8 @@ namespace Proyecto.StudentsCode
         /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
         public void Build(IMainViewAdapter providedAdapter)
         {
-            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            adapter.AfterBuild = Setup;
+            this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
+            this.adapter.AfterBuild = Setup;
 
             const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
             List<Tag> tags = Parser.ParserHTML(LeerHtml.RetornarHTML(XMLfile));
@@ -40,41 +40,40 @@ namespace Proyecto.StudentsCode
                 switch (tag.Nombre)
                 {
                     case "World":
-                        creatorC.World = creatorC.AddWorld(tag);
+                        this.creatorC.World = this.creatorC.AddWorld(tag);
                         break;
                     case "Level":
-                        creatorC.Level = creatorC.AddLevel(tag);
+                        this.creatorC.Level = this.creatorC.AddLevel(tag);
                         break;
                     case "Button":
-                        Items button = creatorC.AddButton(tag);
+                        Items button = this.creatorC.AddButton(tag);
                         break;
                     case "ButtonAudio":
-                        Items buttonAudio = creatorC.AddButtonAudio(tag);
+                        Items buttonAudio = this.creatorC.AddButtonAudio(tag);
                         break;
                     case "ButtonGoToPage":
-                        Items buttonGoTo = creatorC.AddButtonGoToPage(tag);
+                        Items buttonGoTo = this.creatorC.AddButtonGoToPage(tag);
                         break;
                     case "DraggableItem":
-                        Items draggable = creatorC.AddDraggableItem(tag);
+                        Items draggable = this.creatorC.AddDraggableItem(tag);
                         break;
                     case "Image":
-                        Items image = creatorC.AddImage(tag);
+                        Items image = this.creatorC.AddImage(tag);
                         break;
                     case "DragAndDropSource":
-                        Items dragAndDropSource = creatorC.AddDragAndDropSource(tag);
+                        Items dragAndDropSource = this.creatorC.AddDragAndDropSource(tag);
                         break;
                     case "DragAndDropDestination":
-                        Items dragAndDropDestination = creatorC.AddDragAndDropDestination(tag);
+                        Items dragAndDropDestination = this.creatorC.AddDragAndDropDestination(tag);
                         break;
                     case "DragAndDropItem":
-                        Items dragAndDropItem = creatorC.AddDragAndDropItem(tag);
+                        Items dragAndDropItem = this.creatorC.AddDragAndDropItem(tag);
                         break;
                 }
             }
-            firstPage = creatorC.World.SpaceList[0];
-
-            creatorU.CreateUnityItems(adapter);
-            adapter.AfterBuild();
+            this.firstPage = this.creatorC.World.SpaceList[0];
+            this.creatorU.CreateUnityItems(this.adapter);
+            this.adapter.AfterBuild();
         }
 
         /// <summary>
@@ -82,13 +81,16 @@ namespace Proyecto.StudentsCode
         /// </summary>
         private void Setup()
         {
-            adapter.ChangeLayout(Layout.ContentSizeFitter);
-            adapter.ShowPage(firstPage.ID);
+            this.adapter.ChangeLayout(Layout.ContentSizeFitter);
+            this.adapter.ShowPage(firstPage.ID);
         }
     }
 }
 
 /*
+
+Builder-Factory
+
 Action
 
 DragAndDrop -> makedraggable

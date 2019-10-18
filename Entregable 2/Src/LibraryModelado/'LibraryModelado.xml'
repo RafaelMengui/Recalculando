@@ -74,6 +74,11 @@
             Atributos Int utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.CreatorC.draggable">
+            <summary>
+            Atributos Bool utilizados para instanciar tipo World, Level, Items.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.CreatorC.#ctor">
             <summary>
             Constructor. Instancia un objeto Creator.
@@ -140,10 +145,12 @@
         </member>
         <member name="M:Proyecto.LibraryModelado.CreatorC.AddDraggableItem(Proyecto.LeerHTML.Tag)">
             <summary>
-            
+            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DraggableItem.
+            Crea una imagen, y utiliza el metodo adapter.MakeDraggable().
+            Agrega el item creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
             </summary>
             <param name="tag"></param>
-            <returns></returns>
+            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.CreatorC.AddDragAndDropSource(Proyecto.LeerHTML.Tag)">
             <summary>
@@ -173,6 +180,16 @@
         <member name="T:Proyecto.LibraryModelado.CreatorU">
             <summary>
             Creator de objetos en unity.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.CreatorU.creatorC">
+            <summary>
+            SINGLETON.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.CreatorU.button">
+            <summary>
+            Tipos utilizados para castear los items.
             </summary>
         </member>
         <member name="M:Proyecto.LibraryModelado.CreatorU.CreateUnityItems(Proyecto.Common.IMainViewAdapter)">
@@ -523,7 +540,7 @@
             Clase de Botones de audio. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.ButtonAudio._event">
+        <member name="F:Proyecto.Item.ButtonAudio.event_">
             <summary>
             Accion de reproducir el sonido.
             </summary>
@@ -640,7 +657,7 @@
         </member>
         <member name="M:Proyecto.Item.DragAndDropDestination.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
             <summary>
-            Constructor. Instancia Objetos DragAndDropDestination.
+            Constructor, Instancia Objetos DragAndDropDestination.
             </summary>
             <param name="name">Nombre del Item.</param>
             <param name="level">Nivel al que pertence.</param>
@@ -709,16 +726,16 @@
         </member>
         <member name="M:Proyecto.Item.DraggableItem.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">
             <summary>
-            
+            Constructor, instancia un objeto DraggableItem.
             </summary>
-            <param name="name"></param>
-            <param name="level"></param>
-            <param name="positionX"></param>
-            <param name="positionY"></param>
-            <param name="width"></param>
-            <param name="height"></param>
-            <param name="image"></param>
-            <param name="draggable"></param>
+            <param name="name">Nombre del Item.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del Item.</param>
+            <param name="draggable">Bool que identifica si es arrastrable.</param>
         </member>
         <member name="P:Proyecto.Item.DraggableItem.Draggable">
             <summary>
@@ -784,6 +801,35 @@
             </summary>
             <value><see cref="T:Proyecto.Item.DragAndDropSource"/>.</value>
         </member>
+        <member name="T:Proyecto.Item.NivelCocina.Bowl">
+            <summary>
+            Clase Bowl. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.NivelCocina.Bowl.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Constructor. Instancia Objetos Bowl .
+            </summary>
+            <param name="name">Nombre del Item.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del Item.</param>
+        </member>
+        <member name="P:Proyecto.Item.NivelCocina.Bowl.InTheBowl">
+            <summary>
+            Lista de objetos Food, que seran soltados dentro del container.
+            </summary>
+            <value><see cref="T:Proyecto.Item.NivelCocina.Food"/>.</value>
+        </member>
+        <member name="P:Proyecto.Item.NivelCocina.Bowl.IncorrectItems">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
         <member name="T:Proyecto.Item.NivelCocina.Food">
             <summary>
             Clase de Alimentos. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>
@@ -818,35 +864,6 @@
             Metodo que guarde el item en el bowl
             </summary>
             <param name="Container"></param>
-        </member>
-        <member name="T:Proyecto.Item.NivelCocina.Bowl">
-            <summary>
-            Clase Bowl. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
-            </summary>
-        </member>
-        <member name="M:Proyecto.Item.NivelCocina.Bowl.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
-            <summary>
-            Constructor. Instancia Objetos Bowl .
-            </summary>
-            <param name="name">Nombre del Item.</param>
-            <param name="level">Nivel al que pertence.</param>
-            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
-            <param name="positionY">Posicion en eje vertical en pixeles.</param>
-            <param name="width">Ancho en pixeles.</param>
-            <param name="height">Altura en pixeles.</param>
-            <param name="image">Imagen del Item.</param>
-        </member>
-        <member name="P:Proyecto.Item.NivelCocina.Bowl.InTheBowl">
-            <summary>
-            Lista de objetos Food, que seran soltados dentro del container.
-            </summary>
-            <value><see cref="T:Proyecto.Item.NivelCocina.Food"/>.</value>
-        </member>
-        <member name="P:Proyecto.Item.NivelCocina.Bowl.IncorrectItems">
-            <summary>
-            
-            </summary>
-            <value></value>
         </member>
     </members>
 </doc>
