@@ -46,6 +46,7 @@ namespace Proyecto.Item
         {
             this.Color = color;
             this.AudioFile = audioFile;
+            this.Event = _event;
         }
 
         /// <summary>
@@ -61,23 +62,17 @@ namespace Proyecto.Item
         public string AudioFile { get; set; }
 
         /// <summary>
-        /// Metodo para crear Botones en Unity.
+        /// Gets or sets del evento del boton.
         /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
-        public override void CreateUnityItem(IMainViewAdapter adapter)
-        {
-            _event = adapter.PlayAudio;
-            this.ID = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
-            adapter.SetImage(this.ID, this.Image);
-            adapter.SetText(this.ID, "");
-        }
+        /// <value>Action.</value>
+        public Action<string> Event { get; set; }
 
         /// <summary>
         /// Acciones realizadas por el boton.
         /// </summary>
         public void Click(string text)
         {
-            _event(this.AudioFile);
+            this.Event(this.AudioFile);
         }
     }
 }

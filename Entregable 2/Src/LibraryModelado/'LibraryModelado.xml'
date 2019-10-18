@@ -4,101 +4,101 @@
         <name>LibraryModelado</name>
     </assembly>
     <members>
-        <member name="T:Proyecto.LibraryModelado.Creator">
+        <member name="T:Proyecto.LibraryModelado.CreatorC">
             <summary>
             Clase CREATOR*2
             Esta es la clase Creator, debido a que, es la responsable de crear los objetos de tipo.
             Especificamente se le llama Creator, porque es abierta a la extensión pero cerrada a la modificación.
             Si en un futuro quisieramos crear más objetos podríamos hacerlo, pero no modificar lo ya creado que 
             funciona de forma adecuada.
-            <see cref="P:Proyecto.LibraryModelado.Creator.World"/>, <see cref="T:Proyecto.LibraryModelado.Space"/>, <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            <see cref="P:Proyecto.LibraryModelado.CreatorC.World"/>, <see cref="T:Proyecto.LibraryModelado.Space"/>, <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.world">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.world">
             <summary>
-            Objeto World asignado al Creator. <see cref="P:Proyecto.LibraryModelado.Creator.World"/>.
+            Objeto World asignado al Creator. <see cref="P:Proyecto.LibraryModelado.CreatorC.World"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.level">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.level">
             <summary>
             Objeto Space asignado al Creator (Nivel). <see cref="T:Proyecto.LibraryModelado.Space"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.name">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.name">
             <summary>
             Atributos String utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.color">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.color">
             <summary>
             Atributos String utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.image">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.image">
             <summary>
             Atributos String utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.containerName">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.containerName">
             <summary>
             Atributos String utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.audio">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.audio">
             <summary>
             Atributos String utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.pageName">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.pageName">
             <summary>
             Atributos String utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.width">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.width">
             <summary>
             Atributos Int utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.height">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.height">
             <summary>
             Atributos Int utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.positionX">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.positionX">
             <summary>
             Atributos Int utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.positionY">
+        <member name="F:Proyecto.LibraryModelado.CreatorC.positionY">
             <summary>
             Atributos Int utilizados para instanciar tipo World, Level, Items.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.#ctor">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.#ctor">
             <summary>
             Constructor. Instancia un objeto Creator.
             </summary>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Creator.World">
+        <member name="P:Proyecto.LibraryModelado.CreatorC.World">
             <summary>
             Gets or sets el objeto World asignado al Creator.
             </summary>
             <value>Tipo World.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Creator.Level">
+        <member name="P:Proyecto.LibraryModelado.CreatorC.Level">
             <summary>
             Gets or sets el objeto Level asignado al Creator.
             </summary>
             <value>Tipo Level.</value>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddWorld(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.AddWorld(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Mundo.
             </summary>
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns><see cref="P:Proyecto.LibraryModelado.Creator.World"/>.</returns>
+            <returns><see cref="P:Proyecto.LibraryModelado.CreatorC.World"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddLevel(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.AddLevel(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Level.
             Agrega el nivel creado a la lista de niveles pertenecientes al mundo asignado en el Creator.
@@ -106,7 +106,7 @@
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Space"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddButton(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.AddButton(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Button.
             Agrega el Boton creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
@@ -114,7 +114,7 @@
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddButtonAudio(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.AddButtonAudio(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto ButtonAudio.
             Agrega el Boton de audio creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
@@ -122,7 +122,7 @@
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddButtonGoToPage(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.AddButtonGoToPage(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto ButtonGoToPage.
             Agrega el Boton creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
@@ -130,7 +130,7 @@
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddImage(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.AddImage(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Image.
             Agrega la imagen creada a la lista de Items pertenecientes al Nivel asignado en el Creator.
@@ -138,14 +138,14 @@
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddDraggableItem(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.AddDraggableItem(Proyecto.LeerHTML.Tag)">
             <summary>
             
             </summary>
             <param name="tag"></param>
             <returns></returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddDragAndDropSource(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.AddDragAndDropSource(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropSource.
             Agrega el container creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
@@ -153,7 +153,7 @@
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddDragAndDropDestination(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.AddDragAndDropDestination(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropDestination.
             Agrega el container creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
@@ -161,7 +161,7 @@
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddDragAndDropItem(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.LibraryModelado.CreatorC.AddDragAndDropItem(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropItem.
             Agrega el item creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
@@ -169,6 +169,17 @@
             </summary>
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.CreatorU">
+            <summary>
+            Creator de objetos en unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.CreatorU.CreateUnityItems(Proyecto.Common.IMainViewAdapter)">
+            <summary>
+            Metodo para crear todos los objetos en unity.
+            </summary>
+            <param name="adapter"></param>
         </member>
         <member name="T:Proyecto.LibraryModelado.IButton">
             <summary>
@@ -286,12 +297,6 @@
             </summary>
             <value>String path to image.</value>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Items.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo abstracto para crear objetos en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
-        </member>
         <member name="T:Proyecto.LibraryModelado.Level">
             <summary>
             Clase Nivel. Hereda de <see cref="T:Proyecto.LibraryModelado.Space"/>.
@@ -323,6 +328,18 @@
             Crea una imagen de fondo del nivel en unity.
             </summary>
             <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.Singleton`1">
+            <summary>
+            Patron Singleton, permite crear solamente una instancia de una clase generica "T".
+            </summary>
+            <typeparam name="T">Clase Generica.</typeparam>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Singleton`1.Instance">
+            <summary>
+            Gets or sets de la instancia de la clase T.
+            </summary>
+            <value></value>
         </member>
         <member name="T:Proyecto.LibraryModelado.Space">
             <summary>
@@ -490,16 +507,16 @@
             </summary>
             <value>string codigo en hexadecimal.</value>
         </member>
+        <member name="P:Proyecto.Item.Button.Event">
+            <summary>
+            Gets or sets del evento del boton.
+            </summary>
+            <value>Action.</value>
+        </member>
         <member name="M:Proyecto.Item.Button.Click(System.String)">
             <summary>
             Accion realizada por el boton.
             </summary>
-        </member>
-        <member name="M:Proyecto.Item.Button.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo para crear Botones en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
         </member>
         <member name="T:Proyecto.Item.ButtonAudio">
             <summary>
@@ -547,11 +564,11 @@
             </summary>
             <value>string nombre del audio.</value>
         </member>
-        <member name="M:Proyecto.Item.ButtonAudio.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+        <member name="P:Proyecto.Item.ButtonAudio.Event">
             <summary>
-            Metodo para crear Botones en Unity.
+            Gets or sets del evento del boton.
             </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <value>Action.</value>
         </member>
         <member name="M:Proyecto.Item.ButtonAudio.Click(System.String)">
             <summary>
@@ -604,11 +621,11 @@
             </summary>
             <value>string nombre del la pagina.</value>
         </member>
-        <member name="M:Proyecto.Item.ButtonGoToPage.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+        <member name="P:Proyecto.Item.ButtonGoToPage.Event">
             <summary>
-            Metodo para crear Botones en Unity.
+            Gets or sets del evento del boton.
             </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <value>Action.</value>
         </member>
         <member name="M:Proyecto.Item.ButtonGoToPage.Click(System.String)">
             <summary>
@@ -639,12 +656,6 @@
             </summary>
             <value><see cref="T:Proyecto.Item.DragAndDropItem"/>.</value>
         </member>
-        <member name="M:Proyecto.Item.DragAndDropDestination.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo para crear DragAndDropDestination en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo.<see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
-        </member>
         <member name="T:Proyecto.Item.DragAndDropItem">
             <summary>
             Clase DragAndDropItem. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
@@ -674,12 +685,6 @@
             </summary>
             <value><see cref="T:Proyecto.Item.DragAndDropSource"/>.</value>
         </member>
-        <member name="M:Proyecto.Item.DragAndDropItem.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo para crear DragAndDropItem en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
-        </member>
         <member name="T:Proyecto.Item.DragAndDropSource">
             <summary>
             Clase de Botones. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
@@ -697,11 +702,29 @@
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del container.</param>
         </member>
-        <member name="M:Proyecto.Item.DragAndDropSource.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+        <member name="T:Proyecto.Item.DraggableItem">
             <summary>
-            Metodo para crear DragAndDropSource en Unity.
+            
             </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+        </member>
+        <member name="M:Proyecto.Item.DraggableItem.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="level"></param>
+            <param name="positionX"></param>
+            <param name="positionY"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="image"></param>
+            <param name="draggable"></param>
+        </member>
+        <member name="P:Proyecto.Item.DraggableItem.Draggable">
+            <summary>
+            
+            </summary>
+            <value></value>
         </member>
         <member name="T:Proyecto.Item.Image">
             <summary>
@@ -719,12 +742,6 @@
             <param name="width">Ancho en pixeles.</param>
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen de la imagen.</param>
-        </member>
-        <member name="M:Proyecto.Item.Image.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo para crear Imagenes en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
         </member>
         <member name="T:Proyecto.Item.Nivel_Cientifico.Money">
             <summary>
@@ -767,12 +784,6 @@
             </summary>
             <value><see cref="T:Proyecto.Item.DragAndDropSource"/>.</value>
         </member>
-        <member name="M:Proyecto.Item.Nivel_Cientifico.Money.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo para crear dinero en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
-        </member>
         <member name="T:Proyecto.Item.NivelCocina.Food">
             <summary>
             Clase de Alimentos. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>
@@ -808,12 +819,6 @@
             </summary>
             <param name="Container"></param>
         </member>
-        <member name="M:Proyecto.Item.NivelCocina.Food.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo para crear DragAndDropItem (Food) en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
-        </member>
         <member name="T:Proyecto.Item.NivelCocina.Bowl">
             <summary>
             Clase Bowl. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
@@ -842,12 +847,6 @@
             
             </summary>
             <value></value>
-        </member>
-        <member name="M:Proyecto.Item.NivelCocina.Bowl.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo para crear DragAndDropDestination en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo.<see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
         </member>
     </members>
 </doc>

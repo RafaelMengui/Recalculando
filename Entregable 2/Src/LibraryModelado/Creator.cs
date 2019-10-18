@@ -18,7 +18,7 @@ namespace Proyecto.LibraryModelado
     /// funciona de forma adecuada.
     /// <see cref="World"/>, <see cref="Space"/>, <see cref="Items"/>.
     /// </summary>
-    public class Creator
+    public class CreatorC
     {
         /// <summary>
         /// Objeto World asignado al Creator. <see cref="World"/>.
@@ -45,7 +45,7 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Constructor. Instancia un objeto Creator.
         /// </summary>
-        public Creator()
+        public CreatorC()
         {
             this.World = world;
             this.Level = level;
@@ -195,7 +195,7 @@ namespace Proyecto.LibraryModelado
             positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
             positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
             image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-            draggable = Convert.ToBoolean(tag.Atributos.Find(delegate (Atributos atr) {return atr.Clave == "Draggable";}).Valor);
+            draggable = Convert.ToBoolean(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
 
             Items draggableItem = new DraggableItem(name, this.Level, positionX, positionY, width, height, image, draggable);
             this.Level.ItemList.Add(draggableItem);

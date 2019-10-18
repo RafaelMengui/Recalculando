@@ -44,16 +44,5 @@ namespace Proyecto.Item.NivelCocina
         public void DropFood(DragAndDropDestination Container)
         {
         }
-        
-        /// <summary>
-        /// Metodo para crear DragAndDropItem (Food) en Unity.
-        /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
-        public override void CreateUnityItem(IMainViewAdapter adapter)
-        {
-            this.ID = adapter.CreateDragAndDropItem(this.PositionX, this.PositionY, this.Width, this.Height);
-            adapter.SetImage(this.ID, this.Image);
-            adapter.AddItemToDragAndDropSource(this.Container.ID, this.ID);
-        }
     }
 }

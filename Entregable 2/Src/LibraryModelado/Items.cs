@@ -121,11 +121,5 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <value>String path to image.</value>
         public string Image { get; set; }
-
-        /// <summary>
-        /// Metodo abstracto para crear objetos en Unity.
-        /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/></param>
-        public abstract void CreateUnityItem(IMainViewAdapter adapter);
     }
 }

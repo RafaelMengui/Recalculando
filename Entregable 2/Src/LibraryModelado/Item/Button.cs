@@ -35,10 +35,11 @@ namespace Proyecto.Item
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del boton.</param>
         /// <param name="color">Color del boton en Hexadecimal.</param>
-        public Button(string name, Space level, int positionX, int positionY, int width, int height, string image,string color)
+        public Button(string name, Space level, int positionX, int positionY, int width, int height, string image, string color)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Color = color;
+            this.Event = _event;
         }
 
         /// <summary>
@@ -48,22 +49,17 @@ namespace Proyecto.Item
         public string Color { get; set; }
 
         /// <summary>
+        /// Gets or sets del evento del boton.
+        /// </summary>
+        /// <value>Action.</value>
+        public Action<string> Event { get; set; }
+
+        /// <summary>
         /// Accion realizada por el boton.
         /// </summary>
         public void Click(string text)
         {
-            _event("");
-        }
-
-        /// <summary>
-        /// Metodo para crear Botones en Unity.
-        /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
-        public override void CreateUnityItem(IMainViewAdapter adapter)
-        {
-            _event = adapter.Debug;
-            this.ID = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
-            adapter.SetImage(this.ID, this.Image);
+            this.Event("");
         }
     }
 }

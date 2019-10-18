@@ -46,6 +46,7 @@ namespace Proyecto.Item
         {
             this.Color = color;
             this.PageName = pageName;
+            this.Event = _event;
         }
 
         /// <summary>
@@ -61,23 +62,18 @@ namespace Proyecto.Item
         public string PageName { get; set; }
 
         /// <summary>
-        /// Metodo para crear Botones en Unity.
+        /// Gets or sets del evento del boton.
         /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
-        public override void CreateUnityItem(IMainViewAdapter adapter)
-        {
-            _event = adapter.ShowPage;
-            this.ID = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
-            adapter.SetImage(this.ID, this.Image);
-        }
-
+        /// <value>Action.</value>
+        public Action<string> Event { get; set; }
+        
         /// <summary>
         /// Acciones realizadas por el boton.
         /// Busca el nivel que coincida con el nivel que mostrara al ser apretado, y obtiene su ID.
         /// </summary>
         public void Click(string text)
         {
-            _event(this.Level.World.SpaceList.Find(delegate (Space level) { return level.Name == this.PageName; }).ID);
+            this.Event(this.Level.World.SpaceList.Find(delegate (Space level) { return level.Name == this.PageName; }).ID);
         }
     }
 }

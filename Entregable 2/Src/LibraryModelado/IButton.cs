@@ -17,4 +17,3 @@ namespace Proyecto.LibraryModelado
         void Click(string text);
     }
 }
-

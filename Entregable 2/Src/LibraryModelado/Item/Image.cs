@@ -28,15 +28,5 @@ namespace Proyecto.Item
         : base(name, level, positionX, positionY, width, height, image)
         {
         }
-
-        /// <summary>
-        /// Metodo para crear Imagenes en Unity.
-        /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
-        public override void CreateUnityItem(IMainViewAdapter adapter)
-        {
-            this.ID = adapter.CreateImage(this.PositionX, this.PositionY, this.Width, this.Height);
-            adapter.SetImage(this.ID, this.Image);
-        }
     }
 }

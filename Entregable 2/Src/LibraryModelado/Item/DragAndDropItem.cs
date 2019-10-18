@@ -41,16 +41,5 @@ namespace Proyecto.Item
         /// </summary>
         /// <value><see cref="DragAndDropSource"/>.</value>
         public Items Container { get; set; }
-
-        /// <summary>
-        /// Metodo para crear DragAndDropItem en Unity.
-        /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
-        public override void CreateUnityItem(IMainViewAdapter adapter)
-        {
-            this.ID = adapter.CreateDragAndDropItem(this.PositionX, this.PositionY, this.Width, this.Height);
-            adapter.SetImage(this.ID, this.Image);
-            adapter.AddItemToDragAndDropSource(this.Container.ID, this.ID);
-        }
     }
 }

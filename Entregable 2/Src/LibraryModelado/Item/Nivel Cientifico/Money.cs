@@ -48,14 +48,5 @@ namespace Proyecto.Item.Nivel_Cientifico
         /// </summary>
         /// <value><see cref="DragAndDropSource"/>.</value>
         public Items Container { get; set; }
-
-        /// <summary>
-        /// Metodo para crear dinero en Unity.
-        /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
-        public override void CreateUnityItem(IMainViewAdapter adapter)
-        {
-
-        }
     }
 }
