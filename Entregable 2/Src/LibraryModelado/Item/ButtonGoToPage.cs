@@ -75,7 +75,7 @@ namespace Proyecto.Item
         /// Acciones realizadas por el boton.
         /// Busca el nivel que coincida con el nivel que mostrara al ser apretado, y obtiene su ID.
         /// </summary>
-        public void Click()
+        public void Click(string text)
         {
             _event(this.Level.World.SpaceList.Find(delegate (Space level) { return level.Name == this.PageName; }).ID);
         }

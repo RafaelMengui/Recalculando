@@ -15,6 +15,11 @@ namespace Proyecto.Item
     public class Button : Items, IButton
     {
         /// <summary>
+        /// Accion del boton.
+        /// </summary>
+        private Action<string> _event;
+
+        /// <summary>
         /// Color del Boton.
         /// </summary>
         private string color;
@@ -45,7 +50,7 @@ namespace Proyecto.Item
         /// <summary>
         /// Accion realizada por el boton.
         /// </summary>
-        public void Click()
+        public void Click(string text)
         {
         }
 

@@ -14,7 +14,7 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Acciones realizadas al hacer click en un boton. Eventos.
         /// </summary>
-        void Click();
+        void Click(string text);
     }
 }
 

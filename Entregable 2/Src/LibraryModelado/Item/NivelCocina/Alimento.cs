@@ -9,7 +9,11 @@ namespace Proyecto.Item.NivelCocina
     /// </summary>
     public class Food : Items
     {   
-
+        /// <summary>
+        /// Container en el que es creado inicialmente el Item.
+        /// </summary>
+        private Items container;
+        
         /// <summary>
         /// Constructor. Instancia Objetos Food.
         /// </summary>
@@ -20,14 +24,24 @@ namespace Proyecto.Item.NivelCocina
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del Food.</param>
-        public Food(string name, Space level, int positionX, int positionY, int width, int height, string image)
+        public Food(string name, Space level, int positionX, int positionY, int width, int height, string image, Items container)
         : base(name, level, positionX, positionY, width, height, image)
         {
+            this.Container = container;
         }
 
+        /// <summary>
+        /// Gets or sets del container en el que es creado inicialmente el Item.
+        /// </summary>
+        /// <value><see cref="DragAndDropSource"/>.</value>
+        public Items Container { get; set; }
+
+        /// <summary>
+        /// Metodo que guarde el item en el bowl
+        /// </summary>
+        /// <param name="Container"></param>
         public void DropFood(DragAndDropDestination Container)
         {
-            //Metodo que guarde el item en el bowl
         }
         
         /// <summary>

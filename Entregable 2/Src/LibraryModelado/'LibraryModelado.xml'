@@ -6,7 +6,11 @@
     <members>
         <member name="T:Proyecto.LibraryModelado.Creator">
             <summary>
-            Clase Creator. Contiene los metodos para crear objetos de tipo:
+            Clase CREATOR*2
+            Esta es la clase Creator, debido a que, es la responsable de crear los objetos de tipo.
+            Especificamente se le llama Creator, porque es abierta a la extensión pero cerrada a la modificación.
+            Si en un futuro quisieramos crear más objetos podríamos hacerlo, pero no modificar lo ya creado que 
+            funciona de forma adecuada.
             <see cref="P:Proyecto.LibraryModelado.Creator.World"/>, <see cref="T:Proyecto.LibraryModelado.Space"/>, <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
@@ -171,7 +175,7 @@
             Interfaz de Boton.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.IButton.Click">
+        <member name="M:Proyecto.LibraryModelado.IButton.Click(System.String)">
             <summary>
             Acciones realizadas al hacer click en un boton. Eventos.
             </summary>
@@ -179,6 +183,7 @@
         <member name="T:Proyecto.LibraryModelado.Items">
             <summary>
             Clase abstracta de Items.
+            Esta clase implementa Herencia*1
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Items.name">
@@ -456,6 +461,11 @@
             Clase de Botones. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
             </summary>
         </member>
+        <member name="F:Proyecto.Item.Button._event">
+            <summary>
+            Accion del boton.
+            </summary>
+        </member>
         <member name="F:Proyecto.Item.Button.color">
             <summary>
             Color del Boton.
@@ -480,7 +490,7 @@
             </summary>
             <value>string codigo en hexadecimal.</value>
         </member>
-        <member name="M:Proyecto.Item.Button.Click">
+        <member name="M:Proyecto.Item.Button.Click(System.String)">
             <summary>
             Accion realizada por el boton.
             </summary>
@@ -543,7 +553,7 @@
             </summary>
             <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
         </member>
-        <member name="M:Proyecto.Item.ButtonAudio.Click">
+        <member name="M:Proyecto.Item.ButtonAudio.Click(System.String)">
             <summary>
             Acciones realizadas por el boton.
             </summary>
@@ -600,7 +610,7 @@
             </summary>
             <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
         </member>
-        <member name="M:Proyecto.Item.ButtonGoToPage.Click">
+        <member name="M:Proyecto.Item.ButtonGoToPage.Click(System.String)">
             <summary>
             Acciones realizadas por el boton.
             Busca el nivel que coincida con el nivel que mostrara al ser apretado, y obtiene su ID.
@@ -709,6 +719,63 @@
             Metodo para crear Imagenes en Unity.
             </summary>
             <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+        </member>
+        <member name="T:Proyecto.Item.NivelCocina.Food">
+            <summary>
+            Clase de Alimentos. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.NivelCocina.Food.container">
+            <summary>
+            Container en el que es creado inicialmente el Item.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.NivelCocina.Food.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,Proyecto.LibraryModelado.Items)">
+            <summary>
+            Constructor. Instancia Objetos Food.
+            </summary>
+            <param name="name">Nombre del Food.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del Food.</param>
+        </member>
+        <member name="P:Proyecto.Item.NivelCocina.Food.Container">
+            <summary>
+            Gets or sets del container en el que es creado inicialmente el Item.
+            </summary>
+            <value><see cref="T:Proyecto.Item.DragAndDropSource"/>.</value>
+        </member>
+        <member name="M:Proyecto.Item.NivelCocina.Food.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+            <summary>
+            Metodo para crear DragAndDropItem (Food) en Unity.
+            </summary>
+            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+        </member>
+        <member name="T:Proyecto.Item.NivelCocina.Bowl">
+            <summary>
+            Clase Bowl. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.NivelCocina.Bowl.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Constructor. Instancia Objetos Bowl .
+            </summary>
+            <param name="name">Nombre del Item.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del Item.</param>
+        </member>
+        <member name="M:Proyecto.Item.NivelCocina.Bowl.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+            <summary>
+            Metodo para crear DragAndDropDestination en Unity.
+            </summary>
+            <param name="adapter">Adapter del tipo.<see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
         </member>
     </members>
 </doc>

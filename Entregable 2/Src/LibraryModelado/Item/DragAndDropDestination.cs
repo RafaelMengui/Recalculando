@@ -30,6 +30,10 @@ namespace Proyecto.Item
             this.SavedItems = new List<DragAndDropItem>();
         }
 
+        /// <summary>
+        /// Gets or sets de los objetos DragAndDropItem guardados en el container.
+        /// </summary>
+        /// <value><see cref="DragAndDropItem"/>.</value>
         public List<DragAndDropItem> SavedItems {get; set;}     
 
         /// <summary>
