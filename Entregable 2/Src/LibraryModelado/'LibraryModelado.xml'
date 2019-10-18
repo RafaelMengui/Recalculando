@@ -79,13 +79,6 @@
             Constructor. Instancia un objeto Creator.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.#ctor(Proyecto.LibraryModelado.World,Proyecto.LibraryModelado.Space)">
-            <summary>
-            Constructor. Instancia un objeto tipo Creator.
-            </summary>
-            <param name="world">Tipo World.</param>
-            <param name="level">Tipo Level.</param>
-        </member>
         <member name="P:Proyecto.LibraryModelado.Creator.World">
             <summary>
             Gets or sets el objeto World asignado al Creator.
@@ -144,6 +137,13 @@
             </summary>
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Creator.AddDraggableItem(Proyecto.LeerHTML.Tag)">
+            <summary>
+            
+            </summary>
+            <param name="tag"></param>
+            <returns></returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Creator.AddDragAndDropSource(Proyecto.LeerHTML.Tag)">
             <summary>
@@ -376,9 +376,9 @@
         </member>
         <member name="P:Proyecto.LibraryModelado.Space.World">
             <summary>
-            Gets or sets del nombre del espacio.
+            Gets or sets del nombre del mundo al que pertenece.
             </summary>
-            <value>String nombre del espacio.</value>
+            <value>String nombre del mundo.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Space.Width">
             <summary>
@@ -726,6 +726,53 @@
             </summary>
             <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
         </member>
+        <member name="T:Proyecto.Item.Nivel_Cientifico.Money">
+            <summary>
+            Clase Money. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.Nivel_Cientifico.Money.value">
+            <summary>
+            Valor monetario del objeto.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.Nivel_Cientifico.Money.container">
+            <summary>
+            Container en el que es creado inicialmente el Item.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.Nivel_Cientifico.Money.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Int32,Proyecto.LibraryModelado.Items)">
+            <summary>
+            Constructor. Instancia un objeto Money.
+            </summary>
+            <param name="name">Nombre de la moneda.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen de la moneda.</param>
+            <param name="value">Valor de la moneda.</param>
+            <param name="container">Container Source en donde es creado.</param>
+        </member>
+        <member name="P:Proyecto.Item.Nivel_Cientifico.Money.Value">
+            <summary>
+            Gets or sets del valor de la moneda.
+            </summary>
+            <value>int valor de la moneda.</value>
+        </member>
+        <member name="P:Proyecto.Item.Nivel_Cientifico.Money.Container">
+            <summary>
+            Gets or sets del container en el que es creado inicialmente el Item.
+            </summary>
+            <value><see cref="T:Proyecto.Item.DragAndDropSource"/>.</value>
+        </member>
+        <member name="M:Proyecto.Item.Nivel_Cientifico.Money.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+            <summary>
+            Metodo para crear dinero en Unity.
+            </summary>
+            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+        </member>
         <member name="T:Proyecto.Item.NivelCocina.Food">
             <summary>
             Clase de Alimentos. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>
@@ -747,6 +794,7 @@
             <param name="width">Ancho en pixeles.</param>
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del Food.</param>
+            <param name="container">Container Source en donde es creado.</param>
         </member>
         <member name="P:Proyecto.Item.NivelCocina.Food.Container">
             <summary>
@@ -782,6 +830,18 @@
             <param name="width">Ancho en pixeles.</param>
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del Item.</param>
+        </member>
+        <member name="P:Proyecto.Item.NivelCocina.Bowl.InTheBowl">
+            <summary>
+            Lista de objetos Food, que seran soltados dentro del container.
+            </summary>
+            <value><see cref="T:Proyecto.Item.NivelCocina.Food"/>.</value>
+        </member>
+        <member name="P:Proyecto.Item.NivelCocina.Bowl.IncorrectItems">
+            <summary>
+            
+            </summary>
+            <value></value>
         </member>
         <member name="M:Proyecto.Item.NivelCocina.Bowl.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
             <summary>

@@ -53,6 +53,9 @@ namespace Proyecto.StudentsCode
                     case "ButtonGoToPage":
                         Items buttonGoTo = creator.AddButtonGoToPage(tag);
                         break;
+                    case "DraggableItem":
+                        Items draggable = creator.AddDraggableItem(tag);
+                        break;
                     case "Image":
                         Items image = creator.AddImage(tag);
                         break;
@@ -91,3 +94,14 @@ namespace Proyecto.StudentsCode
         }
     }
 }
+
+/*
+Action
+
+DragAndDrop -> makedraggable
+
+DropEvent del makedraggable
+
+Motor...
+
+*/

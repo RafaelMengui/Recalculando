@@ -40,21 +40,12 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         int width, height, positionX, positionY;
 
+        bool draggable;
+
         /// <summary>
         /// Constructor. Instancia un objeto Creator.
         /// </summary>
         public Creator()
-        {
-            this.World = world;
-            this.Level = level;
-        }
-
-        /// <summary>
-        /// Constructor. Instancia un objeto tipo Creator.
-        /// </summary>
-        /// <param name="world">Tipo World.</param>
-        /// <param name="level">Tipo Level.</param>
-        public Creator(World world, Space level)
         {
             this.World = world;
             this.Level = level;
@@ -189,6 +180,26 @@ namespace Proyecto.LibraryModelado
             Items _image = new Image(name, this.Level, positionX, positionY, width, height, image);
             this.Level.ItemList.Add(_image);
             return _image;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        public Items AddDraggableItem(Tag tag)
+        {
+            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+            draggable = Convert.ToBoolean(tag.Atributos.Find(delegate (Atributos atr) {return atr.Clave == "Draggable";}).Valor);
+
+            Items draggableItem = new DraggableItem(name, this.Level, positionX, positionY, width, height, image, draggable);
+            this.Level.ItemList.Add(draggableItem);
+            return draggableItem;
         }
 
         /// <summary>

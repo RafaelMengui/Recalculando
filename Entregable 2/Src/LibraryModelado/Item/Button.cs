@@ -52,6 +52,7 @@ namespace Proyecto.Item
         /// </summary>
         public void Click(string text)
         {
+            _event("");
         }
 
         /// <summary>
@@ -60,6 +61,7 @@ namespace Proyecto.Item
         /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
         public override void CreateUnityItem(IMainViewAdapter adapter)
         {
+            _event = adapter.Debug;
             this.ID = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
             adapter.SetImage(this.ID, this.Image);
         }
