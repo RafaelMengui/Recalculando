@@ -633,6 +633,12 @@
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del Item.</param>
         </member>
+        <member name="P:Proyecto.Item.DragAndDropDestination.SavedItems">
+            <summary>
+            Gets or sets de los objetos DragAndDropItem guardados en el container.
+            </summary>
+            <value><see cref="T:Proyecto.Item.DragAndDropItem"/>.</value>
+        </member>
         <member name="M:Proyecto.Item.DragAndDropDestination.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
             <summary>
             Metodo para crear DragAndDropDestination en Unity.
@@ -747,6 +753,12 @@
             Gets or sets del container en el que es creado inicialmente el Item.
             </summary>
             <value><see cref="T:Proyecto.Item.DragAndDropSource"/>.</value>
+        </member>
+        <member name="M:Proyecto.Item.NivelCocina.Food.DropFood(Proyecto.Item.DragAndDropDestination)">
+            <summary>
+            Metodo que guarde el item en el bowl
+            </summary>
+            <param name="Container"></param>
         </member>
         <member name="M:Proyecto.Item.NivelCocina.Food.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
             <summary>

@@ -67,9 +67,9 @@ namespace Proyecto.LibraryModelado
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets del nombre del espacio.
+        /// Gets or sets del nombre del mundo al que pertenece.
         /// </summary>
-        /// <value>String nombre del espacio.</value>
+        /// <value>String nombre del mundo.</value>
         public World World { get; set; }
 
         /// <summary>

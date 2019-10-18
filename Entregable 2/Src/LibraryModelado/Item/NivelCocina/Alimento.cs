@@ -24,6 +24,7 @@ namespace Proyecto.Item.NivelCocina
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del Food.</param>
+        /// <param name="container">Container Source en donde es creado.</param>
         public Food(string name, Space level, int positionX, int positionY, int width, int height, string image, Items container)
         : base(name, level, positionX, positionY, width, height, image)
         {

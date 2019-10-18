@@ -69,6 +69,7 @@ namespace Proyecto.Item
             _event = adapter.PlayAudio;
             this.ID = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
             adapter.SetImage(this.ID, this.Image);
+            adapter.SetText(this.ID, "");
         }
 
         /// <summary>

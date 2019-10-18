@@ -4,7 +4,7 @@ using Proyecto.LibraryModelado;
 
 namespace Proyecto.Item.NivelCocina
 {
-       /// <summary>
+    /// <summary>
     /// Clase Bowl. Hereda de <see cref="Items"/>.
     /// </summary>
     public class Bowl : Items
@@ -26,8 +26,17 @@ namespace Proyecto.Item.NivelCocina
             this.IncorrectItems = new List<DragAndDropItem>();
         }
 
-        public List<Food> InTheBowl {get; set;}   
-        public List<DragAndDropItem> IncorrectItems {get; set;}       
+        /// <summary>
+        /// Lista de objetos Food, que seran soltados dentro del container.
+        /// </summary>
+        /// <value><see cref="Food"/>.</value>
+        public List<Food> InTheBowl { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
+        public List<DragAndDropItem> IncorrectItems { get; set; }
 
         /// <summary>
         /// Metodo para crear DragAndDropDestination en Unity.
