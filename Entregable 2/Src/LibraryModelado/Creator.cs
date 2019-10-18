@@ -34,14 +34,17 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Atributos String utilizados para instanciar tipo World, Level, Items.
         /// </summary>
-        string name, color, image, containerName, audio, pageName;
+        private string name, color, image, containerName, audio, pageName;
 
         /// <summary>
         /// Atributos Int utilizados para instanciar tipo World, Level, Items.
         /// </summary>
-        int width, height, positionX, positionY;
+        private int width, height, positionX, positionY;
 
-        bool draggable;
+        /// <summary>
+        /// Atributos Bool utilizados para instanciar tipo World, Level, Items.
+        /// </summary>
+        private bool draggable;
 
         /// <summary>
         /// Constructor. Instancia un objeto Creator.
@@ -178,16 +181,18 @@ namespace Proyecto.LibraryModelado
             positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
             image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
 
-            Items _image = new Image(name, this.Level, positionX, positionY, width, height, image);
-            this.Level.ItemList.Add(_image);
-            return _image;
+            Items image_ = new Image(name, this.Level, positionX, positionY, width, height, image);
+            this.Level.ItemList.Add(image_);
+            return image_;
         }
 
         /// <summary>
-        /// 
+        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DraggableItem.
+        /// Crea una imagen, y utiliza el metodo adapter.MakeDraggable().
+        /// Agrega el item creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
         /// </summary>
         /// <param name="tag"></param>
-        /// <returns></returns>
+        /// <returns><see cref="Items"/>.</returns>
         public Items AddDraggableItem(Tag tag)
         {
             name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;

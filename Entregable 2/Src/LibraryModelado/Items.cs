@@ -3,7 +3,6 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using Proyecto.Common;
 namespace Proyecto.LibraryModelado
 {
     /// <summary>

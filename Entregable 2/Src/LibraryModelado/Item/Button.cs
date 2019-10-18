@@ -3,9 +3,10 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using System;
 using Proyecto.Common;
 using Proyecto.LibraryModelado;
+using System;
+
 
 namespace Proyecto.Item
 {
@@ -59,7 +60,7 @@ namespace Proyecto.Item
         /// </summary>
         public void Click(string text)
         {
-            this.Event("");
+            this.Event(string.Empty);
         }
     }
 }

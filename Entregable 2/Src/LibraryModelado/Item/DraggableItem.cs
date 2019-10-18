@@ -12,16 +12,16 @@ namespace Proyecto.Item
         private bool draggable;
 
         /// <summary>
-        /// 
+        /// Constructor, instancia un objeto DraggableItem.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="level"></param>
-        /// <param name="positionX"></param>
-        /// <param name="positionY"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        /// <param name="image"></param>
-        /// <param name="draggable"></param>
+        /// <param name="name">Nombre del Item.</param>
+        /// <param name="level">Nivel al que pertence.</param>
+        /// <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+        /// <param name="positionY">Posicion en eje vertical en pixeles.</param>
+        /// <param name="width">Ancho en pixeles.</param>
+        /// <param name="height">Altura en pixeles.</param>
+        /// <param name="image">Imagen del Item.</param>
+        /// <param name="draggable">Bool que identifica si es arrastrable.</param>
         public DraggableItem(string name, Space level, int positionX, int positionY, int width, int height, string image, bool draggable)
         : base(name, level, positionX, positionY, width, height, image)
         {
