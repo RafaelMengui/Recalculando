@@ -18,7 +18,7 @@ namespace Proyecto.StudentsCode
     public class Builder : IBuilder
     {
         private IMainViewAdapter adapter;
-        Creator Creator = new Creator();
+        Creator creator = Singleton<Creator>.Instance;
         private Space firstPage;
 
         /// <summary>
@@ -39,38 +39,38 @@ namespace Proyecto.StudentsCode
                 switch (tag.Nombre)
                 {
                     case "World":
-                        Creator.World = Creator.AddWorld(tag);
+                        creator.World = creator.AddWorld(tag);
                         break;
                     case "Level":
-                        Creator.Level = Creator.AddLevel(tag);
+                        creator.Level = creator.AddLevel(tag);
                         break;
                     case "Button":
-                        Items button = Creator.AddButton(tag);
+                        Items button = creator.AddButton(tag);
                         break;
                     case "ButtonAudio":
-                        Items buttonAudio = Creator.AddButtonAudio(tag);
+                        Items buttonAudio = creator.AddButtonAudio(tag);
                         break;
                     case "ButtonGoToPage":
-                        Items buttonGoTo = Creator.AddButtonGoToPage(tag);
+                        Items buttonGoTo = creator.AddButtonGoToPage(tag);
                         break;
                     case "Image":
-                        Items image = Creator.AddImage(tag);
+                        Items image = creator.AddImage(tag);
                         break;
                     case "DragAndDropSource":
-                        Items dragAndDropSource = Creator.AddDragAndDropSource(tag);
+                        Items dragAndDropSource = creator.AddDragAndDropSource(tag);
                         break;
                     case "DragAndDropDestination":
-                        Items dragAndDropDestination = Creator.AddDragAndDropDestination(tag);
+                        Items dragAndDropDestination = creator.AddDragAndDropDestination(tag);
                         break;
                     case "DragAndDropItem":
-                        Items dragAndDropItem = Creator.AddDragAndDropItem(tag);
+                        Items dragAndDropItem = creator.AddDragAndDropItem(tag);
                         break;
                 }
             }
-            firstPage = Creator.World.SpaceList[0];
+            firstPage = creator.World.SpaceList[0];
 
             //Crear los objetos en el juego.
-            foreach (Space level in Creator.World.SpaceList)
+            foreach (Space level in creator.World.SpaceList)
             {
                 level.CreateUnityLevel(adapter);
                 foreach (Items unityItem in level.ItemList)
