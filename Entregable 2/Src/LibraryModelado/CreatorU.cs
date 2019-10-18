@@ -3,16 +3,9 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-<<<<<<< HEAD
-=======
 using System;
 using Proyecto.Item;
->>>>>>> e0630baadd010cae80bf0bf67e621ff177328f94
 using Proyecto.Common;
-using Proyecto.Item;
-using Proyecto.LibraryModelado;
-using System;
-
 
 namespace Proyecto.LibraryModelado
 {
