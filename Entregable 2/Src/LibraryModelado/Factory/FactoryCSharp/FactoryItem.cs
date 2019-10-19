@@ -5,10 +5,10 @@ namespace Proyecto.Factory.CSharp
 {
     public class FactoryItem : IFactoryComponent
     {
-        private FactoryButton factoryButton;
-        private FactoryImage factoryImage;
-        private FactoryDraggableItem factoryDraggableItem;
-        private FactoryDragContainer factoryDragContainer;
+        private FactoryButton factoryButton = new FactoryButton();
+        private FactoryImage factoryImage = new FactoryImage();
+        private FactoryDraggableItem factoryDraggableItem = new FactoryDraggableItem();
+        private FactoryDragContainer factoryDragContainer = new FactoryDragContainer();
 
         public override IComponent MakeComponent(Tag tag)
         {

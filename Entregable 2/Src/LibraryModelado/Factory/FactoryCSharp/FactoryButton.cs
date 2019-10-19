@@ -5,9 +5,9 @@ namespace Proyecto.Factory.CSharp
 {
     public class FactoryButton : IFactoryComponent
     {
-        private FactoryButtonGeneric factoryButtonGeneric;
-        private FactoryButtonAudio factoryButtonAudio;
-        private FactoryButtonGoToPage factoryButtonGoToPage;
+        private FactoryButtonGeneric factoryButtonGeneric = new FactoryButtonGeneric();
+        private FactoryButtonAudio factoryButtonAudio = new FactoryButtonAudio();
+        private FactoryButtonGoToPage factoryButtonGoToPage = new FactoryButtonGoToPage();
 
         public override IComponent MakeComponent(Tag tag)
         {
