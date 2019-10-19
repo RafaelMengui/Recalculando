@@ -6,6 +6,7 @@
 using System;
 using Proyecto.Item;
 using Proyecto.Common;
+using System.Linq;
 
 namespace Proyecto.LibraryModelado
 {
@@ -14,11 +15,7 @@ namespace Proyecto.LibraryModelado
     /// </summary>
     public class CreatorU
     {
-        /// <summary>
-        /// SINGLETON.
-        /// </summary>
-        private CreatorC creatorC = Singleton<CreatorC>.Instance;
-
+        World world = Singleton<World>.Instance;
         /// <summary>
         /// Tipos utilizados para castear los items.
         /// </summary>
@@ -31,67 +28,46 @@ namespace Proyecto.LibraryModelado
         /// <param name="adapter"></param>
         public void CreateUnityItems(IMainViewAdapter adapter)
         {
-            foreach (Space level in creatorC.World.SpaceList)
+            foreach (Space level in this.world.SpaceList)
             {
-                level.CreateUnityLevel(adapter);
+                level.ID = adapter.AddPage();
+                string backgroundID = adapter.CreateImage(0, 0, level.Width, level.Height);
+                adapter.SetImage(backgroundID, ((Level)level).Image);
+
                 foreach (Items item in level.ItemList)
                 {
                     string[] itemType = Convert.ToString(item.GetType()).Split('.');
-                    switch (itemType[itemType.Length - 1])
+                    switch (itemType.Last())
                     {
-                        // case "Button":
-                        //     button = (Button)item;
-                        //     button.ID = adapter.CreateButton(button.PositionX, button.PositionY, button.Width, button.Height, button.Color, button.Click);
-                        //     adapter.SetImage(button.ID, button.Image);
-                        //     break;
-
                         case "Image":
-                            image = (Image)item;
-                            image.ID = adapter.CreateImage(image.PositionX, image.PositionY, image.Width, image.Height);
-                            adapter.SetImage(image.ID, image.Image);
+                            this.image = (Image)item;
+                            this.image.ID = adapter.CreateImage(this.image.PositionX, this.image.PositionY, this.image.Width, this.image.Height);
+                            adapter.SetImage(this.image.ID, this.image.Image);
                             break;
 
-                        // case "ButtonAudio":
-                        //     buttonAudio = (ButtonAudio)item;
-                        //     buttonAudio.Event = adapter.PlayAudio;
-                        //     buttonAudio.ID = adapter.CreateButton(buttonAudio.PositionX, buttonAudio.PositionY, buttonAudio.Width, buttonAudio.Height, buttonAudio.Color, buttonAudio.Click);
-                        //     adapter.SetImage(buttonAudio.ID, buttonAudio.Image);
-                        //     adapter.SetText(buttonAudio.ID, "");
-                        //     break;
-
-                        case "Button":
-                            buttonGoToPage = (ButtonGoToPage)item;
-                            buttonGoToPage.Event = adapter.ShowPage;
-                            buttonGoToPage.ID = adapter.CreateButton(buttonGoToPage.PositionX, buttonGoToPage.PositionY, buttonGoToPage.Width, buttonGoToPage.Height, buttonGoToPage.Color, buttonGoToPage.Click);
-                            adapter.SetImage(buttonGoToPage.ID, buttonGoToPage.Image);
-                            adapter.SetText(buttonGoToPage.ID, "");
+                        case "ButtonGoToPage":
+                            this.buttonGoToPage = (ButtonGoToPage)item;
+                            this.buttonGoToPage.Event = adapter.ShowPage;
+                            this.buttonGoToPage.ID = adapter.CreateButton(this.buttonGoToPage.PositionX, this.buttonGoToPage.PositionY, this.buttonGoToPage.Width, this.buttonGoToPage.Height, this.buttonGoToPage.Color, this.buttonGoToPage.Click);
+                            adapter.SetImage(this.buttonGoToPage.ID, this.buttonGoToPage.Image);
+                            adapter.SetText(this.buttonGoToPage.ID, "");
                             break;
 
                         case "DragContainer":
-                            dragSource = (DragContainer)item;
-                            dragSource.ID = adapter.CreateImage(dragSource.PositionX, dragSource.PositionY, dragSource.Width, dragSource.Height);
-                            adapter.SetImage(dragSource.ID, dragSource.Image);
+                            this.dragSource = (DragContainer)item;
+                            this.dragSource.ID = adapter.CreateImage(this.dragSource.PositionX, this.dragSource.PositionY, this.dragSource.Width, this.dragSource.Height);
+                            adapter.SetImage(this.dragSource.ID, this.dragSource.Image);
                             break;
 
-                        // case "DragAndDropDestination":
-                        //     dragAndDropDestination = (DragAndDropDestination)item;
-                        //     dragAndDropDestination.ID = adapter.CreateDragAndDropDestination(dragAndDropDestination.PositionX, dragAndDropDestination.PositionY, dragAndDropDestination.Width, dragAndDropDestination.Height);
-                        //     adapter.SetImage(dragAndDropDestination.ID, dragAndDropDestination.Image);
-                        //     break;
-
-                        // case "DragAndDropItem":
-                        //     dragAndDropItem = (DragAndDropItem)item;
-                        //     dragAndDropItem.ID = adapter.CreateDragAndDropItem(dragAndDropItem.PositionX, dragAndDropItem.PositionY, dragAndDropItem.Width, dragAndDropItem.Height);
-                        //     adapter.AddItemToDragAndDropSource(dragAndDropItem.Container.ID, dragAndDropItem.ID);
-                        //     adapter.SetImage(dragAndDropItem.ID, dragAndDropItem.Image);
-                        //     break;
-
                         case "DraggableItem":
-                            draggableItem = (DraggableItem)item;
-                            draggableItem.ID = adapter.CreateImage(draggableItem.PositionX, draggableItem.PositionY, draggableItem.Width, draggableItem.Height);
-                            adapter.MakeDraggable(draggableItem.ID, draggableItem.Draggable);
-                            adapter.SetImage(draggableItem.ID, draggableItem.Image);
-                            adapter.Center(draggableItem.ID, draggableItem.Container.ID);
+                            this.draggableItem = (DraggableItem)item;
+                            this.draggableItem.ID = adapter.CreateImage(this.draggableItem.PositionX, this.draggableItem.PositionY, this.draggableItem.Width, this.draggableItem.Height);
+                            adapter.MakeDraggable(this.draggableItem.ID, this.draggableItem.Draggable);
+                            adapter.Center(this.draggableItem.ID, this.draggableItem.Container.ID);
+                            adapter.SetImage(this.draggableItem.ID, this.draggableItem.Image);
+                            break;
+                        default :
+                            adapter.Debug("ASasssssssssssssssssssssssssssssssssssss" + itemType.Last());
                             break;
                     }
                 }

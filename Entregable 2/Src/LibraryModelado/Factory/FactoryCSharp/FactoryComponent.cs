@@ -19,7 +19,7 @@ namespace Proyecto.Factory.CSharp
                 case "World":
                     IComponent world = factoryWorld.MakeComponent(tag);
                     return world;
-                    
+                                        
                 case "Level":
                     IComponent level = factorySpace.MakeComponent(tag);
                     return level;

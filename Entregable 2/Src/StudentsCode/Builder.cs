@@ -30,7 +30,6 @@ namespace Proyecto.StudentsCode
         /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
         public void Build(IMainViewAdapter providedAdapter)
         {
-            IFactoryComponent factoryComponent = new FactoryComponent();
             this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
             this.adapter.AfterBuild += Setup;
 
@@ -39,17 +38,15 @@ namespace Proyecto.StudentsCode
 
             foreach (Tag tag in tags)
             {
-                factoryComponent.MakeComponent(tag);
+                this.factoryComponent.MakeComponent(tag);
             }
 
-            foreach (Space level in world.SpaceList)
-            {
-                level.CreateUnityLevel(adapter);
-                foreach (Items item in level.ItemList)
-                {
-                    c.CreateUnityItems(adapter);
-                }
-            }
+            c.CreateUnityItems(this.adapter);
+
+
+
+
+            
             this.firstPage = this.world.SpaceList[0];
             this.adapter.AfterBuild();
         }
