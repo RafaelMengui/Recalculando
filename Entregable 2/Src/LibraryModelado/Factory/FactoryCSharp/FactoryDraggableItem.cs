@@ -6,6 +6,10 @@ using System;
 
 namespace Proyecto.Factory.CSharp
 {
+    /// <summary>
+    /// Esta clase es la responsable de crear items que van a ser arrastables. 
+    /// Utiliza la interfaz IFactoryComponent.
+    /// </summary>
     public class FactoryDraggableItem : IFactoryComponent
     {
         private string name, image, containerName;
@@ -13,6 +17,11 @@ namespace Proyecto.Factory.CSharp
         private bool draggable;
         private Space level;
         World world = Singleton<World>.Instance;
+        /// <summary>
+        /// Se sobreescribe el método de la clase IFactoryComponent
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns>Items</returns>
 
         public override IComponent MakeComponent(Tag tag)
         {

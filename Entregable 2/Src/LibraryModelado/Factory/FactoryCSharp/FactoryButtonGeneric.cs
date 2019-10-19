@@ -6,13 +6,21 @@ using System;
 
 namespace Proyecto.Factory.CSharp
 {
+    /// <summary>
+    /// Esta clase es la responsable de crear objetos Botones Genéricos
+    /// Utiliza la interfaz IFactoryComponent
+    /// </summary>
     public class FactoryButtonGeneric : IFactoryComponent
     {
         private string name, color, image;
         private int width, height, positionX, positionY;
         private Space level;
         World world = Singleton<World>.Instance;
-
+        /// <summary>
+        /// Se sobreescribe el método de la clase IFactoryComponent
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns>Items</returns>
         public override IComponent MakeComponent(Tag tag)
         {
             this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
