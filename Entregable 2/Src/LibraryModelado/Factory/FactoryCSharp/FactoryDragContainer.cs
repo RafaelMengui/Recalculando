@@ -6,12 +6,22 @@ using System;
 
 namespace Proyecto.Factory.CSharp
 {
+    /// <summary>
+    /// Esta clase es la responsable de crear objetos Container. 
+    /// Utiliza la interfaz IFactoryComponent.
+    /// </summary>
     public class FactoryDragContainer: IFactoryComponent
     {
         private string name, image;
         private int width, height, positionX, positionY;
         private Space level;
         World world = Singleton<World>.Instance;
+        
+        /// <summary>
+        /// Se sobreescribe el método de la clase IFactoryComponent
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns> Items</returns>
 
         public override IComponent MakeComponent(Tag tag)
         {
