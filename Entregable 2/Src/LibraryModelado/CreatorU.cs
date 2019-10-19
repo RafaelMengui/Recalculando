@@ -23,7 +23,7 @@ namespace Proyecto.LibraryModelado
         /// Tipos utilizados para castear los items.
         /// </summary>
         Button button; ButtonAudio buttonAudio; ButtonGoToPage buttonGoToPage; Image image; DraggableItem draggableItem;
-        DragAndDropDestination dragAndDropDestination; DragAndDropSource dragAndDropSource; DragAndDropItem dragAndDropItem;
+        DragContainer dragSource;
 
         /// <summary>
         /// Metodo para crear todos los objetos en unity.
@@ -39,11 +39,11 @@ namespace Proyecto.LibraryModelado
                     string[] itemType = Convert.ToString(item.GetType()).Split('.');
                     switch (itemType[itemType.Length - 1])
                     {
-                        case "Button":
-                            button = (Button)item;
-                            button.ID = adapter.CreateButton(button.PositionX, button.PositionY, button.Width, button.Height, button.Color, button.Click);
-                            adapter.SetImage(button.ID, button.Image);
-                            break;
+                        // case "Button":
+                        //     button = (Button)item;
+                        //     button.ID = adapter.CreateButton(button.PositionX, button.PositionY, button.Width, button.Height, button.Color, button.Click);
+                        //     adapter.SetImage(button.ID, button.Image);
+                        //     break;
 
                         case "Image":
                             image = (Image)item;
@@ -51,15 +51,15 @@ namespace Proyecto.LibraryModelado
                             adapter.SetImage(image.ID, image.Image);
                             break;
 
-                        case "ButtonAudio":
-                            buttonAudio = (ButtonAudio)item;
-                            buttonAudio.Event = adapter.PlayAudio;
-                            buttonAudio.ID = adapter.CreateButton(buttonAudio.PositionX, buttonAudio.PositionY, buttonAudio.Width, buttonAudio.Height, buttonAudio.Color, buttonAudio.Click);
-                            adapter.SetImage(buttonAudio.ID, buttonAudio.Image);
-                            adapter.SetText(buttonAudio.ID, "");
-                            break;
+                        // case "ButtonAudio":
+                        //     buttonAudio = (ButtonAudio)item;
+                        //     buttonAudio.Event = adapter.PlayAudio;
+                        //     buttonAudio.ID = adapter.CreateButton(buttonAudio.PositionX, buttonAudio.PositionY, buttonAudio.Width, buttonAudio.Height, buttonAudio.Color, buttonAudio.Click);
+                        //     adapter.SetImage(buttonAudio.ID, buttonAudio.Image);
+                        //     adapter.SetText(buttonAudio.ID, "");
+                        //     break;
 
-                        case "ButtonGoToPage":
+                        case "Button":
                             buttonGoToPage = (ButtonGoToPage)item;
                             buttonGoToPage.Event = adapter.ShowPage;
                             buttonGoToPage.ID = adapter.CreateButton(buttonGoToPage.PositionX, buttonGoToPage.PositionY, buttonGoToPage.Width, buttonGoToPage.Height, buttonGoToPage.Color, buttonGoToPage.Click);
@@ -67,30 +67,31 @@ namespace Proyecto.LibraryModelado
                             adapter.SetText(buttonGoToPage.ID, "");
                             break;
 
-                        case "DragAndDropSource":
-                            dragAndDropSource = (DragAndDropSource)item;
-                            dragAndDropSource.ID = adapter.CreateDragAndDropSource(dragAndDropSource.PositionX, dragAndDropSource.PositionY, dragAndDropSource.Width, dragAndDropSource.Height);
-                            adapter.SetImage(dragAndDropSource.ID, dragAndDropSource.Image);
+                        case "DragContainer":
+                            dragSource = (DragContainer)item;
+                            dragSource.ID = adapter.CreateImage(dragSource.PositionX, dragSource.PositionY, dragSource.Width, dragSource.Height);
+                            adapter.SetImage(dragSource.ID, dragSource.Image);
                             break;
 
-                        case "DragAndDropDestination":
-                            dragAndDropDestination = (DragAndDropDestination)item;
-                            dragAndDropDestination.ID = adapter.CreateDragAndDropDestination(dragAndDropDestination.PositionX, dragAndDropDestination.PositionY, dragAndDropDestination.Width, dragAndDropDestination.Height);
-                            adapter.SetImage(dragAndDropDestination.ID, dragAndDropDestination.Image);
-                            break;
+                        // case "DragAndDropDestination":
+                        //     dragAndDropDestination = (DragAndDropDestination)item;
+                        //     dragAndDropDestination.ID = adapter.CreateDragAndDropDestination(dragAndDropDestination.PositionX, dragAndDropDestination.PositionY, dragAndDropDestination.Width, dragAndDropDestination.Height);
+                        //     adapter.SetImage(dragAndDropDestination.ID, dragAndDropDestination.Image);
+                        //     break;
 
-                        case "DragAndDropItem":
-                            dragAndDropItem = (DragAndDropItem)item;
-                            dragAndDropItem.ID = adapter.CreateDragAndDropItem(dragAndDropItem.PositionX, dragAndDropItem.PositionY, dragAndDropItem.Width, dragAndDropItem.Height);
-                            adapter.AddItemToDragAndDropSource(dragAndDropItem.Container.ID, dragAndDropItem.ID);
-                            adapter.SetImage(dragAndDropItem.ID, dragAndDropItem.Image);
-                            break;
+                        // case "DragAndDropItem":
+                        //     dragAndDropItem = (DragAndDropItem)item;
+                        //     dragAndDropItem.ID = adapter.CreateDragAndDropItem(dragAndDropItem.PositionX, dragAndDropItem.PositionY, dragAndDropItem.Width, dragAndDropItem.Height);
+                        //     adapter.AddItemToDragAndDropSource(dragAndDropItem.Container.ID, dragAndDropItem.ID);
+                        //     adapter.SetImage(dragAndDropItem.ID, dragAndDropItem.Image);
+                        //     break;
 
                         case "DraggableItem":
                             draggableItem = (DraggableItem)item;
                             draggableItem.ID = adapter.CreateImage(draggableItem.PositionX, draggableItem.PositionY, draggableItem.Width, draggableItem.Height);
                             adapter.MakeDraggable(draggableItem.ID, draggableItem.Draggable);
                             adapter.SetImage(draggableItem.ID, draggableItem.Image);
+                            adapter.Center(draggableItem.ID, draggableItem.Container.ID);
                             break;
                     }
                 }

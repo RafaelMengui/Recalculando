@@ -9,10 +9,10 @@ namespace Proyecto.Factory.CSharp
     /// </summary>
     public class FactoryItem : IFactoryComponent
     {
-        private FactoryButton factoryButton;
-        private FactoryImage factoryImage;
-        private FactoryDraggableItem factoryDraggableItem;
-        private FactoryDragContainer factoryDragContainer;
+        private FactoryButton factoryButton = new FactoryButton();
+        private FactoryImage factoryImage = new FactoryImage();
+        private FactoryDraggableItem factoryDraggableItem = new FactoryDraggableItem();
+        private FactoryDragContainer factoryDragContainer = new FactoryDragContainer();
 
         /// <summary>
         /// Se sobreescribe el método de la clase IFactoryComponent

@@ -10,9 +10,10 @@ namespace Proyecto.Factory.CSharp
     /// </summary>
     public class FactoryComponent : IFactoryComponent
     {
-        private FactoryWorld factoryWorld;
-        private FactorySpace factorySpace;
-        private FactoryItem factoryItem;
+        private FactoryWorld factoryWorld = new FactoryWorld();
+        private FactorySpace factorySpace = new FactorySpace();
+        private FactoryItem factoryItem = new FactoryItem();
+
         protected World world = Singleton<World>.Instance;
         /// <summary>
         /// Se sobreescribe el método de la clase IFactoryComponent
@@ -30,12 +31,10 @@ namespace Proyecto.Factory.CSharp
                 case "Level":
                     IComponent level = factorySpace.MakeComponent(tag);
                     return level;
-                    
-                case "Items":
+
+                default:
                     IComponent item = factoryItem.MakeComponent(tag);
                     return item;
-
-                default: throw new System.Exception($"Invalid Tag Name {tag.Nombre}");
             }
         }        
     }

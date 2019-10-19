@@ -2,11 +2,11 @@
 
 	<Level Name="first" Width="0" Height="0" Background="page1.png">
 
-		<ButtonAudio Name="pirata" PositionX="-400" PositionY="150" Width="200" Height="150" Photo="bill20.png" Color="#FCFCFC" Audio="piratesSound.wav"/>
-		<ButtonAudio Name="kahoot" PositionX="-400" PositionY="-150" Width="200" Height="150" Photo="bill200.png" Color="#FCFCFC" Audio="kahoot.wav"/>
-		<ButtonAudio Name="wii" PositionX="400" PositionY="150" Width="200" Height="150" Photo="bill500.png" Color="#FCFCFC" Audio="wii.wav"/>
-		<ButtonAudio Name="nada" PositionX="400" PositionY="-150" Width="200" Height="150" Photo="bill10.png" Color="#FCFCFC" Audio="vacio.wav"/>
-		<ButtonGoToPage Name="gotofirst" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="secondpage"/>
+		<Button Name="pirata" Type="Audio" PositionX="-400" PositionY="150" Width="200" Height="150" Photo="bill20.png" Color="#FCFCFC" Audio="piratesSound.wav"/>
+		<Button Name="kahoot" Type="Audio" PositionX="-400" PositionY="-150" Width="200" Height="150" Photo="bill200.png" Color="#FCFCFC" Audio="kahoot.wav"/>
+		<Button Name="wii" Type="Audio" PositionX="400" PositionY="150" Width="200" Height="150" Photo="bill500.png" Color="#FCFCFC" Audio="wii.wav"/>
+		<Button Name="nada" Type="Audio" PositionX="400" PositionY="-150" Width="200" Height="150" Photo="bill10.png" Color="#FCFCFC" Audio="vacio.wav"/>
+		<Button Name="gotofirst" Type="GoToPage" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="secondpage"/>
 
 	</Level>
 
@@ -16,19 +16,17 @@
 		<Image Name="nubeBananas" PositionX="465" PositionY="140" Width="200" Height="200" Photo="nubeBananas.png"/>
 
 		<Image Name="mesa" PositionX="0" PositionY="-60" Width="300" Height="300" Photo="table.png"/>
-		<DragAndDropDestination Name="bowl" PositionX="645" PositionY="365" Width="150" Height="100" Photo="bowl.png"/>
+		<DragContainer Name="bowl" PositionX="645" PositionY="365" Width="150" Height="100" Photo="bowl.png"/>
 		
-		<DragAndDropSource Name="bananaContainer" PositionX="75" PositionY="190" Width="115" Height="115" Photo="recuadro.png"/>
-		<DragAndDropSource Name="chocolateContainer" PositionX="190" PositionY="190" Width="115" Height="115" Photo="recuadro.png"/>
-		<DragAndDropSource Name="polloContainer" PositionX="75" PositionY="75" Width="115" Height="115" Photo="recuadro.png"/>
-		<DragAndDropSource Name="carneContainer" PositionX="190" PositionY="75" Width="115" Height="115" Photo="recuadro.png"/>
+		<DragContainer Name="bananaContainer" PositionX="75" PositionY="190" Width="115" Height="115" Photo="recuadro.png"/>
+		<DragContainer Name="chocolateContainer" PositionX="190" PositionY="190" Width="115" Height="115" Photo="recuadro.png"/>
+		<DragContainer Name="polloContainer" PositionX="75" PositionY="75" Width="115" Height="115" Photo="recuadro.png"/>
+		<DragContainer Name="carneContainer" PositionX="190" PositionY="75" Width="115" Height="115" Photo="recuadro.png"/>
 
-		<DraggableItem Name="banana1" PositionX="-560" PositionY="-85" Width="85" Height="85" Photo="banana.png" Draggable="true"/>
-		<DraggableItem Name="banana2" PositionX="-560" PositionY="-85" Width="85" Height="85" Photo="banana.png" Draggable="true"/>
-		<DraggableItem Name="banana3" PositionX="-560" PositionY="-85" Width="85" Height="85" Photo="banana.png" Draggable="true"/>
-		<DragAndDropItem Name="chocolate" PositionX="0" PositionY="0" Width="85" Height="85" Photo="chocolate.png" Container="chocolateContainer"/>
-		<DragAndDropItem Name="pollo" PositionX="0" PositionY="0" Width="85" Height="85" Photo="pollo.png" Container="polloContainer"/>
-		<DragAndDropItem Name="carne" PositionX="0" PositionY="0" Width="85" Height="85" Photo="carne.png" Container="carneContainer"/>
+		<DraggableItem Name="banana" PositionX="0" PositionY="0" Width="85" Height="85" Photo="banana.png" Draggable="true" Container="bananaContainer"/>
+		<DraggableItem Name="chocolate" PositionX="0" PositionY="0" Width="85" Height="85" Photo="chocolate.png" Draggable="true" Container="chocolateContainer"/>
+		<DraggableItem Name="pollo" PositionX="0" PositionY="0" Width="85" Height="85" Photo="pollo.png" Draggable="true" Container="polloContainer"/>
+		<DraggableItem Name="carne" PositionX="0" PositionY="0" Width="85" Height="85" Photo="carne.png" Draggable="true" Container="carneContainer"/>
 
 	</Level>
 	

@@ -21,6 +21,7 @@ namespace Proyecto.StudentsCode
         private IMainViewAdapter adapter;
         private Space firstPage;
         World world = Singleton<World>.Instance;
+        CreatorU c = new CreatorU();
         FactoryComponent factoryComponent = new FactoryComponent();
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace Proyecto.StudentsCode
                 level.CreateUnityLevel(adapter);
                 foreach (Items item in level.ItemList)
                 {
-                    
+                    c.CreateUnityItems(adapter);
                 }
             }
             this.firstPage = this.world.SpaceList[0];
