@@ -181,27 +181,20 @@ namespace Proyecto.LibraryModelado
             return image_;
         }
 
-        /// <summary>
-        /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DraggableItem.
-        /// Crea una imagen, y utiliza el metodo adapter.MakeDraggable().
-        /// Agrega el item creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
-        /// </summary>
-        /// <param name="tag"></param>
-        /// <returns><see cref="Items"/>.</returns>
-        public Items AddDraggableItem(Tag tag)
-        {
-            name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
-            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
-            positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-            positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
-            image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-            draggable = Convert.ToBoolean(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
+        // public Items AddDraggableItem(Tag tag)
+        // {
+        //     name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+        //     width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+        //     height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+        //     positionX = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+        //     positionY = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+        //     image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+        //     draggable = Convert.ToBoolean(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
 
-            Items draggableItem = new DraggableItem(name, this.Level, positionX, positionY, width, height, image, draggable);
-            this.Level.ItemList.Add(draggableItem);
-            return draggableItem;
-        }
+        //     Items draggableItem = new DraggableItem(name, this.Level, positionX, positionY, width, height, image, draggable);
+        //     this.Level.ItemList.Add(draggableItem);
+        //     return draggableItem;
+        // }
 
         /// <summary>
         /// Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropSource.

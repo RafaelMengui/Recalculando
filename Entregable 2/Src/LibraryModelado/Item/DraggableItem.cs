@@ -10,6 +10,7 @@ namespace Proyecto.Item
     {
         DropEvent onDrop;
         private bool draggable;
+        private Items container;
 
         /// <summary>
         /// Constructor, instancia un objeto DraggableItem.
@@ -22,16 +23,24 @@ namespace Proyecto.Item
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del Item.</param>
         /// <param name="draggable">Bool que identifica si es arrastrable.</param>
-        public DraggableItem(string name, Space level, int positionX, int positionY, int width, int height, string image, bool draggable)
+        /// <param name="container">Container en donde es creado el item.</param>
+        public DraggableItem(string name, Space level, int positionX, int positionY, int width, int height, string image, bool draggable, Items container)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Draggable = draggable;
+            this.Container = container;
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets del container.
         /// </summary>
-        /// <value></value>
+        /// <value><see cref="Items"/>.</value>
+        public Items Container { get; set; }
+
+        /// <summary>
+        /// Gets or sets de si el item es arrastrable.
+        /// </summary>
+        /// <value>bool arrastrable.</value>
         public bool Draggable { get; set; }
     }
 }

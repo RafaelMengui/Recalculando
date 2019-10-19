@@ -36,6 +36,8 @@ namespace Proyecto.LibraryModelado
         {
             this.Name = name;
             this.ID = id;
+            this.Width = 1270;
+            this.Height = 570;
             this.World = world;
             this.ItemList = new List<Items>();
         }
@@ -51,6 +53,18 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <value>String Unity ID</value>
         public string ID { get; set; }
+
+        /// <summary>
+        /// Gets del ancho del nivel.
+        /// </summary>
+        /// <value>Int ancho del nivel.</value>
+        public int Width { get; }
+
+        /// <summary>
+        /// Gets de la altura del nivel.
+        /// </summary>
+        /// <value>Int altura del nivel.</value>
+        public int Height { get; }
 
         /// <summary>
         /// Gets or sets del nombre del mundo al que pertenece.

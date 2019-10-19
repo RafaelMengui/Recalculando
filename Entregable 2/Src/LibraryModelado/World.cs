@@ -20,7 +20,6 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Constructor. Inicializa una instancia de World.
         /// </summary>
-        /// <param name="name">Nombre del mundo.</param>
         public World()
         {
             this.Name = name;

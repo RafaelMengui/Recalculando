@@ -8,6 +8,7 @@ using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
 using System;
 using System.Collections.Generic;
+using Proyecto.Factory.CSharp;
 
 namespace Proyecto.StudentsCode
 {
@@ -18,9 +19,9 @@ namespace Proyecto.StudentsCode
     public class Builder : IBuilder
     {
         private IMainViewAdapter adapter;
-        private CreatorC creatorC = Singleton<CreatorC>.Instance;
-        private CreatorU creatorU = Singleton<CreatorU>.Instance;
         private Space firstPage;
+        World world = Singleton<World>.Instance;
+        FactoryComponent factoryComponent = new FactoryComponent();
 
         /// <summary>
         /// Construye una interfaz de usuario interactiva utilizando un <see cref="IMainViewAdapter"/>.
@@ -28,51 +29,27 @@ namespace Proyecto.StudentsCode
         /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
         public void Build(IMainViewAdapter providedAdapter)
         {
+            IFactoryComponent factoryComponent = new FactoryComponent();
             this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            this.adapter.AfterBuild = Setup;
+            this.adapter.AfterBuild += Setup;
 
             const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
             List<Tag> tags = Parser.ParserHTML(LeerHtml.RetornarHTML(XMLfile));
 
-            //Se crean los objetos C#
             foreach (Tag tag in tags)
             {
-                switch (tag.Nombre)
+                factoryComponent.MakeComponent(tag);
+            }
+
+            foreach (Space level in world.SpaceList)
+            {
+                level.CreateUnityLevel(adapter);
+                foreach (Items item in level.ItemList)
                 {
-                    case "World":
-                        this.creatorC.World = this.creatorC.AddWorld(tag);
-                        break;
-                    case "Level":
-                        this.creatorC.Level = this.creatorC.AddLevel(tag);
-                        break;
-                    case "Button":
-                        Items button = this.creatorC.AddButton(tag);
-                        break;
-                    case "ButtonAudio":
-                        Items buttonAudio = this.creatorC.AddButtonAudio(tag);
-                        break;
-                    case "ButtonGoToPage":
-                        Items buttonGoTo = this.creatorC.AddButtonGoToPage(tag);
-                        break;
-                    case "DraggableItem":
-                        Items draggable = this.creatorC.AddDraggableItem(tag);
-                        break;
-                    case "Image":
-                        Items image = this.creatorC.AddImage(tag);
-                        break;
-                    case "DragAndDropSource":
-                        Items dragAndDropSource = this.creatorC.AddDragAndDropSource(tag);
-                        break;
-                    case "DragAndDropDestination":
-                        Items dragAndDropDestination = this.creatorC.AddDragAndDropDestination(tag);
-                        break;
-                    case "DragAndDropItem":
-                        Items dragAndDropItem = this.creatorC.AddDragAndDropItem(tag);
-                        break;
+                    
                 }
             }
-            this.firstPage = this.creatorC.World.SpaceList[0];
-            this.creatorU.CreateUnityItems(this.adapter);
+            this.firstPage = this.world.SpaceList[0];
             this.adapter.AfterBuild();
         }
 

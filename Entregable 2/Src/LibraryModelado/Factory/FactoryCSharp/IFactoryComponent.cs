@@ -1,6 +1,7 @@
 using Proyecto.LibraryModelado;
 using Proyecto.LeerHTML;
-namespace Proyecto.FactoryCSharp
+
+namespace Proyecto.Factory.CSharp
 {
     public abstract class IFactoryComponent
     {

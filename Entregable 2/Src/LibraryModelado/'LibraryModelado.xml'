@@ -143,15 +143,6 @@
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.CreatorC.AddDraggableItem(Proyecto.LeerHTML.Tag)">
-            <summary>
-            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DraggableItem.
-            Crea una imagen, y utiliza el metodo adapter.MakeDraggable().
-            Agrega el item creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
-            </summary>
-            <param name="tag"></param>
-            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
-        </member>
         <member name="M:Proyecto.LibraryModelado.CreatorC.AddDragAndDropSource(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropSource.
@@ -206,6 +197,12 @@
         <member name="M:Proyecto.LibraryModelado.IButton.Click(System.String)">
             <summary>
             Acciones realizadas al hacer click en un boton. Eventos.
+            </summary>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.IComponent">
+            <summary>
+            Interfaz IComponent.
+            Todos los objetos creados (World, Space, Items) seran de tipo IComponent.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Items">
@@ -324,13 +321,11 @@
             Imagen de fondo del nivel.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Level.#ctor(System.String,System.Int32,System.Int32,System.String)">
+        <member name="M:Proyecto.LibraryModelado.Level.#ctor(System.String,System.String)">
             <summary>
             Constructor. Inicializa una instancia de Level.
             </summary>
             <param name="name">Nombre del nivel.</param>
-            <param name="width">Ancho del nivel.</param>
-            <param name="height">Altura del nivel.</param>
             <param name="image">Nombre de la imagen de fondo del nivel.</param>
         </member>
         <member name="P:Proyecto.LibraryModelado.Level.Image">
@@ -368,33 +363,21 @@
             Nombre del Mundo al que Pertencen.
             </summary>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Space.name">
+        <member name="F:Proyecto.LibraryModelado.Space.name">
             <summary>
             Nombre del Espacio.
             </summary> 
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Space.width">
-            <summary>
-            Ancho del espacio.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Space.height">
-            <summary>
-            Altura del espacio.
-            </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Space.id">
             <summary>
             Unity ID del Espacio.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Space.#ctor(System.String,System.Int32,System.Int32)">
+        <member name="M:Proyecto.LibraryModelado.Space.#ctor(System.String)">
             <summary>
             Inicializa una instancia de Espacios.
             </summary>
             <param name="name">Nombre del Espacio.</param>
-            <param name="width">Ancho del espacio.</param>
-            <param name="height">Altura del espacio.</param>
         </member>
         <member name="P:Proyecto.LibraryModelado.Space.Name">
             <summary>
@@ -408,23 +391,23 @@
             </summary>
             <value>String Unity ID</value>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Space.Width">
+            <summary>
+            Gets del ancho del nivel.
+            </summary>
+            <value>Int ancho del nivel.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Space.Height">
+            <summary>
+            Gets de la altura del nivel.
+            </summary>
+            <value>Int altura del nivel.</value>
+        </member>
         <member name="P:Proyecto.LibraryModelado.Space.World">
             <summary>
             Gets or sets del nombre del mundo al que pertenece.
             </summary>
             <value>String nombre del mundo.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Space.Width">
-            <summary>
-            Gets or sets del Ancho del espacio.
-            </summary>
-            <value>Ancho del Espacio.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Space.Height">
-            <summary>
-            Gets or sets de la Altura del espacio.
-            </summary>
-            <value>Altura del Espacio.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Space.ItemList">
             <summary>
@@ -448,41 +431,16 @@
             Nombre del Mundo.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.World.width">
-            <summary>
-            Ancho del mundo en pixeles.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.World.height">
-            <summary>
-            Altura del mundo en pixeles.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.World.#ctor(System.String,System.Int32,System.Int32)">
+        <member name="M:Proyecto.LibraryModelado.World.#ctor">
             <summary>
             Constructor. Inicializa una instancia de World.
             </summary>
-            <param name="name">Nombre del mundo.</param>
-            <param name="width">Ancho del mundo.</param>
-            <param name="height">Altura del mundo.</param>
         </member>
         <member name="P:Proyecto.LibraryModelado.World.Name">
             <summary>
             Gets or sets del nombre del mundo.
             </summary>
             <value>String nombre del mundo.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.World.Width">
-            <summary>
-            Gets or sets del Ancho del mundo.
-            </summary>
-            <value>Ancho del mundo.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.World.Height">
-            <summary>
-            Gets or sets de la altura del mundo.
-            </summary>
-            <value>Altura del mundo.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.World.SpaceList">
             <summary>
@@ -719,12 +677,35 @@
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del container.</param>
         </member>
+        <member name="T:Proyecto.Item.DragContainer">
+            <summary>
+            Clase DragContainer. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.DragContainer.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Constructor. Instancia Objetos DragContainer.
+            </summary>
+            <param name="name">Nombre del container.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del container.</param>
+        </member>
+        <member name="P:Proyecto.Item.DragContainer.SavedItems">
+            <summary>
+            Lista de objetos items que son soltados dentro del container.
+            </summary>
+            <value>Lista de items.</value>
+        </member>
         <member name="T:Proyecto.Item.DraggableItem">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Proyecto.Item.DraggableItem.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Boolean)">
+        <member name="M:Proyecto.Item.DraggableItem.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Boolean,Proyecto.LibraryModelado.Items)">
             <summary>
             Constructor, instancia un objeto DraggableItem.
             </summary>
@@ -736,12 +717,19 @@
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del Item.</param>
             <param name="draggable">Bool que identifica si es arrastrable.</param>
+            <param name="container">Container en donde es creado el item.</param>
+        </member>
+        <member name="P:Proyecto.Item.DraggableItem.Container">
+            <summary>
+            Gets or sets del container.
+            </summary>
+            <value><see cref="T:Proyecto.LibraryModelado.Items"/>.</value>
         </member>
         <member name="P:Proyecto.Item.DraggableItem.Draggable">
             <summary>
-            
+            Gets or sets de si el item es arrastrable.
             </summary>
-            <value></value>
+            <value>bool arrastrable.</value>
         </member>
         <member name="T:Proyecto.Item.Image">
             <summary>
