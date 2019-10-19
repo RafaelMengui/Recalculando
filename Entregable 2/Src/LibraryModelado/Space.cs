@@ -6,13 +6,12 @@
 using Proyecto.Common;
 using System.Collections.Generic;
 
-
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
     /// Clase abstracta de Espacio.
     /// </summary>
-    public abstract class Space
+    public abstract class Space : IComponent
     {
         /// <summary>
         /// Nombre del Mundo al que Pertencen.
@@ -22,17 +21,7 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Nombre del Espacio.
         /// </summary> 
-        private string name { get; set; }
-
-        /// <summary>
-        /// Ancho del espacio.
-        /// </summary>
-        private int width;
-
-        /// <summary>
-        /// Altura del espacio.
-        /// </summary>
-        private int height;
+        private string name;
 
         /// <summary>
         /// Unity ID del Espacio.
@@ -43,14 +32,10 @@ namespace Proyecto.LibraryModelado
         /// Inicializa una instancia de Espacios.
         /// </summary>
         /// <param name="name">Nombre del Espacio.</param>
-        /// <param name="width">Ancho del espacio.</param>
-        /// <param name="height">Altura del espacio.</param>
-        public Space(string name, int width, int height)
+        public Space(string name)
         {
             this.Name = name;
             this.ID = id;
-            this.Width = width;
-            this.Height = height;
             this.World = world;
             this.ItemList = new List<Items>();
         }
@@ -72,18 +57,6 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <value>String nombre del mundo.</value>
         public World World { get; set; }
-
-        /// <summary>
-        /// Gets or sets del Ancho del espacio.
-        /// </summary>
-        /// <value>Ancho del Espacio.</value>
-        public int Width { get; set; }
-
-        /// <summary>
-        /// Gets or sets de la Altura del espacio.
-        /// </summary>
-        /// <value>Altura del Espacio.</value>
-        public int Height { get; set; }
 
         /// <summary>
         /// Gets or sets de la lista de items pertenecientes a un espacio.

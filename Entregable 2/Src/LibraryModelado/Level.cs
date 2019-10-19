@@ -21,11 +21,9 @@ namespace Proyecto.LibraryModelado
         /// Constructor. Inicializa una instancia de Level.
         /// </summary>
         /// <param name="name">Nombre del nivel.</param>
-        /// <param name="width">Ancho del nivel.</param>
-        /// <param name="height">Altura del nivel.</param>
         /// <param name="image">Nombre de la imagen de fondo del nivel.</param>
-        public Level(string name, int width, int height, string image)
-        : base(name, width, height)
+        public Level(string name, string image)
+        : base(name)
         {
             this.Image = image;
         }

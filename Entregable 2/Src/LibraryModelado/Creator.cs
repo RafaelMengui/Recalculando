@@ -8,7 +8,6 @@ using Proyecto.LeerHTML;
 using System;
 using System.Collections.Generic;
 
-
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
@@ -75,10 +74,8 @@ namespace Proyecto.LibraryModelado
         public World AddWorld(Tag tag)
         {
             name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
-            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
 
-            this.World = new World(name, width, height);
+            this.World = new World();
             return this.World;
         }
 
@@ -91,11 +88,9 @@ namespace Proyecto.LibraryModelado
         public Space AddLevel(Tag tag)
         {
             name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
-            width = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            height = Convert.ToInt32(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
             image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Background"; }).Valor;
 
-            this.Level = new Level(name, width, height, image);
+            this.Level = new Level(name, image);
             this.Level.World = this.World;
             this.World.SpaceList.Add(this.Level);
             return this.Level;

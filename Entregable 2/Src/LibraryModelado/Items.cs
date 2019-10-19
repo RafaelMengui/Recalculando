@@ -9,7 +9,7 @@ namespace Proyecto.LibraryModelado
     /// Clase abstracta de Items.
     /// Esta clase implementa Herencia*1
     /// </summary>
-    public abstract class Items
+    public abstract class Items : IComponent
     {
         /// <summary>
         /// Nombre del Item.
