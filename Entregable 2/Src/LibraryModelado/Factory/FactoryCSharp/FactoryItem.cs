@@ -1,45 +1,81 @@
+//--------------------------------------------------------------------------------
+// <copyright file="FactoryItem.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Factory.CSharp
 {
     /// <summary>
-    ///  Esta clase es la responsable de crear objetos Items. 
+    /// Esta clase es la responsable de delegar la responsabilidad de crear objetos Items.
     /// Utiliza la interfaz IFactoryComponent.
     /// </summary>
     public class FactoryItem : IFactoryComponent
     {
+        /// <summary>
+        /// Instancia de la fabrica responsable de delegar la responsabilidad de Crear los componentes Botones.
+        /// </summary>
+        /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
         private FactoryButton factoryButton = new FactoryButton();
+
+        /// <summary>
+        /// Instancia de la fabrica responsable de crear Imagenes en el modelado.
+        /// </summary>
+        /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
         private FactoryImage factoryImage = new FactoryImage();
+
+        /// <summary>
+        /// Instancia de la fabrica responsable de crear DraggableItems en el modelado.
+        /// </summary>
+        /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
         private FactoryDraggableItem factoryDraggableItem = new FactoryDraggableItem();
+
+        /// <summary>
+        /// Instancia de la fabrica responsable de crear DragContainers en el modelado.
+        /// </summary>
+        /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
         private FactoryDragContainer factoryDragContainer = new FactoryDragContainer();
 
         /// <summary>
-        /// Se sobreescribe el método de la clase IFactoryComponent
+        /// Sobrescribe el metodo abstracto de IFactoryComponent.
+        /// Es responsable de delegar la responsabilidad de crear objetos Items, a sus respectivos Factorys.
         /// </summary>
-        /// <param name="tag"></param>
-        /// <returns>IComponent</returns>
+        /// <param name="tag">Tag <see cref="Tag"/>.</param>
+        /// <returns>Componente <see cref="IComponent"/>.</returns>
         public override IComponent MakeComponent(Tag tag)
         {
             switch (tag.Nombre)
             {
                 case "Button":
-                    IComponent button = factoryButton.MakeComponent(tag);
-                    return button;
+                    {
+                        IComponent button = this.factoryButton.MakeComponent(tag);
+                        return button;
+                    }
 
                 case "Image":
-                    IComponent image = factoryImage.MakeComponent(tag);
-                    return image;
+                    {
+                        IComponent image = this.factoryImage.MakeComponent(tag);
+                        return image;
+                    }
 
                 case "DraggableItem":
-                    IComponent draggableItem = factoryDraggableItem.MakeComponent(tag);
-                    return draggableItem;
+                    {
+                        IComponent draggableItem = this.factoryDraggableItem.MakeComponent(tag);
+                        return draggableItem;
+                    }
 
                 case "DragContainer":
-                    IComponent dragContainer = factoryDragContainer.MakeComponent(tag);
-                    return dragContainer;
+                    {
+                        IComponent dragContainer = this.factoryDragContainer.MakeComponent(tag);
+                        return dragContainer;
+                    }
 
-                default: throw new System.Exception($"Invalid Tag Name {tag.Nombre}");
+                default:
+                    {
+                        throw new System.Exception($"Invalid Tag Name {tag.Nombre}");
+                    }
             }
         }
     }

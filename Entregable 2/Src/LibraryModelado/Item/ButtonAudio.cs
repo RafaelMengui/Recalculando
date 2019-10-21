@@ -3,35 +3,24 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using Proyecto.Common;
-using Proyecto.LibraryModelado;
-
 using System;
+using Proyecto.LibraryModelado;
 
 namespace Proyecto.Item
 {
     /// <summary>
-    /// Clase de Botones de audio. Hereda de <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
+    /// Clase responsable de crear botones, con la funcionalidad de reproducir un audio en el modelado.
+    /// Hereda de la clase abstracta <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
     /// </summary>
     public class ButtonAudio : Items, IButton
     {
         /// <summary>
         /// Accion de reproducir el sonido.
         /// </summary>
-        private Action<string> event_;
+        private Action<string> evento;
 
         /// <summary>
-        /// Color del Boton.
-        /// </summary>
-        private string color;
-
-        /// <summary>
-        /// Audio a reproducir por el boton.
-        /// </summary>
-        private string audioFile;
-
-        /// <summary>
-        /// Constructor. Instancia Objetos Button.
+        /// Initializes a new instance of ButtonAudio.
         /// </summary>
         /// <param name="name">Nombre del boton.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -47,7 +36,7 @@ namespace Proyecto.Item
         {
             this.Color = color;
             this.AudioFile = audioFile;
-            this.Event = event_;
+            this.Event = this.evento;
         }
 
         /// <summary>
@@ -71,6 +60,7 @@ namespace Proyecto.Item
         /// <summary>
         /// Acciones realizadas por el boton.
         /// </summary>
+        /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
             this.Event(this.AudioFile);

@@ -4,22 +4,23 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
-using Proyecto.Common;
 using Proyecto.LibraryModelado;
-namespace Proyecto.Item.NivelCocina
-{   
+
+namespace Proyecto.Item.KitchenLevel
+{
     /// <summary>
-    /// Clase de Alimentos. Hereda de <see cref="Items"/>
+    /// Clase responsable de crear objetos de alimentos arrastrables en el modelado.
+    /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
     public class Food : Items
-    {   
+    {
         /// <summary>
-        /// Container en el que es creado inicialmente el Item.
+        /// Accion que se ejecutara al soltar un alimento.
         /// </summary>
-        private Items container;
-        
+        private Action<string, float, float> onDrop;
+
         /// <summary>
-        /// Constructor. Instancia Objetos Food.
+        /// Initializes a new instance of Food.
         /// </summary>
         /// <param name="name">Nombre del Food.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -28,25 +29,40 @@ namespace Proyecto.Item.NivelCocina
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del Food.</param>
+        /// <param name="draggable">Bool que define si es arrastrable.</param>
         /// <param name="container">Container Source en donde es creado.</param>
-        public Food(string name, Space level, int positionX, int positionY, int width, int height, string image, Items container)
+        public Food(string name, Space level, int positionX, int positionY, int width, int height, string image, bool draggable, Items container)
         : base(name, level, positionX, positionY, width, height, image)
         {
+            this.Draggable = draggable;
             this.Container = container;
+            this.OnDrop = this.onDrop;
         }
 
         /// <summary>
-        /// Gets or sets del container en el que es creado inicialmente el Item.
+        /// Gets or sets del container.
         /// </summary>
-        /// <value><see cref="DragAndDropSource"/>.</value>
+        /// <value><see cref="Items"/>.</value>
         public Items Container { get; set; }
 
         /// <summary>
-        /// Metodo que guarde el item en el bowl
+        /// Gets or sets a value indicating whether el item es arrastrable.
         /// </summary>
-        /// <param name="Container"></param>
-        public void DropFood(DragAndDropDestination Container)
+        /// <value>Bool arrastrable.</value>
+        public bool Draggable { get; set; }
+
+        /// <summary>
+        /// Gets or sets de la accion a realizar al soltar el alimento.
+        /// </summary>
+        /// <value>Action.</value>
+        public Action<string, float, float> OnDrop { get; set; }
+
+        /// <summary>
+        /// Accion realizada al soltar el alimento.
+        /// </summary>
+        public void Drop()
         {
+            this.OnDrop(this.ID, this.PositionX, this.PositionY);
         }
     }
 }
