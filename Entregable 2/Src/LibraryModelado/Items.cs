@@ -3,57 +3,21 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using Proyecto.Common;
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
-    /// Clase abstracta de Items.
-    /// Esta clase implementa Herencia*1
+    /// Clase abstracta de Items en el modelado.
+    /// Implementa la interfaz <see cref="IComponent"/>.
     /// </summary>
-    public abstract class Items
+    public abstract class Items : IComponent
     {
-        /// <summary>
-        /// Nombre del Item.
-        /// </summary>
-        private string name;
-
-        /// <summary>
-        /// Nivel al que pertenece el Item.
-        /// </summary>
-        private Space level;
-
         /// <summary>
         /// Unity ID del item.
         /// </summary>
         private string id;
 
         /// <summary>
-        /// Posicion en eje Horizontal en pixeles.
-        /// </summary>
-        private int positionX;
-
-        /// <summary>
-        /// Posicion en eje Vertical en pixeles.
-        /// </summary>
-        private int positionY;
-
-        /// <summary>
-        /// Ancho en Pixeles.
-        /// </summary>
-        private int width;
-
-        /// <summary>
-        /// Altura en pixeles.
-        /// </summary>
-        private int height;
-
-        /// <summary>
-        /// Imagen del Item.
-        /// </summary>
-        private string image;
-
-        /// <summary>
-        /// Constructor. Inicializa una instancia de Items.
+        /// Initializes a new instance of Items.
         /// </summary>
         /// <param name="name">Nombre del Item.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -66,7 +30,7 @@ namespace Proyecto.LibraryModelado
         {
             this.Name = name;
             this.Level = level;
-            this.ID = id;
+            this.ID = this.id;
             this.PositionX = positionX;
             this.PositionY = positionY;
             this.Width = width;
@@ -121,11 +85,5 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <value>String path to image.</value>
         public string Image { get; set; }
-
-        /// <summary>
-        /// Metodo abstracto para crear objetos en Unity.
-        /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/></param>
-        public abstract void CreateUnityItem(IMainViewAdapter adapter);
     }
 }

@@ -8,9 +8,10 @@ using System.Collections.Generic;
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
-    /// Clase Modelo del mundo.
+    /// Clase responsable de crear objetos mundo.
+    /// Implementa la interfaz <see cref="IComponent"/>.
     /// </summary>
-    public class World
+    public class World : IComponent
     {
         /// <summary>
         /// Nombre del Mundo.
@@ -18,26 +19,11 @@ namespace Proyecto.LibraryModelado
         private string name;
 
         /// <summary>
-        /// Ancho del mundo en pixeles.
+        /// Initializes a new instance of world.
         /// </summary>
-        private int width;
-
-        /// <summary>
-        /// Altura del mundo en pixeles.
-        /// </summary>
-        private int height;
-
-        /// <summary>
-        /// Constructor. Inicializa una instancia de World.
-        /// </summary>
-        /// <param name="name">Nombre del mundo.</param>
-        /// <param name="width">Ancho del mundo.</param>
-        /// <param name="height">Altura del mundo.</param>
-        public World(string name, int width, int height)
+        public World()
         {
-            this.Name = name;
-            this.Width = width;
-            this.Height = height;
+            this.Name = this.name;
             this.SpaceList = new List<Space>();
         }
 
@@ -48,21 +34,9 @@ namespace Proyecto.LibraryModelado
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets del Ancho del mundo.
-        /// </summary>
-        /// <value>Ancho del mundo.</value>
-        public int Width { get; set; }
-
-        /// <summary>
-        /// Gets or sets de la altura del mundo.
-        /// </summary>
-        /// <value>Altura del mundo.</value>
-        public int Height { get; set; }
-
-        /// <summary>
-        /// Gets or sets de la lista de espacios pertenecientes a un mundo.
+        /// Gets de la lista de espacios pertenecientes a un mundo.
         /// </summary>
         /// <value>Lista de Objetos <see cref="Space"/>.</value>
-        public List<Space> SpaceList { get; set; }
+        public List<Space> SpaceList { get; }
     }
 }

@@ -3,18 +3,18 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using System;
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
-    /// Interfaz de Boton.
+    /// Interfaz de Botones.
+    /// Permite crear varios botones con diferentes funcionalidades.
     /// </summary>
-    public interface IButton 
+    public interface IButton
     {
         /// <summary>
-        /// Acciones realizadas al hacer click en un boton. Eventos.
+        /// Acciones y eventos realizados al hacer click en un boton.
         /// </summary>
-        void Click();
+        /// <param name="text">String.</param>
+        void Click(string text);
     }
 }
-

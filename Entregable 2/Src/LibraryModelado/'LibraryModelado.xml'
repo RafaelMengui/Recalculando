@@ -4,191 +4,747 @@
         <name>LibraryModelado</name>
     </assembly>
     <members>
-        <member name="T:Proyecto.LibraryModelado.Creator">
+        <member name="T:Proyecto.Factory.CSharp.FactoryButton">
             <summary>
-            Clase Creator. Contiene los metodos para crear objetos de tipo:
-            <see cref="P:Proyecto.LibraryModelado.Creator.World"/>, <see cref="T:Proyecto.LibraryModelado.Space"/>, <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            Esta clase es la responsable de delegar la responsabilidad de crear Botones.
+            Utiliza la interfaz IFactoryComponent.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.world">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButton.factoryButtonGeneric">
             <summary>
-            Objeto World asignado al Creator. <see cref="P:Proyecto.LibraryModelado.Creator.World"/>.
+            Instancia de la fabrica responsable de crear Botones genericos en el modelado.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButton.factoryButtonAudio">
+            <summary>
+            Instancia de la fabrica responsable de crear botones de audio en el modelado.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButton.factoryButtonGoToPage">
+            <summary>
+            Instancia de la fabrica responsable de crear botones GoToPage en el modelado.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryButton.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Es responsable de delegar la responsabilidad de crear Botones, a sus respectivos Factorys.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryButtonAudio">
+            <summary>
+            Esta clase es la responsable de crear objetos BotonAudio.
+            Utiliza la interfaz IFactoryComponent.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.level">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.name">
             <summary>
-            Objeto Space asignado al Creator (Nivel). <see cref="T:Proyecto.LibraryModelado.Space"/>.
+            Nombre del boton.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.name">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.color">
             <summary>
-            Atributos String utilizados para instanciar tipo World, Level, Items.
+            Color del boton.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.color">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.image">
             <summary>
-            Atributos String utilizados para instanciar tipo World, Level, Items.
+            Imagen del boton.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.image">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.audio">
             <summary>
-            Atributos String utilizados para instanciar tipo World, Level, Items.
+            Archivo de audio que reproduce el boton.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.containerName">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.width">
             <summary>
-            Atributos String utilizados para instanciar tipo World, Level, Items.
+            Ancho del boton.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.audio">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.height">
             <summary>
-            Atributos String utilizados para instanciar tipo World, Level, Items.
+            Altura del boton.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.pageName">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.positionX">
             <summary>
-            Atributos String utilizados para instanciar tipo World, Level, Items.
+            Posicion en X del boton.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.width">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.positionY">
             <summary>
-            Atributos Int utilizados para instanciar tipo World, Level, Items.
+            Posicion en Y del boton.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.height">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.level">
             <summary>
-            Atributos Int utilizados para instanciar tipo World, Level, Items.
+            Nivel del boton.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.positionX">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.world">
             <summary>
-            Atributos Int utilizados para instanciar tipo World, Level, Items.
+            Instancia del mundo.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Creator.positionY">
+        <member name="M:Proyecto.Factory.CSharp.FactoryButtonAudio.MakeComponent(Proyecto.LeerHTML.Tag)">
             <summary>
-            Atributos Int utilizados para instanciar tipo World, Level, Items.
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.ButtonAudio"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryButtonGeneric">
+            <summary>
+            Esta clase es la responsable de crear objetos Botones Genéricos.
+            Utiliza la interfaz IFactoryComponent.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.#ctor">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGeneric.name">
             <summary>
-            Constructor. Instancia un objeto Creator.
+            Nombre del boton.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.#ctor(Proyecto.LibraryModelado.World,Proyecto.LibraryModelado.Space)">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGeneric.color">
             <summary>
-            Constructor. Instancia un objeto tipo Creator.
+            Color del boton.
             </summary>
-            <param name="world">Tipo World.</param>
-            <param name="level">Tipo Level.</param>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Creator.World">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGeneric.image">
             <summary>
-            Gets or sets el objeto World asignado al Creator.
+            Imagen del boton.
             </summary>
-            <value>Tipo World.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Creator.Level">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGeneric.width">
             <summary>
-            Gets or sets el objeto Level asignado al Creator.
+            Ancho del boton.
             </summary>
-            <value>Tipo Level.</value>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddWorld(Proyecto.LeerHTML.Tag)">
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGeneric.height">
             <summary>
-            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Mundo.
+            Altura del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGeneric.positionX">
+            <summary>
+            Posicion en X del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGeneric.positionY">
+            <summary>
+            Posicion en Y del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGeneric.level">
+            <summary>
+            Nivel del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGeneric.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryButtonGeneric.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.Button"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryButtonGoToPage">
+            <summary>
+            Esta clase es la responsable de crear objetos Boton para ir a la próxima página.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.name">
+            <summary>
+            Nombre del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.color">
+            <summary>
+            Color del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.image">
+            <summary>
+            Imagen del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.pageName">
+            <summary>
+            Pagina de destino del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.width">
+            <summary>
+            Atributos int utilizados para crear el componente.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.height">
+            <summary>
+            Altura del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.positionX">
+            <summary>
+            Posicion en X del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.positionY">
+            <summary>
+            Posicion en Y del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.level">
+            <summary>
+            Nivel al que pertenece el boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryButtonGoToPage.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.ButtonGoToPage"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryComponent">
+            <summary>
+            Esta clase es la responsable de delegar la responsabilidad de crear componentes.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryComponent.factoryWorld">
+            <summary>
+            Instancia de la fabrica responsable de crear el mundo.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryComponent.factorySpace">
+            <summary>
+            Instancia de la fabrica responsable de crear un espacio en el modelado.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryComponent.factoryItem">
+            <summary>
+            Instancia de la fabrica responsable de delegar la responsabilidad de Crear los Items.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryComponent.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Es responsable de delegar la responsabilidad de crear componentes, a sus respectivos Factorys.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryDragContainer">
+            <summary>
+            Esta clase es la responsable de crear objetos Container.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDragContainer.name">
+            <summary>
+            Nombre del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDragContainer.image">
+            <summary>
+            Imagen del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDragContainer.width">
+            <summary>
+            Ancho del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDragContainer.height">
+            <summary>
+            Altura del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDragContainer.positionX">
+            <summary>
+            Posicion en X del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDragContainer.positionY">
+            <summary>
+            Posicion en Y del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDragContainer.level">
+            <summary>
+            Nivel al que pertenece el item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDragContainer.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryDragContainer.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.DragContainer"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryDraggableItem">
+            <summary>
+            Esta clase es la responsable de crear items que van a ser arrastables.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.name">
+            <summary>
+            Nombre del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.image">
+            <summary>
+            Imagen del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.containerName">
+            <summary>
+            Container del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.width">
+            <summary>
+            Ancho del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.height">
+            <summary>
+            Altura del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.positionX">
+            <summary>
+            Posicion en X del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.positionY">
+            <summary>
+            Posicion en Y del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.draggable">
+            <summary>
+            Define si el item es arrastrable.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.level">
+            <summary>
+            Nivel al que pertenece el item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryDraggableItem.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.DraggableItem"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryImage">
+            <summary>
+            Esta clase es la responsable de crear las imagenes.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryImage.name">
+            <summary>
+            Nombre de la imagen.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryImage.photo">
+            <summary>
+            Imagen de la imagen.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryImage.width">
+            <summary>
+            Ancho de la imagen.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryImage.height">
+            <summary>
+            Altura de la imagen.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryImage.positionX">
+            <summary>
+            Posicion en X de la imagen.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryImage.positionY">
+            <summary>
+            Posicion en Y de la imagen.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryImage.level">
+            <summary>
+            Nivel al que pertenece.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryImage.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryImage.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.Image"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryItem">
+            <summary>
+            Esta clase es la responsable de delegar la responsabilidad de crear objetos Items.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryItem.factoryButton">
+            <summary>
+            Instancia de la fabrica responsable de delegar la responsabilidad de Crear los componentes Botones.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryItem.factoryImage">
+            <summary>
+            Instancia de la fabrica responsable de crear Imagenes en el modelado.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryItem.factoryDraggableItem">
+            <summary>
+            Instancia de la fabrica responsable de crear DraggableItems en el modelado.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryItem.factoryDragContainer">
+            <summary>
+            Instancia de la fabrica responsable de crear DragContainers en el modelado.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryItem.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Es responsable de delegar la responsabilidad de crear objetos Items, a sus respectivos Factorys.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactorySpace">
+            <summary>
+            Esta clase es la responsable de crear objetos Space.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactorySpace.name">
+            <summary>
+            Nombre del espacio.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactorySpace.image">
+            <summary>
+            Imagen del espacio.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactorySpace.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactorySpace.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.LibraryModelado.Space"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryWorld">
+            <summary>
+            Esta clase es la responsable de crear objetos Mundo.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryWorld.name">
+            <summary>
+            Nombre del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryWorld.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.LibraryModelado.World"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.IFactoryComponent">
+            <summary>
+            Interfaz IFactoryComponent.
+            Todos los Factory serán de tipo IFactoryComponent.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.IFactoryComponent.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Metodo Abstracto para crear un objeto Componente a partir de un tag.
             </summary>
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns><see cref="P:Proyecto.LibraryModelado.Creator.World"/>.</returns>
+            <returns><see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddLevel(Proyecto.LeerHTML.Tag)">
+        <member name="T:Proyecto.Factory.Unity.IFactoryUnity">
             <summary>
-            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Level.
-            Agrega el nivel creado a la lista de niveles pertenecientes al mundo asignado en el Creator.
+            Interfaz IFactoryUnity.
+            Todos los Unity Factory serán de tipo IFactoryUnity.
             </summary>
-            <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns><see cref="T:Proyecto.LibraryModelado.Space"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddButton(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.Factory.Unity.IFactoryUnity.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Button.
-            Agrega el Boton creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+            Metodo Abstracto para agregar un objeto <see cref="T:Proyecto.LibraryModelado.IComponent"/>, a unity.
             </summary>
-            <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agragara a Unity, <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddButtonAudio(Proyecto.LeerHTML.Tag)">
+        <member name="T:Proyecto.Factory.Unity.UFactory">
             <summary>
-            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto ButtonAudio.
-            Agrega el Boton de audio creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+            Esta clase es la responsable de delegar la responsabilidad de agregar los componentes al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
             </summary>
-            <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddButtonGoToPage(Proyecto.LeerHTML.Tag)">
+        <member name="F:Proyecto.Factory.Unity.UFactory.factorySpace">
             <summary>
-            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto ButtonGoToPage.
-            Agrega el Boton creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+            Instancia de la fabrica responsable de agregar los objetos <see cref="T:Proyecto.LibraryModelado.Space"/> a unity.
             </summary>
-            <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
+            <returns>Void.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddImage(Proyecto.LeerHTML.Tag)">
+        <member name="F:Proyecto.Factory.Unity.UFactory.factoryItems">
             <summary>
-            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto Image.
-            Agrega la imagen creada a la lista de Items pertenecientes al Nivel asignado en el Creator.
+            Instancia de la fabrica responsable de delegar la responsabilidad de agregar los Items al juego.
             </summary>
-            <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
+            <returns>Void.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddDragAndDropSource(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.Factory.Unity.UFactory.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropSource.
-            Agrega el container creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Delega la responsabilidad de agregar el componente en unity, al respectivo Unity Factory del componente.
             </summary>
-            <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddDragAndDropDestination(Proyecto.LeerHTML.Tag)">
+        <member name="T:Proyecto.Factory.Unity.UFactoryButtonAudio">
             <summary>
-            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropDestination.
-            Agrega el container creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
+            Esta clase es la resposable de agregar los componentes ButtonAudio al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
             </summary>
-            <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Creator.AddDragAndDropItem(Proyecto.LeerHTML.Tag)">
+        <member name="F:Proyecto.Factory.Unity.UFactoryButtonAudio.buttonAudio">
             <summary>
-            Metodo responsable de extraer Valores de los Atributos de un Tag, para crear un Objeto DragAndDropItem.
-            Agrega el item creado a la lista de Items pertenecientes al Nivel asignado en el Creator.
-            Agrega el item creado a un container DragAndDropSource, especificado en el Xml.
+            Objeto ButtonAudio que se agregara a Unity.
             </summary>
-            <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns><see cref="T:Proyecto.LibraryModelado.Items"/>.</returns>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryButtonAudio.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ButtonAudio"/> a Unity.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryButtonGoToPage">
+            <summary>
+            Esta clase es la resposable de agregar los componentes ButtonGoToPage al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryButtonGoToPage.buttonGoToPage">
+            <summary>
+            Objeto ButtonGoToPage que se agregara a Unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryButtonGoToPage.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ButtonGoToPage"/> a Unity.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryDragContainer">
+            <summary>
+            Esta clase es la resposable de agregar los componentes DragContainer al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryDragContainer.dragContainer">
+            <summary>
+            Objeto DragContainer que se agregara a Unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryDragContainer.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.DragContainer"/> a Unity.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryDraggableItem">
+            <summary>
+            Esta clase es la resposable de agregar los componentes DraggableItem al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryDraggableItem.draggableItem">
+            <summary>
+            Objeto DraggableItem que se agregara a Unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryDraggableItem.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.DraggableItem"/> a Unity.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryImage">
+            <summary>
+            Esta clase es la resposable de agregar los componentes Image al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryImage.image">
+            <summary>
+            Objeto Image que se agregara a Unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryImage.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.Image"/> a Unity.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryItem">
+            <summary>
+            Esta clase es la responsable de delegar la responsabilidad de agregar los Items al juego, a sus respectivos UnityFactorys.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryItem.factoryButtonGoToPage">
+            <summary>
+            Instancia de la fabrica responsable de agregar los objetos <see cref="T:Proyecto.Item.ButtonGoToPage"/> a unity.
+            </summary>
+            <returns>Void.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryItem.factoryButtonAudio">
+            <summary>
+            Instancia de la fabrica responsable de agregar los objetos <see cref="T:Proyecto.Item.ButtonAudio"/> a unity.
+            </summary>
+            <returns>Void.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryItem.factoryImage">
+            <summary>
+            Instancia de la fabrica responsable de agregar los objetos <see cref="T:Proyecto.Item.Image"/> a unity.
+            </summary>
+            <returns>Void.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryItem.factoryDraggableItem">
+            <summary>
+            Instancia de la fabrica responsable de agregar los objetos <see cref="T:Proyecto.Item.DraggableItem"/> a unity.
+            </summary>
+            <returns>Void.</returns>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryItem.factoryDragContainer">
+            <summary>
+            Instancia de la fabrica responsable de agregar los objetos <see cref="T:Proyecto.Item.DragContainer"/> a unity.
+            </summary>
+            <returns>Void.</returns>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryItem.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Delega la responsabilidad de agregar el item en unity, al respectivo Unity Factory del item.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
+        <member name="T:Proyecto.Factory.Unity.UFactorySpace">
+            <summary>
+            Esta clase es la resposable de agregar los componentes Space al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactorySpace.level">
+            <summary>
+            Objeto Space que se agregara a Unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactorySpace.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.LibraryModelado.Space"/> a Unity.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
         </member>
         <member name="T:Proyecto.LibraryModelado.IButton">
             <summary>
-            Interfaz de Boton.
+            Interfaz de Botones.
+            Permite crear varios botones con diferentes funcionalidades.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.IButton.Click">
+        <member name="M:Proyecto.LibraryModelado.IButton.Click(System.String)">
             <summary>
-            Acciones realizadas al hacer click en un boton. Eventos.
+            Acciones y eventos realizados al hacer click en un boton.
+            </summary>
+            <param name="text">String.</param>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.IComponent">
+            <summary>
+            Interfaz IComponent.
+            Todos los objetos creados en el modelado(World, Space, Items) seran de tipo IComponent.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Items">
             <summary>
-            Clase abstracta de Items.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Items.name">
-            <summary>
-            Nombre del Item.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Items.level">
-            <summary>
-            Nivel al que pertenece el Item.
+            Clase abstracta de Items en el modelado.
+            Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Items.id">
@@ -196,34 +752,9 @@
             Unity ID del item.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Items.positionX">
-            <summary>
-            Posicion en eje Horizontal en pixeles.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Items.positionY">
-            <summary>
-            Posicion en eje Vertical en pixeles.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Items.width">
-            <summary>
-            Ancho en Pixeles.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Items.height">
-            <summary>
-            Altura en pixeles.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Items.image">
-            <summary>
-            Imagen del Item.
-            </summary>
-        </member>
         <member name="M:Proyecto.LibraryModelado.Items.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
             <summary>
-            Constructor. Inicializa una instancia de Items.
+            Initializes a new instance of Items.
             </summary>
             <param name="name">Nombre del Item.</param>
             <param name="level">Nivel al que pertence.</param>
@@ -281,47 +812,40 @@
             </summary>
             <value>String path to image.</value>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Items.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo abstracto para crear objetos en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
-        </member>
         <member name="T:Proyecto.LibraryModelado.Level">
             <summary>
-            Clase Nivel. Hereda de <see cref="T:Proyecto.LibraryModelado.Space"/>.
+            Clase responsable de crear Niveles en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Space"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.Level.image">
+        <member name="M:Proyecto.LibraryModelado.Level.#ctor(System.String,System.String)">
             <summary>
-            Imagen de fondo del nivel.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Level.#ctor(System.String,System.Int32,System.Int32,System.String)">
-            <summary>
-            Constructor. Inicializa una instancia de Level.
+            Initializes a new instance of level.
             </summary>
             <param name="name">Nombre del nivel.</param>
-            <param name="width">Ancho del nivel.</param>
-            <param name="height">Altura del nivel.</param>
             <param name="image">Nombre de la imagen de fondo del nivel.</param>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Level.Image">
+        <member name="T:Proyecto.LibraryModelado.Singleton`1">
             <summary>
-            Gets or sets del nombre de la imgen de fondo del nivel.
+            Patron Singleton, permite crear solamente una instancia de una clase generica "T".
             </summary>
-            <value>string nombre de imagen.</value>
+            <typeparam name="T">Clase Generica.</typeparam>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Level.CreateUnityLevel(Proyecto.Common.IMainViewAdapter)">
+        <member name="F:Proyecto.LibraryModelado.Singleton`1.instance">
             <summary>
-            Metodo para crear Niveles en Unity. Le asigna el UnityID del nivel al objeto.
-            Crea una imagen de fondo del nivel en unity.
+            Instancia del singleton.
             </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Singleton`1.Instance">
+            <summary>
+            Gets de la instancia de la clase T.
+            </summary>
+            <value>Instance type T.</value>
         </member>
         <member name="T:Proyecto.LibraryModelado.Space">
             <summary>
-            Clase abstracta de Espacio.
+            Clase abstracta de espacios en el modelado.
+            Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Space.world">
@@ -329,33 +853,17 @@
             Nombre del Mundo al que Pertencen.
             </summary>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Space.name">
-            <summary>
-            Nombre del Espacio.
-            </summary> 
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Space.width">
-            <summary>
-            Ancho del espacio.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Space.height">
-            <summary>
-            Altura del espacio.
-            </summary>
-        </member>
         <member name="F:Proyecto.LibraryModelado.Space.id">
             <summary>
             Unity ID del Espacio.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Space.#ctor(System.String,System.Int32,System.Int32)">
+        <member name="M:Proyecto.LibraryModelado.Space.#ctor(System.String,System.String)">
             <summary>
-            Inicializa una instancia de Espacios.
+            Initializes a new instance of space.
             </summary>
             <param name="name">Nombre del Espacio.</param>
-            <param name="width">Ancho del espacio.</param>
-            <param name="height">Altura del espacio.</param>
+            <param name="image">Nombre de la imagen de fondo del espacio.</param>
         </member>
         <member name="P:Proyecto.LibraryModelado.Space.Name">
             <summary>
@@ -363,45 +871,46 @@
             </summary>
             <value>String nombre del espacio.</value>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Space.Image">
+            <summary>
+            Gets or sets del nombre de la imgen de fondo del espacio.
+            </summary>
+            <value>string nombre de imagen.</value>
+        </member>
         <member name="P:Proyecto.LibraryModelado.Space.ID">
             <summary>
             Gets or sets del Unity ID del espacio.
             </summary>
-            <value>String Unity ID</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Space.World">
-            <summary>
-            Gets or sets del nombre del espacio.
-            </summary>
-            <value>String nombre del espacio.</value>
+            <value>String Unity ID.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Space.Width">
             <summary>
-            Gets or sets del Ancho del espacio.
+            Gets del ancho del nivel.
             </summary>
-            <value>Ancho del Espacio.</value>
+            <value>Int ancho del nivel.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Space.Height">
             <summary>
-            Gets or sets de la Altura del espacio.
+            Gets de la altura del nivel.
             </summary>
-            <value>Altura del Espacio.</value>
+            <value>Int altura del nivel.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Space.World">
+            <summary>
+            Gets or sets del nombre del mundo al que pertenece.
+            </summary>
+            <value>String nombre del mundo.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Space.ItemList">
             <summary>
-            Gets or sets de la lista de items pertenecientes a un espacio.
+            Gets de la lista de items pertenecientes a un espacio.
             </summary>
             <value>Lista de objetos tipo <see cref="T:Proyecto.LibraryModelado.Items"/>.</value>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Space.CreateUnityLevel(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo abstracto para crear Espacios en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/></param>
-        </member>
         <member name="T:Proyecto.LibraryModelado.World">
             <summary>
-            Clase Modelo del mundo.
+            Clase responsable de crear objetos mundo.
+            Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.World.name">
@@ -409,23 +918,10 @@
             Nombre del Mundo.
             </summary>
         </member>
-        <member name="F:Proyecto.LibraryModelado.World.width">
+        <member name="M:Proyecto.LibraryModelado.World.#ctor">
             <summary>
-            Ancho del mundo en pixeles.
+            Initializes a new instance of world.
             </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.World.height">
-            <summary>
-            Altura del mundo en pixeles.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.World.#ctor(System.String,System.Int32,System.Int32)">
-            <summary>
-            Constructor. Inicializa una instancia de World.
-            </summary>
-            <param name="name">Nombre del mundo.</param>
-            <param name="width">Ancho del mundo.</param>
-            <param name="height">Altura del mundo.</param>
         </member>
         <member name="P:Proyecto.LibraryModelado.World.Name">
             <summary>
@@ -433,37 +929,26 @@
             </summary>
             <value>String nombre del mundo.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.World.Width">
-            <summary>
-            Gets or sets del Ancho del mundo.
-            </summary>
-            <value>Ancho del mundo.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.World.Height">
-            <summary>
-            Gets or sets de la altura del mundo.
-            </summary>
-            <value>Altura del mundo.</value>
-        </member>
         <member name="P:Proyecto.LibraryModelado.World.SpaceList">
             <summary>
-            Gets or sets de la lista de espacios pertenecientes a un mundo.
+            Gets de la lista de espacios pertenecientes a un mundo.
             </summary>
             <value>Lista de Objetos <see cref="T:Proyecto.LibraryModelado.Space"/>.</value>
         </member>
         <member name="T:Proyecto.Item.Button">
             <summary>
-            Clase de Botones. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
+            Clase responsable de crear botones genericos, no tienen ninguna funcionalidad.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.Button.color">
+        <member name="F:Proyecto.Item.Button.evento">
             <summary>
-            Color del Boton.
+            Accion del boton.
             </summary>
         </member>
         <member name="M:Proyecto.Item.Button.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String)">
             <summary>
-            Constructor. Instancia Objetos Button.
+            Initializes a new instance of Button.
             </summary>
             <param name="name">Nombre del boton.</param>
             <param name="level">Nivel al que pertence.</param>
@@ -480,40 +965,32 @@
             </summary>
             <value>string codigo en hexadecimal.</value>
         </member>
-        <member name="M:Proyecto.Item.Button.Click">
+        <member name="P:Proyecto.Item.Button.Event">
+            <summary>
+            Gets or sets del evento del boton.
+            </summary>
+            <value>Action.</value>
+        </member>
+        <member name="M:Proyecto.Item.Button.Click(System.String)">
             <summary>
             Accion realizada por el boton.
             </summary>
-        </member>
-        <member name="M:Proyecto.Item.Button.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo para crear Botones en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="text">Sin funcionalidad.</param>
         </member>
         <member name="T:Proyecto.Item.ButtonAudio">
             <summary>
-            Clase de Botones de audio. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
+            Clase responsable de crear botones, con la funcionalidad de reproducir un audio en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.ButtonAudio._event">
+        <member name="F:Proyecto.Item.ButtonAudio.evento">
             <summary>
             Accion de reproducir el sonido.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.ButtonAudio.color">
-            <summary>
-            Color del Boton.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Item.ButtonAudio.audioFile">
-            <summary>
-            Audio a reproducir por el boton.
-            </summary>
-        </member>
         <member name="M:Proyecto.Item.ButtonAudio.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String)">
             <summary>
-            Constructor. Instancia Objetos Button.
+            Initializes a new instance of ButtonAudio.
             </summary>
             <param name="name">Nombre del boton.</param>
             <param name="level">Nivel al que pertence.</param>
@@ -537,40 +1014,32 @@
             </summary>
             <value>string nombre del audio.</value>
         </member>
-        <member name="M:Proyecto.Item.ButtonAudio.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+        <member name="P:Proyecto.Item.ButtonAudio.Event">
             <summary>
-            Metodo para crear Botones en Unity.
+            Gets or sets del evento del boton.
             </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <value>Action.</value>
         </member>
-        <member name="M:Proyecto.Item.ButtonAudio.Click">
+        <member name="M:Proyecto.Item.ButtonAudio.Click(System.String)">
             <summary>
             Acciones realizadas por el boton.
             </summary>
+            <param name="text">Sin funcionalidad.</param>
         </member>
         <member name="T:Proyecto.Item.ButtonGoToPage">
             <summary>
-            Clase de Botones que reedirigen a otra pagina. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
+            Clase responsable de crear botones, con la funcionalidad de mostrar una pagina diferente en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.ButtonGoToPage._event">
+        <member name="F:Proyecto.Item.ButtonGoToPage.evento">
             <summary>
             Accion de mostrar otra pagina.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.ButtonGoToPage.color">
-            <summary>
-            Color del Boton.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Item.ButtonGoToPage.pageName">
-            <summary>
-            Pagina que muestra el boton.
-            </summary>
-        </member>
         <member name="M:Proyecto.Item.ButtonGoToPage.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String)">
             <summary>
-            Constructor. Instancia Objetos Button.
+            CInitializes a new instance of ButtonGoToPage.
             </summary>
             <param name="name">Nombre del boton.</param>
             <param name="level">Nivel al que pertence.</param>
@@ -594,84 +1063,28 @@
             </summary>
             <value>string nombre del la pagina.</value>
         </member>
-        <member name="M:Proyecto.Item.ButtonGoToPage.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+        <member name="P:Proyecto.Item.ButtonGoToPage.Event">
             <summary>
-            Metodo para crear Botones en Unity.
+            Gets or sets del evento del boton.
             </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <value>Action.</value>
         </member>
-        <member name="M:Proyecto.Item.ButtonGoToPage.Click">
+        <member name="M:Proyecto.Item.ButtonGoToPage.Click(System.String)">
             <summary>
             Acciones realizadas por el boton.
             Busca el nivel que coincida con el nivel que mostrara al ser apretado, y obtiene su ID.
             </summary>
+            <param name="text">Sin funcionalidad.</param>
         </member>
-        <member name="T:Proyecto.Item.DragAndDropDestination">
+        <member name="T:Proyecto.Item.DragContainer">
             <summary>
-            Clase DragAndDropDestination. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            Clase responsable de crear containers para items arrastrables en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
-        <member name="M:Proyecto.Item.DragAndDropDestination.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+        <member name="M:Proyecto.Item.DragContainer.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
             <summary>
-            Constructor. Instancia Objetos DragAndDropDestination.
-            </summary>
-            <param name="name">Nombre del Item.</param>
-            <param name="level">Nivel al que pertence.</param>
-            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
-            <param name="positionY">Posicion en eje vertical en pixeles.</param>
-            <param name="width">Ancho en pixeles.</param>
-            <param name="height">Altura en pixeles.</param>
-            <param name="image">Imagen del Item.</param>
-        </member>
-        <member name="M:Proyecto.Item.DragAndDropDestination.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo para crear DragAndDropDestination en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo.<see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
-        </member>
-        <member name="T:Proyecto.Item.DragAndDropItem">
-            <summary>
-            Clase DragAndDropItem. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Item.DragAndDropItem.container">
-            <summary>
-            Container en el que es creado inicialmente el Item.
-            </summary>
-        </member>
-        <member name="M:Proyecto.Item.DragAndDropItem.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,Proyecto.LibraryModelado.Items)">
-            <summary>
-            Constructor. Instancia Objetos DragAndDropItem.
-            </summary>
-            <param name="name">Nombre del Item.</param>
-            <param name="level">Nivel al que pertence.</param>
-            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
-            <param name="positionY">Posicion en eje vertical en pixeles.</param>
-            <param name="width">Ancho en pixeles.</param>
-            <param name="height">Altura en pixeles.</param>
-            <param name="image">Imagen del Item.</param>
-            <param name="container">Container Source en donde es creado.</param>
-        </member>
-        <member name="P:Proyecto.Item.DragAndDropItem.Container">
-            <summary>
-            Gets or sets del container en el que es creado inicialmente el Item.
-            </summary>
-            <value><see cref="T:Proyecto.Item.DragAndDropSource"/>.</value>
-        </member>
-        <member name="M:Proyecto.Item.DragAndDropItem.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
-            <summary>
-            Metodo para crear DragAndDropItem en Unity.
-            </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
-        </member>
-        <member name="T:Proyecto.Item.DragAndDropSource">
-            <summary>
-            Clase de Botones. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
-            </summary>
-        </member>
-        <member name="M:Proyecto.Item.DragAndDropSource.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
-            <summary>
-            Constructor. Instancia Objetos DragAndDropSource.
+            Initializes a new instance of DragContainer.
             </summary>
             <param name="name">Nombre del container.</param>
             <param name="level">Nivel al que pertence.</param>
@@ -681,20 +1094,69 @@
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del container.</param>
         </member>
-        <member name="M:Proyecto.Item.DragAndDropSource.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+        <member name="P:Proyecto.Item.DragContainer.SavedItems">
             <summary>
-            Metodo para crear DragAndDropSource en Unity.
+            Gets or sets la lista de objetos items que son soltados dentro del container.
             </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <value>Lista de items.</value>
+        </member>
+        <member name="T:Proyecto.Item.DraggableItem">
+            <summary>
+            Clase responsable de crear items arrastrables en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.DraggableItem.onDrop">
+            <summary>
+            Accion que se ejecutara al soltar un item.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.DraggableItem.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Boolean,Proyecto.LibraryModelado.Items)">
+            <summary>
+            Initializes a new instance of DraggableItem.
+            </summary>
+            <param name="name">Nombre del Item.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del Item.</param>
+            <param name="draggable">Bool que define si es arrastrable.</param>
+            <param name="container">Container en donde es creado el item.</param>
+        </member>
+        <member name="P:Proyecto.Item.DraggableItem.Container">
+            <summary>
+            Gets or sets del container.
+            </summary>
+            <value><see cref="T:Proyecto.LibraryModelado.Items"/>.</value>
+        </member>
+        <member name="P:Proyecto.Item.DraggableItem.Draggable">
+            <summary>
+            Gets or sets a value indicating whether el item es arrastrable.
+            </summary>
+            <value>Bool arrastrable.</value>
+        </member>
+        <member name="P:Proyecto.Item.DraggableItem.OnDrop">
+            <summary>
+            Gets or sets de la accion a realizar al soltar el item.
+            </summary>
+            <value>Action.</value>
+        </member>
+        <member name="M:Proyecto.Item.DraggableItem.Drop">
+            <summary>
+            Accion realizada al soltar el Item.
+            </summary>
         </member>
         <member name="T:Proyecto.Item.Image">
             <summary>
-            Clase Imagen. Hereda de <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            Clase responsable de crear imagenes en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
         <member name="M:Proyecto.Item.Image.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
             <summary>
-            Constructor. Instancia Objetos Image.
+            Initializes a new instance of Image.
             </summary>
             <param name="name">Nombre de la imagen.</param>
             <param name="level">Nivel al que pertence.</param>
@@ -704,11 +1166,138 @@
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen de la imagen.</param>
         </member>
-        <member name="M:Proyecto.Item.Image.CreateUnityItem(Proyecto.Common.IMainViewAdapter)">
+        <member name="T:Proyecto.Item.KitchenLevel.Bowl">
             <summary>
-            Metodo para crear Imagenes en Unity.
+            Clase responsable de crear containers para alimentos en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
-            <param name="adapter">Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+        </member>
+        <member name="M:Proyecto.Item.KitchenLevel.Bowl.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of Bowl.
+            </summary>
+            <param name="name">Nombre del Item.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del Item.</param>
+        </member>
+        <member name="P:Proyecto.Item.KitchenLevel.Bowl.SavedFoods">
+            <summary>
+            Gets lista de objetos Food, que seran soltados dentro del container.
+            </summary>
+            <value>Alimentos <see cref="T:Proyecto.Item.KitchenLevel.Food"/>.</value>
+        </member>
+        <member name="P:Proyecto.Item.KitchenLevel.Bowl.IncorrectItems">
+            <summary>
+            Gets lista de alimentos incorrecto soltados dentro del container.
+            </summary>
+            <value>Items arrastrables <see cref="T:Proyecto.Item.DraggableItem"/>.</value>
+        </member>
+        <member name="T:Proyecto.Item.KitchenLevel.Food">
+            <summary>
+            Clase responsable de crear objetos de alimentos arrastrables en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.KitchenLevel.Food.onDrop">
+            <summary>
+            Accion que se ejecutara al soltar un alimento.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.KitchenLevel.Food.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Boolean,Proyecto.LibraryModelado.Items)">
+            <summary>
+            Initializes a new instance of Food.
+            </summary>
+            <param name="name">Nombre del Food.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del Food.</param>
+            <param name="draggable">Bool que define si es arrastrable.</param>
+            <param name="container">Container Source en donde es creado.</param>
+        </member>
+        <member name="P:Proyecto.Item.KitchenLevel.Food.Container">
+            <summary>
+            Gets or sets del container.
+            </summary>
+            <value><see cref="T:Proyecto.LibraryModelado.Items"/>.</value>
+        </member>
+        <member name="P:Proyecto.Item.KitchenLevel.Food.Draggable">
+            <summary>
+            Gets or sets a value indicating whether el item es arrastrable.
+            </summary>
+            <value>Bool arrastrable.</value>
+        </member>
+        <member name="P:Proyecto.Item.KitchenLevel.Food.OnDrop">
+            <summary>
+            Gets or sets de la accion a realizar al soltar el alimento.
+            </summary>
+            <value>Action.</value>
+        </member>
+        <member name="M:Proyecto.Item.KitchenLevel.Food.Drop">
+            <summary>
+            Accion realizada al soltar el alimento.
+            </summary>
+        </member>
+        <member name="T:Proyecto.Item.ScientistLevel.Money">
+            <summary>
+            Clase responsable de crear dinero arrastrable en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.ScientistLevel.Money.onDrop">
+            <summary>
+            Accion que se ejecutara al soltar el dinero.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.ScientistLevel.Money.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Boolean,Proyecto.LibraryModelado.Items,System.Int32)">
+            <summary>
+            Initializes a new instance of Money.
+            </summary>
+            <param name="name">Nombre de la moneda.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen de la moneda.</param>
+            <param name="draggable">Bool que define si es arrastrable.</param>
+            <param name="container">Container Source en donde es creado.</param>
+            <param name="value">Valor de la moneda.</param>
+        </member>
+        <member name="P:Proyecto.Item.ScientistLevel.Money.Value">
+            <summary>
+            Gets or sets del valor de la moneda.
+            </summary>
+            <value>int valor de la moneda.</value>
+        </member>
+        <member name="P:Proyecto.Item.ScientistLevel.Money.Container">
+            <summary>
+            Gets or sets del container en el que es creado inicialmente el Item.
+            </summary>
+            <value><see cref="T:Proyecto.Item.DragContainer"/>.</value>
+        </member>
+        <member name="P:Proyecto.Item.ScientistLevel.Money.Draggable">
+            <summary>
+            Gets or sets a value indicating whether el item es arrastrable.
+            </summary>
+            <value>Bool arrastrable.</value>
+        </member>
+        <member name="P:Proyecto.Item.ScientistLevel.Money.OnDrop">
+            <summary>
+            Gets or sets de la accion a realizar al soltar el dinero.
+            </summary>
+            <value>Action.</value>
+        </member>
+        <member name="M:Proyecto.Item.ScientistLevel.Money.Drop">
+            <summary>
+            Accion realizada al soltar el dinero.
+            </summary>
         </member>
     </members>
 </doc>

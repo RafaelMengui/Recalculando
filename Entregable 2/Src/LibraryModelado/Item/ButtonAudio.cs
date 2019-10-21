@@ -4,33 +4,23 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
-using Proyecto.Common;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Item
 {
     /// <summary>
-    /// Clase de Botones de audio. Hereda de <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
+    /// Clase responsable de crear botones, con la funcionalidad de reproducir un audio en el modelado.
+    /// Hereda de la clase abstracta <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
     /// </summary>
     public class ButtonAudio : Items, IButton
     {
         /// <summary>
         /// Accion de reproducir el sonido.
         /// </summary>
-        private Action<string> _event;
-        
-        /// <summary>
-        /// Color del Boton.
-        /// </summary>
-        private string color;
+        private Action<string> evento;
 
         /// <summary>
-        /// Audio a reproducir por el boton.
-        /// </summary>
-        private string audioFile;
-
-        /// <summary>
-        /// Constructor. Instancia Objetos Button.
+        /// Initializes a new instance of ButtonAudio.
         /// </summary>
         /// <param name="name">Nombre del boton.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -46,6 +36,7 @@ namespace Proyecto.Item
         {
             this.Color = color;
             this.AudioFile = audioFile;
+            this.Event = this.evento;
         }
 
         /// <summary>
@@ -61,22 +52,18 @@ namespace Proyecto.Item
         public string AudioFile { get; set; }
 
         /// <summary>
-        /// Metodo para crear Botones en Unity.
+        /// Gets or sets del evento del boton.
         /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
-        public override void CreateUnityItem(IMainViewAdapter adapter)
-        {
-            _event = adapter.PlayAudio;
-            this.ID = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
-            adapter.SetImage(this.ID, this.Image);
-        }
+        /// <value>Action.</value>
+        public Action<string> Event { get; set; }
 
         /// <summary>
         /// Acciones realizadas por el boton.
         /// </summary>
-        public void Click()
+        /// <param name="text">Sin funcionalidad.</param>
+        public void Click(string text)
         {
-            _event(this.AudioFile);
+            this.Event(this.AudioFile);
         }
     }
 }

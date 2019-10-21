@@ -4,33 +4,23 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
-using Proyecto.Common;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Item
 {
     /// <summary>
-    /// Clase de Botones que reedirigen a otra pagina. Hereda de <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
+    /// Clase responsable de crear botones, con la funcionalidad de mostrar una pagina diferente en el modelado.
+    /// Hereda de la clase abstracta <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
     /// </summary>
     public class ButtonGoToPage : Items, IButton
     {
         /// <summary>
         /// Accion de mostrar otra pagina.
         /// </summary>
-        private Action<string> _event;
+        private Action<string> evento;
 
         /// <summary>
-        /// Color del Boton.
-        /// </summary>
-        private string color;
-
-        /// <summary>
-        /// Pagina que muestra el boton.
-        /// </summary>
-        private string pageName;
-
-        /// <summary>
-        /// Constructor. Instancia Objetos Button.
+        /// CInitializes a new instance of ButtonGoToPage.
         /// </summary>
         /// <param name="name">Nombre del boton.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -46,6 +36,7 @@ namespace Proyecto.Item
         {
             this.Color = color;
             this.PageName = pageName;
+            this.Event = this.evento;
         }
 
         /// <summary>
@@ -61,23 +52,19 @@ namespace Proyecto.Item
         public string PageName { get; set; }
 
         /// <summary>
-        /// Metodo para crear Botones en Unity.
+        /// Gets or sets del evento del boton.
         /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
-        public override void CreateUnityItem(IMainViewAdapter adapter)
-        {
-            _event = adapter.ShowPage;
-            this.ID = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
-            adapter.SetImage(this.ID, this.Image);
-        }
+        /// <value>Action.</value>
+        public Action<string> Event { get; set; }
 
         /// <summary>
         /// Acciones realizadas por el boton.
         /// Busca el nivel que coincida con el nivel que mostrara al ser apretado, y obtiene su ID.
         /// </summary>
-        public void Click()
+        /// <param name="text">Sin funcionalidad.</param>
+        public void Click(string text)
         {
-            _event(this.Level.World.SpaceList.Find(delegate (Space level) { return level.Name == this.PageName; }).ID);
+            this.Event(this.Level.World.SpaceList.Find(delegate(Space level) { return level.Name == this.PageName; }).ID);
         }
     }
 }

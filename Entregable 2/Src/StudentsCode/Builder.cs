@@ -5,8 +5,10 @@
 //--------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using Proyecto.LeerHTML;
 using Proyecto.Common;
+using Proyecto.Factory.CSharp;
+using Proyecto.Factory.Unity;
+using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.StudentsCode
@@ -17,9 +19,32 @@ namespace Proyecto.StudentsCode
     /// </summary>
     public class Builder : IBuilder
     {
+        /// <summary>
+        /// Adapter del tipo <see cref="IMainViewAdapter"/>.
+        /// </summary>
         private IMainViewAdapter adapter;
-        Creator Creator = new Creator();
+
+        /// <summary>
+        /// Pagina inicial que se mostrara al ejecutar el juego.
+        /// </summary>
         private Space firstPage;
+
+        /// <summary>
+        /// Instancia del unico mundo del tipo <see cref="World"/>.
+        /// </summary>
+        private World world = Singleton<World>.Instance;
+
+        /// <summary>
+        /// Instancia de la fabrica responsable de crear componentes del modelado.
+        /// </summary>
+        /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
+        private FactoryComponent factoryComponent = new FactoryComponent();
+
+        /// <summary>
+        /// Instancia de la fabrica responsable de agregar los objetos del modelado a unity.
+        /// </summary>
+        /// <returns>Void.</returns>
+        private UFactory unityFactory = new UFactory();
 
         /// <summary>
         /// Construye una interfaz de usuario interactiva utilizando un <see cref="IMainViewAdapter"/>.
@@ -27,58 +52,26 @@ namespace Proyecto.StudentsCode
         /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
         public void Build(IMainViewAdapter providedAdapter)
         {
-            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            adapter.AfterBuild = Setup;
+            this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
+            this.adapter.AfterBuild += this.Setup;
 
             const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
             List<Tag> tags = Parser.ParserHTML(LeerHtml.RetornarHTML(XMLfile));
+            List<IComponent> componentList = new List<IComponent>();
 
-            //Se crean los objetos C#
             foreach (Tag tag in tags)
             {
-                switch (tag.Nombre)
-                {
-                    case "World":
-                        Creator.World = Creator.AddWorld(tag);
-                        break;
-                    case "Level":
-                        Creator.Level = Creator.AddLevel(tag);
-                        break;
-                    case "Button":
-                        Items button = Creator.AddButton(tag);
-                        break;
-                    case "ButtonAudio":
-                        Items buttonAudio = Creator.AddButtonAudio(tag);
-                        break;
-                    case "ButtonGoToPage":
-                        Items ButtonGoTo = Creator.AddButtonGoToPage(tag);
-                        break;
-                    case "Image":
-                        Items image = Creator.AddImage(tag);
-                        break;
-                    case "DragAndDropSource":
-                        Items dragAndDropSource = Creator.AddDragAndDropSource(tag);
-                        break;
-                    case "DragAndDropDestination":
-                        Items dragAndDropDestination = Creator.AddDragAndDropDestination(tag);
-                        break;
-                    case "DragAndDropItem":
-                        Items dragAndDropItem = Creator.AddDragAndDropItem(tag);
-                        break;
-                }
+                IComponent component = this.factoryComponent.MakeComponent(tag);
+                componentList.Add(component);
             }
-            firstPage = Creator.World.SpaceList[0];
 
-            //Crear los objetos en el juego.
-            foreach (Space level in Creator.World.SpaceList)
+            foreach (IComponent component in componentList)
             {
-                level.CreateUnityLevel(adapter);
-                foreach (Items unityItem in level.ItemList)
-                {
-                    unityItem.CreateUnityItem(adapter);
-                }
+                this.unityFactory.MakeUnityItem(this.adapter, component);
             }
-            adapter.AfterBuild();
+
+            this.firstPage = this.world.SpaceList[0];
+            this.adapter.AfterBuild();
         }
 
         /// <summary>
@@ -86,8 +79,8 @@ namespace Proyecto.StudentsCode
         /// </summary>
         private void Setup()
         {
-            adapter.ChangeLayout(Layout.ContentSizeFitter);
-            adapter.ShowPage(firstPage.ID);
+            this.adapter.ChangeLayout(Layout.ContentSizeFitter);
+            this.adapter.ShowPage(this.firstPage.ID);
         }
     }
 }
