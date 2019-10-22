@@ -3,30 +3,24 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using Proyecto.Common;
-using Proyecto.LibraryModelado;
 using System;
-
+using Proyecto.LibraryModelado;
 
 namespace Proyecto.Item
 {
     /// <summary>
-    /// Clase de Botones. Hereda de <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
+    /// Clase responsable de crear botones genericos, no tienen ninguna funcionalidad.
+    /// Hereda de la clase abstracta <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
     /// </summary>
     public class Button : Items, IButton
     {
         /// <summary>
         /// Accion del boton.
         /// </summary>
-        private Action<string> _event;
+        private Action<string> evento;
 
         /// <summary>
-        /// Color del Boton.
-        /// </summary>
-        private string color;
-
-        /// <summary>
-        /// Constructor. Instancia Objetos Button.
+        /// Initializes a new instance of Button.
         /// </summary>
         /// <param name="name">Nombre del boton.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -40,7 +34,7 @@ namespace Proyecto.Item
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Color = color;
-            this.Event = _event;
+            this.Event = this.evento;
         }
 
         /// <summary>
@@ -58,6 +52,7 @@ namespace Proyecto.Item
         /// <summary>
         /// Accion realizada por el boton.
         /// </summary>
+        /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
             this.Event(string.Empty);

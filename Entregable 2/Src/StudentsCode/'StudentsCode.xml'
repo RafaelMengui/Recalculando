@@ -10,6 +10,33 @@
             Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
             </summary>
         </member>
+        <member name="F:Proyecto.StudentsCode.Builder.adapter">
+            <summary>
+            Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Builder.firstPage">
+            <summary>
+            Pagina inicial que se mostrara al ejecutar el juego.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Builder.world">
+            <summary>
+            Instancia del unico mundo del tipo <see cref="T:Proyecto.LibraryModelado.World"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Builder.factoryComponent">
+            <summary>
+            Instancia de la fabrica responsable de crear componentes del modelado.
+            </summary>
+            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Builder.unityFactory">
+            <summary>
+            Instancia de la fabrica responsable de agregar los objetos del modelado a unity.
+            </summary>
+            <returns>Void.</returns>
+        </member>
         <member name="M:Proyecto.StudentsCode.Builder.Build(Proyecto.Common.IMainViewAdapter)">
             <summary>
             Construye una interfaz de usuario interactiva utilizando un <see cref="T:Proyecto.Common.IMainViewAdapter"/>.

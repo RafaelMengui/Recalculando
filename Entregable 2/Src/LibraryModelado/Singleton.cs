@@ -9,14 +9,17 @@ namespace Proyecto.LibraryModelado
     /// Patron Singleton, permite crear solamente una instancia de una clase generica "T".
     /// </summary>
     /// <typeparam name="T">Clase Generica.</typeparam>
-    public class Singleton<T> where T : new()
+    public static class Singleton<T> where T : new()
     {
+        /// <summary>
+        /// Instancia del singleton.
+        /// </summary>
         private static T instance;
 
         /// <summary>
-        /// Gets or sets de la instancia de la clase T.
+        /// Gets de la instancia de la clase T.
         /// </summary>
-        /// <value></value>
+        /// <value>Instance type T.</value>
         public static T Instance
         {
             get
@@ -25,6 +28,7 @@ namespace Proyecto.LibraryModelado
                 {
                     instance = new T();
                 }
+
                 return instance;
             }
         }

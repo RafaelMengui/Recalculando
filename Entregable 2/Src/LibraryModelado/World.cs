@@ -8,7 +8,8 @@ using System.Collections.Generic;
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
-    /// Clase Modelo del mundo.
+    /// Clase responsable de crear objetos mundo.
+    /// Implementa la interfaz <see cref="IComponent"/>.
     /// </summary>
     public class World : IComponent
     {
@@ -18,11 +19,11 @@ namespace Proyecto.LibraryModelado
         private string name;
 
         /// <summary>
-        /// Constructor. Inicializa una instancia de World.
+        /// Initializes a new instance of world.
         /// </summary>
         public World()
         {
-            this.Name = name;
+            this.Name = this.name;
             this.SpaceList = new List<Space>();
         }
 
@@ -33,9 +34,9 @@ namespace Proyecto.LibraryModelado
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets de la lista de espacios pertenecientes a un mundo.
+        /// Gets de la lista de espacios pertenecientes a un mundo.
         /// </summary>
         /// <value>Lista de Objetos <see cref="Space"/>.</value>
-        public List<Space> SpaceList { get; set; }
+        public List<Space> SpaceList { get; }
     }
 }

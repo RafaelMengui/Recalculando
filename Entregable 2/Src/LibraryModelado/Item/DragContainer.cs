@@ -4,18 +4,18 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System.Collections.Generic;
-using Proyecto.Common;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Item
 {
     /// <summary>
-    /// Clase DragContainer. Hereda de <see cref="Items"/>.
+    /// Clase responsable de crear containers para items arrastrables en el modelado.
+    /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
     public class DragContainer : Items
     {
         /// <summary>
-        /// Constructor. Instancia Objetos DragContainer.
+        /// Initializes a new instance of DragContainer.
         /// </summary>
         /// <param name="name">Nombre del container.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -31,9 +31,9 @@ namespace Proyecto.Item
         }
 
         /// <summary>
-        /// Lista de objetos items que son soltados dentro del container.
+        /// Gets or sets la lista de objetos items que son soltados dentro del container.
         /// </summary>
         /// <value>Lista de items.</value>
-        public List<Items> SavedItems { get; set; }
+        public List<Items> SavedItems { get; }
     }
 }
