@@ -14,10 +14,22 @@ namespace Proyecto.Factory.CSharp
     /// </summary>
     public class FactoryButton : IFactoryComponent
     {
+<<<<<<< HEAD
+        private FactoryButtonGeneric factoryButtonGeneric;
+        private FactoryButtonAudio factoryButtonAudio;
+        private FactoryButtonGoToPage factoryButtonGoToPage;
+        
+    /// <summary>
+    /// Se sobreescribe el método de la clase IFactoryComponent
+    /// </summary>
+    /// <param name="tag"></param>
+    /// <returns> IComponent </returns>
+=======
         /// <summary>
         /// Instancia de la fabrica responsable de crear Botones genericos en el modelado.
         /// </summary>
         /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
+>>>>>>> e3c183023df7a3ba0f9d45240444cd3108cd750e
         private FactoryButtonGeneric factoryButtonGeneric = new FactoryButtonGeneric();
 
         /// <summary>
@@ -32,12 +44,15 @@ namespace Proyecto.Factory.CSharp
         /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
         private FactoryButtonGoToPage factoryButtonGoToPage = new FactoryButtonGoToPage();
 
+<<<<<<< HEAD
+=======
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryComponent.
         /// Es responsable de delegar la responsabilidad de crear Botones, a sus respectivos Factorys.
         /// </summary>
         /// <param name="tag">Tag <see cref="Tag"/>.</param>
         /// <returns>Componente <see cref="IComponent"/>.</returns>
+>>>>>>> e3c183023df7a3ba0f9d45240444cd3108cd750e
         public override IComponent MakeComponent(Tag tag)
         {
             string buttonType = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Type"; }).Valor;
