@@ -9,7 +9,6 @@ namespace Proyecto.Factory.CSharp
     /// </summary>
     public class FactoryButton : IFactoryComponent
     {
-<<<<<<< HEAD
         private FactoryButtonGeneric factoryButtonGeneric;
         private FactoryButtonAudio factoryButtonAudio;
         private FactoryButtonGoToPage factoryButtonGoToPage;
@@ -19,12 +18,10 @@ namespace Proyecto.Factory.CSharp
     /// </summary>
     /// <param name="tag"></param>
     /// <returns> IComponent </returns>
-=======
         private FactoryButtonGeneric factoryButtonGeneric = new FactoryButtonGeneric();
         private FactoryButtonAudio factoryButtonAudio = new FactoryButtonAudio();
         private FactoryButtonGoToPage factoryButtonGoToPage = new FactoryButtonGoToPage();
 
->>>>>>> a494cbbd6f68c7b819485ef66706e171203fb748
         public override IComponent MakeComponent(Tag tag)
         {
             string buttonType = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Type"; }).Valor;
