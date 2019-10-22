@@ -17,7 +17,7 @@ namespace Proyecto.Item.ScientistLevel
         /// <summary>
         /// Accion que se ejecutara al soltar el dinero.
         /// </summary>
-        private Action<string, float, float> onDrop;
+        private Action<string, float, float> onDropMoney;
 
         /// <summary>
         /// Initializes a new instance of Money.
@@ -38,7 +38,7 @@ namespace Proyecto.Item.ScientistLevel
             this.Value = value;
             this.Draggable = draggable;
             this.Container = container;
-            this.OnDrop = this.onDrop;
+            this.OnDropMoney = this.onDropMoney;
         }
 
         /// <summary>
@@ -63,14 +63,14 @@ namespace Proyecto.Item.ScientistLevel
         /// Gets or sets de la accion a realizar al soltar el dinero.
         /// </summary>
         /// <value>Action.</value>
-        public Action<string, float, float> OnDrop { get; set; }
+        public Action<string, float, float> OnDropMoney { get; set; }
 
         /// <summary>
         /// Accion realizada al soltar el dinero.
         /// </summary>
         public void Drop()
         {
-            this.OnDrop(this.ID, this.PositionX, this.PositionY);
+            this.OnDropMoney(this.ID, this.PositionX, this.PositionY);
         }
     }
 }
