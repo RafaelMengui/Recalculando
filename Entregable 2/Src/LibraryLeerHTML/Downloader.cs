@@ -1,4 +1,8 @@
-using System;
+//--------------------------------------------------------------------------------
+// <copyright file="Downloader.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
 using System.IO;
 using System.Net;
 
@@ -10,6 +14,9 @@ namespace Proyecto.LeerHTML
     /// </summary>
     public class Downloader
     {
+        /// <summary>
+        /// Url.
+        /// </summary>
         private string url;
 
         /// <summary>
@@ -24,7 +31,7 @@ namespace Proyecto.LeerHTML
         /// <summary>
         /// Crea una nueva instancia asignando la ubicación de la cual descargar
         /// </summary>
-        /// <param name="url"></param>
+        /// <param name="url">.</param>
         public Downloader(string url)
         {
             this.url = url;

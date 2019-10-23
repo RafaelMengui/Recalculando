@@ -39,7 +39,7 @@ namespace Proyecto.Factory.Unity
 
             // Asignarle su imagen al boton.
             adapter.SetImage(this.buttonAudio.ID, this.buttonAudio.Image);
-
+ 
             // Se quita la palabra "Button".
             adapter.SetText(this.buttonAudio.ID, string.Empty);
         }

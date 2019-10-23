@@ -3,7 +3,6 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using System.Collections.Generic;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Item.ScientistLevel
@@ -20,11 +19,6 @@ namespace Proyecto.Item.ScientistLevel
         private Money savedItem;
 
         /// <summary>
-        /// Valor monetario aceptado por el container.
-        /// </summary>
-        private int acceptableValue;
-
-        /// <summary>
         /// Initializes a new instance of MoneyContainer.
         /// </summary>
         /// <param name="name">Nombre del container.</param>
@@ -34,7 +28,8 @@ namespace Proyecto.Item.ScientistLevel
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del container.</param>
-        public MoneyContainer(string name, Space level, int positionX, int positionY, int width, int height, string image)
+        /// <param name="acceptableValue">Valor de dinero que aceptara el container.</param>
+        public MoneyContainer(string name, Space level, int positionX, int positionY, int width, int height, string image, int acceptableValue)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.SavedItem = savedItem;
@@ -52,14 +47,5 @@ namespace Proyecto.Item.ScientistLevel
         /// </summary>
         /// <value>Money.</value>
         public Money SavedItem { get; set; }
-
-        /// <summary>
-        /// Compara el valor del item soltado dentro del container, con el que acepta el mismo.
-        /// </summary>
-        /// <returns>Bool.</returns>
-        public bool CompareValue()
-        {
-            return (this.AcceptableValue == this.SavedItem.Value);
-        }
     }
 }

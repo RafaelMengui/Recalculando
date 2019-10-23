@@ -1,4 +1,4 @@
-namespace Proyecto.Motor
+namespace Proyecto.Engine
 {
     public interface IObservable
     {

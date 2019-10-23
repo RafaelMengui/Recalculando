@@ -56,9 +56,9 @@ namespace Proyecto.StudentsCode
             this.adapter.AfterBuild += this.Setup;
 
             const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
-            List<Tag> tags = Parser.ParserHTML(LeerHtml.RetornarHTML(XMLfile));
-            List<IComponent> componentList = new List<IComponent>();
+            List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
 
+            List<IComponent> componentList = new List<IComponent>();
             foreach (Tag tag in tags)
             {
                 IComponent component = this.factoryComponent.MakeComponent(tag);

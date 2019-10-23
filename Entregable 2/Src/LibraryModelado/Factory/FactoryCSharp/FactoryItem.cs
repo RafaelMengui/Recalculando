@@ -39,6 +39,12 @@ namespace Proyecto.Factory.CSharp
         private FactoryDragContainer factoryDragContainer = new FactoryDragContainer();
 
         /// <summary>
+        /// Instancia de la fabrica responsable de crear InputText en el modelado.
+        /// </summary>
+        /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
+        private FactoryInputText factoryInputText = new FactoryInputText();
+
+        /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryComponent.
         /// Es responsable de delegar la responsabilidad de crear objetos Items, a sus respectivos Factorys.
         /// </summary>
@@ -72,6 +78,12 @@ namespace Proyecto.Factory.CSharp
                         return dragContainer;
                     }
 
+                case "InputText":
+                    {
+                        IComponent input = this.factoryInputText.MakeComponent(tag);
+                        return input;
+                    }
+                
                 default:
                     {
                         throw new System.Exception($"Invalid Tag Name {tag.Nombre}");

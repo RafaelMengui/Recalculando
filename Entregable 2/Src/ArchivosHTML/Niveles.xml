@@ -1,12 +1,23 @@
-<World Height="0" Width="0" Name="world1">
+<World Name="world1">
 
-	<Level Name="first" Width="0" Height="0" Background="page1.png">
+	<Level Name="first" Background="page1.png">
 
 		<Button Name="pirata" Type="Audio" PositionX="-400" PositionY="150" Width="200" Height="150" Photo="bill20.png" Color="#FCFCFC" Audio="piratesSound.wav"/>
 		<Button Name="kahoot" Type="Audio" PositionX="-400" PositionY="-150" Width="200" Height="150" Photo="bill200.png" Color="#FCFCFC" Audio="kahoot.wav"/>
 		<Button Name="wii" Type="Audio" PositionX="400" PositionY="150" Width="200" Height="150" Photo="bill500.png" Color="#FCFCFC" Audio="wii.wav"/>
 		<Button Name="nada" Type="Audio" PositionX="400" PositionY="-150" Width="200" Height="150" Photo="bill10.png" Color="#FCFCFC" Audio="vacio.wav"/>
-		<Button Name="gotofirst" Type="GoToPage" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="secondpage"/>
+		<Button Name="gotoscientist" Type="GoToPage" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="ScientistLevel"/>
+
+	</Level>
+
+	<Level Name="ScientistLevel" Background="page2.png">
+
+		<Money Name="bill50" PositionX="0" PositionY="0" Width="60" Height="40" Photo="bill50.png" Draggable="false" Value="50" Container="containerBill50"/>
+		<Money Name="bill10" PositionX="0" PositionY="0" Width="60" Height="40" Photo="bill10.png" Draggable="false" Value="10" Container="containerBill10"/>
+		
+		<MoneyContainer Name="containerBill50" PositionX="-350" PositionY="150" Width="60" Height="40" Photo="Vacio.png" Value="0"/>
+		<MoneyContainer Name="containerBill10" PositionX="-100" PositionY="150" Width="60" Height="40" Photo="Vacio.png" Value="0"/>
+		<MoneyContainer Name="ResultContainer1" PositionX="200" PositionY="150" Width="60" Height="40" Photo="recuadro.png" Value="60"/>
 
 	</Level>
 
