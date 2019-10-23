@@ -1,22 +1,13 @@
-<<<<<<< HEAD
-using System;
-using Proyecto.Item;
-using Proyecto.LeerHTML;
-using Proyecto.LibraryModelado;
-using System.Linq;
-
-=======
 //--------------------------------------------------------------------------------
 // <copyright file="FactoryDragContainer.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
-using System.Linq;
 using Proyecto.Item;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
->>>>>>> e3c183023df7a3ba0f9d45240444cd3108cd750e
+using System.Linq;
 
 namespace Proyecto.Factory.CSharp
 {
