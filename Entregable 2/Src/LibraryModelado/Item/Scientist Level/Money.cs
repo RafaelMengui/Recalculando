@@ -46,7 +46,27 @@ namespace Proyecto.Item.ScientistLevel
         /// Gets or sets del valor de la moneda.
         /// </summary>
         /// <value>int valor de la moneda.</value>
-        public int Value { get; set; }
+        public int Value
+        {
+            get
+            {
+                return this.Value;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    try
+                    {
+                        throw new ArithmeticException($"Invalid Money Value: {this.Name} has negative value.");
+                    }
+                    finally
+                    {
+                        this.Value = Math.Abs(value);
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets del container en el que se encuentra.

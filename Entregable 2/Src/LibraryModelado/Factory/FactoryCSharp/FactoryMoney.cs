@@ -90,19 +90,6 @@ namespace Proyecto.Factory.CSharp
             this.containerName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Container"; }).Valor;
             this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
             this.value = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Value"; }).Valor);
-
-            if (this.value < -10)
-            {
-                try
-                {
-                    throw new ArithmeticException($"Invalid Money Value: {this.name} has negative value.");
-                }
-                catch (ArithmeticException)
-                {
-                    this.value = Math.Abs(this.value);
-                }
-            }
-
             Items container = this.level.ItemList.Find(delegate(Items item) { return item.Name == this.containerName; });
             Items draggabledinero = new Money(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, (MoneyContainer)container, this.value);
             this.level.ItemList.Add(draggabledinero);

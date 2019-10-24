@@ -12,7 +12,7 @@ namespace Proyecto.LibraryModelado.Engine.test
         private Level level = new Level("level", null);
         private FactoryMoney factoryMoney = new FactoryMoney();
         private World world = Singleton<World>.Instance;
-        
+
 
         [Fact]
         public void TestVerifyAddition()
@@ -60,24 +60,8 @@ namespace Proyecto.LibraryModelado.Engine.test
         [Fact]
         public void NegativeMoneyValue()
         {
-            this.world.Name = "world";
-            this.world.SpaceList.Add(this.level);
             MoneyContainer container1 = new MoneyContainer("cont1", this.level, 50, 50, 60, 60, null, 0);
-            Atributos name = new Atributos("Name", "money");
-            Atributos width = new Atributos("Width", "100");
-            Atributos height = new Atributos("Height", "100");
-            Atributos positionX = new Atributos("PositionX", "20");
-            Atributos positionY = new Atributos("PositionY", "10");
-            Atributos image = new Atributos("Photo", "photo.png");
-            Atributos container = new Atributos("Container", "cont1");
-            Atributos draggable = new Atributos("Draggable", "false");
-            Atributos value = new Atributos("Value", "-10");
-            this.level.ItemList.Add(container1);
-
-            List<Atributos> list = new List<Atributos>(){name, width, height, positionX, positionY, image, container, draggable, value};
-            Tag tag = new Tag("Money", list);
-
-            Assert.Throws<ArithmeticException>(() => this.factoryMoney.MakeComponent(tag));
+            Assert.Throws<ArithmeticException>(() => new Money("name", this.level, 50, 40, 30, 20, null, false, container1, 10));
         }
     }
 }
