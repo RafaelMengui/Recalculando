@@ -6,7 +6,12 @@
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
-    /// Patron Singleton, permite crear solamente una instancia de una clase generica "T".
+    /// El patrón SINGLETON nos permite garantizar la existencia de una sola instancia de clase.
+    /// Además el acceso a esa única instancia tiene que ser global. Esto es de mucha utilidad 
+    /// debido a que, tomamos la decisión de que en nuestro juego haya un único World, por tanto, 
+    /// Singleton es fundamental debido a que se ejecuta una única vez, así nos aseguramos que 
+    /// sólo existe una instancia. En caso de querer llamarlo en cualquier parte del programa 
+    /// se puede realizar.
     /// </summary>
     /// <typeparam name="T">Clase Generica.</typeparam>
     public static class Singleton<T> where T : new()

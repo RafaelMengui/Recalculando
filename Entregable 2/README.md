@@ -1,29 +1,46 @@
-Entregable 2: Modelado
+Reecalculando: 
+Nuestro juego pensando especialmente para personas que padecen dislculía.
+El juego en general se basa en 4 personajes, cada uno de estos equivale a un juego. 
+Para esta entrega los juegos planteados son:
+°Cientifico: El niño debe realizar las sumas pedidas, arrastrando los billetes. 
 
-En la carpeta donde se clone este repositorio, debe existir una carpeta llamada 'UnityCode'. La cual contendra los codigos y archivos relacionados con Unity, provistos por los profesores.
 
-Carpeta UnityCode:
-1) Descargar repositorio de https://github.com/ucudal/PII_Proyecto2019
-2) Extraer carpeta y colocarla en la carpeta donde se encuentre este repositorio.
-3) Cambiar nombre de la carpeta a UnityCode.
 
-Cargar Imagenes y Sonidos:
-1) Las imagenes pueden estar en .jpg .jpeg y .png, los audios en .wav
-2) Al ejecutar el proyecto en Unity se crea una carpeta llamada 'Proyecto2019', en donde se deben colocar las imagenes y audios a usar en unity.
-3) La ubicacion de esta carpeta es: C:\Users\usuario\AppData\LocalLow\PII@UCU\Proyecto2019
-4) Verificar las extensiones de formato que tengan los archivos. Este programa diferencia entre .jpg y .JPG
 
-Instalar .NET 4.7.2:
-1) Ir a https://dotnet.microsoft.com/download/dotnet-framework/net472 y descargar '.NET FrameWork 4.7.2 Developer Pack'.
-2) Ejecutar como Administrador el archivo descargado.
-3) Si no permite la instalacion, reiniciar el equipo, rezar 7 ave marias y 4 padre nuestros para que funcione (Opcionalmente rezar a otros Dioses o divinidades).
 
-Cordenadas Graficas en la pantalla de unity:
-1) La pantalla es de aproximadamente 1270x540 pixeles
-2) La coordenada (0,0) depende del item que se agregue (no sabemos porque...)
-3) Los items DragAndDrop tienen coordenada (0,0) en la esquina inferior izquierda de la pantalla. Todos los otros items en el centro de la pantalla.
 
-1)
-2)
-Path a Carpeta de ArchivosHTML:
-    const string fileXML = "..\..\..\Code\Entregable 2\Src\ArchivosHTML\ ...";
+
+
+
+
+
+
+
+
+
+
+
+
+
+-PATRONES:
+
+1. Creator 
+Esta es la clase Creator, debido a que, es la responsable de crear los objetos de tipo. Decidimos utilizar este patrón debido a que, es abierto a la extensión pero cerrado a la modificación. Lo cual es muy importante, ya que, en caso de querer crear más objetos podemos hacerlo sin necesidad de modificar lo ya creado(Reutilización del código).
+Tomamos la decisión de tener varios CreatorUnity y CreatorC#, uno por cada objeto a crear....
+
+1. Herencia (ITEMS) LISTO
+ Utilizamos herencia en este caso debido a que, esta clase será la base de mucho de lo que creamos en el proyecto. La clase descendiente(Width, Image, Height, etc.) va a heredar automáticamente los atributos,propiedades de Items. Las clases hijas aumentan la especialización dependiendo de lo que deben hacer cada una de ellas en el juego.
+
+3. Observer 
+El patrón Observer es un pilar fundamental en nuestro juego, debido a que, es el MOTOR del mismo. Este será el encargado en tomar las decisiónes, es la lógica del juego. Para esto, definimos una dependencia de tipo entre objetos, de manera que cuando uno de los objetos cambie,notifica a todos los dependientes. (PONER CUAL ES) MOTOR- Observa cada evento de la app. Le avisa todo al motor Información tomada de: "Design Patterns: Elements of Reusable Object-Oriented Software"
+
+4. Factory Abstract - LISTO
+ Este patrón creado por "The Gang of Four" es fundamental para la creación de los objetos del juego, debido a que, nos soluciona el problema de como diferentes familias de objetos puedan ser creadas. La principal clave para utilizar el patrón es asbtraer el proceso de la creación, por esto, tenemos la clase .... Lo que nos permite este patrón es, delegar la creación de instancia de un objeto, lo cuál es fundamental porque cuanto más divida este la funcionalidad del código mejor, cada clase se encarga de una creación especifica.
+
+Información tomada de: "Design Patterns: Elements of Reusable Object-Oriented Software"
+
+5. Singleton - LISTO
+ El patrón Singleton nos permite garantizar la existencia de una sola instancia de clase. Además el acceso a esa única instancia tiene que ser global. Esto es de mucha utilidad debido a que, tomamos la decisión de que en nuestro juego haya un único World, por tanto, Singleton es fundamental debido a que se ejecuta una única vez, así nos aseguramos que sólo existe una instancia. En caso de querer llamarlo en cualquier parte del programa se puede hacer.
+
+6. Interfaz IButton - YA PASADA
+ Esta interfaz es creada, debido a que, cuando en un futuro querramos tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón que sea una imagen,un botón contador, botón audio, etc. En este caso, estamos pensando en la funcionalidad futura del código, para cuando debamos ampliar el juego.
