@@ -1,5 +1,5 @@
 <World Height="50" Width="520" Name="world1">
 	<Level Name="level1" World="world1">
 		<Button Name="button1" Level="level1" PositionX="100" PositionY="200" Height="100" Width="100">
-	</level>
-</square-world>
+	</Level>
+</World>

@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 
 namespace Proyecto.LeerHTML
@@ -44,9 +45,13 @@ namespace Proyecto.LeerHTML
                             // Se separan los atributos por clave y valor, se crea el objeto Atributo y se guarda en un array.
                             clave = atr.Split('=')[0];
                             valor = atr.Split('=')[1].Replace(@"""", "");
-                            if (!string.IsNullOrEmpty(valor) && valor[valor.Length - 1] == '/')
+                            if (!string.IsNullOrEmpty(valor))
                             {
-                                valor = valor.Substring(0, valor.Length - 1);
+                                valor = valor.Substring(0, valor.Length);
+                            }
+                            else
+                            {
+                                throw new ArgumentNullException($"Empty Tag Attributes: {nombreTag} has empty atributtes.");
                             }
 
                             Atributos A = new Atributos(clave, valor);

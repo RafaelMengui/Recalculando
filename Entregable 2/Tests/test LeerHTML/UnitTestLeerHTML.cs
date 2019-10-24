@@ -1,20 +1,30 @@
-using Proyecto.LeerHTML;
-using System;
+using System.Collections.Generic;
 using Xunit;
-
+using System;
+using Proyecto.LeerHTML;
 
 namespace Proyecto.LeerHTML.test
 {
     public class UnitTestLeerHTML
     {
         [Fact]
-        public void ImprimirFormato()
+        public void FormatPrinter()
         {
-            string path = @"C:\Users\nicop\Desktop\Entregable 2\Code\Entregable 2\Src\Archivos HTML\Ejemplo.xml";
-            string Actual = Imprimir.Formato(path);
-            string Expected = "square-world\nsize=50\nname=world1\nlevel\nname=level1\nworld=world1\nbutton\nname=button1\nlevel=level1\nposition_x=10\nposition_y=20\nsize=20x30\n";
-            
+            string path = @"..\..\..\..\..\Src\ArchivosHTML\Ejemplo.xml";
+            string Actual = Printer.Format(path);
+            string Expected = "World\nHeight=50\nWidth=520\nName=world1\nLevel\nName=level1\nWorld=world1\nButton\nName=button1\nLevel=level1\nPositionX=100\nPositionY=200\nHeight=100\nWidth=100\n";
+
             Assert.Equal(Expected, Actual);
+        }
+
+        [Fact]
+        public void EmptyAttributes()
+        {
+            //arrange
+            string path = @"..\..\..\..\..\Src\ArchivosHTML\Test.xml";
+
+            //assert
+            Assert.Throws<ArgumentNullException>(() => Parser.ParserHTML(ReadHTML.ReturnHTML(path)));
         }
     }
 }

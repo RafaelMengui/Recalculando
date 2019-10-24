@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 using System;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Item.ScientistLevel
 {
@@ -32,7 +33,7 @@ namespace Proyecto.Item.ScientistLevel
         /// <param name="draggable">Bool que define si es arrastrable.</param>
         /// <param name="container">Container Source en donde es creado.</param>
         /// <param name="value">Valor de la moneda.</param>
-        public Money(string name, Space level, int positionX, int positionY, int width, int height, string image, bool draggable, Items container, int value)
+        public Money(string name, Space level, int positionX, int positionY, int width, int height, string image, bool draggable, MoneyContainer container, int value)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Value = value;
@@ -48,10 +49,10 @@ namespace Proyecto.Item.ScientistLevel
         public int Value { get; set; }
 
         /// <summary>
-        /// Gets or sets del container en el que es creado inicialmente el Item.
+        /// Gets or sets del container en el que se encuentra.
         /// </summary>
         /// <value><see cref="DragContainer"/>.</value>
-        public Items Container { get; set; }
+        public MoneyContainer Container { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether el item es arrastrable.
@@ -68,9 +69,24 @@ namespace Proyecto.Item.ScientistLevel
         /// <summary>
         /// Accion realizada al soltar el dinero.
         /// </summary>
-        public void Drop()
+        public bool Drop(MoneyContainer moneyContainer)
         {
-            this.OnDropMoney(this.ID, this.PositionX, this.PositionY);
+            if (this.Draggable)
+            {
+                this.Container = moneyContainer;
+                return Engine.VerifyOperation(this.Container, this);
+            }
+            else
+            {
+                try
+                {
+                    throw new ArgumentException($"Invalid action: Object not draggable {this.Name}.");
+                }
+                catch (ArgumentException)
+                {
+                    return false;
+                }
+            }
         }
     }
 }

@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\LibraryLeerHTML\LeerHTML.csproj" />
     <ProjectReference Include="..\..\..\..\UnityCode\Common\src\Common.csproj" />
-    <ProjectReference Include="..\LibraryModelado\LibraryModelado.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,6 +4,233 @@
         <name>LibraryModelado</name>
     </assembly>
     <members>
+        <member name="T:Proyecto.LibraryModelado.Engine.Engine">
+            <summary>
+            *Patron Obsever*
+            Clase motor, responsable de conectar el modelado con los eventos de Unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.Engine.VerifyOperation(Proyecto.Item.ScientistLevel.MoneyContainer,Proyecto.Item.ScientistLevel.Money)">
+            <summary>
+            Metodo responsable de verificar si el objeto tipo Money soltado dentro del MoneyContainer,
+            tiene el valor que acepta el container.
+            </summary>
+            <param name="moneyContainer">Container tipo <see cref="T:Proyecto.Item.ScientistLevel.MoneyContainer"/>.</param>
+            <param name="money">DraggableItem tipo <see cref="T:Proyecto.Item.ScientistLevel.Money"/>.</param>
+            <returns>Bool si el valor es correcto o no.</returns>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.IButton">
+            <summary>
+            Interfaz de Botones.
+            Permite crear varios botones con diferentes funcionalidades.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.IButton.Click(System.String)">
+            <summary>
+            Acciones y eventos realizados al hacer click en un boton.
+            </summary>
+            <param name="text">String.</param>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.IComponent">
+            <summary>
+            Interfaz IComponent.
+            Todos los objetos creados en el modelado(World, Space, Items) seran de tipo IComponent.
+            </summary>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.Items">
+            <summary>
+            Clase abstracta de Items en el modelado.
+            Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Items.id">
+            <summary>
+            Unity ID del item.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Items.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of Items.
+            </summary>
+            <param name="name">Nombre del Item.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del Item.</param>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Items.Name">
+            <summary>
+            Gets or sets del nombre del item.
+            </summary>
+            <value>String nombre del item.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Items.Level">
+            <summary>
+            Gets or sets del Nivel al que pertenece el Item.
+            </summary>
+            <value>Level al que pertence.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Items.ID">
+            <summary>
+            Gets or sets del UnityID del Objeto.
+            </summary>
+            <value>Unity ID.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Items.PositionX">
+            <summary>
+            Gets or sets de Posicion en eje Horizontal en pixeles.
+            </summary>
+            <value>Int posicion en eje horizontal.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Items.PositionY">
+            <summary>
+            Gets or sets dePosicion en eje Vertical en pixeles.
+            </summary>
+            <value>Int posicion en eje vertical.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Items.Width">
+            <summary>
+            Gets or sets de Ancho en Pixeles.
+            </summary>
+            <value>Int ancho en pixeles.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Items.Height">
+            <summary>
+            Gets or sets de Altura en pixeles.
+            </summary>
+            <value>Int altura en pixeles.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Items.Image">
+            <summary>
+            Gets or sets la imagen del item.
+            </summary>
+            <value>String path to image.</value>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.Level">
+            <summary>
+            Clase responsable de crear Niveles en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Space"/>.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Level.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of level.
+            </summary>
+            <param name="name">Nombre del nivel.</param>
+            <param name="image">Nombre de la imagen de fondo del nivel.</param>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.Singleton`1">
+            <summary>
+            Patron Singleton, permite crear solamente una instancia de una clase generica "T".
+            </summary>
+            <typeparam name="T">Clase Generica.</typeparam>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Singleton`1.instance">
+            <summary>
+            Instancia del singleton.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Singleton`1.Instance">
+            <summary>
+            Gets de la instancia de la clase T.
+            </summary>
+            <value>Instance type T.</value>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.Space">
+            <summary>
+            Clase abstracta de espacios en el modelado.
+            Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Space.world">
+            <summary>
+            Nombre del Mundo al que Pertencen.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Space.id">
+            <summary>
+            Unity ID del Espacio.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Space.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of space.
+            </summary>
+            <param name="name">Nombre del Espacio.</param>
+            <param name="image">Nombre de la imagen de fondo del espacio.</param>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Space.Name">
+            <summary>
+            Gets or sets del nombre del espacio.
+            </summary>
+            <value>String nombre del espacio.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Space.Image">
+            <summary>
+            Gets or sets del nombre de la imgen de fondo del espacio.
+            </summary>
+            <value>string nombre de imagen.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Space.ID">
+            <summary>
+            Gets or sets del Unity ID del espacio.
+            </summary>
+            <value>String Unity ID.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Space.Width">
+            <summary>
+            Gets del ancho del nivel.
+            </summary>
+            <value>Int ancho del nivel.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Space.Height">
+            <summary>
+            Gets de la altura del nivel.
+            </summary>
+            <value>Int altura del nivel.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Space.World">
+            <summary>
+            Gets or sets del nombre del mundo al que pertenece.
+            </summary>
+            <value>String nombre del mundo.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Space.ItemList">
+            <summary>
+            Gets de la lista de items pertenecientes a un espacio.
+            </summary>
+            <value>Lista de objetos tipo <see cref="T:Proyecto.LibraryModelado.Items"/>.</value>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.World">
+            <summary>
+            Clase responsable de crear objetos mundo.
+            Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.World.name">
+            <summary>
+            Nombre del Mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.World.#ctor">
+            <summary>
+            Initializes a new instance of world.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.World.Name">
+            <summary>
+            Gets or sets del nombre del mundo.
+            </summary>
+            <value>String nombre del mundo.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.World.SpaceList">
+            <summary>
+            Gets de la lista de espacios pertenecientes a un mundo.
+            </summary>
+            <value>Lista de Objetos <see cref="T:Proyecto.LibraryModelado.Space"/>.</value>
+        </member>
         <member name="T:Proyecto.Factory.CSharp.FactoryButton">
             <summary>
             Esta clase es la responsable de delegar la responsabilidad de crear Botones.
@@ -930,218 +1157,6 @@
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
         </member>
-        <member name="T:Proyecto.LibraryModelado.IButton">
-            <summary>
-            Interfaz de Botones.
-            Permite crear varios botones con diferentes funcionalidades.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.IButton.Click(System.String)">
-            <summary>
-            Acciones y eventos realizados al hacer click en un boton.
-            </summary>
-            <param name="text">String.</param>
-        </member>
-        <member name="T:Proyecto.LibraryModelado.IComponent">
-            <summary>
-            Interfaz IComponent.
-            Todos los objetos creados en el modelado(World, Space, Items) seran de tipo IComponent.
-            </summary>
-        </member>
-        <member name="T:Proyecto.LibraryModelado.Items">
-            <summary>
-            Clase abstracta de Items en el modelado.
-            Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Items.id">
-            <summary>
-            Unity ID del item.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Items.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
-            <summary>
-            Initializes a new instance of Items.
-            </summary>
-            <param name="name">Nombre del Item.</param>
-            <param name="level">Nivel al que pertence.</param>
-            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
-            <param name="positionY">Posicion en eje vertical en pixeles.</param>
-            <param name="width">Ancho en pixeles.</param>
-            <param name="height">Altura en pixeles.</param>
-            <param name="image">Imagen del Item.</param>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Items.Name">
-            <summary>
-            Gets or sets del nombre del item.
-            </summary>
-            <value>String nombre del item.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Items.Level">
-            <summary>
-            Gets or sets del Nivel al que pertenece el Item.
-            </summary>
-            <value>Level al que pertence.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Items.ID">
-            <summary>
-            Gets or sets del UnityID del Objeto.
-            </summary>
-            <value>Unity ID.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Items.PositionX">
-            <summary>
-            Gets or sets de Posicion en eje Horizontal en pixeles.
-            </summary>
-            <value>Int posicion en eje horizontal.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Items.PositionY">
-            <summary>
-            Gets or sets dePosicion en eje Vertical en pixeles.
-            </summary>
-            <value>Int posicion en eje vertical.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Items.Width">
-            <summary>
-            Gets or sets de Ancho en Pixeles.
-            </summary>
-            <value>Int ancho en pixeles.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Items.Height">
-            <summary>
-            Gets or sets de Altura en pixeles.
-            </summary>
-            <value>Int altura en pixeles.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Items.Image">
-            <summary>
-            Gets or sets la imagen del item.
-            </summary>
-            <value>String path to image.</value>
-        </member>
-        <member name="T:Proyecto.LibraryModelado.Level">
-            <summary>
-            Clase responsable de crear Niveles en el modelado.
-            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Space"/>.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Level.#ctor(System.String,System.String)">
-            <summary>
-            Initializes a new instance of level.
-            </summary>
-            <param name="name">Nombre del nivel.</param>
-            <param name="image">Nombre de la imagen de fondo del nivel.</param>
-        </member>
-        <member name="T:Proyecto.LibraryModelado.Singleton`1">
-            <summary>
-            Patron Singleton, permite crear solamente una instancia de una clase generica "T".
-            </summary>
-            <typeparam name="T">Clase Generica.</typeparam>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Singleton`1.instance">
-            <summary>
-            Instancia del singleton.
-            </summary>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Singleton`1.Instance">
-            <summary>
-            Gets de la instancia de la clase T.
-            </summary>
-            <value>Instance type T.</value>
-        </member>
-        <member name="T:Proyecto.LibraryModelado.Space">
-            <summary>
-            Clase abstracta de espacios en el modelado.
-            Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Space.world">
-            <summary>
-            Nombre del Mundo al que Pertencen.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.Space.id">
-            <summary>
-            Unity ID del Espacio.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Space.#ctor(System.String,System.String)">
-            <summary>
-            Initializes a new instance of space.
-            </summary>
-            <param name="name">Nombre del Espacio.</param>
-            <param name="image">Nombre de la imagen de fondo del espacio.</param>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Space.Name">
-            <summary>
-            Gets or sets del nombre del espacio.
-            </summary>
-            <value>String nombre del espacio.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Space.Image">
-            <summary>
-            Gets or sets del nombre de la imgen de fondo del espacio.
-            </summary>
-            <value>string nombre de imagen.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Space.ID">
-            <summary>
-            Gets or sets del Unity ID del espacio.
-            </summary>
-            <value>String Unity ID.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Space.Width">
-            <summary>
-            Gets del ancho del nivel.
-            </summary>
-            <value>Int ancho del nivel.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Space.Height">
-            <summary>
-            Gets de la altura del nivel.
-            </summary>
-            <value>Int altura del nivel.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Space.World">
-            <summary>
-            Gets or sets del nombre del mundo al que pertenece.
-            </summary>
-            <value>String nombre del mundo.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Space.ItemList">
-            <summary>
-            Gets de la lista de items pertenecientes a un espacio.
-            </summary>
-            <value>Lista de objetos tipo <see cref="T:Proyecto.LibraryModelado.Items"/>.</value>
-        </member>
-        <member name="T:Proyecto.LibraryModelado.World">
-            <summary>
-            Clase responsable de crear objetos mundo.
-            Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LibraryModelado.World.name">
-            <summary>
-            Nombre del Mundo.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.World.#ctor">
-            <summary>
-            Initializes a new instance of world.
-            </summary>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.World.Name">
-            <summary>
-            Gets or sets del nombre del mundo.
-            </summary>
-            <value>String nombre del mundo.</value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.World.SpaceList">
-            <summary>
-            Gets de la lista de espacios pertenecientes a un mundo.
-            </summary>
-            <value>Lista de Objetos <see cref="T:Proyecto.LibraryModelado.Space"/>.</value>
-        </member>
         <member name="T:Proyecto.Item.Button">
             <summary>
             Clase responsable de crear botones genericos, no tienen ninguna funcionalidad.
@@ -1379,6 +1394,16 @@
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
+        <member name="F:Proyecto.Item.InputText.onChange">
+            <summary>
+            Método a ejecutar cuando se cambia el texto de la entrada de texto.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.InputText.onEdited">
+            <summary>
+            Método a ejecutar cuando se termina de editar el texto de la entrada de texto.
+            </summary>
+        </member>
         <member name="M:Proyecto.Item.InputText.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
             <summary>
             Initializes a new instance of InputText.
@@ -1390,6 +1415,18 @@
             <param name="width">Ancho en pixeles.</param>
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del input.</param>
+        </member>
+        <member name="P:Proyecto.Item.InputText.OnEdited">
+            <summary>
+            Gets or sets del método a ejecutar cuando se termina de editar el texto de la entrada de texto.
+            </summary>
+            <value>Action.</value>
+        </member>
+        <member name="P:Proyecto.Item.InputText.OnChange">
+            <summary>
+            Gets or sets del método a ejecutar cuando se cambia el texto de la entrada de texto.
+            </summary>
+            <value>Action.</value>
         </member>
         <member name="T:Proyecto.Item.KitchenLevel.Bowl">
             <summary>
@@ -1480,7 +1517,7 @@
             Accion que se ejecutara al soltar el dinero.
             </summary>
         </member>
-        <member name="M:Proyecto.Item.ScientistLevel.Money.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Boolean,Proyecto.LibraryModelado.Items,System.Int32)">
+        <member name="M:Proyecto.Item.ScientistLevel.Money.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Boolean,Proyecto.Item.ScientistLevel.MoneyContainer,System.Int32)">
             <summary>
             Initializes a new instance of Money.
             </summary>
@@ -1503,7 +1540,7 @@
         </member>
         <member name="P:Proyecto.Item.ScientistLevel.Money.Container">
             <summary>
-            Gets or sets del container en el que es creado inicialmente el Item.
+            Gets or sets del container en el que se encuentra.
             </summary>
             <value><see cref="T:Proyecto.Item.DragContainer"/>.</value>
         </member>
@@ -1519,7 +1556,7 @@
             </summary>
             <value>Action.</value>
         </member>
-        <member name="M:Proyecto.Item.ScientistLevel.Money.Drop">
+        <member name="M:Proyecto.Item.ScientistLevel.Money.Drop(Proyecto.Item.ScientistLevel.MoneyContainer)">
             <summary>
             Accion realizada al soltar el dinero.
             </summary>
@@ -1546,6 +1583,7 @@
             <param name="width">Ancho en pixeles.</param>
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del container.</param>
+            <param name="acceptableValue">Valor de dinero que aceptara el container.</param>
         </member>
         <member name="P:Proyecto.Item.ScientistLevel.MoneyContainer.AcceptableValue">
             <summary>

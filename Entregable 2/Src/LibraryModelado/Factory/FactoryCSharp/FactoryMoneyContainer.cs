@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="FactoryDragContainer.cs" company="Universidad Católica del Uruguay">
+// <copyright file="FactoryMoneyContainer.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------

@@ -1,22 +1,14 @@
 using Proyecto.Item.KitchenLevel;
 using Proyecto.Item.ScientistLevel;
-using Proyecto.LibraryModelado;
 
-namespace Proyecto.Engine
+namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// *Patron Obsever*
     /// Clase motor, responsable de conectar el modelado con los eventos de Unity.
     /// </summary>
-    public class Engine : IObserver
+    public class Engine
     {
-        /// <summary>
-        /// Metodo que verifica si sucedio algun cambio en el juego.
-        /// </summary>
-        public void Update()
-        {
-        }
-
         /// <summary>
         /// Metodo responsable de verificar si el objeto tipo Money soltado dentro del MoneyContainer,
         /// tiene el valor que acepta el container.
