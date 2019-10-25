@@ -10,7 +10,7 @@
 
 	</Level>
 
-	<Level Name="ScientistLevel" Background="page2.png">
+	<Level Name="ScientistLevel1" Background="page2.png">
 
 		<Money Name="bill50" PositionX="0" PositionY="0" Width="60" Height="40" Photo="bill50.png" Draggable="false" Value="50" Container="containerBill50"/>
 		<Money Name="bill10" PositionX="0" PositionY="0" Width="60" Height="40" Photo="bill10.png" Draggable="false" Value="10" Container="containerBill10"/>

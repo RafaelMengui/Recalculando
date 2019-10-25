@@ -15,6 +15,7 @@ namespace Proyecto.Item.ScientistLevel
     /// </summary>
     public class Money : Items
     {
+        private int valor;
         /// <summary>
         /// Accion que se ejecutara al soltar el dinero.
         /// </summary>
@@ -32,11 +33,11 @@ namespace Proyecto.Item.ScientistLevel
         /// <param name="image">Imagen de la moneda.</param>
         /// <param name="draggable">Bool que define si es arrastrable.</param>
         /// <param name="container">Container Source en donde es creado.</param>
-        /// <param name="value">Valor de la moneda.</param>
-        public Money(string name, Space level, int positionX, int positionY, int width, int height, string image, bool draggable, MoneyContainer container, int value)
+        /// <param name="valor">Valor de la moneda.</param>
+        public Money(string name, Space level, int positionX, int positionY, int width, int height, string image, bool draggable, MoneyContainer container, int valor)
         : base(name, level, positionX, positionY, width, height, image)
         {
-            this.Value = value;
+            this.Value = valor;
             this.Draggable = draggable;
             this.Container = container;
             this.OnDropMoney = this.onDropMoney;
@@ -50,7 +51,7 @@ namespace Proyecto.Item.ScientistLevel
         {
             get
             {
-                return this.Value;
+                return this.valor;
             }
             set
             {
@@ -62,8 +63,12 @@ namespace Proyecto.Item.ScientistLevel
                     }
                     finally
                     {
-                        this.Value = Math.Abs(value);
+                        this.valor = Math.Abs(value);
                     }
+                }
+                else
+                {
+                    this.valor = value;
                 }
             }
         }
@@ -93,8 +98,8 @@ namespace Proyecto.Item.ScientistLevel
         {
             if (this.Draggable)
             {
-                this.Container = moneyContainer;
-                return Engine.VerifyOperation(this.Container, this);
+                EngineScientific engineScientific = Singleton<EngineScientific>.Instance;
+                return engineScientific.VerifyExercise(moneyContainer, this);
             }
             else
             {
@@ -110,3 +115,6 @@ namespace Proyecto.Item.ScientistLevel
         }
     }
 }
+
+
+// this.OnDropMoney(this.Name, this.Positionx, this.PositionY);
