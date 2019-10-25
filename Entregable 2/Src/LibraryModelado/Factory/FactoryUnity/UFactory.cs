@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Proyecto.Common;
 using Proyecto.LibraryModelado;
@@ -17,16 +18,20 @@ namespace Proyecto.Factory.Unity
     public class UFactory : IFactoryUnity
     {
         /// <summary>
-        /// Instancia de la fabrica responsable de agregar los objetos <see cref="Space"/> a unity.
+        /// Diccionario en donde se asociara un componente con su respectivo Unity factory.
         /// </summary>
-        /// <returns>Void.</returns>
-        private UFactorySpace factorySpace = new UFactorySpace();
+        private Dictionary<string, IFactoryUnity> componentUFactories = new Dictionary<string, IFactoryUnity>();
 
         /// <summary>
-        /// Instancia de la fabrica responsable de delegar la responsabilidad de agregar los Items al juego.
+        /// Fabrica de unity generica utilizada para delegar la responsabilidad de agregar cada componente a su respectivo unity factory Concreto.
         /// </summary>
-        /// <returns>Void.</returns>
-        private UFactoryItem factoryItems = new UFactoryItem();
+        private IFactoryUnity uFactory;
+
+        /// <summary>
+        /// Metodo estatico reponsable de instanciar la clase UFactory.
+        /// </summary>
+        /// <returns><see cref="IFactoryUnity"/>.</returns>
+        public static IFactoryUnity InitializeUnityFactories() => new UFactory();
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
@@ -37,23 +42,25 @@ namespace Proyecto.Factory.Unity
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
             string[] componentType = Convert.ToString(component.GetType()).Split('.');
-            switch (componentType.Last())
+            try
             {
-                case "World":
-                {
-                    break;
-                }
+                this.uFactory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.Unity.UFactory" + componentType.Last())) as IFactoryUnity;
+            }
+            catch (System.Exception)
+            {
+                throw new System.Exception($"Unity Factory of {componentType.Last()} not found.");
+            }
 
-                case "Level":
+            this.componentUFactories.Add(componentType.Last(), this.uFactory);
+            foreach (var type in this.componentUFactories)
+            {
+                try
                 {
-                    this.factorySpace.MakeUnityItem(adapter, component);
-                    break;
+                    this.componentUFactories[type.Key].MakeUnityItem(adapter, component);
                 }
-
-                default:
+                catch (System.Exception)
                 {
-                    this.factoryItems.MakeUnityItem(adapter, component);
-                    break;
+                    throw new System.Exception($"Unity Factory of {type.Value} not found.");
                 }
             }
         }
