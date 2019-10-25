@@ -24,7 +24,7 @@ namespace Proyecto.Item
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del container.</param>
-        public DragContainer(string name, Space level, int positionX, int positionY, int width, int height, string image)
+        public DragContainer(string name, Space level, float positionX, float positionY, float width, float height, string image)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.SavedItems = new List<Items>();

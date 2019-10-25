@@ -31,7 +31,7 @@ namespace Proyecto.Item.KitchenLevel
         /// <param name="image">Imagen del Food.</param>
         /// <param name="draggable">Bool que define si es arrastrable.</param>
         /// <param name="container">Container Source en donde es creado.</param>
-        public Food(string name, Space level, int positionX, int positionY, int width, int height, string image, bool draggable, Items container)
+        public Food(string name, Space level, float positionX, float positionY, float width, float height, string image, bool draggable, Items container)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Draggable = draggable;

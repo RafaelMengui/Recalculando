@@ -60,14 +60,14 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Gets del ancho del nivel.
         /// </summary>
-        /// <value>Int ancho del nivel.</value>
-        public int Width { get; }
+        /// <value>float ancho del nivel.</value>
+        public float Width { get; }
 
         /// <summary>
         /// Gets de la altura del nivel.
         /// </summary>
-        /// <value>Int altura del nivel.</value>
-        public int Height { get; }
+        /// <value>float altura del nivel.</value>
+        public float Height { get; }
 
         /// <summary>
         /// Gets or sets del nombre del mundo al que pertenece.

@@ -35,22 +35,22 @@ namespace Proyecto.Factory.CSharp
         /// <summary>
         /// Ancho del dinero.
         /// </summary>
-        private int width;
+        private float width;
 
         /// <summary>
         /// Altura del dinero.
         /// </summary>
-        private int height;
+        private float height;
 
         /// <summary>
         /// Posicion en X del dinero.
         /// </summary>
-        private int positionX;
+        private float positionX;
 
         /// <summary>
         /// Posicion en Y del dinero.
         /// </summary>
-        private int positionY;
+        private float positionY;
 
         /// <summary>
         /// Define si el dinero es arrastrable.
@@ -65,7 +65,7 @@ namespace Proyecto.Factory.CSharp
         /// <summary>
         /// Valor del dinero.
         /// </summary>
-        private int value;
+        private float value;
 
         /// <summary>
         /// Instancia del mundo.
@@ -82,14 +82,14 @@ namespace Proyecto.Factory.CSharp
         {
             this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
             this.level = this.world.SpaceList.Last();
-            this.width = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            this.height = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
-            this.positionX = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-            this.positionY = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            this.width = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
             this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
             this.containerName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Container"; }).Valor;
             this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
-            this.value = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Value"; }).Valor);
+            this.value = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Value"; }).Valor);
             Items container = this.level.ItemList.Find(delegate(Items item) { return item.Name == this.containerName; });
             Items draggabledinero = new Money(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, (MoneyContainer)container, this.value);
             this.level.ItemList.Add(draggabledinero);

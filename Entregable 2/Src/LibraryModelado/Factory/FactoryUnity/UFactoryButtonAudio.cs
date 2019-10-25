@@ -29,7 +29,7 @@ namespace Proyecto.Factory.Unity
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
             // Castear como ButtonAudio.
-            this.buttonAudio = (ButtonAudio)component;
+            this.buttonAudio = component as ButtonAudio;
 
             // Asignar evento del boton.
             this.buttonAudio.Event = adapter.PlayAudio;

@@ -1,44 +1,34 @@
 <World Name="world1">
 
-	<Level Name="first" Background="page1.png">
+	<Space Name="first" Background="page1.png">
 
-		<Button Name="pirata" Type="Audio" PositionX="-400" PositionY="150" Width="200" Height="150" Photo="bill20.png" Color="#FCFCFC" Audio="piratesSound.wav"/>
-		<Button Name="kahoot" Type="Audio" PositionX="-400" PositionY="-150" Width="200" Height="150" Photo="bill200.png" Color="#FCFCFC" Audio="kahoot.wav"/>
-		<Button Name="wii" Type="Audio" PositionX="400" PositionY="150" Width="200" Height="150" Photo="bill500.png" Color="#FCFCFC" Audio="wii.wav"/>
-		<Button Name="nada" Type="Audio" PositionX="400" PositionY="-150" Width="200" Height="150" Photo="bill10.png" Color="#FCFCFC" Audio="vacio.wav"/>
-		<Button Name="gotoscientist" Type="GoToPage" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="ScientistLevel"/>
+		<ButtonAudio Name="pirata" Type="Audio" PositionX="-400" PositionY="150" Width="200" Height="150" Photo="bill20.png" Color="#FCFCFC" Audio="piratesSound.wav">
+		<ButtonAudio Name="kahoot" Type="Audio" PositionX="-400" PositionY="-150" Width="200" Height="150" Photo="bill200.png" Color="#FCFCFC" Audio="kahoot.wav">
+		<ButtonAudio Name="wii" Type="Audio" PositionX="400" PositionY="150" Width="200" Height="150" Photo="bill500.png" Color="#FCFCFC" Audio="wii.wav">
+		<ButtonAudio Name="nada" Type="Audio" PositionX="400" PositionY="-150" Width="200" Height="150" Photo="bill10.png" Color="#FCFCFC" Audio="vacio.wav">
+		<ButtonGoToPage Name="gotoscientist" Type="GoToPage" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="secondpage">
 
-	</Level>
+	</Space>
 
-	<Level Name="ScientistLevel1" Background="page2.png">
+	<Space Name="secondpage" Width="0" Height="0" Background="page5.png">
 
-		<Money Name="bill50" PositionX="0" PositionY="0" Width="60" Height="40" Photo="bill50.png" Draggable="false" Value="50" Container="containerBill50"/>
-		<Money Name="bill10" PositionX="0" PositionY="0" Width="60" Height="40" Photo="bill10.png" Draggable="false" Value="10" Container="containerBill10"/>
+		<Image Name="cocinera" PositionX="465" PositionY="-95" Width="300" Height="380" Photo="cocinera.png">
+		<Image Name="nubeBananas" PositionX="465" PositionY="140" Width="200" Height="200" Photo="nubeBananas.png">
+
+		<Image Name="mesa" PositionX="0" PositionY="-60" Width="300" Height="300" Photo="table.png">
+		<DragContainer Name="bowl" PositionX="645" PositionY="365" Width="150" Height="100" Photo="bowl.png">
 		
-		<MoneyContainer Name="containerBill50" PositionX="-350" PositionY="150" Width="60" Height="40" Photo="Vacio.png" Value="0"/>
-		<MoneyContainer Name="containerBill10" PositionX="-100" PositionY="150" Width="60" Height="40" Photo="Vacio.png" Value="0"/>
-		<MoneyContainer Name="ResultContainer1" PositionX="200" PositionY="150" Width="60" Height="40" Photo="recuadro.png" Value="60"/>
+		<DragContainer Name="bananaContainer" PositionX="75" PositionY="190" Width="115" Height="115" Photo="recuadro.png">
+		<DragContainer Name="chocolateContainer" PositionX="190" PositionY="190" Width="115" Height="115" Photo="recuadro.png">
+		<DragContainer Name="polloContainer" PositionX="75" PositionY="75" Width="115" Height="115" Photo="recuadro.png">
+		<DragContainer Name="carneContainer" PositionX="190" PositionY="75" Width="115" Height="115" Photo="recuadro.png">
 
-	</Level>
+		<DraggableItem Name="banana" PositionX="0" PositionY="0" Width="85" Height="85" Photo="banana.png" Draggable="true" Container="bananaContainer">
+		<DraggableItem Name="chocolate" PositionX="0" PositionY="0" Width="85" Height="85" Photo="chocolate.png" Draggable="true" Container="chocolateContainer">
+		<DraggableItem Name="pollo" PositionX="0" PositionY="0" Width="85" Height="85" Photo="pollo.png" Draggable="true" Container="polloContainer">
+		<DraggableItem Name="carne" PositionX="0" PositionY="0" Width="85" Height="85" Photo="carne.png" Draggable="true" Container="carneContainer">
+		<ButtonGoToPage Name="gotosecond" Type="GoToPage" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="first">
 
-	<Level Name="secondpage" Width="0" Height="0" Background="page5.png">
-
-		<Image Name="cocinera" PositionX="465" PositionY="-95" Width="300" Height="380" Photo="cocinera.png"/>
-		<Image Name="nubeBananas" PositionX="465" PositionY="140" Width="200" Height="200" Photo="nubeBananas.png"/>
-
-		<Image Name="mesa" PositionX="0" PositionY="-60" Width="300" Height="300" Photo="table.png"/>
-		<DragContainer Name="bowl" PositionX="645" PositionY="365" Width="150" Height="100" Photo="bowl.png"/>
-		
-		<DragContainer Name="bananaContainer" PositionX="75" PositionY="190" Width="115" Height="115" Photo="recuadro.png"/>
-		<DragContainer Name="chocolateContainer" PositionX="190" PositionY="190" Width="115" Height="115" Photo="recuadro.png"/>
-		<DragContainer Name="polloContainer" PositionX="75" PositionY="75" Width="115" Height="115" Photo="recuadro.png"/>
-		<DragContainer Name="carneContainer" PositionX="190" PositionY="75" Width="115" Height="115" Photo="recuadro.png"/>
-
-		<DraggableItem Name="banana" PositionX="0" PositionY="0" Width="85" Height="85" Photo="banana.png" Draggable="true" Container="bananaContainer"/>
-		<DraggableItem Name="chocolate" PositionX="0" PositionY="0" Width="85" Height="85" Photo="chocolate.png" Draggable="true" Container="chocolateContainer"/>
-		<DraggableItem Name="pollo" PositionX="0" PositionY="0" Width="85" Height="85" Photo="pollo.png" Draggable="true" Container="polloContainer"/>
-		<DraggableItem Name="carne" PositionX="0" PositionY="0" Width="85" Height="85" Photo="carne.png" Draggable="true" Container="carneContainer"/>
-
-	</Level>
+	</Space>
 	
 </World>

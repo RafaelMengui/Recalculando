@@ -15,7 +15,7 @@ namespace Proyecto.Item.ScientistLevel
     /// </summary>
     public class Money : Items
     {
-        private int valor;
+        private float valor;
         /// <summary>
         /// Accion que se ejecutara al soltar el dinero.
         /// </summary>
@@ -34,7 +34,7 @@ namespace Proyecto.Item.ScientistLevel
         /// <param name="draggable">Bool que define si es arrastrable.</param>
         /// <param name="container">Container Source en donde es creado.</param>
         /// <param name="valor">Valor de la moneda.</param>
-        public Money(string name, Space level, int positionX, int positionY, int width, int height, string image, bool draggable, MoneyContainer container, int valor)
+        public Money(string name, Space level, float positionX, float positionY, float width, float height, string image, bool draggable, MoneyContainer container, float valor)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Value = valor;
@@ -46,8 +46,8 @@ namespace Proyecto.Item.ScientistLevel
         /// <summary>
         /// Gets or sets del valor de la moneda.
         /// </summary>
-        /// <value>int valor de la moneda.</value>
-        public int Value
+        /// <value>float valor de la moneda.</value>
+        public float Value
         {
             get
             {
@@ -99,7 +99,12 @@ namespace Proyecto.Item.ScientistLevel
             if (this.Draggable)
             {
                 EngineScientific engineScientific = Singleton<EngineScientific>.Instance;
-                return engineScientific.VerifyExercise(moneyContainer, this);
+                if (engineScientific.VerifyExercise(moneyContainer, this))
+                {
+                    //this.OnDropMoney(this.Name, this.PositionX, this.PositionY);
+                    return true;
+                }
+                return false;
             }
             else
             {
@@ -117,4 +122,4 @@ namespace Proyecto.Item.ScientistLevel
 }
 
 
-// this.OnDropMoney(this.Name, this.Positionx, this.PositionY);
+// 
