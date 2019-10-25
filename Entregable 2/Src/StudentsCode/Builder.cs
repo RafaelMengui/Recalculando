@@ -10,6 +10,7 @@ using Proyecto.Factory.CSharp;
 using Proyecto.Factory.Unity;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.StudentsCode
 {
@@ -19,6 +20,12 @@ namespace Proyecto.StudentsCode
     /// </summary>
     public class Builder : IBuilder
     {
+        /// <summary>
+        /// Instancia del motor principal.
+        /// </summary>
+        /// <returns></returns>
+        private EngineGame engineGame = new EngineGame();
+        
         /// <summary>
         /// Adapter del tipo <see cref="IMainViewAdapter"/>.
         /// </summary>
@@ -71,6 +78,7 @@ namespace Proyecto.StudentsCode
             }
 
             this.firstPage = this.world.SpaceList[0];
+            engineGame.MainPage = this.firstPage;
             this.adapter.AfterBuild();
         }
 
@@ -84,3 +92,9 @@ namespace Proyecto.StudentsCode
         }
     }
 }
+
+/*
+Drop de Money
+Drop de DraggableItems
+
+*/
