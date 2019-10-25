@@ -41,13 +41,6 @@ namespace Proyecto.StudentsCode
         /// </summary>
         private World world = Singleton<World>.Instance;
 
-
-        /// <summary>
-        /// Instancia de la fabrica responsable de agregar los objetos del modelado a unity.
-        /// </summary>
-        /// <returns>Void.</returns>
-        private UFactory unityFactory = new UFactory();
-
         /// <summary>
         /// Construye una interfaz de usuario interactiva utilizando un <see cref="IMainViewAdapter"/>.
         /// </summary>
