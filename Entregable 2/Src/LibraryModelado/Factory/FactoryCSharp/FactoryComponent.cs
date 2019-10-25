@@ -4,6 +4,8 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using Proyecto.LeerHTML;
+using System;
+using System.Collections.Generic;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Factory.CSharp
@@ -15,51 +17,53 @@ namespace Proyecto.Factory.CSharp
     public class FactoryComponent : IFactoryComponent
     {
         /// <summary>
-        /// Instancia de la fabrica responsable de crear el mundo.
+        /// Diccionario en donde se asociara un tag con su respectivo factory.
         /// </summary>
-        /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
-        private FactoryWorld factoryWorld = new FactoryWorld();
+        private Dictionary<string, IFactoryComponent> componentFactories = new Dictionary<string, IFactoryComponent>();
 
         /// <summary>
-        /// Instancia de la fabrica responsable de crear un espacio en el modelado.
+        /// Fabrica generica utilizada para delegar la responsabilidad de crear cada componente a su respectivo factory Concreto.
         /// </summary>
-        /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
-        private FactorySpace factorySpace = new FactorySpace();
+        private IFactoryComponent factory;
 
         /// <summary>
-        /// Instancia de la fabrica responsable de delegar la responsabilidad de Crear los Items.
+        /// Metodo estatico reponsable de instanciar la clase FactoryComponent.
         /// </summary>
-        /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
-        private FactoryItem factoryItem = new FactoryItem();
+        /// <returns><see cref="IFactoryComponent"/>.</returns>
+        public static IFactoryComponent InitializeFactories() => new FactoryComponent();
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de IFactoryComponent.
-        /// Es responsable de delegar la responsabilidad de crear componentes, a sus respectivos Factorys.
+        /// Metodo responsable de delegar la responsabilidad de crear el componente.
+        /// Intenta crear y asocia en el diccionario el nombre del componente (Tag.Nombre),
+        /// con su respectivo factory.
         /// </summary>
         /// <param name="tag">Tag <see cref="Tag"/>.</param>
         /// <returns>Componente <see cref="IComponent"/>.</returns>
         public override IComponent MakeComponent(Tag tag)
         {
-            switch (tag.Nombre)
+            try
             {
-                case "World":
-                    {
-                        IComponent world = this.factoryWorld.MakeComponent(tag);
-                        return world;
-                    }
-
-                case "Level":
-                    {
-                        IComponent level = this.factorySpace.MakeComponent(tag);
-                        return level;
-                    }
-
-                default:
-                    {
-                        IComponent item = this.factoryItem.MakeComponent(tag);
-                        return item;
-                    }
+                this.factory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.CSharp.Factory" + tag.Nombre)) as IFactoryComponent;
             }
+            catch (System.Exception)
+            {
+                throw new System.Exception($"Invalid Tag Name: {tag.Nombre}");
+            }
+
+            this.componentFactories.Add(tag.Nombre, this.factory);
+            foreach (var type in this.componentFactories)
+            {
+                try
+                {
+                    IComponent component = this.componentFactories[type.Key].MakeComponent(tag);
+                    return component;
+                }
+                catch (System.Exception)
+                {
+                    throw new System.Exception($"Factory {type.Value} not found.");
+                }
+            }
+            return null;
         }
     }
 }

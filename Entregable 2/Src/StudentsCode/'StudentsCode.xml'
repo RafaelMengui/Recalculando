@@ -31,12 +31,6 @@
             Instancia del unico mundo del tipo <see cref="T:Proyecto.LibraryModelado.World"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.StudentsCode.Builder.factoryComponent">
-            <summary>
-            Instancia de la fabrica responsable de crear componentes del modelado.
-            </summary>
-            <returns>Componentes del tipo <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
-        </member>
         <member name="F:Proyecto.StudentsCode.Builder.unityFactory">
             <summary>
             Instancia de la fabrica responsable de agregar los objetos del modelado a unity.

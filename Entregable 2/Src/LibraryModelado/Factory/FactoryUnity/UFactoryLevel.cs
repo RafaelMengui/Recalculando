@@ -12,7 +12,7 @@ namespace Proyecto.Factory.Unity
     /// Esta clase es la resposable de agregar los componentes Space al juego.
     /// Implementa la interfaz <see cref="IFactoryUnity"/>.
     /// </summary>
-    public class UFactorySpace : IFactoryUnity
+    public class UFactoryLevel : IFactoryUnity
     {
         /// <summary>
         /// Objeto Space que se agregara a Unity.
