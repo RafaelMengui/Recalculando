@@ -44,6 +44,9 @@ namespace Proyecto.Factory.CSharp
         /// <returns>Componentes del tipo <see cref="IComponent"/>.</returns>
         private FactoryInputText factoryInputText = new FactoryInputText();
 
+        private FactoryMoneyContainer factoryMoneyContainer = new FactoryMoneyContainer();
+        private FactoryMoney factoryMoney = new FactoryMoney();
+
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryComponent.
         /// Es responsable de delegar la responsabilidad de crear objetos Items, a sus respectivos Factorys.
@@ -83,7 +86,19 @@ namespace Proyecto.Factory.CSharp
                         IComponent input = this.factoryInputText.MakeComponent(tag);
                         return input;
                     }
-                
+
+                case "MoneyContainer":
+                    {
+                        IComponent moneyContainer = this.factoryMoneyContainer.MakeComponent(tag);
+                        return moneyContainer;
+                    }
+
+                case "Money":
+                    {
+                        IComponent money = this.factoryMoney.MakeComponent(tag);
+                        return money;
+                    }
+
                 default:
                     {
                         throw new System.Exception($"Invalid Tag Name {tag.Nombre}");

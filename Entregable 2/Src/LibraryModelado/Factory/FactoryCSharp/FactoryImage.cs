@@ -30,22 +30,22 @@ namespace Proyecto.Factory.CSharp
         /// <summary>
         /// Ancho de la imagen.
         /// </summary>
-        private int width;
+        private float width;
 
         /// <summary>
         /// Altura de la imagen.
         /// </summary>
-        private int height;
+        private float height;
 
         /// <summary>
         /// Posicion en X de la imagen.
         /// </summary>
-        private int positionX;
+        private float positionX;
 
         /// <summary>
         /// Posicion en Y de la imagen.
         /// </summary>
-        private int positionY;
+        private float positionY;
 
         /// <summary>
         /// Nivel al que pertenece.
@@ -67,10 +67,10 @@ namespace Proyecto.Factory.CSharp
         {
             this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
             this.level = this.world.SpaceList.Last();
-            this.width = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            this.height = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
-            this.positionX = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-            this.positionY = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            this.width = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
             this.photo = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
             Items image = new Image(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo);
             this.level.ItemList.Add(image);

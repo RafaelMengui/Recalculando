@@ -29,7 +29,7 @@ namespace Proyecto.Factory.Unity
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
             // Se castea el componente como Image.
-            this.input = (InputText)component;
+            this.input = component as InputText;
 
             // Se crea el objeto en unity y se obtiene el UnityID.
             //this.input.ID = adapter.CreateInputField(this.input.PositionX, this.input.PositionY, this.input.Width, this.input.Height, this.input.OnChange, this.input.OnEdited);

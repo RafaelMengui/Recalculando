@@ -29,7 +29,7 @@ namespace Proyecto.Factory.Unity
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
             // Castear como DragContainer.
-            this.dragContainer = (DragContainer)component;
+            this.dragContainer = component as DragContainer;
 
             // Crear objeto en unity y obtener el UnityID.
             this.dragContainer.ID = adapter.CreateImage(this.dragContainer.PositionX, this.dragContainer.PositionY, this.dragContainer.Width, this.dragContainer.Height);

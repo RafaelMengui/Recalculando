@@ -30,22 +30,22 @@ namespace Proyecto.Factory.CSharp
         /// <summary>
         /// Ancho del input.
         /// </summary>
-        private int width;
+        private float width;
 
         /// <summary>
         /// Altura del input.
         /// </summary>
-        private int height;
+        private float height;
 
         /// <summary>
         /// Posicion en X del input.
         /// </summary>
-        private int positionX;
+        private float positionX;
 
         /// <summary>
         /// Posicion en Y del input.
         /// </summary>
-        private int positionY;
+        private float positionY;
 
         /// <summary>
         /// Nivel al que pertenece.
@@ -67,10 +67,10 @@ namespace Proyecto.Factory.CSharp
         {
             this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
             this.level = this.world.SpaceList.Last();
-            this.width = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            this.height = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
-            this.positionX = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-            this.positionY = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            this.width = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
             Items input = new InputText(this.name, this.level, this.positionX, this.positionY, this.width, this.height, null);
             this.level.ItemList.Add(input);
             return input;

@@ -10,6 +10,12 @@
             Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
             </summary>
         </member>
+        <member name="F:Proyecto.StudentsCode.Builder.engineGame">
+            <summary>
+            Instancia del motor principal.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="F:Proyecto.StudentsCode.Builder.adapter">
             <summary>
             Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.

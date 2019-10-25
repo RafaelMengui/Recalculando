@@ -29,7 +29,7 @@ namespace Proyecto.Factory.Unity
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
             // Castear como DraggableItem.
-            this.draggableItem = (DraggableItem)component;
+            this.draggableItem = component as DraggableItem;
 
             // Crear objeto en unity y obtener el UnityID.
             this.draggableItem.ID = adapter.CreateImage(this.draggableItem.PositionX, this.draggableItem.PositionY, this.draggableItem.Width, this.draggableItem.Height);

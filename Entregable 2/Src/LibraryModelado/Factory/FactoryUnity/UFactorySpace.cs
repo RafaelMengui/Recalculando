@@ -28,7 +28,7 @@ namespace Proyecto.Factory.Unity
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
             // Se castea el componente como Space.
-            this.level = (Space)component;
+            this.level = component as Space;
 
             // Se crea la pagina en unity y obtiene el UnityID.
             this.level.ID = adapter.AddPage();

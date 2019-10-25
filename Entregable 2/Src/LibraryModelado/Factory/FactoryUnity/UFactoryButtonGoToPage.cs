@@ -29,7 +29,7 @@ namespace Proyecto.Factory.Unity
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
             // Castear como ButtonGoToPage.
-            this.buttonGoToPage = (ButtonGoToPage)component;
+            this.buttonGoToPage = component as ButtonGoToPage;
 
             // Asignar evento del boton.
             this.buttonGoToPage.Event = adapter.ShowPage;

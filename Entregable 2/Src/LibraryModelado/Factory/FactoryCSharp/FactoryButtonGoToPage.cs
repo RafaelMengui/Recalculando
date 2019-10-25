@@ -13,7 +13,7 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear objetos Boton para ir a la próxima página.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Utiliza la floaterfaz IFactoryComponent.
     /// </summary>
     public class FactoryButtonGoToPage : IFactoryComponent
     {
@@ -38,24 +38,24 @@ namespace Proyecto.Factory.CSharp
         private string pageName;
 
         /// <summary>
-        /// Atributos int utilizados para crear el componente.
+        /// Atributos float utilizados para crear el componente.
         /// </summary>
-        private int width;
+        private float width;
 
         /// <summary>
         /// Altura del boton.
         /// </summary>
-        private int height;
+        private float height;
 
         /// <summary>
         /// Posicion en X del boton.
         /// </summary>
-        private int positionX;
+        private float positionX;
 
         /// <summary>
         /// Posicion en Y del boton.
         /// </summary>
-        private int positionY;
+        private float positionY;
 
         /// <summary>
         /// Nivel al que pertenece el boton.
@@ -77,10 +77,10 @@ namespace Proyecto.Factory.CSharp
         {
             this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
             this.level = this.world.SpaceList.Last();
-            this.width = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            this.height = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
-            this.positionX = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-            this.positionY = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            this.width = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
             this.color = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Color"; }).Valor;
             this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
             this.pageName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "GoToPage"; }).Valor;

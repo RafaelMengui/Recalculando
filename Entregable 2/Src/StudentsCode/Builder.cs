@@ -62,7 +62,7 @@ namespace Proyecto.StudentsCode
             this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
             this.adapter.AfterBuild += this.Setup;
 
-            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
+            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Niveles.xml";
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
 
             List<IComponent> componentList = new List<IComponent>();
@@ -96,5 +96,4 @@ namespace Proyecto.StudentsCode
 /*
 Drop de Money
 Drop de DraggableItems
-
 */
