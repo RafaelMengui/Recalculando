@@ -28,8 +28,16 @@ namespace Proyecto.Factory.Unity
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
-            // Se castea el componente como Image.
-            this.image = component as Image;
+            try
+            {
+                // Se castea el componente como Image.
+                this.image = component as Image;
+            }
+
+            catch (System.Exception)
+            {
+                throw new System.Exception("Fail to cast component as Image");
+            }
 
             // Se crea el objeto en unity y se obtiene el UnityID.
             this.image.ID = adapter.CreateImage(this.image.PositionX, this.image.PositionY, this.image.Width, this.image.Height);

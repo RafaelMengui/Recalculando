@@ -28,11 +28,19 @@ namespace Proyecto.Factory.Unity
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
-            // Se castea el componente como Image.
-            this.input = component as InputText;
+            try
+            {
+                // Se castea el componente como InputText.
+                this.input = component as InputText;
+            }
+
+            catch (System.Exception)
+            {
+                throw new System.Exception("Fail to cast component as InputText");
+            }
 
             // Se crea el objeto en unity y se obtiene el UnityID.
-            //this.input.ID = adapter.CreateInputField(this.input.PositionX, this.input.PositionY, this.input.Width, this.input.Height, this.input.OnChange, this.input.OnEdited);
+            this.input.ID = adapter.CreateInputField(this.input.PositionX, this.input.PositionY, this.input.Width, this.input.Height, this.input.OnChange, this.input.OnEdited);
         }
     }
 }

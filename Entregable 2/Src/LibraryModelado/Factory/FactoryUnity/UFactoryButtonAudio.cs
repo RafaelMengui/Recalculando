@@ -28,8 +28,15 @@ namespace Proyecto.Factory.Unity
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
-            // Castear como ButtonAudio.
-            this.buttonAudio = component as ButtonAudio;
+            try
+            {
+                // Castear como ButtonAudio.
+                this.buttonAudio = component as ButtonAudio;
+            }
+            catch(System.Exception)
+            {
+                throw new System.Exception("Fail to cast component as ButtonAudio");
+            }
 
             // Asignar evento del boton.
             this.buttonAudio.Event = adapter.PlayAudio;
@@ -39,7 +46,7 @@ namespace Proyecto.Factory.Unity
 
             // Asignarle su imagen al boton.
             adapter.SetImage(this.buttonAudio.ID, this.buttonAudio.Image);
- 
+
             // Se quita la palabra "Button".
             adapter.SetText(this.buttonAudio.ID, string.Empty);
         }

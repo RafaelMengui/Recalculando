@@ -109,7 +109,11 @@
         <member name="T:Proyecto.LibraryModelado.IButton">
             <summary>
             Interfaz de Botones.
-            Permite crear varios botones con diferentes funcionalidades.
+            Esta interfaz es creada, debido a que, cuando en un futuro querramos 
+            tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón 
+            que sea una imagen,un botón contador, botón audio, etc. 
+            En este caso, estamos pensando en la funcionalidad futura del código, 
+            para cuando debamos ampliar el juego.
             </summary>
         </member>
         <member name="M:Proyecto.LibraryModelado.IButton.Click(System.String)">
@@ -127,6 +131,11 @@
         <member name="T:Proyecto.LibraryModelado.Items">
             <summary>
             Clase abstracta de Items en el modelado.
+            Utilizamos HERENCIA en este caso debido a que, esta clase será la base de mucho de 
+            lo que creado en el proyecto. La clase descendiente (Width, Image, Height, etc.) 
+            va a heredar automáticamente los atributos,propiedades de Items. Las clases 
+            hijas aumentan la especialización dependiendo de lo que deben hacer cada una 
+            de ellas en el juego.
             Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
             </summary>
         </member>
@@ -210,7 +219,12 @@
         </member>
         <member name="T:Proyecto.LibraryModelado.Singleton`1">
             <summary>
-            Patron Singleton, permite crear solamente una instancia de una clase generica "T".
+            El patrón SINGLETON nos permite garantizar la existencia de una sola instancia de clase.
+            Además el acceso a esa única instancia tiene que ser global. Esto es de mucha utilidad 
+            debido a que, tomamos la decisión de que en nuestro juego haya un único World, por tanto, 
+            Singleton es fundamental debido a que se ejecuta una única vez, así nos aseguramos que 
+            sólo existe una instancia. En caso de querer llamarlo en cualquier parte del programa 
+            se puede realizar.
             </summary>
             <typeparam name="T">Clase Generica.</typeparam>
         </member>

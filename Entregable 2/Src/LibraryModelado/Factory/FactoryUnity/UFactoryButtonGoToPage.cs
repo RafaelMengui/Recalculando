@@ -28,8 +28,16 @@ namespace Proyecto.Factory.Unity
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
-            // Castear como ButtonGoToPage.
-            this.buttonGoToPage = component as ButtonGoToPage;
+            try
+            {
+                // Castear como ButtonGoToPage.
+                this.buttonGoToPage = component as ButtonGoToPage;
+            }
+
+            catch (System.Exception)
+            {
+                throw new System.Exception("Fail to cast component as ButtonGoToPage");
+            }
 
             // Asignar evento del boton.
             this.buttonGoToPage.Event = adapter.ShowPage;

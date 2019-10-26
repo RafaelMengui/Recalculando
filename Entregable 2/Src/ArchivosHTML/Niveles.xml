@@ -2,11 +2,11 @@
 
 	<Space Name="first" Background="page1.png">
 
-		<ButtonAudio Name="pirata" Type="Audio" PositionX="-400" PositionY="150" Width="200" Height="150" Photo="bill20.png" Color="#FCFCFC" Audio="piratesSound.wav">
-		<ButtonAudio Name="kahoot" Type="Audio" PositionX="-400" PositionY="-150" Width="200" Height="150" Photo="bill200.png" Color="#FCFCFC" Audio="kahoot.wav">
-		<ButtonAudio Name="wii" Type="Audio" PositionX="400" PositionY="150" Width="200" Height="150" Photo="bill500.png" Color="#FCFCFC" Audio="wii.wav">
-		<ButtonAudio Name="nada" Type="Audio" PositionX="400" PositionY="-150" Width="200" Height="150" Photo="bill10.png" Color="#FCFCFC" Audio="vacio.wav">
-		<ButtonGoToPage Name="gotoscientist" Type="GoToPage" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="secondpage">
+		<ButtonAudio Name="pirata" PositionX="-400" PositionY="150" Width="200" Height="150" Photo="bill20.png" Color="#FCFCFC" Audio="piratesSound.wav">
+		<ButtonAudio Name="kahoot" PositionX="-400" PositionY="-150" Width="200" Height="150" Photo="bill200.png" Color="#FCFCFC" Audio="kahoot.wav">
+		<ButtonAudio Name="wii" PositionX="400" PositionY="150" Width="200" Height="150" Photo="bill500.png" Color="#FCFCFC" Audio="wii.wav">
+		<ButtonAudio Name="nada" PositionX="400" PositionY="-150" Width="200" Height="150" Photo="bill10.png" Color="#FCFCFC" Audio="vacio.wav">
+		<ButtonGoToPage Name="gotoscientist" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="secondpage">
 
 	</Space>
 
