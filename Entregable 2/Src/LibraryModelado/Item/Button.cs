@@ -30,7 +30,7 @@ namespace Proyecto.Item
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del boton.</param>
         /// <param name="color">Color del boton en Hexadecimal.</param>
-        public Button(string name, Space level, int positionX, int positionY, int width, int height, string image, string color)
+        public Button(string name, Space level, float positionX, float positionY, float width, float height, string image, string color)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Color = color;

@@ -29,7 +29,7 @@ namespace Proyecto.Factory.Unity
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
             // Se castea el componente como Image.
-            this.image = (Image)component;
+            this.image = component as Image;
 
             // Se crea el objeto en unity y se obtiene el UnityID.
             this.image.ID = adapter.CreateImage(this.image.PositionX, this.image.PositionY, this.image.Width, this.image.Height);

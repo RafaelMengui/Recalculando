@@ -34,7 +34,7 @@ namespace Proyecto.Item
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del input.</param>
-        public InputText(string name, Space level, int positionX, int positionY, int width, int height, string image)
+        public InputText(string name, Space level, float positionX, float positionY, float width, float height, string image)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.OnChange = onChange;

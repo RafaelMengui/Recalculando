@@ -1,5 +1,9 @@
+//--------------------------------------------------------------------------------
+// <copyright file="EngineScientific.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
 using Proyecto.Item.ScientistLevel;
-using System.Collections.Generic;
 
 namespace Proyecto.LibraryModelado.Engine
 {
@@ -29,14 +33,14 @@ namespace Proyecto.LibraryModelado.Engine
         /// Existen dos paginas en el nivel.
         /// </summary>
         /// <value>Int.</value>
-        public int LevelCounter { get; set; }
+        public int LevelCounter { get; private set; }
 
         /// <summary>
         /// Gets or sets de contador utilizado para saber en que operacion de la pagina nos encontramos.
         /// Existen dos operaciones dentro de la pagina.
         /// </summary>
         /// <value>Int.</value>
-        public int PageCounter { get; set; }
+        public int PageCounter { get; private set; }
 
         /// <summary>
         /// Gets or sets de los resultados de las sumas de una pagina.
@@ -45,7 +49,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// false = resultado Incorrecto.
         /// </summary>
         /// <value>Array de Bools.</value>
-        public bool[] ResultsOfPage { get; set; }
+        public bool[] ResultsOfPage { get; private set; }
 
         /// <summary>
         /// Gets or sets de los resultados del nivel.
@@ -54,7 +58,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// false = No completo las dos operaciones de la pagina.
         /// </summary>
         /// <value>Array de Bools.</value>
-        public bool[] ResultsOfLevel { get; set; }
+        public bool[] ResultsOfLevel { get; private set; }
 
         /// <summary>
         /// Metodo responsable de verificar si el objeto tipo Money soltado dentro del MoneyContainer,
@@ -70,6 +74,7 @@ namespace Proyecto.LibraryModelado.Engine
 
         /// <summary>
         /// Verifica que ambas sumas de la pagina esten hechas correctamente.
+        /// Si fueron realizadas de manera correcta, los parametros del this.ResultsOfLevel pasan a ser true.
         /// </summary>
         /// <returns>Bool.</returns>
         public bool VerifyWinPage()
