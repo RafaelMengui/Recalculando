@@ -5,6 +5,11 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineScientific, responsable de implementar la logica del nivel scientific.
+    ///  Paraa realizar los motores utilizamos el patrón SINGLETON, este nos permite garantizar 
+    /// la existencia de una sola instancia de clase. Además el acceso a esa única instancia tiene
+    ///  que ser global. Esto es de mucha utilidad debido a que, vamos a necesitar llamar al motor
+    ///  de este juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
+    /// de que solo haya un motor de este juego.
     /// </summary>
     public class EngineScientific
     {
