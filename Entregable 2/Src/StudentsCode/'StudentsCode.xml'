@@ -31,12 +31,6 @@
             Instancia del unico mundo del tipo <see cref="T:Proyecto.LibraryModelado.World"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.StudentsCode.Builder.unityFactory">
-            <summary>
-            Instancia de la fabrica responsable de agregar los objetos del modelado a unity.
-            </summary>
-            <returns>Void.</returns>
-        </member>
         <member name="M:Proyecto.StudentsCode.Builder.Build(Proyecto.Common.IMainViewAdapter)">
             <summary>
             Construye una interfaz de usuario interactiva utilizando un <see cref="T:Proyecto.Common.IMainViewAdapter"/>.

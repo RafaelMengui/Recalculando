@@ -58,7 +58,6 @@ namespace Proyecto.StudentsCode
             {
                 IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
                 componentList.Add(component);
-                Console.WriteLine(component.GetType());
             }
 
             foreach (IComponent component in componentList)
