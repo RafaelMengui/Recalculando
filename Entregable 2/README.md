@@ -1,11 +1,12 @@
-Reecalculando: 
+REECALCULANDO: 
 Nuestro juego pensando especialmente para personas que padecen dislculía.
 El juego en general se basa en 4 personajes, cada uno de estos equivale a un juego. 
 Para esta entrega los juegos planteados son:
-°Cientifico: El niño debe realizar las sumas pedidas, arrastrando los billetes. 
+°Cientifico: El niño debe realizar las sumas pedidas, arrastrando los billetes. El mismo cuenta con dos niveles diferentes, en cad auno de los niveles tiene 2 sumas para hacer. 
+°Cocinero: El chef, le ira pidiendo al niño que coloque diferentes ingredientes para realizar una receta. El niño debe arrastrar los objetos pedidos a un bowl central que se encuentra en el juego. 
 
 
-
+Integrantes: Agustina Marrero, Nicolas Puig, Rafael Mengui, Santiago Omodey
 
 
 
@@ -32,7 +33,9 @@ Tomamos la decisión de tener varios CreatorUnity y CreatorC#, uno por cada obje
  Utilizamos herencia en este caso debido a que, esta clase será la base de mucho de lo que creamos en el proyecto. La clase descendiente(Width, Image, Height, etc.) va a heredar automáticamente los atributos,propiedades de Items. Las clases hijas aumentan la especialización dependiendo de lo que deben hacer cada una de ellas en el juego.
 
 3. Observer 
-El patrón Observer es un pilar fundamental en nuestro juego, debido a que, es el MOTOR del mismo. Este será el encargado en tomar las decisiónes, es la lógica del juego. Para esto, definimos una dependencia de tipo entre objetos, de manera que cuando uno de los objetos cambie,notifica a todos los dependientes. (PONER CUAL ES) MOTOR- Observa cada evento de la app. Le avisa todo al motor Información tomada de: "Design Patterns: Elements of Reusable Object-Oriented Software"
+El patrón Observer es un pilar fundamental en nuestro juego, debido a que, es el MOTOR del mismo. Este será el encargado en tomar las decisiónes, es la lógica del juego. Para esto, definimos una dependencia de tipo entre objetos, de manera que cuando uno de los objetos cambie,notifica a todos los dependientes. (PONER CUAL ES) MOTOR- Observa cada evento de la app. Le avisa todo al motor 
+
+Información tomada de: "Design Patterns: Elements of Reusable Object-Oriented Software"
 
 4. Factory Abstract - LISTO
  Este patrón creado por "The Gang of Four" es fundamental para la creación de los objetos del juego, debido a que, nos soluciona el problema de como diferentes familias de objetos puedan ser creadas. La principal clave para utilizar el patrón es asbtraer el proceso de la creación, por esto, tenemos la clase .... Lo que nos permite este patrón es, delegar la creación de instancia de un objeto, lo cuál es fundamental porque cuanto más divida este la funcionalidad del código mejor, cada clase se encarga de una creación especifica.
