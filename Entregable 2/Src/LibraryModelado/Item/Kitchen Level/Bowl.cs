@@ -24,7 +24,7 @@ namespace Proyecto.Item.KitchenLevel
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del Item.</param>
-        public Bowl(string name, Space level, int positionX, int positionY, int width, int height, string image)
+        public Bowl(string name, Space level, float positionX, float positionY, float width, float height, string image)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.SavedFoods = new List<Food>();

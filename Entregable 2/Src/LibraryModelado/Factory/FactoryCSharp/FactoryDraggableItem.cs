@@ -36,22 +36,22 @@ namespace Proyecto.Factory.CSharp
         /// <summary>
         /// Ancho del item.
         /// </summary>
-        private int width;
+        private float width;
 
         /// <summary>
         /// Altura del item.
         /// </summary>
-        private int height;
+        private float height;
 
         /// <summary>
         /// Posicion en X del item.
         /// </summary>
-        private int positionX;
+        private float positionX;
 
         /// <summary>
         /// Posicion en Y del item.
         /// </summary>
-        private int positionY;
+        private float positionY;
 
         /// <summary>
         /// Define si el item es arrastrable.
@@ -78,10 +78,10 @@ namespace Proyecto.Factory.CSharp
         {
             this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
             this.level = this.world.SpaceList.Last();
-            this.width = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            this.height = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
-            this.positionX = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-            this.positionY = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+            this.width = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
+            this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
+            this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+            this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
             this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
             this.containerName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Container"; }).Valor;
             this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Draggable"; }).Valor);

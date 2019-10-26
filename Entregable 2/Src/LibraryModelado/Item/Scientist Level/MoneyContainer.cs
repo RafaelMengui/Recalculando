@@ -29,7 +29,7 @@ namespace Proyecto.Item.ScientistLevel
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del container.</param>
         /// <param name="acceptableValue">Valor de dinero que aceptara el container.</param>
-        public MoneyContainer(string name, Space level, int positionX, int positionY, int width, int height, string image, int acceptableValue)
+        public MoneyContainer(string name, Space level, float positionX, float positionY, float width, float height, string image, float acceptableValue)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.SavedItem = savedItem;
@@ -39,8 +39,8 @@ namespace Proyecto.Item.ScientistLevel
         /// <summary>
         /// Gets or sets del valor monetario aceptado por el container.
         /// </summary>
-        /// <value>Int valor aceptado.</value>
-        public int AcceptableValue { get; set; }
+        /// <value>float valor aceptado.</value>
+        public float AcceptableValue { get; set; }
 
         /// <summary>
         /// Gets or sets de objetos Money soltado dentro del container.
