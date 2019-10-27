@@ -16,7 +16,11 @@ namespace Proyecto.StudentsCode
 {
     /// <summary>
     /// Clase que implementa la interfaz IBuilder.
-    /// Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
+    /// El patrón de diseño Builder separa la creación de un objeto complejo
+    /// de su representación de modo que el mismo proceso de construcción pueda 
+    /// crear representaciones diferentes.
+    /// En el caso de nuestro código lo utilizamos para generar los archivos 'StudentsCode.dll' 
+    /// y 'Common.dll'.
     /// </summary>
     public class Builder : IBuilder
     {
