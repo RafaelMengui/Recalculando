@@ -51,17 +51,24 @@ namespace Proyecto.Factory.CSharp
             }
 
             this.componentFactories.Add(tag.Nombre, this.factory);
+            // foreach (var type in this.componentFactories)
+            // {
+            //     try
+            //     {
+            //         IComponent component = this.componentFactories[type.Key].MakeComponent(tag);
+            //         return component;
+            //     }
+            //     catch (System.Exception)
+            //     {
+            //         throw new System.Exception($"Factory {type.Value} not found.");
+            //     }
+            // }
+            // return null;
+
             foreach (var type in this.componentFactories)
             {
-                try
-                {
-                    IComponent component = this.componentFactories[type.Key].MakeComponent(tag);
-                    return component;
-                }
-                catch (System.Exception)
-                {
-                    throw new System.Exception($"Factory {type.Value} not found.");
-                }
+                IComponent component = this.componentFactories[type.Key].MakeComponent(tag);
+                return component;
             }
             return null;
         }

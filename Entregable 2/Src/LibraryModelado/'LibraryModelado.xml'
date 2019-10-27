@@ -64,6 +64,11 @@
             de que solo haya un motor de este juego.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.feedback">
+            <summary>
+            Etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+            </summary>
+        </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.level">
             <summary>
             Variable Level utilizada para instanciar un nivel asignable.
