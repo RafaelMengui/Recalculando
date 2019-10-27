@@ -20,7 +20,7 @@ namespace Proyecto.Item
         private Action<string> evento;
 
         /// <summary>
-        /// Initializes a new instance of ButtonAudio.
+        /// Inicializa una nueva instancia de ButtonAudio.
         /// </summary>
         /// <param name="name">Nombre del boton.</param>
         /// <param name="level">Nivel al que pertence.</param>
