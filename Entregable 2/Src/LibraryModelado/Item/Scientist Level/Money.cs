@@ -44,7 +44,8 @@ namespace Proyecto.Item.ScientistLevel
         }
 
         /// <summary>
-        /// Gets or sets del valor de la moneda.
+        /// Gets or sets del valor de la moneda. 
+        /// En caso que, la moneda sea de un valor negativo, se ejecuta la exepción.
         /// </summary>
         /// <value>float valor de la moneda.</value>
         public float Value
