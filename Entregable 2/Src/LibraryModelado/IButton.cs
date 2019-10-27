@@ -3,18 +3,22 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using System;
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
-    /// Interfaz de Boton.
+    /// Interfaz de Botones.
+    /// Esta interfaz es creada, debido a que, cuando en un futuro querramos 
+    /// tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón 
+    /// que sea una imagen,un botón contador, botón audio, etc. 
+    /// En este caso, estamos pensando en la funcionalidad futura del código, 
+    /// para cuando debamos ampliar el juego.
     /// </summary>
-    public interface IButton 
+    public interface IButton
     {
         /// <summary>
-        /// Acciones realizadas al hacer click en un boton. Eventos.
+        /// Acciones y eventos realizados al hacer click en un boton.
         /// </summary>
-        void Click();
+        /// <param name="text">String.</param>
+        void Click(string text);
     }
 }
-

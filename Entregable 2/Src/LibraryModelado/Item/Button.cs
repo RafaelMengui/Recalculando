@@ -4,23 +4,23 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
-using Proyecto.Common;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Item
 {
     /// <summary>
-    /// Clase de Botones. Hereda de <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
+    /// Clase responsable de crear botones genericos, no tienen ninguna funcionalidad.
+    /// Hereda de la clase abstracta <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
     /// </summary>
     public class Button : Items, IButton
     {
         /// <summary>
-        /// Color del Boton.
+        /// Accion del boton.
         /// </summary>
-        private string color;
+        private Action<string> evento;
 
         /// <summary>
-        /// Constructor. Instancia Objetos Button.
+        /// Initializes a new instance of Button.
         /// </summary>
         /// <param name="name">Nombre del boton.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -30,10 +30,11 @@ namespace Proyecto.Item
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del boton.</param>
         /// <param name="color">Color del boton en Hexadecimal.</param>
-        public Button(string name, Space level, int positionX, int positionY, int width, int height, string image,string color)
+        public Button(string name, Space level, float positionX, float positionY, float width, float height, string image, string color)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Color = color;
+            this.Event = this.evento;
         }
 
         /// <summary>
@@ -43,20 +44,18 @@ namespace Proyecto.Item
         public string Color { get; set; }
 
         /// <summary>
-        /// Accion realizada por el boton.
+        /// Gets or sets del evento del boton.
         /// </summary>
-        public void Click()
-        {
-        }
+        /// <value>Action.</value>
+        public Action<string> Event { get; set; }
 
         /// <summary>
-        /// Metodo para crear Botones en Unity.
+        /// Accion realizada por el boton.
         /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/>.</param>
-        public override void CreateUnityItem(IMainViewAdapter adapter)
+        /// <param name="text">Sin funcionalidad.</param>
+        public void Click(string text)
         {
-            this.ID = adapter.CreateButton(this.PositionX, this.PositionY, this.Width, this.Height, this.Color, this.Click);
-            adapter.SetImage(this.ID, this.Image);
+            this.Event(string.Empty);
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿using System;
-
+﻿//--------------------------------------------------------------------------------
+// <copyright file="Atributos.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
 namespace Proyecto.LeerHTML
 {
     /// <summary>

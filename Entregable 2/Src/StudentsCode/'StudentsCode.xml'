@@ -10,15 +10,36 @@
             Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
             </summary>
         </member>
+        <member name="F:Proyecto.StudentsCode.Builder.engineGame">
+            <summary>
+            Instancia del motor principal.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Builder.adapter">
+            <summary>
+            Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Builder.firstPage">
+            <summary>
+            Pagina inicial que se mostrara al ejecutar el juego.
+            </summary>
+        </member>
+        <member name="F:Proyecto.StudentsCode.Builder.world">
+            <summary>
+            Instancia del unico mundo del tipo <see cref="T:Proyecto.LibraryModelado.World"/>.
+            </summary>
+        </member>
         <member name="M:Proyecto.StudentsCode.Builder.Build(Proyecto.Common.IMainViewAdapter)">
             <summary>
             Construye una interfaz de usuario interactiva utilizando un <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
             </summary>
             <param name="providedAdapter">Un <see cref="T:Proyecto.Common.IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
         </member>
-        <member name="M:Proyecto.StudentsCode.Builder.AfterBuildShowFirstPage">
+        <member name="M:Proyecto.StudentsCode.Builder.Setup">
             <summary>
-            Actions
+            Accion a realizar luego de Compilar el programa. Muestra la primera pagina en Unity.
             </summary>
         </member>
     </members>

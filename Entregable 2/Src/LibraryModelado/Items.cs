@@ -3,57 +3,26 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using Proyecto.Common;
-
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
-    /// Clase abstracta de Items.
+    /// Clase abstracta de Items en el modelado.
+    /// Utilizamos HERENCIA en este caso debido a que, esta clase será la base de mucho de 
+    /// lo que creado en el proyecto. La clase descendiente (Width, Image, Height, etc.) 
+    /// va a heredar automáticamente los atributos,propiedades de Items. Las clases 
+    /// hijas aumentan la especialización dependiendo de lo que deben hacer cada una 
+    /// de ellas en el juego.
+    /// Implementa la interfaz <see cref="IComponent"/>.
     /// </summary>
-    public abstract class Items
+    public abstract class Items : IComponent
     {
-        /// <summary>
-        /// Nombre del Item.
-        /// </summary>
-        private string name;
-
-        /// <summary>
-        /// Nivel al que pertenece el Item.
-        /// </summary>
-        private Space level;
-
         /// <summary>
         /// Unity ID del item.
         /// </summary>
         private string id;
 
         /// <summary>
-        /// Posicion en eje Horizontal en pixeles.
-        /// </summary>
-        private int positionX;
-
-        /// <summary>
-        /// Posicion en eje Vertical en pixeles.
-        /// </summary>
-        private int positionY;
-
-        /// <summary>
-        /// Ancho en Pixeles.
-        /// </summary>
-        private int width;
-
-        /// <summary>
-        /// Altura en pixeles.
-        /// </summary>
-        private int height;
-
-        /// <summary>
-        /// Imagen del Item.
-        /// </summary>
-        private string image;
-
-        /// <summary>
-        /// Constructor. Inicializa una instancia de Items.
+        /// Initializes a new instance of Items.
         /// </summary>
         /// <param name="name">Nombre del Item.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -62,11 +31,11 @@ namespace Proyecto.LibraryModelado
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del Item.</param>
-        public Items(string name, Space level, int positionX, int positionY, int width, int height, string image)
+        public Items(string name, Space level, float positionX, float positionY, float width, float height, string image)
         {
             this.Name = name;
             this.Level = level;
-            this.ID = id;
+            this.ID = this.id;
             this.PositionX = positionX;
             this.PositionY = positionY;
             this.Width = width;
@@ -95,37 +64,31 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Gets or sets de Posicion en eje Horizontal en pixeles.
         /// </summary>
-        /// <value>Int posicion en eje horizontal.</value>
-        public int PositionX { get; set; }
+        /// <value>float posicion en eje horizontal.</value>
+        public float PositionX { get; set; }
 
         /// <summary>
         /// Gets or sets dePosicion en eje Vertical en pixeles.
         /// </summary>
-        /// <value>Int posicion en eje vertical.</value>
-        public int PositionY { get; set; }
+        /// <value>float posicion en eje vertical.</value>
+        public float PositionY { get; set; }
 
         /// <summary>
         /// Gets or sets de Ancho en Pixeles.
         /// </summary>
-        /// <value>Int ancho en pixeles.</value>
-        public int Width { get; set; }
+        /// <value>float ancho en pixeles.</value>
+        public float Width { get; set; }
 
         /// <summary>
         /// Gets or sets de Altura en pixeles.
         /// </summary>
-        /// <value>Int altura en pixeles.</value>
-        public int Height { get; set; }
+        /// <value>float altura en pixeles.</value>
+        public float Height { get; set; }
 
         /// <summary>
         /// Gets or sets la imagen del item.
         /// </summary>
         /// <value>String path to image.</value>
         public string Image { get; set; }
-
-        /// <summary>
-        /// Metodo abstracto para crear objetos en Unity.
-        /// </summary>
-        /// <param name="adapter">Adapter del tipo <see cref="IMainViewAdapter"/></param>
-        public abstract void CreateUnityItem(IMainViewAdapter adapter);
     }
 }

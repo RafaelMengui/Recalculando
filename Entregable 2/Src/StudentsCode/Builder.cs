@@ -5,21 +5,45 @@
 //--------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using Proyecto.LeerHTML;
 using Proyecto.Common;
+using Proyecto.Factory.CSharp;
+using Proyecto.Factory.Unity;
+using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.StudentsCode
 {
     /// <summary>
     /// Clase que implementa la interfaz IBuilder.
-    /// Tiene la responsabilidad de generar los archivos 'StudentsCode.dll' y 'Common.dll'.
+    /// El patrón de diseño Builder separa la creación de un objeto complejo
+    /// de su representación de modo que el mismo proceso de construcción pueda 
+    /// crear representaciones diferentes.
+    /// En el caso de nuestro código lo utilizamos para generar los archivos 'StudentsCode.dll' 
+    /// y 'Common.dll'.
     /// </summary>
     public class Builder : IBuilder
     {
+        /// <summary>
+        /// Instancia del motor principal.
+        /// </summary>
+        /// <returns></returns>
+        private EngineGame engineGame = Singleton<EngineGame>.Instance;
+
+        /// <summary>
+        /// Adapter del tipo <see cref="IMainViewAdapter"/>.
+        /// </summary>
         private IMainViewAdapter adapter;
-        Creator Creator = new Creator();
+
+        /// <summary>
+        /// Pagina inicial que se mostrara al ejecutar el juego.
+        /// </summary>
         private Space firstPage;
+
+        /// <summary>
+        /// Instancia del unico mundo del tipo <see cref="World"/>.
+        /// </summary>
+        private World world = Singleton<World>.Instance;
 
         /// <summary>
         /// Construye una interfaz de usuario interactiva utilizando un <see cref="IMainViewAdapter"/>.
@@ -27,105 +51,39 @@ namespace Proyecto.StudentsCode
         /// <param name="providedAdapter">Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.</param>
         public void Build(IMainViewAdapter providedAdapter)
         {
-            adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            adapter.ToDoAfterBuild(AfterBuildShowFirstPage);
-            // AfterBuild = Setup;      AfterBuild();
+            this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
+            this.adapter.AfterBuild += this.Setup;
 
-            const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Prueba.xml";
-            List<Tag> tags = Filtro.FiltrarHTML(LeerHtml.RetornarHTML(XMLfile));
+            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Niveles.xml";
+            List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
+            List<IComponent> componentList = new List<IComponent>();
 
-            //Se crean los objetos C#
             foreach (Tag tag in tags)
             {
-                switch (tag.Nombre)
-                {
-                    case "World":
-                        Creator.World = Creator.AddWorld(tag);
-                        break;
-                    case "Level":
-                        Creator.Level = Creator.AddLevel(tag);
-                        break;
-                    case "Button":
-                        Items button = Creator.AddButton(tag);
-                        break;
-                    case "ButtonAudio":
-                        Items buttonAudio = Creator.AddButtonAudio(tag);
-                        break;
-                    case "Image":
-                        Items image = Creator.AddImage(tag);
-                        break;
-                    case "DragAndDropSource":
-                        Items dragAndDropSource = Creator.AddDragAndDropSource(tag);
-                        break;
-                    case "DragAndDropDestination":
-                        Items dragAndDropDestination = Creator.AddDragAndDropDestination(tag);
-                        break;
-                    case "DragAndDropItem":
-                        Items dragAndDropItem = Creator.AddDragAndDropItem(tag);
-                        break;
-                }
+                IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
+                componentList.Add(component);
             }
 
-            firstPage = Creator.World.SpaceList[0];
+            this.engineGame.Asociate(componentList);
 
-            //Crear los objetos Unity            
-            foreach (Space level in Creator.World.SpaceList)
+            foreach (IComponent component in componentList)
             {
-                level.CreateUnityLevel(adapter);
+                UFactory.InitializeUnityFactories().MakeUnityItem(adapter, component);
             }
+
+            this.firstPage = this.world.SpaceList[0];
+            engineGame.MainPage = this.firstPage;
+            this.adapter.AfterBuild();
         }
 
         /// <summary>
-        /// Actions
+        /// Accion a realizar luego de Compilar el programa. Muestra la primera pagina en Unity.
         /// </summary>
-        public void AfterBuildShowFirstPage()
+        private void Setup()
         {
-            adapter.ChangeLayout(Layout.Vertical); 
-            adapter.ShowPage(firstPage.ID);
-            firstPage.ShowLevelItems(adapter);
+            this.engineGame.ButtonGoToMain();
+            this.adapter.ChangeLayout(Layout.ContentSizeFitter);
+            this.adapter.ShowPage(this.firstPage.ID);
         }
     }
 }
-
-/*
-Funcionalidad de botones:
-
-1) Un solo AddButton:
-    con type = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Type"; }).Valor;
-    switch(type) { case "Audio": Items ab = new AudioButton() };
-
-Ej:
-    <Button Name="" Type="Audio" AudioFile="audio.wav" Width="" Height="" PositionX="" PositionY="" Color="" Image=""/>
-    
-    Type="Audio" -> AudioFile="audio.wav"
-    Type="GoToPage" -> Page="level1"
-
-
-2) Diferentes AddButton:
-
-<ButtonAudio Name="" AudioFile="audio.wav" Width="" Height="" PositionX="" PositionY="" Color="" Image=""/>
-<ButtonGoTo Name="" GoToPage="level1" Width="" Height="" PositionX="" PositionY="" Color="" Image=""/>
-
-AddButtonAudio() {}
-AddButtonGoTo() {}
-
-
-3) Mas de un evento al hacer click en un boton.
-------------------------------------------------------------------------------------------------------------------
-
-Pantalla en vertical
-Unity a iPhone
-
-------------------------------------------------------------------------------------------------------------------
-
-Version Nueva de repo
-ToDoAfterBuild (obsoleto) / Action AfterBuild
-
-------------------------------------------------------------------------------------------------------------------
-
-Texto fijo
-
-------------------------------------------------------------------------------------------------------------------
-
-Borrar items al cambiar de pagina.
-*/
