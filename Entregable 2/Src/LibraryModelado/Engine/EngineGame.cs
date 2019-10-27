@@ -11,6 +11,7 @@ namespace Proyecto.LibraryModelado.Engine
     /// <summary>
     /// Motor general del juego.
     /// Tiene la responsabilidad de conocer y controlar la funcionalidad de los demas motores del juego.
+    /// Hereda de la clase abstracta <see cref="IEngine"/>
     /// </summary>
     public class EngineGame : IEngine
     {
