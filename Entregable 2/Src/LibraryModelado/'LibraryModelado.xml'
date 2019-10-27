@@ -74,6 +74,12 @@
             Constructor.
             </summary>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Level">
+            <summary>
+            Gets or sets del nivel asociado a este Motor.
+            </summary>
+            <value></value>
+        </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Feedback">
             <summary>
             Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.

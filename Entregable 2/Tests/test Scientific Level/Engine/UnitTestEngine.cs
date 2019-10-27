@@ -11,9 +11,9 @@ namespace Proyecto.LibraryModelado.Engine.test
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
         [Fact]
-        public void Test1()
+        public void TestEngineAsociate()
         {
-            const string XMLfile = @"C:\Users\nicop\OneDrive - Universidad Católica del Uruguay\Codigos\C#\Entregables\Entregable 2\Code\Entregable 2\Src\ArchivosHTML\Niveles.xml";
+            const string XMLfile = @"..\..\..\..\..\..\Src\ArchivosHTML\Niveles.xml";
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
             List<IComponent> componentList = new List<IComponent>();
 
