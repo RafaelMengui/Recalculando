@@ -39,7 +39,6 @@ namespace Proyecto.Factory.CSharp
         {
             this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
             this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Background"; }).Valor;
-
             Space level = new Level(this.name, this.image);
             level.World = this.world;
             this.world.SpaceList.Add(level);

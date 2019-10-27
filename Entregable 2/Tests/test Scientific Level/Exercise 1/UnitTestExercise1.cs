@@ -1,30 +1,34 @@
 using System;
 using System.Collections.Generic;
+using Proyecto.LeerHTML;
+using Proyecto.LibraryModelado.Engine;
 using Proyecto.Factory.CSharp;
+using Proyecto.Item;
 using Proyecto.Item.ScientistLevel;
 using Xunit;
 
 namespace Proyecto.LibraryModelado.Engine.test
 {
-    public class UnitTestModelado
+    public class UnitTextScientificExercise1
     {
         private Level level = new Level("level", null);
-        private EngineScientific engineScientific = Singleton<EngineScientific>.Instance;
+        private EngineScientificExercise1 engineScientific1 = Singleton<EngineScientificExercise1>.Instance;
+        private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
         [Fact]
         public void TestVerifyAddition()
         {
-            engineScientific.StartLevel();
+            engineScientific1.StartLevel();
             MoneyContainer dragcontainerSource = new MoneyContainer("source", level, 1, 10, 10, 10, null, 0);
             MoneyContainer dragcontainerDestintantion = new MoneyContainer("dragC", level, 1, 10, 10, 10, null, 120);
             Money moneydrag = new Money("drag", level, 20, 20, 2, 2, null, true, dragcontainerSource, 120);
-            Assert.Equal(true, EngineScientific.VerifyOperation(dragcontainerDestintantion, moneydrag));
+            Assert.Equal(true, EngineScientificExercise1.VerifyOperation(dragcontainerDestintantion, moneydrag));
         }
 
         [Fact]
         public void TestOnDrop()
         {
-            engineScientific.StartLevel();
+            engineScientific1.StartLevel();
             MoneyContainer dragSource = new MoneyContainer("drag", level, 1, 10, 10, 10, null, 1);
             MoneyContainer dragcontainerDestintantion = new MoneyContainer("dragC", level, 1, 10, 10, 10, null, 120);
             Money moneydrag = new Money("drag", level, 20, 20, 2, 2, null, true, dragSource, 120);
@@ -34,7 +38,7 @@ namespace Proyecto.LibraryModelado.Engine.test
         [Fact]
         public void TestOnDropUndraggable()
         {
-            engineScientific.StartLevel();
+            engineScientific1.StartLevel();
             MoneyContainer dragcontainerSource = new MoneyContainer("source", level, 1, 10, 10, 10, null, 0);
             MoneyContainer dragcontainerDestintantion = new MoneyContainer("dragC", level, 1, 10, 10, 10, null, 120);
             Money moneydrag = new Money("drag", level, 20, 20, 2, 2, null, false, dragcontainerSource, 120);
@@ -44,7 +48,7 @@ namespace Proyecto.LibraryModelado.Engine.test
         [Fact]
         public void NegativeMoneyValue()
         {
-            engineScientific.StartLevel();
+            engineScientific1.StartLevel();
             MoneyContainer container1 = new MoneyContainer("cont1", this.level, 50, 50, 60, 60, null, 10);
             Assert.Throws<ArithmeticException>(() => new Money("name", this.level, 50, 40, 30, 20, null, false, container1, -10));
         }
@@ -52,7 +56,7 @@ namespace Proyecto.LibraryModelado.Engine.test
         [Fact]
         public void WinPage()
         {
-            engineScientific.StartLevel();
+            engineScientific1.StartLevel();
             MoneyContainer containerDestination1 = new MoneyContainer("Dest1", this.level, 50, 50, 60, 60, null, 10); // 60 - 50
             MoneyContainer containerDestination2 = new MoneyContainer("Dest2", this.level, 50, 50, 60, 60, null, 175); // 100 + 175
             MoneyContainer containerSource1 = new MoneyContainer("Source1", this.level, 50, 50, 60, 60, null, 0);
@@ -64,13 +68,13 @@ namespace Proyecto.LibraryModelado.Engine.test
             moneyDrag1.Drop(containerDestination1);
             moneyDrag2.Drop(containerDestination2);
 
-            Assert.Equal(true, engineScientific.VerifyWinPage());
+            Assert.Equal(true, engineScientific1.VerifyWinPage());
         }
 
         [Fact]
         public void WinLevel()
         {
-            engineScientific.StartLevel();
+            engineScientific1.StartLevel();
             // Pagina 1.
             //Se crean containers y dinero.
             MoneyContainer containerDestination1 = new MoneyContainer("Dest1", this.level, 50, 50, 60, 60, null, 10);
@@ -86,10 +90,10 @@ namespace Proyecto.LibraryModelado.Engine.test
             moneyDrag2.Drop(containerDestination2);
 
             // Si fueron correctamente soltados los dos dineros, se pasa a la segunda parte del nivel.
-            if (engineScientific.VerifyWinPage())
+            if (engineScientific1.VerifyWinPage())
             {
                 // Pagina 2.
-                engineScientific.StartPage();
+                engineScientific1.StartPage();
                 // Se reinicia la pagina y sus contadores, se crean los nuevos containers y dinero.
                 MoneyContainer containerDestination3 = new MoneyContainer("Dest3", this.level, 50, 50, 60, 60, null, 50);
                 MoneyContainer containerDestination4 = new MoneyContainer("Dest4", this.level, 50, 50, 60, 60, null, 200);
@@ -105,10 +109,62 @@ namespace Proyecto.LibraryModelado.Engine.test
 
                 // Se verifica que se hayan completado correctamente las dos etapas del juego
                 // (Se tienen que haber hecho correctamente las cuatro sumas.)
-                engineScientific.VerifyWinPage();
+                engineScientific1.VerifyWinPage();
 
-                Assert.Equal(true, engineScientific.VerifyWinLevel());
+                Assert.Equal(true, engineScientific1.VerifyWinLevel());
             }
+        }
+
+        [Fact]
+        public void TestGoodFeedback()
+        {
+            engineScientific1.StartLevel();
+
+            MoneyContainer containerDestination = new MoneyContainer("Dest1", this.level, 50, 50, 60, 60, null, 10);
+            MoneyContainer containerSource = new MoneyContainer("Source1", this.level, 50, 50, 60, 60, null, 0);
+            Money moneyDrag = new Money("Drag1", this.level, 20, 20, 2, 2, null, true, containerSource, 10);
+
+            engineScientific1.VerifyExercise(containerDestination, moneyDrag);
+            Assert.Equal("Muy buen trabajo, ¡Continua asi!", engineScientific1.Feedback.Text);
+        }
+
+        [Fact]
+        public void TestBadFeedback()
+        {
+            engineScientific1.StartLevel();
+
+            MoneyContainer containerDestination = new MoneyContainer("Dest1", this.level, 50, 50, 60, 60, null, 200);
+            MoneyContainer containerSource = new MoneyContainer("Source1", this.level, 50, 50, 60, 60, null, 0);
+            Money moneyDrag = new Money("Drag1", this.level, 20, 20, 2, 2, null, true, containerSource, 10);
+
+            engineScientific1.VerifyExercise(containerDestination, moneyDrag);
+            Assert.Equal("Esa suma no es correcta, ¡Intentalo de nuevo!", engineScientific1.Feedback.Text);
+        }
+
+        [Fact]
+        public void TestCreateGoToMainButton()
+        {
+            bool condicion = false;
+            const string XMLfile = @"..\..\..\..\..\..\Src\ArchivosHTML\Niveles.xml";
+            List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
+            List<IComponent> componentList = new List<IComponent>();
+
+            foreach (Tag tag in tags)
+            {
+                IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
+                componentList.Add(component);
+            }
+            this.engineGame.Asociate(componentList);
+            this.engineGame.ButtonGoToMain();
+            this.engineScientific1.StartLevel();
+            foreach (Items item in this.engineScientific1.Level.ItemList)
+            {
+                if (item is ButtonGoToPage && item.Name == "GoToMain")
+                {
+                    condicion = true;
+                }
+            }
+            Assert.True(condicion);
         }
     }
 }

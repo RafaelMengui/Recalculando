@@ -6,7 +6,18 @@
     <members>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineGame">
             <summary>
-            Motor general
+            Motor general del juego.
+            Tiene la responsabilidad de conocer y controlar la funcionalidad de los demas motores del juego.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.levelEngines">
+            <summary>
+            Diccionario en donde se le asocia a un nivel, su respectivo Motor.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.engine">
+            <summary>
+            Motor generico <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.mainPage">
@@ -19,37 +30,71 @@
             Constructor.
             </summary>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineGame.LevelEngines">
+            <summary>
+            Gets or sets del diccionario de motores y niveles.
+            </summary>
+            <value>Dictionario de clave <see cref="T:Proyecto.LibraryModelado.Space"/> y valor <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.</value>
+        </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineGame.MainPage">
             <summary>
             Gets or sets de la pagina principal.
             </summary>
-            <value></value>
+            <value>Space.</value>
         </member>
-        <member name="T:Proyecto.LibraryModelado.Engine.EngineScientific">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.Asociate(System.Collections.Generic.List{Proyecto.LibraryModelado.IComponent})">
             <summary>
-            Clase EngineScientific, responsable de implementar la logica del nivel scientific.
+            Metodo responsable de asociarle a cada nivel su respectivo motor, y agregarlo al diccionario this.LevelEngines.
+            </summary>
+            <param name="componentList"></param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.ButtonGoToMain">
+            <summary>
+            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, en donde ejecuta para cada
+            motor de los niveles el metodo de crear un boton que muestre la pagina principal.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientific.#ctor">
+        <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise1">
+            <summary>
+            Clase EngineScientificExercise1, responsable de implementar la logica del nivel scientific ejercicio 1.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.level">
+            <summary>
+            Variable Level utilizada para instanciar un nivel asignable.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.engineGame">
+            <summary>
+            Instancia unica del motor general.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.#ctor">
             <summary>
             Constructor.
             </summary>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientific.LevelCounter">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Feedback">
+            <summary>
+            Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+            </summary>
+            <value>Etiqueta <see cref="T:Proyecto.Item.Label"/>.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.LevelCounter">
             <summary>
             Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
             Existen dos paginas en el nivel.
             </summary>
             <value>Int.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientific.PageCounter">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.PageCounter">
             <summary>
             Gets or sets de contador utilizado para saber en que operacion de la pagina nos encontramos.
             Existen dos operaciones dentro de la pagina.
             </summary>
             <value>Int.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientific.ResultsOfPage">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ResultsOfPage">
             <summary>
             Gets or sets de los resultados de las sumas de una pagina.
             Por predeterminado los dos parametros son False.
@@ -58,7 +103,7 @@
             </summary>
             <value>Array de Bools.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientific.ResultsOfLevel">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ResultsOfLevel">
             <summary>
             Gets or sets de los resultados del nivel.
             Por predeterminado los dos parametros son False.
@@ -67,7 +112,7 @@
             </summary>
             <value>Array de Bools.</value>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientific.VerifyOperation(Proyecto.Item.ScientistLevel.MoneyContainer,Proyecto.Item.ScientistLevel.Money)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.VerifyOperation(Proyecto.Item.ScientistLevel.MoneyContainer,Proyecto.Item.ScientistLevel.Money)">
             <summary>
             Metodo responsable de verificar si el objeto tipo Money soltado dentro del MoneyContainer,
             tiene el valor que acepta el container.
@@ -76,34 +121,254 @@
             <param name="money">DraggableItem tipo <see cref="T:Proyecto.Item.ScientistLevel.Money"/>.</param>
             <returns>Bool si el valor es correcto o no.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientific.VerifyWinPage">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.VerifyWinPage">
             <summary>
             Verifica que ambas sumas de la pagina esten hechas correctamente.
             Si fueron realizadas de manera correcta, los parametros del this.ResultsOfLevel pasan a ser true.
             </summary>
             <returns>Bool.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientific.VerifyWinLevel">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.VerifyWinLevel">
             <summary>
             Verifica que se hayan completado las dos paginas del nivel.
             </summary>
             <returns>Bool.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientific.VerifyExercise(Proyecto.Item.ScientistLevel.MoneyContainer,Proyecto.Item.ScientistLevel.Money)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.VerifyExercise(Proyecto.Item.ScientistLevel.MoneyContainer,Proyecto.Item.ScientistLevel.Money)">
             <summary>
-            Metodo que se utiliza para verificar que este correctamente hecha una de las operaciones.
+            Metodo que se utiliza para verificar que este correctamente realizada una de las operaciones.
             Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
             Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientific.StartLevel">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.StartLevel">
             <summary>
             Metodo utilizado para iniciar o reiniciar el motor del juego.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientific.StartPage">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.StartPage">
             <summary>
             Metodo utilizado para iniciar o reiniciar la pagina.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.CreateFeedback">
+            <summary>
+            Metodo responsable de crear la etiqueta de texto que servira de feedback a las acciones realizadas.
+            </summary>
+            <returns>Etiqueta <see cref="T:Proyecto.Item.Label"/>.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.GoodFeedback">
+            <summary>
+            Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.BadFeedback">
+            <summary>
+            Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ButtonGoToMain">
+            <summary>
+            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, en donde se recorre el diccionario
+            de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
+            se debe crear el boton que mostrara la pagina principal al ejecutarlo.
+            </summary>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise2">
+            <summary>
+            Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.level">
+            <summary>
+            Variable Level utilizada para instanciar un nivel asignable.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.engineGame">
+            <summary>
+            Instancia unica del motor general.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.Feedback">
+            <summary>
+            Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+            </summary>
+            <value>Etiqueta <see cref="T:Proyecto.Item.Label"/>.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.LevelCounter">
+            <summary>
+            Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+            Existen dos paginas en el nivel.
+            </summary>
+            <value>Int.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ResultsOfLevel">
+            <summary>
+            Gets or sets de los resultados del nivel.
+            Por predeterminado los dos parametros son False.
+            true = Completo una pagina correctamente.
+            false = No contesto bien la pregunta.
+            </summary>
+            <value>Array de Bools.</value>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.VerifyWinLevel">
+            <summary>
+            Verifica que se hayan completado las dos paginas del nivel.
+            </summary>
+            <returns>Bool.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.VerifyQuestion(Proyecto.Item.ScientistLevel.ButtonTrueFalse)">
+            <summary>
+            Metodo que se utiliza para verificar que se responda la pregunta de forma correcta.
+            Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
+            level counter suma 1.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.StartLevel">
+            <summary>
+            Metodo utilizado para iniciar o reiniciar el motor del nivel.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.CreateFeedback">
+            <summary>
+            Metodo responsable de crear la etiqueta de texto que servira de feedback a las acciones realizadas.
+            </summary>
+            <returns>Etiqueta <see cref="T:Proyecto.Item.Label"/>.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.GoodFeedback">
+            <summary>
+            Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.BadFeedback">
+            <summary>
+            Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ButtonGoToMain">
+            <summary>
+            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, en donde se recorre el diccionario
+            de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
+            se debe crear el boton que mostrara la pagina principal al ejecutarlo.
+            </summary>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise3">
+            <summary>
+            Clase EngineScientificExercise3, responsable de implementar la logica del nivel scientific ejercicio 3.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.level">
+            <summary>
+            Variable Level utilizada para instanciar un nivel asignable.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.engineGame">
+            <summary>
+            Instancia unica del motor general.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.Feedback">
+            <summary>
+            Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+            </summary>
+            <value>Etiqueta <see cref="T:Proyecto.Item.Label"/>.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.LevelCounter">
+            <summary>
+            Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+            Existen dos paginas en el nivel.
+            </summary>
+            <value>Int.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.ResultsOfLevel">
+            <summary>
+            Gets or sets de los resultados del nivel.
+            Por predeterminado los cuatro parametros son False.
+            true = Completo una pagina correctamente.
+            false = No contesto bien la pregunta.
+            </summary>
+            <value>Array de Bools.</value>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.VerifyWinLevel">
+            <summary>
+            Verifica que se hayan completado las cuatro paginas del nivel.
+            </summary>
+            <returns>Bool.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.VerifyQuestion(Proyecto.Item.ScientistLevel.ButtonTrueFalse)">
+            <summary>
+            Metodo que se utiliza para verificar la opcion selccionada.
+            Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
+            level counter suma 1.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.StartLevel">
+            <summary>
+            Metodo utilizado para iniciar o reiniciar el motor del nivel.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.CreateFeedback">
+            <summary>
+            Metodo responsable de crear la etiqueta de texto que servira de feedback a las acciones realizadas.
+            </summary>
+            <returns>Etiqueta <see cref="T:Proyecto.Item.Label"/>.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.GoodFeedback">
+            <summary>
+            Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.BadFeedback">
+            <summary>
+            Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.ButtonGoToMain">
+            <summary>
+            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, en donde se recorre el diccionario
+            de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
+            se debe crear el boton que mostrara la pagina principal al ejecutarlo.
+            </summary>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.Engine.IEngine">
+            <summary>
+            Clase abstracta de motores.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.IEngine.ButtonGoToMain">
+            <summary>
+            Metodo abstracto de crear un boton que muestra la pagina principal, en cada nivel.
+            </summary>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.Engine.ILevelEngine">
+            <summary>
+            Interfaz para los motores de los niveles.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.CreateFeedback">
+            <summary>
+            Metodo que crea la etiqueta de texto que servira de feedback a las acciones realizadas.
+            </summary>
+            <returns>Etiqueta de texto.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.GoodFeedback">
+            <summary>
+            Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.BadFeedback">
+            <summary>
+            Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.IButton">
@@ -776,6 +1041,65 @@
             <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
         </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryLabel">
+            <summary>
+            Esta clase es la responsable de crear las etiquetas.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.name">
+            <summary>
+            Nombre de la Etiqueta.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.photo">
+            <summary>
+            Imagen de la Etiqueta.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.width">
+            <summary>
+            Ancho de la Etiqueta.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.height">
+            <summary>
+            Altura de la Etiqueta.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.positionX">
+            <summary>
+            Posicion en X de la Etiqueta.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.positionY">
+            <summary>
+            Posicion en Y de la Etiqueta.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.level">
+            <summary>
+            Nivel al que pertenece.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.text">
+            <summary>
+            Texto de la etiqueta.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryLabel.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.Label"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
         <member name="T:Proyecto.Factory.CSharp.FactoryMoney">
             <summary>
             Esta clase es la responsable de crear objetos Money arrastables.
@@ -1118,6 +1442,25 @@
             <summary>
             Sobrescribe el metodo abstracto de IFactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.InputText"/> a Unity.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryLabel">
+            <summary>
+            Esta clase es la resposable de agregar los componentes Label al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryLabel.label">
+            <summary>
+            Objeto Label que se agregara a Unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryLabel.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.Label"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
@@ -1504,19 +1847,62 @@
             Accion realizada al soltar el alimento.
             </summary>
         </member>
-        <member name="T:Proyecto.Item.ButtonTrueFalse">
+        <member name="T:Proyecto.Item.KitchenLevel.Recipe">
+            <summary>
+            Clase responsable de crear recetas en el modelado.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.KitchenLevel.Recipe.#ctor(System.String,Proyecto.Item.KitchenLevel.Food)">
+            <summary>
+            Initializes a new instance of Recipe.
+            </summary>
+            <param name="name">Nombre del Item.</param>
+            <param name="food">Receta que contiene los items Food.</param>
+        </member>
+        <member name="P:Proyecto.Item.KitchenLevel.Recipe.FoodList">
+            <summary>
+            Gets lista de objetos Food, que seran soltados dentro del container para ganar el juego.
+            </summary>
+            <value>Alimentos<see cref="T:Proyecto.Item.KitchenLevel.Food"/>.</value>
+        </member>
+        <member name="T:Proyecto.Item.Label">
+            <summary>
+            Clase responsable de crear etiquetas en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.Label.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.String)">
+            <summary>
+            Initializes a new instance of Label.
+            </summary>
+            <param name="name">Nombre del texto.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del texto.</param>
+            <param name="text">Texto de la etiqueta.</param>
+        </member>
+        <member name="P:Proyecto.Item.Label.Text">
+            <summary>
+            Gets or sets del texto.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Proyecto.Item.ScientistLevel.ButtonTrueFalse">
             <summary>
             Clase responsable de crear botones true false, utilizados en un ejercicio multipleopcion, solamente un boton
             sera el true (correcto).
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>, e implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IButton"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.ButtonTrueFalse.evento">
+        <member name="F:Proyecto.Item.ScientistLevel.ButtonTrueFalse.evento">
             <summary>
             Accion del boton.
             </summary>
         </member>
-        <member name="M:Proyecto.Item.ButtonTrueFalse.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.String,System.Boolean)">
+        <member name="M:Proyecto.Item.ScientistLevel.ButtonTrueFalse.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.String,System.Boolean)">
             <summary>
             Initializes a new instance of Button.
             </summary>
@@ -1530,25 +1916,25 @@
             <param name="color">Color del boton en Hexadecimal.</param>
             <param name="value">Opcion de verdadero o falso.</param>
         </member>
-        <member name="P:Proyecto.Item.ButtonTrueFalse.Color">
+        <member name="P:Proyecto.Item.ScientistLevel.ButtonTrueFalse.Color">
             <summary>
             Gets or sets del Color del Boton.
             </summary>
             <value>string codigo en hexadecimal.</value>
         </member>
-        <member name="P:Proyecto.Item.ButtonTrueFalse.Value">
+        <member name="P:Proyecto.Item.ScientistLevel.ButtonTrueFalse.Value">
             <summary>
             Gets or sets del valor bool del boton.
             </summary>
             <value>Bool.</value>
         </member>
-        <member name="P:Proyecto.Item.ButtonTrueFalse.Event">
+        <member name="P:Proyecto.Item.ScientistLevel.ButtonTrueFalse.Event">
             <summary>
             Gets or sets del evento del boton.
             </summary>
             <value>Action.</value>
         </member>
-        <member name="M:Proyecto.Item.ButtonTrueFalse.Click(System.String)">
+        <member name="M:Proyecto.Item.ScientistLevel.ButtonTrueFalse.Click(System.String)">
             <summary>
             Accion realizada por el boton.
             </summary>

@@ -98,7 +98,7 @@ namespace Proyecto.Item.ScientistLevel
         {
             if (this.Draggable)
             {
-                EngineScientific engineScientific = Singleton<EngineScientific>.Instance;
+                EngineScientificExercise1 engineScientific = Singleton<EngineScientificExercise1>.Instance;
                 if (engineScientific.VerifyExercise(moneyContainer, this))
                 {
                     //this.OnDropMoney(this.Name, this.PositionX, this.PositionY);

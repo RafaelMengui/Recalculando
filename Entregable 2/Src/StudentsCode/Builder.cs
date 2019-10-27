@@ -24,8 +24,8 @@ namespace Proyecto.StudentsCode
         /// Instancia del motor principal.
         /// </summary>
         /// <returns></returns>
-        private EngineGame engineGame = new EngineGame();
-        
+        private EngineGame engineGame = Singleton<EngineGame>.Instance;
+
         /// <summary>
         /// Adapter del tipo <see cref="IMainViewAdapter"/>.
         /// </summary>
@@ -60,6 +60,8 @@ namespace Proyecto.StudentsCode
                 componentList.Add(component);
             }
 
+            this.engineGame.Asociate(componentList);
+
             foreach (IComponent component in componentList)
             {
                 UFactory.InitializeUnityFactories().MakeUnityItem(adapter, component);
@@ -75,6 +77,7 @@ namespace Proyecto.StudentsCode
         /// </summary>
         private void Setup()
         {
+            this.engineGame.ButtonGoToMain();
             this.adapter.ChangeLayout(Layout.ContentSizeFitter);
             this.adapter.ShowPage(this.firstPage.ID);
         }

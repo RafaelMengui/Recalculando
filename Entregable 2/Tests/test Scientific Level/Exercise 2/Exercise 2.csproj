@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>test_Scientific_Level</RootNamespace>
+    <RootNamespace>Exercise_2</RootNamespace>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\Engine\EngineScientific.csproj" />
-    <ProjectReference Include="..\..\Src\LibraryModelado\LibraryModelado.csproj" />
+    <ProjectReference Include="..\..\..\Src\Engine\EngineScientific.csproj" />
+    <ProjectReference Include="..\..\..\Src\LibraryModelado\LibraryModelado.csproj" />
   </ItemGroup>
 
 </Project>

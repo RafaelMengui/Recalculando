@@ -1,6 +1,6 @@
 <World Name="world1">
 
-	<Space Name="first" Background="page1.png">
+	<Space Name="ScientificExercise1" Background="page1.png">
 
 		<ButtonAudio Name="pirata" PositionX="-400" PositionY="150" Width="200" Height="150" Photo="bill20.png" Color="#FCFCFC" Audio="piratesSound.wav">
 		<ButtonAudio Name="kahoot" PositionX="-400" PositionY="-150" Width="200" Height="150" Photo="bill200.png" Color="#FCFCFC" Audio="kahoot.wav">
@@ -10,7 +10,7 @@
 
 	</Space>
 
-	<Space Name="secondpage" Width="0" Height="0" Background="page5.png">
+	<Space Name="ScientificExercise2" Width="0" Height="0" Background="page5.png">
 
 		<Image Name="cocinera" PositionX="465" PositionY="-95" Width="300" Height="380" Photo="cocinera.png">
 		<Image Name="nubeBananas" PositionX="465" PositionY="140" Width="200" Height="200" Photo="nubeBananas.png">

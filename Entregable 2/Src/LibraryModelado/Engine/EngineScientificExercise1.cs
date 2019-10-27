@@ -1,27 +1,51 @@
 //--------------------------------------------------------------------------------
-// <copyright file="EngineScientific.cs" company="Universidad Católica del Uruguay">
+// <copyright file="EngineScientificExercise1.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using System;
+using Proyecto.Item;
 using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
-    /// Clase EngineScientific, responsable de implementar la logica del nivel scientific.
+    /// Clase EngineScientificExercise1, responsable de implementar la logica del nivel scientific ejercicio 1.
     /// </summary>
-    public class EngineScientific
+    public class EngineScientificExercise1 : IEngine, ILevelEngine
     {
+        /// <summary>
+        /// Variable Level utilizada para instanciar un nivel asignable.
+        /// </summary>
+        private Space level;
+
+        /// <summary>
+        /// Instancia unica del motor general.
+        /// </summary>
+        private EngineGame engineGame = Singleton<EngineGame>.Instance;
+
         /// <summary>
         /// Constructor.
         /// </summary>
-        public EngineScientific()
+        public EngineScientificExercise1()
         {
             this.ResultsOfPage = new bool[2];
             this.ResultsOfLevel = new bool[2];
             this.PageCounter = 0;
             this.LevelCounter = 0;
         }
+
+        /// <summary>
+        /// Gets or sets del nivel asociado a este Motor.
+        /// </summary>
+        /// <value></value>
+        public Space Level { get { return level; } }
+
+        /// <summary>
+        /// Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+        /// </summary>
+        /// <value>Etiqueta <see cref="Label"/>.</value>
+        public Label Feedback { get; private set; }
 
         /// <summary>
         /// Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
@@ -79,7 +103,7 @@ namespace Proyecto.LibraryModelado.Engine
                 this.ResultsOfLevel[this.LevelCounter] = true;
                 this.LevelCounter += 1;
                 return true;
-            } 
+            }
             return false;
         }
 
@@ -93,7 +117,7 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Metodo que se utiliza para verificar que este correctamente hecha una de las operaciones.
+        /// Metodo que se utiliza para verificar que este correctamente realizada una de las operaciones.
         /// Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
         /// Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
         /// </summary>
@@ -104,10 +128,12 @@ namespace Proyecto.LibraryModelado.Engine
                 this.ResultsOfPage[this.PageCounter] = true;
                 this.PageCounter += 1;
                 money.Container = moneyContainer;
+                this.GoodFeedback();
                 return true;
             }
             else
             {
+                this.BadFeedback();
                 return false;
             }
         }
@@ -121,6 +147,7 @@ namespace Proyecto.LibraryModelado.Engine
             this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
             this.PageCounter = 0;
+            this.Feedback = CreateFeedback();
         }
 
         /// <summary>
@@ -130,6 +157,61 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfPage = new bool[2];
             this.PageCounter = 0;
+        }
+
+        /// <summary>
+        /// Metodo responsable de crear la etiqueta de texto que servira de feedback a las acciones realizadas.
+        /// </summary>
+        /// <returns>Etiqueta <see cref="Label"/>.</returns>
+        public Label CreateFeedback()
+        {
+            Console.WriteLine("1");
+            foreach (var space in this.engineGame.LevelEngines)
+            {
+                Console.WriteLine("2");
+                if (space.Value is EngineScientificExercise1)
+                {
+                    Console.WriteLine("3");
+                    this.level = space.Key;
+                }
+            }
+            Label feedback = new Label("Feedback", this.level, 600, 240, 100, 50, "Vacio.png", string.Empty);
+            this.level.ItemList.Add(feedback);
+            return feedback;
+        }
+
+        /// <summary>
+        /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
+        /// </summary>
+        public void GoodFeedback()
+        {
+            this.Feedback.Text = "Muy buen trabajo, ¡Continua asi!";
+        }
+
+        /// <summary>
+        /// Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
+        /// </summary>
+        public void BadFeedback()
+        {
+            this.Feedback.Text = "Esa suma no es correcta, ¡Intentalo de nuevo!";
+        }
+
+        /// <summary>
+        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, en donde se recorre el diccionario
+        /// de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
+        /// se debe crear el boton que mostrara la pagina principal al ejecutarlo.
+        /// </summary>
+        public override void ButtonGoToMain()
+        {
+            foreach (var space in engineGame.LevelEngines)
+            {
+                if (space.Value is EngineScientificExercise1)
+                {
+                    this.level = space.Key;
+                }
+            }
+            ButtonGoToPage goToMain = new ButtonGoToPage("GoToMain", this.level, -600, -240, 100, 50, "huevo.png", "#FCFCFC", "MainPage");
+            this.level.ItemList.Add(goToMain);
         }
     }
 }

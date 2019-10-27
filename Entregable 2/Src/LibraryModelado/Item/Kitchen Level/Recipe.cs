@@ -9,26 +9,24 @@ using Proyecto.LibraryModelado;
 namespace Proyecto.Item.KitchenLevel
 {
     /// <summary>
-    /// Clase responsable de crear containers para alimentos en el modelado.
-    /// Hereda de la clase abstracta <see cref="Items"/>.
+    /// Clase responsable de crear recetas en el modelado.
     /// </summary>
-    public class Recipe : Items
+    public class Recipe : IComponent
     {
         /// <summary>
         /// Initializes a new instance of Recipe.
         /// </summary>
         /// <param name="name">Nombre del Item.</param>
-        /// <param name="level">Receta que contiene los items Food.</param>
-
+        /// <param name="food">Receta que contiene los items Food.</param>
         public Recipe(string name, Food food)
         {
-            this.Recipe = new List<Food>();
+            this.FoodList = new List<Food>();
         }
 
         /// <summary>
         /// Gets lista de objetos Food, que seran soltados dentro del container para ganar el juego.
         /// </summary>
         /// <value>Alimentos<see cref="Food"/>.</value>
-        public List<Food> Recipe { get; }
+        public List<Food> FoodList { get; }
     }
 }

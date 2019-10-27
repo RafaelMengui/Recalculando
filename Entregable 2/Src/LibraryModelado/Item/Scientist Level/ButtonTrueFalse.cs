@@ -4,9 +4,10 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
+using Proyecto.LibraryModelado.Engine;
 using Proyecto.LibraryModelado;
 
-namespace Proyecto.Item
+namespace Proyecto.Item.ScientistLevel
 {
     /// <summary>
     /// Clase responsable de crear botones true false, utilizados en un ejercicio multipleopcion, solamente un boton
@@ -64,6 +65,8 @@ namespace Proyecto.Item
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
+            EngineScientificExercise2 engineScientific2 = Singleton<EngineScientificExercise2>.Instance;
+            engineScientific2.VerifyQuestion(this);
             this.Event(string.Empty);
         }
     }
