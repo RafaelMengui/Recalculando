@@ -71,15 +71,23 @@ namespace Proyecto.Factory.CSharp
         /// <returns>Componente <see cref="IComponent"/>.</returns>
         public override IComponent MakeComponent(Tag tag)
         {
+            try
+            {
+                this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+                this.level = this.world.SpaceList.Last();
+                this.width = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+                this.height = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+                this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+                this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+                this.image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+                this.acceptableValue = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Value"; }).Valor);
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException($"Missing attribute in tag {tag.Nombre}.");
+
+            }
             
-            this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
-            this.level = this.world.SpaceList.Last();
-            this.width = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            this.height = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
-            this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-            this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
-            this.image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-            this.acceptableValue = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Value"; }).Valor);
             Items moneyContainer = new MoneyContainer(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.acceptableValue);
             this.level.ItemList.Add(moneyContainer);
             return moneyContainer;

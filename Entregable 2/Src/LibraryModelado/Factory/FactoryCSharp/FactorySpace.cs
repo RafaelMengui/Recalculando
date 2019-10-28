@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using System;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
 
@@ -37,8 +38,17 @@ namespace Proyecto.Factory.CSharp
         /// <returns>Componente <see cref="IComponent"/>.</returns>
         public override IComponent MakeComponent(Tag tag)
         {
-            this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
-            this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Background"; }).Valor;
+            try
+            {
+                this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+                this.image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Background"; }).Valor;
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException($"Missing attribute in tag {tag.Nombre}.");
+
+            }
+
             Space level = new Level(this.name, this.image);
             level.World = this.world;
             this.world.SpaceList.Add(level);
