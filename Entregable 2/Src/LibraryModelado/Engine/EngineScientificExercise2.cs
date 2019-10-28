@@ -35,7 +35,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
-            this.Feedback = feedback;
+            this.Feedback = this.feedback;
         }
 
         /// <summary>
@@ -45,14 +45,14 @@ namespace Proyecto.LibraryModelado.Engine
         public Label Feedback { get; set; }
 
         /// <summary>
-        /// Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+        /// Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
         /// Existen dos paginas en el nivel.
         /// </summary>
         /// <value>Int.</value>
         public int LevelCounter { get; private set; }
 
         /// <summary>
-        /// Gets or sets de los resultados del nivel.
+        /// Gets de los resultados del nivel.
         /// Por predeterminado los dos parametros son False.
         /// true = Completo una pagina correctamente.
         /// false = No contesto bien la pregunta.
@@ -148,9 +148,9 @@ namespace Proyecto.LibraryModelado.Engine
                 if (space.Value is EngineScientificExercise2)
                 {
                     this.level = space.Key;
-                }  
+                }
             }
-            
+
             ButtonGoToPage goToMain = new ButtonGoToPage("GoToMain", this.level, -600, -240, 100, 50, "huevo.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
         }

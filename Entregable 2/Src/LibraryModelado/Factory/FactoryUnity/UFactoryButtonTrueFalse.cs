@@ -34,7 +34,7 @@ namespace Proyecto.Factory.Unity
                 // Castear como ButtonTrueFalse.
                 this.buttonTrueFalse = component as ButtonTrueFalse;
             }
-            catch(System.Exception)
+            catch (System.Exception)
             {
                 throw new System.Exception("Fail to cast component as ButtonTrueFalse");
             }

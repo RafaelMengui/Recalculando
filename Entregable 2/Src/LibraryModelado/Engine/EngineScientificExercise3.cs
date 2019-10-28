@@ -3,8 +3,8 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using Proyecto.Item.ScientistLevel;
 using Proyecto.Item;
+using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
@@ -45,14 +45,14 @@ namespace Proyecto.LibraryModelado.Engine
         public Label Feedback { get; set; }
 
         /// <summary>
-        /// Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+        /// Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
         /// Existen dos paginas en el nivel.
         /// </summary>
         /// <value>Int.</value>
         public int LevelCounter { get; private set; }
 
         /// <summary>
-        /// Gets or sets de los resultados del nivel.
+        /// Gets de los resultados del nivel.
         /// Por predeterminado los cuatro parametros son False.
         /// true = Completo una pagina correctamente.
         /// false = No contesto bien la pregunta.
@@ -74,6 +74,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
         /// level counter suma 1.
         /// </summary>
+        /// <param name="button">Boton presionado.</param>
+        /// <returns>Bool si el boton es correcto.</returns>
         public bool VerifyQuestion(ButtonTrueFalse button)
         {
             if (button.Value)

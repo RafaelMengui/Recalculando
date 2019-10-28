@@ -8,6 +8,11 @@
             <summary>
             Motor general del juego.
             Tiene la responsabilidad de conocer y controlar la funcionalidad de los demas motores del juego.
+            Para realizar los diferentes motores utilizamos el patrón SINGLETON, este nos permite garantizar
+            la existencia de una sola instancia de clase. Además el acceso a esa única instancia tiene
+            que ser global. Esto es de mucha utilidad debido a que vamos a necesitar llamar a los motores
+            de los juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
+            de que solo haya un motor de este juego.
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.
             </summary>
         </member>
@@ -33,7 +38,7 @@
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineGame.LevelEngines">
             <summary>
-            Gets or sets del diccionario de motores y niveles.
+            Gets del diccionario de motores y niveles.
             </summary>
             <value>Dictionario de clave <see cref="T:Proyecto.LibraryModelado.Space"/> y valor <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.</value>
         </member>
@@ -47,7 +52,7 @@
             <summary>
             Metodo responsable de asociarle a cada nivel su respectivo motor, y agregarlo al diccionario this.LevelEngines.
             </summary>
-            <param name="componentList"></param>
+            <param name="componentList">Lista de componentes creados.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.ButtonGoToMain">
             <summary>
@@ -57,12 +62,7 @@
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise1">
             <summary>
-            Clase EngineScientific, responsable de implementar la logica del nivel scientific.
-             Paraa realizar los motores utilizamos el patrón SINGLETON, este nos permite garantizar 
-            la existencia de una sola instancia de clase. Además el acceso a esa única instancia tiene
-             que ser global. Esto es de mucha utilidad debido a que, vamos a necesitar llamar al motor
-             de este juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
-            de que solo haya un motor de este juego.
+            Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
             Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
@@ -88,33 +88,33 @@
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Level">
             <summary>
-            Gets or sets del nivel asociado a este Motor.
+            Gets del nivel asociado a este Motor.
             </summary>
-            <value> Level. </value>
+            <value>Level.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Feedback">
             <summary>
-            Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+            Gets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
             </summary>
             <value>Etiqueta <see cref="T:Proyecto.Item.Label"/>.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.LevelCounter">
             <summary>
-            Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+            Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
             Existen dos paginas en el nivel.
             </summary>
             <value>Int.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.PageCounter">
             <summary>
-            Gets or sets de contador utilizado para saber en que operacion de la pagina nos encontramos.
+            Gets de contador utilizado para saber en que operacion de la pagina nos encontramos.
             Existen dos operaciones dentro de la pagina.
             </summary>
             <value>Int.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ResultsOfPage">
             <summary>
-            Gets or sets de los resultados de las sumas de una pagina.
+            Gets de los resultados de las sumas de una pagina.
             Por predeterminado los dos parametros son False.
             true = resutlado correcto.
             false = resultado Incorrecto.
@@ -123,7 +123,7 @@
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ResultsOfLevel">
             <summary>
-            Gets or sets de los resultados del nivel.
+            Gets de los resultados del nivel.
             Por predeterminado los dos parametros son False.
             true = Completo una pagina correctamente (los dos parametros de this.ResultsOfPage son true).
             false = No completo las dos operaciones de la pagina.
@@ -158,6 +158,9 @@
             Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
             Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
             </summary>
+            <param name="moneyContainer">Container de dinero en donde es soltado el dinero.</param>
+            <param name="money">Dinero arrastrado.</param>
+            <returns>Bool si el dinero soltado es correcto.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.StartLevel">
             <summary>
@@ -225,14 +228,14 @@
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.LevelCounter">
             <summary>
-            Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+            Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
             Existen dos paginas en el nivel.
             </summary>
             <value>Int.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ResultsOfLevel">
             <summary>
-            Gets or sets de los resultados del nivel.
+            Gets de los resultados del nivel.
             Por predeterminado los dos parametros son False.
             true = Completo una pagina correctamente.
             false = No contesto bien la pregunta.
@@ -251,6 +254,8 @@
             Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
             level counter suma 1.
             </summary>
+            <param name="button">Boton seleccionado.</param>
+            <returns>Bool si el boton es correcto.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.StartLevel">
             <summary>
@@ -313,14 +318,14 @@
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.LevelCounter">
             <summary>
-            Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+            Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
             Existen dos paginas en el nivel.
             </summary>
             <value>Int.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.ResultsOfLevel">
             <summary>
-            Gets or sets de los resultados del nivel.
+            Gets de los resultados del nivel.
             Por predeterminado los cuatro parametros son False.
             true = Completo una pagina correctamente.
             false = No contesto bien la pregunta.
@@ -339,6 +344,8 @@
             Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
             level counter suma 1.
             </summary>
+            <param name="button">Boton presionado.</param>
+            <returns>Bool si el boton es correcto.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.StartLevel">
             <summary>
@@ -855,7 +862,7 @@
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.value">
             <summary>
-            Valor bool del boton. 
+            Valor bool del boton.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.level">
@@ -1241,6 +1248,11 @@
         <member name="F:Proyecto.Factory.CSharp.FactoryMoney.value">
             <summary>
             Valor del dinero.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryMoney.container">
+            <summary>
+            Contenedor en donde sera creado el dinero.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryMoney.world">
@@ -1765,7 +1777,7 @@
         </member>
         <member name="P:Proyecto.Item.DragContainer.SavedItems">
             <summary>
-            Gets or sets la lista de objetos items que son soltados dentro del container.
+            Gets la lista de objetos items que son soltados dentro del container.
             </summary>
             <value>Lista de items.</value>
         </member>
@@ -1994,7 +2006,7 @@
             <summary>
             Gets or sets del texto.
             </summary>
-            <value></value>
+            <value>string text.</value>
         </member>
         <member name="T:Proyecto.Item.ScientistLevel.ButtonTrueFalse">
             <summary>
@@ -2030,7 +2042,7 @@
         </member>
         <member name="P:Proyecto.Item.ScientistLevel.ButtonTrueFalse.Value">
             <summary>
-            Gets or sets del valor bool del boton.
+            Gets or sets a value indicating whether el valor del boton es el correcto.
             </summary>
             <value>Bool.</value>
         </member>
@@ -2050,6 +2062,11 @@
             <summary>
             Clase responsable de crear dinero arrastrable en el modelado.
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.ScientistLevel.Money.valor">
+            <summary>
+            Valor del dinero.
             </summary>
         </member>
         <member name="F:Proyecto.Item.ScientistLevel.Money.onDropMoney">
@@ -2101,6 +2118,8 @@
             <summary>
             Accion realizada al soltar el dinero.
             </summary>
+            <param name="moneyContainer">Container donde es soltado el dinero.</param>
+            <returns>Bool si es el dinero correcto.</returns>
         </member>
         <member name="T:Proyecto.Item.ScientistLevel.MoneyContainer">
             <summary>

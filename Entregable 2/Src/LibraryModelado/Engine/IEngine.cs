@@ -1,3 +1,8 @@
+//--------------------------------------------------------------------------------
+// <copyright file="IEngine.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
 namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>

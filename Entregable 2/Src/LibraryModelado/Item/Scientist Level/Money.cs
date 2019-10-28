@@ -100,6 +100,8 @@ namespace Proyecto.Item.ScientistLevel
         /// <summary>
         /// Accion realizada al soltar el dinero.
         /// </summary>
+        /// <param name="moneyContainer">Container donde es soltado el dinero.</param>
+        /// <returns>Bool si es el dinero correcto.</returns>
         public bool Drop(MoneyContainer moneyContainer)
         {
             if (this.Draggable)

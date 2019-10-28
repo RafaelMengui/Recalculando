@@ -1,13 +1,13 @@
 //--------------------------------------------------------------------------------
-// <copyright file="FactoryButtonGeneric.cs" company="Universidad Católica del Uruguay">
+// <copyright file="FactoryButton.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
+using System.Linq;
 using Proyecto.Item;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
-using System.Linq;
 
 namespace Proyecto.Factory.CSharp
 {
@@ -81,15 +81,15 @@ namespace Proyecto.Factory.CSharp
                 this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
                 this.level = this.world.SpaceList.Last();
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
             }
-            catch(InvalidCastException)
+            catch (InvalidCastException)
             {
                 throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }

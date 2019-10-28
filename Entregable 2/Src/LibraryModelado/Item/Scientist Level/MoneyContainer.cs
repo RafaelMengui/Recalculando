@@ -32,7 +32,7 @@ namespace Proyecto.Item.ScientistLevel
         public MoneyContainer(string name, Space level, float positionX, float positionY, float width, float height, string image, float acceptableValue)
         : base(name, level, positionX, positionY, width, height, image)
         {
-            this.SavedItem = savedItem;
+            this.SavedItem = this.savedItem;
             this.AcceptableValue = acceptableValue;
         }
 

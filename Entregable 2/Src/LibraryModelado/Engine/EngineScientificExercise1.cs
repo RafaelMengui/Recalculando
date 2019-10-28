@@ -3,7 +3,6 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using System;
 using Proyecto.Item;
 using Proyecto.Item.ScientistLevel;
 
@@ -39,37 +38,43 @@ namespace Proyecto.LibraryModelado.Engine
             this.ResultsOfLevel = new bool[2];
             this.PageCounter = 0;
             this.LevelCounter = 0;
-            this.Feedback = feedback;
+            this.Feedback = this.feedback;
         }
 
         /// <summary>
-        /// Gets or sets del nivel asociado a este Motor.
+        /// Gets del nivel asociado a este Motor.
         /// </summary>
         /// <value>Level.</value>
-        public Space Level { get { return level; } }
+        public Space Level
+        {
+            get
+            {
+                return this.level;
+            }
+        }
 
         /// <summary>
-        /// Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+        /// Gets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
         /// </summary>
         /// <value>Etiqueta <see cref="Label"/>.</value>
         public Label Feedback { get; private set; }
 
         /// <summary>
-        /// Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+        /// Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
         /// Existen dos paginas en el nivel.
         /// </summary>
         /// <value>Int.</value>
         public int LevelCounter { get; private set; }
 
         /// <summary>
-        /// Gets or sets de contador utilizado para saber en que operacion de la pagina nos encontramos.
+        /// Gets de contador utilizado para saber en que operacion de la pagina nos encontramos.
         /// Existen dos operaciones dentro de la pagina.
         /// </summary>
         /// <value>Int.</value>
         public int PageCounter { get; private set; }
 
         /// <summary>
-        /// Gets or sets de los resultados de las sumas de una pagina.
+        /// Gets de los resultados de las sumas de una pagina.
         /// Por predeterminado los dos parametros son False.
         /// true = resutlado correcto.
         /// false = resultado Incorrecto.
@@ -78,7 +83,7 @@ namespace Proyecto.LibraryModelado.Engine
         public bool[] ResultsOfPage { get; private set; }
 
         /// <summary>
-        /// Gets or sets de los resultados del nivel.
+        /// Gets de los resultados del nivel.
         /// Por predeterminado los dos parametros son False.
         /// true = Completo una pagina correctamente (los dos parametros de this.ResultsOfPage son true).
         /// false = No completo las dos operaciones de la pagina.

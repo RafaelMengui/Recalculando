@@ -4,8 +4,8 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
-using Proyecto.LibraryModelado.Engine;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Item.ScientistLevel
 {
@@ -48,7 +48,7 @@ namespace Proyecto.Item.ScientistLevel
         public string Color { get; set; }
 
         /// <summary>
-        /// Gets or sets del valor bool del boton.
+        /// Gets or sets a value indicating whether el valor del boton es el correcto.
         /// </summary>
         /// <value>Bool.</value>
         public bool Value { get; set; }

@@ -40,15 +40,15 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public EngineGame()
         {
-            this.MainPage = mainPage;
-            this.LevelEngines = levelEngines;
+            this.MainPage = this.mainPage;
+            this.LevelEngines = this.levelEngines;
         }
 
         /// <summary>
-        /// Gets or sets del diccionario de motores y niveles.
+        /// Gets del diccionario de motores y niveles.
         /// </summary>
         /// <value>Dictionario de clave <see cref="Space"/> y valor <see cref="IEngine"/>.</value>
-        public Dictionary<Space, IEngine> LevelEngines { get; set; }
+        public Dictionary<Space, IEngine> LevelEngines { get; }
 
         /// <summary>
         /// Gets or sets de la pagina principal.

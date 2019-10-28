@@ -37,8 +37,8 @@ namespace Proyecto.Item
         public InputText(string name, Space level, float positionX, float positionY, float width, float height, string image)
         : base(name, level, positionX, positionY, width, height, image)
         {
-            this.OnChange = onChange;
-            this.OnEdited = onEdited;
+            this.OnChange = this.onChange;
+            this.OnEdited = this.onEdited;
         }
 
         /// <summary>
