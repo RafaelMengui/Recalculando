@@ -11,6 +11,11 @@ namespace Proyecto.LibraryModelado.Engine
     /// <summary>
     /// Motor general del juego.
     /// Tiene la responsabilidad de conocer y controlar la funcionalidad de los demas motores del juego.
+    /// Para realizar los diferentes motores utilizamos el patrón SINGLETON, este nos permite garantizar
+    /// la existencia de una sola instancia de clase. Además el acceso a esa única instancia tiene
+    /// que ser global. Esto es de mucha utilidad debido a que vamos a necesitar llamar a los motores
+    /// de los juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
+    /// de que solo haya un motor de este juego.
     /// Hereda de la clase abstracta <see cref="IEngine"/>.
     /// </summary>
     public class EngineGame : IEngine
@@ -54,7 +59,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo responsable de asociarle a cada nivel su respectivo motor, y agregarlo al diccionario this.LevelEngines.
         /// </summary>
-        /// <param name="componentList"></param>
+        /// <param name="componentList">Lista de componentes creados.</param>
         public void Asociate(List<IComponent> componentList)
         {
             foreach (IComponent component in componentList)

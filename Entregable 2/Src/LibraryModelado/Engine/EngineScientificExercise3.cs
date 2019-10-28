@@ -35,7 +35,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[4];
             this.LevelCounter = 0;
-            this.Feedback = feedback;
+            this.Feedback = this.feedback;
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns>Etiqueta <see cref="Label"/>.</returns>
         public Label CreateFeedback()
         {
-            foreach (var space in engineGame.LevelEngines)
+            foreach (var space in this.engineGame.LevelEngines)
             {
                 if (space.Value is EngineScientificExercise3)
                 {
@@ -141,7 +141,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public override void ButtonGoToMain()
         {
-            foreach (var space in engineGame.LevelEngines)
+            foreach (var space in this.engineGame.LevelEngines)
             {
                 if (space.Value is EngineScientificExercise3)
                 {

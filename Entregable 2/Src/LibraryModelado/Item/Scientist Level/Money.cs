@@ -15,8 +15,11 @@ namespace Proyecto.Item.ScientistLevel
     /// </summary>
     public class Money : Items
     {
+        /// <summary>
+        /// Valor del dinero.
+        /// </summary>
         private float valor;
-        
+
         /// <summary>
         /// Accion que se ejecutara al soltar el dinero.
         /// </summary>

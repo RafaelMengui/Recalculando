@@ -72,26 +72,23 @@ namespace Proyecto.Factory.CSharp
         {
             try
             {
-                this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+                this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
                 this.level = this.world.SpaceList.Last();
-                this.width = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
-                this.height = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
-                this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-                this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
-                this.photo = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-                this.text = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Text"; }).Valor;
+                this.width = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
+                this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
+                this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+                this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+                this.photo = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+                this.text = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Text"; }).Valor;
             }
-
-            catch (NullReferenceException)
+            catch(NullReferenceException)
             {
                 throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
             }
-
             catch(InvalidCastException)
             {
                 throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
             }
-
             catch(FormatException)
             {
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
