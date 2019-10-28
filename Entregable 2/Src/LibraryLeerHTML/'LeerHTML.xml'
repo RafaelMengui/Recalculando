@@ -9,16 +9,6 @@
             Clase atributo, nos permite guardar el atributo en clave y valor.
             </summary>
         </member>
-        <member name="F:Proyecto.LeerHTML.Atributos.clave">
-            <summary>
-            Clave del atributo.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LeerHTML.Atributos.valor">
-            <summary>
-            Valor del atributo.
-            </summary>
-        </member>
         <member name="M:Proyecto.LeerHTML.Atributos.#ctor(System.String,System.String)">
             <summary>
             Constructor de Atributos.
