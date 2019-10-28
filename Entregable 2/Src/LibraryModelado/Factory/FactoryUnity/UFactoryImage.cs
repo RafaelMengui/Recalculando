@@ -33,7 +33,6 @@ namespace Proyecto.Factory.Unity
                 // Se castea el componente como Image.
                 this.image = component as Image;
             }
-
             catch (System.Exception)
             {
                 throw new System.Exception("Fail to cast component as Image");

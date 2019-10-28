@@ -7,10 +7,10 @@ namespace Proyecto.LibraryModelado
 {
     /// <summary>
     /// Clase abstracta de Items en el modelado.
-    /// Utilizamos HERENCIA en este caso debido a que, esta clase será la base de mucho de 
-    /// lo que creado en el proyecto. La clase descendiente (Width, Image, Height, etc.) 
-    /// va a heredar automáticamente los atributos,propiedades de Items. Las clases 
-    /// hijas aumentan la especialización dependiendo de lo que deben hacer cada una 
+    /// Utilizamos HERENCIA en este caso debido a que, esta clase será la base de mucho de
+    /// lo que creado en el proyecto. La clase descendiente (Width, Image, Height, etc.)
+    /// va a heredar automáticamente los atributos,propiedades de Items. Las clases
+    /// hijas aumentan la especialización dependiendo de lo que deben hacer cada una
     /// de ellas en el juego.
     /// Implementa la interfaz <see cref="IComponent"/>.
     /// </summary>

@@ -33,7 +33,6 @@ namespace Proyecto.Factory.Unity
                 // Castear como ButtonGoToPage.
                 this.buttonGoToPage = component as ButtonGoToPage;
             }
-
             catch (System.Exception)
             {
                 throw new System.Exception("Fail to cast component as ButtonGoToPage");

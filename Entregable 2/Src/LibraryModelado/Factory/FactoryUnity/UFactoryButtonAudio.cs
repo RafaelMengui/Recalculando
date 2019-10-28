@@ -33,7 +33,7 @@ namespace Proyecto.Factory.Unity
                 // Castear como ButtonAudio.
                 this.buttonAudio = component as ButtonAudio;
             }
-            catch(System.Exception)
+            catch (System.Exception)
             {
                 throw new System.Exception("Fail to cast component as ButtonAudio");
             }

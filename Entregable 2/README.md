@@ -8,11 +8,3 @@ Para esta entrega los juegos planteados son:
 3) Aparecen sumas por pantalla realizadas de manera que el niño pueda visualizarlas, con un resultado, la idea del juego es que se elija si la suma fue realiza de forma correcta o no. 
 
 Integrantes: Agustina Marrero, Nicolas Puig, Rafael Mengui, Santiago Omodey
-
-
-
-
-
-
-
-
