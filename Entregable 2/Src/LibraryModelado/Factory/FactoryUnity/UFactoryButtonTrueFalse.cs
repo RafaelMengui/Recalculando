@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="UFactoryButtonAudio.cs" company="Universidad Católica del Uruguay">
+// <copyright file="UFactoryButtonTrueFalse.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------

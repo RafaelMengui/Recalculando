@@ -88,11 +88,22 @@ namespace Proyecto.Factory.CSharp
                 this.containerName = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Container"; }).Valor;
                 this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
             }
+
             catch (NullReferenceException)
             {
-                throw new NullReferenceException($"Missing attribute in tag {tag.Nombre}.");
+                throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
             }
-            
+
+            catch(InvalidCastException)
+            {
+                throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
+            }
+
+            catch(FormatException)
+            {
+                throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
+            }
+
             Items container = this.level.ItemList.Find(delegate (Items item) { return item.Name == this.containerName; });
             Items draggableItem = new DraggableItem(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, container);
             this.level.ItemList.Add(draggableItem);

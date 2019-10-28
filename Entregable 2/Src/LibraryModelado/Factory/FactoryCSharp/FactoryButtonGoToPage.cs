@@ -88,11 +88,22 @@ namespace Proyecto.Factory.CSharp
                 this.image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
                 this.pageName = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "GoToPage"; }).Valor;
             }
+
             catch (NullReferenceException)
             {
-                throw new NullReferenceException($"Missing attribute in tag {tag.Nombre}.");
+                throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
             }
-            
+
+            catch(InvalidCastException)
+            {
+                throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
+            }
+
+            catch(FormatException)
+            {
+                throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
+            }
+
             Items buttonGoToPage = new ButtonGoToPage(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.color, this.pageName);
             this.level.ItemList.Add(buttonGoToPage);
             return buttonGoToPage;

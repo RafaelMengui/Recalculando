@@ -81,9 +81,20 @@ namespace Proyecto.Factory.CSharp
                 this.photo = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
                 this.text = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Text"; }).Valor;
             }
+
             catch (NullReferenceException)
             {
-                throw new NullReferenceException($"Missing attribute in tag {tag.Nombre}.");
+                throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
+            }
+
+            catch(InvalidCastException)
+            {
+                throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
+            }
+
+            catch(FormatException)
+            {
+                throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
             Items label = new Label(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo, this.text);

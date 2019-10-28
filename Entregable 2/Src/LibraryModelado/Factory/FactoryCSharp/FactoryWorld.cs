@@ -33,10 +33,20 @@ namespace Proyecto.Factory.CSharp
             {
                 this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
             }
+
             catch (NullReferenceException)
             {
-                throw new NullReferenceException($"Missing attribute in tag {tag.Nombre}.");
+                throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
+            }
 
+            catch(InvalidCastException)
+            {
+                throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
+            }
+
+            catch(FormatException)
+            {
+                throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
             world.Name = this.name;

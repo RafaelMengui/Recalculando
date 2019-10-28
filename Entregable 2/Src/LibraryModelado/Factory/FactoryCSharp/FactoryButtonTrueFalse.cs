@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="FactoryButtonGeneric.cs" company="Universidad Católica del Uruguay">
+// <copyright file="FactoryButtonTrueFalse.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -89,9 +89,20 @@ namespace Proyecto.Factory.CSharp
                 this.value = Convert.ToBoolean(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Value"; }).Valor);
                 this.level = this.world.SpaceList.Last();
             }
+
             catch (NullReferenceException)
             {
-                throw new NullReferenceException($"Missing attribute in tag {tag.Nombre}.");
+                throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
+            }
+
+            catch(InvalidCastException)
+            {
+                throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
+            }
+
+            catch(FormatException)
+            {
+                throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
             Items button = new ButtonTrueFalse(this.name, this.level, this.positionX

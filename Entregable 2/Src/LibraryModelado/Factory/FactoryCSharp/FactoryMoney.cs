@@ -67,6 +67,8 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private float value;
 
+        private MoneyContainer container;
+
         /// <summary>
         /// Instancia del mundo.
         /// </summary>
@@ -92,15 +94,25 @@ namespace Proyecto.Factory.CSharp
                 this.containerName = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Container"; }).Valor;
                 this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
                 this.value = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Value"; }).Valor);
-                Items container = this.level.ItemList.Find(delegate (Items item) { return item.Name == this.containerName; });
+                this.container = this.level.ItemList.Find(delegate (Items item) { return item.Name == this.containerName; }) as MoneyContainer;
             }
+
             catch (NullReferenceException)
             {
-                throw new NullReferenceException($"Missing attribute in tag {tag.Nombre}.");
-
+                throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
             }
-            
-            Items draggabledinero = new Money(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, (MoneyContainer)container, this.value);
+
+            catch(InvalidCastException)
+            {
+                throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
+            }
+
+            catch(FormatException)
+            {
+                throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
+            }
+
+            Items draggabledinero = new Money(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, this.container, this.value);
             this.level.ItemList.Add(draggabledinero);
             return draggabledinero;
         }
