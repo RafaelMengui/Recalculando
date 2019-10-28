@@ -33,7 +33,6 @@ namespace Proyecto.Factory.Unity
                 // Castear como DragContainer.
             this.dragContainer = component as DragContainer;
             }
-
             catch (System.Exception)
             {
                 throw new System.Exception("Fail to cast component as DragContainer");

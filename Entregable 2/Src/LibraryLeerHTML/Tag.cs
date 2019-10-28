@@ -26,7 +26,7 @@ namespace Proyecto.LeerHTML
         /// Constructor de Tag.
         /// </summary>
         /// <param name="nombre">String Nombre del Tag</param>
-        /// <param name="atributos">Lista de objetos atributos pertenecientes al tag.</param>
+        /// <param name="atributos">Lista de objetos atributos pertenecientes al tag. </param>.
         public Tag(string nombre, List<Atributos> atributos)
         {
             this.Nombre = nombre;

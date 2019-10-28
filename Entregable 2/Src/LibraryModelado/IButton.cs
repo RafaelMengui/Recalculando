@@ -7,10 +7,10 @@ namespace Proyecto.LibraryModelado
 {
     /// <summary>
     /// Interfaz de Botones.
-    /// Esta interfaz es creada, debido a que, cuando en un futuro querramos 
-    /// tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón 
-    /// que sea una imagen,un botón contador, botón audio, etc. 
-    /// En este caso, estamos pensando en la funcionalidad futura del código, 
+    /// Esta interfaz es creada, debido a que, cuando en un futuro querramos
+    /// tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón
+    /// que sea una imagen,un botón contador, botón audio, etc.
+    /// En este caso, estamos pensando en la funcionalidad futura del código,
     /// para cuando debamos ampliar el juego.
     /// </summary>
     public interface IButton

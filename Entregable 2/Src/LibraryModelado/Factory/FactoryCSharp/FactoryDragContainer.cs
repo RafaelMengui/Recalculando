@@ -56,7 +56,7 @@ namespace Proyecto.Factory.CSharp
         /// Instancia del mundo.
         /// </summary>
         private World world = Singleton<World>.Instance;
-        
+
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryComponent.
         /// Tiene la responsabilidad de crear el componente de tipo <see cref="DragContainer"/>.
@@ -65,13 +65,32 @@ namespace Proyecto.Factory.CSharp
         /// <returns>Componente <see cref="IComponent"/>.</returns>
         public override IComponent MakeComponent(Tag tag)
         {
-            this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
-            this.level = this.world.SpaceList.Last();
-            this.width = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
-            this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-            this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
-            this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+            try
+            {
+                this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+                this.level = this.world.SpaceList.Last();
+                this.width = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+                this.height = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+                this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+                this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+                this.image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+            }
+
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
+            }
+
+            catch(InvalidCastException)
+            {
+                throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
+            }
+
+            catch(FormatException)
+            {
+                throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
+            }
+
             Items dragContainer = new DragContainer(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image);
             this.level.ItemList.Add(dragContainer);
             return dragContainer;

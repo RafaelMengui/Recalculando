@@ -14,6 +14,11 @@ namespace Proyecto.LibraryModelado.Engine
     public class EngineScientificExercise3 : IEngine, ILevelEngine
     {
         /// <summary>
+        /// Etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+        /// </summary>
+        private Label feedback;
+
+        /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
         /// </summary>
         private Space level;
@@ -30,6 +35,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[4];
             this.LevelCounter = 0;
+            this.Feedback = feedback;
         }
 
         /// <summary>
@@ -106,6 +112,7 @@ namespace Proyecto.LibraryModelado.Engine
                     this.level = space.Key;
                 }
             }
+
             Label feedback = new Label("Feedback", this.level, 600, 240, 100, 50, "Vacio.png", string.Empty);
             this.level.ItemList.Add(feedback);
             return feedback;
@@ -141,6 +148,7 @@ namespace Proyecto.LibraryModelado.Engine
                     this.level = space.Key;
                 }
             }
+
             ButtonGoToPage goToMain = new ButtonGoToPage("GoToMain", this.level, -600, -240, 100, 50, "huevo.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
         }

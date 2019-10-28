@@ -1,22 +1,22 @@
 //--------------------------------------------------------------------------------
-// <copyright file="FactoryButtonGoToPage.cs" company="Universidad Católica del Uruguay">
+// <copyright file="FactoryButtonTrueFalse.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
-using System.Linq;
 using Proyecto.Item;
+using Proyecto.Item.ScientistLevel;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
-
+using System.Linq;
 
 namespace Proyecto.Factory.CSharp
 {
     /// <summary>
-    /// Esta clase es la responsable de crear objetos Boton para ir a la próxima página.
-    /// Utiliza la floaterfaz IFactoryComponent.
+    /// Esta clase es la responsable de crear objetos Botones Genéricos.
+    /// Utiliza la interfaz IFactoryComponent.
     /// </summary>
-    public class FactoryButtonGoToPage : IFactoryComponent
+    public class FactoryButtonTrueFalse : IFactoryComponent
     {
         /// <summary>
         /// Nombre del boton.
@@ -34,12 +34,7 @@ namespace Proyecto.Factory.CSharp
         private string image;
 
         /// <summary>
-        /// Pagina de destino del boton.
-        /// </summary>
-        private string pageName;
-
-        /// <summary>
-        /// Atributos float utilizados para crear el componente.
+        /// Ancho del boton.
         /// </summary>
         private float width;
 
@@ -59,7 +54,13 @@ namespace Proyecto.Factory.CSharp
         private float positionY;
 
         /// <summary>
-        /// Nivel al que pertenece el boton.
+        /// Valor bool del boton. 
+        /// </summary>
+        private bool value;
+
+
+        /// <summary>
+        /// Nivel del boton.
         /// </summary>
         private Space level;
 
@@ -70,7 +71,7 @@ namespace Proyecto.Factory.CSharp
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryComponent.
-        /// Tiene la responsabilidad de crear el componente de tipo <see cref="ButtonGoToPage"/>.
+        /// Tiene la responsabilidad de crear el componente de tipo <see cref="Button"/>.
         /// </summary>
         /// <param name="tag">Tag <see cref="Tag"/>.</param>
         /// <returns>Componente <see cref="IComponent"/>.</returns>
@@ -79,14 +80,14 @@ namespace Proyecto.Factory.CSharp
             try
             {
                 this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
-                this.level = this.world.SpaceList.Last();
                 this.width = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
                 this.height = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
                 this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
                 this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
                 this.color = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Color"; }).Valor;
                 this.image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-                this.pageName = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "GoToPage"; }).Valor;
+                this.value = Convert.ToBoolean(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Value"; }).Valor);
+                this.level = this.world.SpaceList.Last();
             }
 
             catch (NullReferenceException)
@@ -104,9 +105,11 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Items buttonGoToPage = new ButtonGoToPage(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.color, this.pageName);
-            this.level.ItemList.Add(buttonGoToPage);
-            return buttonGoToPage;
+            Items button = new ButtonTrueFalse(this.name, this.level, this.positionX
+            , this.positionY, this.width, this.height, this.image, this.color
+            , this.value);
+            this.level.ItemList.Add(button);
+            return button;
         }
     }
 }

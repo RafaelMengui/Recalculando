@@ -76,15 +76,34 @@ namespace Proyecto.Factory.CSharp
         /// <returns>Componente <see cref="IComponent"/>.</returns>
         public override IComponent MakeComponent(Tag tag)
         {
-            this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
-            this.level = this.world.SpaceList.Last();
-            this.width = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
-            this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-            this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
-            this.color = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Color"; }).Valor;
-            this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-            this.audio = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Audio"; }).Valor;
+            try
+            {
+                this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+                this.level = this.world.SpaceList.Last();
+                this.width = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+                this.height = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+                this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+                this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+                this.color = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Color"; }).Valor;
+                this.image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+                this.audio = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Audio"; }).Valor;
+            }
+
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
+            }
+
+            catch(InvalidCastException)
+            {
+                throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
+            }
+
+            catch(FormatException)
+            {
+                throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
+            }
+
             Items buttonAudio = new ButtonAudio(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.color, this.audio);
             this.level.ItemList.Add(buttonAudio);
             return buttonAudio;

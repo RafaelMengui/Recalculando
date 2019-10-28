@@ -1,28 +1,29 @@
 //--------------------------------------------------------------------------------
-// <copyright file="UFactoryButtonAudio.cs" company="Universidad Católica del Uruguay">
+// <copyright file="UFactoryButtonTrueFalse.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
 using Proyecto.Common;
 using Proyecto.Item;
+using Proyecto.Item.ScientistLevel;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Factory.Unity
 {
     /// <summary>
-    /// Esta clase es la resposable de agregar los componentes ButtonAudio al juego.
+    /// Esta clase es la resposable de agregar los componentes ButtonTrueFalse al juego.
     /// Implementa la interfaz <see cref="IFactoryUnity"/>.
     /// </summary>
-    public class UFactoryButtonAudio : IFactoryUnity
+    public class UFactoryButtonTrueFalse : IFactoryUnity
     {
         /// <summary>
-        /// Objeto ButtonAudio que se agregara a Unity.
+        /// Objeto ButtonTrueFalse que se agregara a Unity.
         /// </summary>
-        private ButtonAudio buttonAudio;
+        private ButtonTrueFalse buttonTrueFalse;
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
-        /// Tiene la responsabilidad de agregar el componente de tipo <see cref="ButtonAudio"/> a Unity.
+        /// Tiene la responsabilidad de agregar el componente de tipo <see cref="ButtonTrueFalse"/> a Unity.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>
@@ -30,25 +31,22 @@ namespace Proyecto.Factory.Unity
         {
             try
             {
-                // Castear como ButtonAudio.
-                this.buttonAudio = component as ButtonAudio;
+                // Castear como ButtonTrueFalse.
+                this.buttonTrueFalse = component as ButtonTrueFalse;
             }
-            catch (System.Exception)
+            catch(System.Exception)
             {
-                throw new System.Exception("Fail to cast component as ButtonAudio");
+                throw new System.Exception("Fail to cast component as ButtonTrueFalse");
             }
-
-            // Asignar evento del boton.
-            this.buttonAudio.Event = adapter.PlayAudio;
 
             // Crear objeto en unity y obtener el UnityID.
-            this.buttonAudio.ID = adapter.CreateButton(this.buttonAudio.PositionX, this.buttonAudio.PositionY, this.buttonAudio.Width, this.buttonAudio.Height, this.buttonAudio.Color, this.buttonAudio.Click);
+            this.buttonTrueFalse.ID = adapter.CreateButton(this.buttonTrueFalse.PositionX, this.buttonTrueFalse.PositionY, this.buttonTrueFalse.Width, this.buttonTrueFalse.Height, this.buttonTrueFalse.Color, this.buttonTrueFalse.Click);
 
             // Asignarle su imagen al boton.
-            adapter.SetImage(this.buttonAudio.ID, this.buttonAudio.Image);
+            adapter.SetImage(this.buttonTrueFalse.ID, this.buttonTrueFalse.Image);
 
             // Se quita la palabra "Button".
-            adapter.SetText(this.buttonAudio.ID, string.Empty);
+            adapter.SetText(this.buttonTrueFalse.ID, string.Empty);
         }
     }
 }

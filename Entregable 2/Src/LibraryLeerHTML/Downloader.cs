@@ -20,7 +20,7 @@ namespace Proyecto.LeerHTML
         private string url;
 
         /// <summary>
-        /// La ubicación de la cual descargar
+        /// La ubicación de la cual descargar.
         /// </summary>
         public string Url
         {
@@ -45,16 +45,22 @@ namespace Proyecto.LeerHTML
         {
             // Creamos una nueva solicitud para el recurso especificado por la URL recibida
             WebRequest request = WebRequest.Create(url);
-            // Asignamos las credenciales predeterminadas por si el servidor las pide
+
+            //Asignamos las credenciales predeterminadas por si el servidor las pide
             request.Credentials = CredentialCache.DefaultCredentials;
-            // Obtenemos la respuesta
+
+            //Obtenemos la respuesta
             WebResponse response = request.GetResponse();
+
             // Obtenemos la stream con el contenido retornado por el servidor
             Stream stream = response.GetResponseStream();
+
             // Abrimos la stream con un lector para accederla más fácilmente
             StreamReader reader = new StreamReader(stream);
+        
             // Leemos el contenido
             string result = reader.ReadToEnd();
+            
             // Limpiamos cerrando lo que abrimos
             reader.Close();
             stream.Close();

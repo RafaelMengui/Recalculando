@@ -16,10 +16,15 @@ namespace Proyecto.LibraryModelado.Engine
     ///  que ser global. Esto es de mucha utilidad debido a que, vamos a necesitar llamar al motor
     ///  de este juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
     /// de que solo haya un motor de este juego.
-    /// Hereda de las clases abstractas <see cref="IEngine"/> y <see cref="ILevelEngine"/>
+    /// Hereda de las clases abstractas <see cref="IEngine"/> y <see cref="ILevelEngine"/>.
     /// </summary>
     public class EngineScientificExercise1 : IEngine, ILevelEngine
     {
+        /// <summary>
+        /// Etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+        /// </summary>
+        private Label feedback;
+
         /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
         /// </summary>
@@ -39,12 +44,13 @@ namespace Proyecto.LibraryModelado.Engine
             this.ResultsOfLevel = new bool[2];
             this.PageCounter = 0;
             this.LevelCounter = 0;
+            this.Feedback = feedback;
         }
 
         /// <summary>
         /// Gets or sets del nivel asociado a este Motor.
         /// </summary>
-        /// <value></value>
+        /// <value> Level. </value>
         public Space Level { get { return level; } }
 
         /// <summary>
@@ -110,6 +116,7 @@ namespace Proyecto.LibraryModelado.Engine
                 this.LevelCounter += 1;
                 return true;
             }
+
             return false;
         }
 
@@ -178,6 +185,7 @@ namespace Proyecto.LibraryModelado.Engine
                     this.level = space.Key;
                 }
             }
+
             Label feedback = new Label("Feedback", this.level, 600, 240, 100, 50, "Vacio.png", string.Empty);
             this.level.ItemList.Add(feedback);
             return feedback;
@@ -213,6 +221,7 @@ namespace Proyecto.LibraryModelado.Engine
                     this.level = space.Key;
                 }
             }
+            
             ButtonGoToPage goToMain = new ButtonGoToPage("GoToMain", this.level, -600, -240, 100, 50, "huevo.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
         }

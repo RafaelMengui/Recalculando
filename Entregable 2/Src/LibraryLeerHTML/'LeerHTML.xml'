@@ -9,16 +9,6 @@
             Clase atributo, nos permite guardar el atributo en clave y valor.
             </summary>
         </member>
-        <member name="F:Proyecto.LeerHTML.Atributos.clave">
-            <summary>
-            Clave del atributo.
-            </summary>
-        </member>
-        <member name="F:Proyecto.LeerHTML.Atributos.valor">
-            <summary>
-            Valor del atributo.
-            </summary>
-        </member>
         <member name="M:Proyecto.LeerHTML.Atributos.#ctor(System.String,System.String)">
             <summary>
             Constructor de Atributos.
@@ -36,7 +26,7 @@
             <summary>
             Gets or sets del valor del atributo.
             </summary>
-            <value></value>
+            <value> string Valor</value>
         </member>
         <member name="T:Proyecto.LeerHTML.Downloader">
             <summary>
@@ -51,7 +41,7 @@
         </member>
         <member name="P:Proyecto.LeerHTML.Downloader.Url">
             <summary>
-            La ubicación de la cual descargar
+            La ubicación de la cual descargar.
             </summary>
         </member>
         <member name="M:Proyecto.LeerHTML.Downloader.#ctor(System.String)">
@@ -127,7 +117,7 @@
             Constructor de Tag.
             </summary>
             <param name="nombre">String Nombre del Tag</param>
-            <param name="atributos">Lista de objetos atributos pertenecientes al tag.</param>
+            <param name="atributos">Lista de objetos atributos pertenecientes al tag. </param>.
         </member>
         <member name="P:Proyecto.LeerHTML.Tag.Nombre">
             <summary>
