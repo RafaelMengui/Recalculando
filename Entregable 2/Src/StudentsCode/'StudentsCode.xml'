@@ -8,9 +8,9 @@
             <summary>
             Clase que implementa la interfaz IBuilder.
             El patrón de diseño Builder separa la creación de un objeto complejo
-            de su representación de modo que el mismo proceso de construcción pueda 
+            de su representación de modo que el mismo proceso de construcción pueda
             crear representaciones diferentes.
-            En el caso de nuestro código lo utilizamos para generar los archivos 'StudentsCode.dll' 
+            En el caso de nuestro código lo utilizamos para generar los archivos 'StudentsCode.dll'
             y 'Common.dll'.
             </summary>
         </member>
@@ -18,7 +18,7 @@
             <summary>
             Instancia del motor principal.
             </summary>
-            <returns></returns>
+            <returns>.</returns>
         </member>
         <member name="F:Proyecto.StudentsCode.Builder.adapter">
             <summary>

@@ -17,9 +17,9 @@ namespace Proyecto.StudentsCode
     /// <summary>
     /// Clase que implementa la interfaz IBuilder.
     /// El patrón de diseño Builder separa la creación de un objeto complejo
-    /// de su representación de modo que el mismo proceso de construcción pueda 
+    /// de su representación de modo que el mismo proceso de construcción pueda
     /// crear representaciones diferentes.
-    /// En el caso de nuestro código lo utilizamos para generar los archivos 'StudentsCode.dll' 
+    /// En el caso de nuestro código lo utilizamos para generar los archivos 'StudentsCode.dll'
     /// y 'Common.dll'.
     /// </summary>
     public class Builder : IBuilder
@@ -27,7 +27,7 @@ namespace Proyecto.StudentsCode
         /// <summary>
         /// Instancia del motor principal.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>.</returns>
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
         /// <summary>
@@ -65,14 +65,13 @@ namespace Proyecto.StudentsCode
             }
 
             this.engineGame.Asociate(componentList);
-
             foreach (IComponent component in componentList)
             {
-                UFactory.InitializeUnityFactories().MakeUnityItem(adapter, component);
+                UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);
             }
 
             this.firstPage = this.world.SpaceList[0];
-            engineGame.MainPage = this.firstPage;
+            this.engineGame.MainPage = this.firstPage;
             this.adapter.AfterBuild();
         }
 

@@ -23,6 +23,7 @@ namespace Proyecto.Item
         /// Método a ejecutar cuando se termina de editar el texto de la entrada de texto.
         /// </summary>
         private Action<string, string> onEdited;
+
         /// <summary>
         /// Initializes a new instance of InputText.
         /// </summary>

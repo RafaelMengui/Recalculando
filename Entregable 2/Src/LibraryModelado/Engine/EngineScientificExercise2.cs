@@ -74,6 +74,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
         /// level counter suma 1.
         /// </summary>
+        /// <param name="button">Boton seleccionado.</param>
+        /// <returns>Bool si el boton es correcto.</returns>
         public bool VerifyQuestion(ButtonTrueFalse button)
         {
             if (button.Value)
@@ -105,7 +107,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns>Etiqueta <see cref="Label"/>.</returns>
         public Label CreateFeedback()
         {
-            foreach (var space in engineGame.LevelEngines)
+            foreach (var space in this.engineGame.LevelEngines)
             {
                 if (space.Value is EngineScientificExercise2)
                 {
@@ -141,7 +143,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public override void ButtonGoToMain()
         {
-            foreach (var space in engineGame.LevelEngines)
+            foreach (var space in this.engineGame.LevelEngines)
             {
                 if (space.Value is EngineScientificExercise2)
                 {

@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="Bowl.cs" company="Universidad Católica del Uruguay">
+// <copyright file="Recipe.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -24,7 +24,7 @@ namespace Proyecto.Item.KitchenLevel
         }
 
         /// <summary>
-        /// Gets lista de objetos Food, que seran soltados dentro del container para ganar el juego.
+        /// Gets lista de objetos Food, que deberan ser soltados dentro del container para ganar el juego.
         /// </summary>
         /// <value>Alimentos<see cref="Food"/>.</value>
         public List<Food> FoodList { get; }
