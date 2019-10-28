@@ -21,6 +21,11 @@ namespace Proyecto.LibraryModelado.Engine
     public class EngineScientificExercise1 : IEngine, ILevelEngine
     {
         /// <summary>
+        /// Etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+        /// </summary>
+        private Label feedback;
+
+        /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
         /// </summary>
         private Space level;
@@ -39,6 +44,7 @@ namespace Proyecto.LibraryModelado.Engine
             this.ResultsOfLevel = new bool[2];
             this.PageCounter = 0;
             this.LevelCounter = 0;
+            this.Feedback = feedback;
         }
 
         /// <summary>

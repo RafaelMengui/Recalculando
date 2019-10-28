@@ -67,6 +67,8 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private float value;
 
+        private MoneyContainer container;
+
         /// <summary>
         /// Instancia del mundo.
         /// </summary>
@@ -80,18 +82,37 @@ namespace Proyecto.Factory.CSharp
         /// <returns>Componente <see cref="IComponent"/>.</returns>
         public override IComponent MakeComponent(Tag tag)
         {
-            this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
-            this.level = this.world.SpaceList.Last();
-            this.width = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Width"; }).Valor);
-            this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
-            this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
-            this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
-            this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-            this.containerName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Container"; }).Valor;
-            this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
-            this.value = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Value"; }).Valor);
-            Items container = this.level.ItemList.Find(delegate(Items item) { return item.Name == this.containerName; });
-            Items draggabledinero = new Money(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, (MoneyContainer)container, this.value);
+            try
+            {
+                this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+                this.level = this.world.SpaceList.Last();
+                this.width = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Width"; }).Valor);
+                this.height = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Height"; }).Valor);
+                this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
+                this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+                this.image = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+                this.containerName = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Container"; }).Valor;
+                this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
+                this.value = Convert.ToSingle(tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Value"; }).Valor);
+                this.container = this.level.ItemList.Find(delegate (Items item) { return item.Name == this.containerName; }) as MoneyContainer;
+            }
+
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
+            }
+
+            catch(InvalidCastException)
+            {
+                throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
+            }
+
+            catch(FormatException)
+            {
+                throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
+            }
+
+            Items draggabledinero = new Money(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, this.container, this.value);
             this.level.ItemList.Add(draggabledinero);
             return draggabledinero;
         }

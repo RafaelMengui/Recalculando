@@ -8,6 +8,7 @@
             <summary>
             Motor general del juego.
             Tiene la responsabilidad de conocer y controlar la funcionalidad de los demas motores del juego.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.levelEngines">
@@ -62,6 +63,12 @@
              que ser global. Esto es de mucha utilidad debido a que, vamos a necesitar llamar al motor
              de este juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
             de que solo haya un motor de este juego.
+            Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.feedback">
+            <summary>
+            Etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.level">
@@ -1564,7 +1571,7 @@
         </member>
         <member name="M:Proyecto.Item.ButtonAudio.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.String,System.String)">
             <summary>
-            Initializes a new instance of ButtonAudio.
+            Inicializa una nueva instancia de ButtonAudio.
             </summary>
             <param name="name">Nombre del boton.</param>
             <param name="level">Nivel al que pertence.</param>
@@ -1979,7 +1986,8 @@
         </member>
         <member name="P:Proyecto.Item.ScientistLevel.Money.Value">
             <summary>
-            Gets or sets del valor de la moneda.
+            Gets or sets del valor de la moneda. 
+            En caso que, la moneda sea de un valor negativo, se ejecuta la exepción.
             </summary>
             <value>float valor de la moneda.</value>
         </member>

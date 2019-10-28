@@ -2,11 +2,11 @@
 
 	<Space Name="ScientificExercise1" Background="page1.png">
 
-		<ButtonAudio Name="pirata" PositionX="-400" PositionY="150" Width="200" Height="150" Photo="bill20.png" Color="#FCFCFC" Audio="piratesSound.wav">
+		<ButtonAudio Name="cosa" PositionX="-400" PositionY="150" Width="200" Photo="bill10.png" Height="150" Color="#FCFCFC" Audio="piratesSound.wav">
 		<ButtonAudio Name="kahoot" PositionX="-400" PositionY="-150" Width="200" Height="150" Photo="bill200.png" Color="#FCFCFC" Audio="kahoot.wav">
 		<ButtonAudio Name="wii" PositionX="400" PositionY="150" Width="200" Height="150" Photo="bill500.png" Color="#FCFCFC" Audio="wii.wav">
 		<ButtonAudio Name="nada" PositionX="400" PositionY="-150" Width="200" Height="150" Photo="bill10.png" Color="#FCFCFC" Audio="vacio.wav">
-		<ButtonGoToPage Name="gotoscientist" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="secondpage">
+		<ButtonGoToPage Name="gotoscientist" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="ScientificExercise2">
 
 	</Space>
 
@@ -27,7 +27,7 @@
 		<DraggableItem Name="chocolate" PositionX="0" PositionY="0" Width="85" Height="85" Photo="chocolate.png" Draggable="true" Container="chocolateContainer">
 		<DraggableItem Name="pollo" PositionX="0" PositionY="0" Width="85" Height="85" Photo="pollo.png" Draggable="true" Container="polloContainer">
 		<DraggableItem Name="carne" PositionX="0" PositionY="0" Width="85" Height="85" Photo="carne.png" Draggable="true" Container="carneContainer">
-		<ButtonGoToPage Name="gotosecond" Type="GoToPage" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="first">
+		<ButtonGoToPage Name="gotosecond" Type="GoToPage" PositionX="0" PositionY="0" Width="150" Height="100" Photo="bill20.png" Color="#FCFCFC" GoToPage="ScientificExercise1">
 
 	</Space>
 	
