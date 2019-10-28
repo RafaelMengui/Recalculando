@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using System;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
 
@@ -28,7 +29,16 @@ namespace Proyecto.Factory.CSharp
         public override IComponent MakeComponent(Tag tag)
         {
             World world = Singleton<World>.Instance;
-            this.name = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            try
+            {
+                this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException($"Missing attribute in tag {tag.Nombre}.");
+
+            }
+
             world.Name = this.name;
             return world;
         }
