@@ -26,6 +26,7 @@ namespace Proyecto.LeerHTML
             {
                 textoFormato += T.Nombre + "\n" + T.RetornarAtributos();
             }
+            
             return textoFormato;
         }
     }

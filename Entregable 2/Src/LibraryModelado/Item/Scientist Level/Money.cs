@@ -16,6 +16,7 @@ namespace Proyecto.Item.ScientistLevel
     public class Money : Items
     {
         private float valor;
+        
         /// <summary>
         /// Accion que se ejecutara al soltar el dinero.
         /// </summary>
@@ -44,7 +45,7 @@ namespace Proyecto.Item.ScientistLevel
         }
 
         /// <summary>
-        /// Gets or sets del valor de la moneda. 
+        /// Gets or sets del valor de la moneda.
         /// En caso que, la moneda sea de un valor negativo, se ejecuta la exepción.
         /// </summary>
         /// <value>float valor de la moneda.</value>
@@ -54,6 +55,7 @@ namespace Proyecto.Item.ScientistLevel
             {
                 return this.valor;
             }
+
             set
             {
                 if (value < 0)
@@ -102,9 +104,10 @@ namespace Proyecto.Item.ScientistLevel
                 EngineScientificExercise1 engineScientific = Singleton<EngineScientificExercise1>.Instance;
                 if (engineScientific.VerifyExercise(moneyContainer, this))
                 {
-                    //this.OnDropMoney(this.Name, this.PositionX, this.PositionY);
+                    // this.OnDropMoney(this.Name, this.PositionX, this.PositionY);
                     return true;
                 }
+
                 return false;
             }
             else
@@ -121,6 +124,3 @@ namespace Proyecto.Item.ScientistLevel
         }
     }
 }
-
-
-// 

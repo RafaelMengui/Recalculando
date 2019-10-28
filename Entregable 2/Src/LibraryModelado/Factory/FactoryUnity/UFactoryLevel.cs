@@ -32,7 +32,6 @@ namespace Proyecto.Factory.Unity
                 // Se castea el componente como Space.
                 this.level = component as Space;
             }
-
             catch (System.Exception)
             {
                 throw new System.Exception("Fail to cast component as Space");

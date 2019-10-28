@@ -3,8 +3,8 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using Proyecto.Item.ScientistLevel;
 using Proyecto.Item;
+using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
@@ -106,6 +106,7 @@ namespace Proyecto.LibraryModelado.Engine
                     this.level = space.Key;
                 }
             }
+
             Label feedback = new Label("Feedback", this.level, 600, 240, 100, 50, "Vacio.png", string.Empty);
             this.level.ItemList.Add(feedback);
             return feedback;
@@ -139,8 +140,9 @@ namespace Proyecto.LibraryModelado.Engine
                 if (space.Value is EngineScientificExercise2)
                 {
                     this.level = space.Key;
-                }
+                }  
             }
+            
             ButtonGoToPage goToMain = new ButtonGoToPage("GoToMain", this.level, -600, -240, 100, 50, "huevo.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
         }

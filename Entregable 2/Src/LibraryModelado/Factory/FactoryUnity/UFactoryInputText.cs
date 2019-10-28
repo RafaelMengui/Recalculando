@@ -33,7 +33,6 @@ namespace Proyecto.Factory.Unity
                 // Se castea el componente como InputText.
                 this.input = component as InputText;
             }
-
             catch (System.Exception)
             {
                 throw new System.Exception("Fail to cast component as InputText");

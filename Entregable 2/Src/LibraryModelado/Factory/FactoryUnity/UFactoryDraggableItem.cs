@@ -33,7 +33,6 @@ namespace Proyecto.Factory.Unity
                 // Castear como DraggableItem.
                 this.draggableItem = component as DraggableItem;
             }
-
             catch (System.Exception)
             {
                 throw new System.Exception("Fail to cast component as DraggableItem");

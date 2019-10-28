@@ -40,7 +40,7 @@ namespace Proyecto.LeerHTML
         /// <summary>
         /// Gets or sets del valor del atributo.
         /// </summary>
-        /// <value></value>
+        /// <value> string Valor</value>
         public string Valor { get; set; }
     }
 }

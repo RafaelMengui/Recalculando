@@ -106,6 +106,7 @@ namespace Proyecto.LibraryModelado.Engine
                     this.level = space.Key;
                 }
             }
+
             Label feedback = new Label("Feedback", this.level, 600, 240, 100, 50, "Vacio.png", string.Empty);
             this.level.ItemList.Add(feedback);
             return feedback;
@@ -141,6 +142,7 @@ namespace Proyecto.LibraryModelado.Engine
                     this.level = space.Key;
                 }
             }
+
             ButtonGoToPage goToMain = new ButtonGoToPage("GoToMain", this.level, -600, -240, 100, 50, "huevo.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
         }
