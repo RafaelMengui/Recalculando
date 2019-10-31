@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Src\LibraryLeerHTML\LeerHTML.csproj" />
+    <ProjectReference Include="..\..\Src\LibraryModelado\LibraryModelado.csproj" />
   </ItemGroup>
 
 </Project>
