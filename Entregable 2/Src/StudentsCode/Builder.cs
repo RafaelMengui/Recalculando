@@ -30,6 +30,8 @@ namespace Proyecto.StudentsCode
         /// <returns>.</returns>
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
+        // private EngineUnity engineUnity = Singleton<EngineUnity>.Instance;
+
         /// <summary>
         /// Adapter del tipo <see cref="IMainViewAdapter"/>.
         /// </summary>
@@ -54,6 +56,9 @@ namespace Proyecto.StudentsCode
             this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
             this.adapter.AfterBuild += this.Setup;
 
+            Singleton<EngineUnity>.Instance.Adapter = this.adapter;
+            this.adapter.OnDrop += Singleton<EngineUnity>.Instance.OnDrop;
+
             const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Niveles.xml";
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
             List<IComponent> componentList = new List<IComponent>();
@@ -70,8 +75,7 @@ namespace Proyecto.StudentsCode
                 UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);
             }
 
-            this.firstPage = this.world.SpaceList[0];
-            this.engineGame.MainPage = this.firstPage;
+            
             this.adapter.AfterBuild();
         }
 
@@ -80,6 +84,9 @@ namespace Proyecto.StudentsCode
         /// </summary>
         private void Setup()
         {
+            this.firstPage = this.world.SpaceList[0];
+            this.engineGame.MainPage = this.firstPage;
+            this.engineGame.CurrentPage = this.firstPage;
             this.engineGame.ButtonGoToMain();
             this.adapter.ChangeLayout(Layout.ContentSizeFitter);
             this.adapter.ShowPage(this.firstPage.ID);

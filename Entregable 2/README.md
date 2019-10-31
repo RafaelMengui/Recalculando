@@ -1,5 +1,5 @@
 - REECALCULANDO: 
-Nuestro juego pensando especialmente para personas que padecen dislculía.
+Nuestro juego pensando especialmente para personas que padecen discalculía.
 El juego en general se basa en 4 personajes, cada uno de estos equivale a un juego. 
 Para esta entrega los juegos planteados son:
 .Cientifico: Este juego consta de 3 pequeños juegos dentro.

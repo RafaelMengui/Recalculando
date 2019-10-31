@@ -8,6 +8,11 @@
             <summary>
             Motor general del juego.
             Tiene la responsabilidad de conocer y controlar la funcionalidad de los demas motores del juego.
+            Para realizar los diferentes motores utilizamos el patrón SINGLETON, este nos permite garantizar
+            la existencia de una sola instancia de clase. Además el acceso a esa única instancia tiene
+            que ser global. Esto es de mucha utilidad debido a que vamos a necesitar llamar a los motores
+            de los juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
+            de que solo haya un motor de este juego.
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.
             </summary>
         </member>
@@ -47,7 +52,7 @@
             <summary>
             Metodo responsable de asociarle a cada nivel su respectivo motor, y agregarlo al diccionario this.LevelEngines.
             </summary>
-            <param name="componentList"></param>
+            <param name="componentList">Lista de componentes creados.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.ButtonGoToMain">
             <summary>
@@ -57,12 +62,7 @@
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise1">
             <summary>
-            Clase EngineScientific, responsable de implementar la logica del nivel scientific.
-             Paraa realizar los motores utilizamos el patrón SINGLETON, este nos permite garantizar 
-            la existencia de una sola instancia de clase. Además el acceso a esa única instancia tiene
-             que ser global. Esto es de mucha utilidad debido a que, vamos a necesitar llamar al motor
-             de este juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
-            de que solo haya un motor de este juego.
+            Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
             Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
@@ -90,7 +90,7 @@
             <summary>
             Gets or sets del nivel asociado a este Motor.
             </summary>
-            <value> Level. </value>
+            <value>Level.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Feedback">
             <summary>
@@ -158,6 +158,9 @@
             Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
             Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
             </summary>
+            <param name="moneyContainer">Container de dinero en donde es soltado el dinero.</param>
+            <param name="money">Dinero arrastrado.</param>
+            <returns>Bool si el dinero soltado es correcto.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.StartLevel">
             <summary>
@@ -190,6 +193,11 @@
             Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, en donde se recorre el diccionario
             de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
             se debe crear el boton que mostrara la pagina principal al ejecutarlo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Game">
+            <summary>
+            Procedimiento del juego.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise2">
@@ -251,6 +259,8 @@
             Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
             level counter suma 1.
             </summary>
+            <param name="button">Boton seleccionado.</param>
+            <returns>Bool si el boton es correcto.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.StartLevel">
             <summary>
@@ -368,6 +378,14 @@
             se debe crear el boton que mostrara la pagina principal al ejecutarlo.
             </summary>
         </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.FindDragContainer(System.Single,System.Single)">
+            <summary>
+            Si existe un container en esas coordenadas, lo devolvera.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
         <member name="T:Proyecto.LibraryModelado.Engine.IEngine">
             <summary>
             Clase abstracta de motores.
@@ -420,6 +438,22 @@
             Interfaz IComponent.
             Todos los objetos creados en el modelado(World, Space, Items) seran de tipo IComponent.
             </summary>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.IContainer">
+            <summary>
+            Interfaz de Botones.
+            Esta interfaz es creada, debido a que, cuando en un futuro querramos
+            tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón
+            que sea una imagen,un botón contador, botón audio, etc.
+            En este caso, estamos pensando en la funcionalidad futura del código,
+            para cuando debamos ampliar el juego.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.IContainer.SavedItems">
+            <summary>
+            Gets de Lista de elementos guardados en el container.
+            </summary>
+            <value>Lista de items.</value>
         </member>
         <member name="T:Proyecto.LibraryModelado.Items">
             <summary>
@@ -1599,7 +1633,8 @@
         <member name="M:Proyecto.Factory.Unity.UFactoryWorld.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
             Sobrescribe el metodo abstracto de IFactoryUnity.
-            No tiene ninguna funcionalidad debidoa a que no crearemos un objeto World en unity.
+            Debido a que no crearemos un objeto World en unity, esta clase no tiene ninguna responsabilidad,
+            mas que asignarle al motor de unity el adaptador de tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
@@ -1812,7 +1847,7 @@
             </summary>
             <value>Action.</value>
         </member>
-        <member name="M:Proyecto.Item.DraggableItem.Drop">
+        <member name="M:Proyecto.Item.DraggableItem.Drop(System.String,System.Single,System.Single)">
             <summary>
             Accion realizada al soltar el Item.
             </summary>
@@ -2052,6 +2087,11 @@
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
+        <member name="F:Proyecto.Item.ScientistLevel.Money.valor">
+            <summary>
+            Valor del dinero.
+            </summary>
+        </member>
         <member name="F:Proyecto.Item.ScientistLevel.Money.onDropMoney">
             <summary>
             Accion que se ejecutara al soltar el dinero.
@@ -2108,11 +2148,6 @@
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.ScientistLevel.MoneyContainer.savedItem">
-            <summary>
-            Objeto Money guardado.
-            </summary>
-        </member>
         <member name="M:Proyecto.Item.ScientistLevel.MoneyContainer.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.Single)">
             <summary>
             Initializes a new instance of MoneyContainer.
@@ -2132,7 +2167,7 @@
             </summary>
             <value>float valor aceptado.</value>
         </member>
-        <member name="P:Proyecto.Item.ScientistLevel.MoneyContainer.SavedItem">
+        <member name="P:Proyecto.Item.ScientistLevel.MoneyContainer.SavedItems">
             <summary>
             Gets or sets de objetos Money soltado dentro del container.
             </summary>

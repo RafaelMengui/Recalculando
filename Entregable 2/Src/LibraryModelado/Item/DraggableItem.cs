@@ -17,7 +17,7 @@ namespace Proyecto.Item
         /// <summary>
         /// Accion que se ejecutara al soltar un item.
         /// </summary>
-        private Action<string, float, float> onDrop;
+        private Action<DraggableItem, DragContainer> onDrop;
 
         /// <summary>
         /// Initializes a new instance of DraggableItem.
@@ -55,14 +55,14 @@ namespace Proyecto.Item
         /// Gets or sets de la accion a realizar al soltar el item.
         /// </summary>
         /// <value>Action.</value>
-        public Action<string, float, float> OnDrop { get; set; }
+        public Action<DraggableItem, DragContainer> OnDrop { get; set; }
 
         /// <summary>
         /// Accion realizada al soltar el Item.
         /// </summary>
-        public void Drop()
+        public void Drop(string id, float positionX, float positionY)
         {
-            this.OnDrop(this.ID, this.PositionX, this.PositionY);
+            //this.OnDrop(id, positionX, positionY);
         }
     }
 }

@@ -107,7 +107,7 @@ namespace Proyecto.Item.ScientistLevel
                 EngineScientificExercise1 engineScientific = Singleton<EngineScientificExercise1>.Instance;
                 if (engineScientific.VerifyExercise(moneyContainer, this))
                 {
-                    // this.OnDropMoney(this.Name, this.PositionX, this.PositionY);
+                    this.OnDropMoney(this.Name, this.PositionX, this.PositionY);
                     return true;
                 }
 

@@ -35,6 +35,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         private Space mainPage;
 
+        private Space currentPage;
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -42,6 +44,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.MainPage = mainPage;
             this.LevelEngines = levelEngines;
+            this.CurrentPage = mainPage;
         }
 
         /// <summary>
@@ -49,6 +52,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         /// <value>Dictionario de clave <see cref="Space"/> y valor <see cref="IEngine"/>.</value>
         public Dictionary<Space, IEngine> LevelEngines { get; set; }
+
+        public Space CurrentPage;
 
         /// <summary>
         /// Gets or sets de la pagina principal.

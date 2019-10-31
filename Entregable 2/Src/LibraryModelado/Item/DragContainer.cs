@@ -12,7 +12,7 @@ namespace Proyecto.Item
     /// Clase responsable de crear containers para items arrastrables en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
-    public class DragContainer : Items
+    public class DragContainer : Items, IContainer
     {
         /// <summary>
         /// Initializes a new instance of DragContainer.

@@ -212,7 +212,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public override void ButtonGoToMain()
         {
-            foreach (var space in engineGame.LevelEngines)
+            foreach (var space in this.engineGame.LevelEngines)
             {
                 if (space.Value is EngineScientificExercise1)
                 {
@@ -222,6 +222,21 @@ namespace Proyecto.LibraryModelado.Engine
             
             ButtonGoToPage goToMain = new ButtonGoToPage("GoToMain", this.level, -600, -240, 100, 50, "huevo.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
+        }
+
+        /// <summary>
+        /// Procedimiento del juego.
+        /// </summary>
+        public void Game()
+        {
+            this.StartLevel();
+            while (!this.VerifyWinLevel())
+            {
+                while (!this.VerifyWinPage())
+                {
+                    
+                }
+            }
         }
     }
 }

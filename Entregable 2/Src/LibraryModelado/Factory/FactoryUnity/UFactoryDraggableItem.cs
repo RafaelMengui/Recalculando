@@ -6,6 +6,7 @@
 using Proyecto.Common;
 using Proyecto.Item;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Factory.Unity
 {
@@ -19,6 +20,8 @@ namespace Proyecto.Factory.Unity
         /// Objeto DraggableItem que se agregara a Unity.
         /// </summary>
         private DraggableItem draggableItem;
+
+        // private EngineUnity engineUnity = Singleton<EngineUnity>.Instance;
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
@@ -37,6 +40,8 @@ namespace Proyecto.Factory.Unity
             {
                 throw new System.Exception("Fail to cast component as DraggableItem");
             }
+
+            // adapter.OnDrop = this.engineUnity.OnDrop;
 
             // Crear objeto en unity y obtener el UnityID.
             this.draggableItem.ID = adapter.CreateImage(this.draggableItem.PositionX, this.draggableItem.PositionY, this.draggableItem.Width, this.draggableItem.Height);

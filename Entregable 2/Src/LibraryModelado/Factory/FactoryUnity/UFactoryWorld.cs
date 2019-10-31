@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 using Proyecto.Common;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Factory.Unity
 {
@@ -14,14 +15,17 @@ namespace Proyecto.Factory.Unity
     /// </summary>
     public class UFactoryWorld : IFactoryUnity
     {
+        // private EngineUnity engineUnity = Singleton<EngineUnity>.Instance;
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
-        /// No tiene ninguna funcionalidad debidoa a que no crearemos un objeto World en unity.
+        /// Debido a que no crearemos un objeto World en unity, esta clase no tiene ninguna responsabilidad,
+        /// mas que asignarle al motor de unity el adaptador de tipo <see cref="IMainViewAdapter"/>.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
+            // this.engineUnity.Adapter = adapter;
         }
     }
 }
