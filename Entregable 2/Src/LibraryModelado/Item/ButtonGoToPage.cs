@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 using System;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Item
 {
@@ -64,7 +65,9 @@ namespace Proyecto.Item
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
-            this.Event(this.Level.World.SpaceList.Find(delegate(Space level) { return level.Name == this.PageName; }).ID);
+            Space page = this.Level.World.SpaceList.Find(delegate(Space level) { return level.Name == this.PageName; });
+            this.Event(page.ID);
+            Singleton<EngineGame>.Instance.CurrentPage = page;
         }
     }
 }

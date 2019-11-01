@@ -15,7 +15,6 @@ namespace Proyecto.Factory.Unity
     /// </summary>
     public class UFactoryWorld : IFactoryUnity
     {
-        // private EngineUnity engineUnity = Singleton<EngineUnity>.Instance;
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
         /// Debido a que no crearemos un objeto World en unity, esta clase no tiene ninguna responsabilidad,
@@ -25,7 +24,6 @@ namespace Proyecto.Factory.Unity
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>
         public override void MakeUnityItem(IMainViewAdapter adapter, IComponent component)
         {
-            // this.engineUnity.Adapter = adapter;
         }
     }
 }

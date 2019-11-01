@@ -21,6 +21,11 @@
             Diccionario en donde se le asocia a un nivel, su respectivo Motor.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.engineUnity">
+            <summary>
+            Instancia de la clase EngineUnity.
+            </summary>
+        </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.engine">
             <summary>
             Motor generico <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.
@@ -29,6 +34,11 @@
         <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.mainPage">
             <summary>
             Pagina principal del juego, el motor la conoce para poder viajar a ella en cualquier momento.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.currentPage">
+            <summary>
+            Pagina en que se encuentra actualmente el usuario.
             </summary>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.#ctor">
@@ -40,7 +50,12 @@
             <summary>
             Gets or sets del diccionario de motores y niveles.
             </summary>
-            <value>Dictionario de clave <see cref="T:Proyecto.LibraryModelado.Space"/> y valor <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.</value>
+            <value>Diccionario de clave <see cref="T:Proyecto.LibraryModelado.Space"/> y valor <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineGame.CurrentPage">
+            <summary>
+            Gets or sets de la pagina en que se encuentra actualmente el usuario.
+            </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineGame.MainPage">
             <summary>
@@ -198,6 +213,7 @@
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Game">
             <summary>
             Procedimiento del juego.
+            EN PROCESO.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise2">
@@ -378,13 +394,63 @@
             se debe crear el boton que mostrara la pagina principal al ejecutarlo.
             </summary>
         </member>
+        <member name="T:Proyecto.LibraryModelado.Engine.EngineUnity">
+            <summary>
+            Motor resposable de conocer y asignar los metodos relacionados a Unity.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineUnity.unityFactory">
+            <summary>
+            Instancia de la UnityFactory.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineUnity.adapter">
+            <summary>
+            Un <see cref="T:Proyecto.Common.IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineUnity.Adapter">
+            <summary>
+            Gets or sets del adaptador.
+            </summary>
+            <value>Adaptador del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</value>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.OnDrop(System.String,System.Single,System.Single)">
+            <summary>
+            Metodo Drop de un draggableItem.
+            ARREGLAR ESTE METODO.
+            </summary>
+            <param name="draggableItemID"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.FindDragContainer(System.Single,System.Single)">
             <summary>
+            M
             Si existe un container en esas coordenadas, lo devolvera.
             </summary>
             <param name="x"></param>
             <param name="y"></param>
             <returns></returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.FindItem(System.String)">
+            <summary>
+            Metodo responnsable de buscar en la pagina en la que se encuentre el usuario,
+            un Item que tenga el mismo UnityID que el entrante por parametro.
+            </summary>
+            <param name="unityID"></param>
+            <returns>Devuelve el item encontrado.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SendComponentToUFactory(Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Metodo responsable de enviar un IComponent a la UnityFactory.
+            </summary>
+            <param name="component"></param>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.IEngine">
             <summary>
@@ -785,7 +851,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryButtonGoToPage">
             <summary>
             Esta clase es la responsable de crear objetos Boton para ir a la próxima página.
-            Utiliza la floaterfaz IFactoryComponent.
+            Utiliza la interfaz IFactoryComponent.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.name">
@@ -1429,7 +1495,7 @@
             Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Factory.Unity.UFactory.componentUFactories">
+        <member name="F:Proyecto.Factory.Unity.UFactory.componentUFactories2">
             <summary>
             Diccionario en donde se asociara un componente con su respectivo Unity factory.
             </summary>

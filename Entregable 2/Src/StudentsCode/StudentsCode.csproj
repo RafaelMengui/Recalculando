@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <DebugType>portable</DebugType>
     <!-- <RuntimeIdentifier>win10-x64</RuntimeIdentifier> -->
     <DocumentationFile>'$(MSBuildProjectName).xml'</DocumentationFile>
@@ -21,9 +21,9 @@
     <Copy SourceFiles="@(AllLibraries)" DestinationFolder="..\..\..\..\UnityCode\Unity\Assets" />
   </Target> 
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
     <AdditionalFiles Include="..\..\stylecop.json" />
-  </ItemGroup> 
+  </ItemGroup>  -->
 </Project>

@@ -26,6 +26,11 @@ namespace Proyecto.LibraryModelado.Engine
         private Dictionary<Space, IEngine> levelEngines = new Dictionary<Space, IEngine>();
 
         /// <summary>
+        /// Instancia de la clase EngineUnity.
+        /// </summary>
+        private EngineUnity engineUnity = Singleton<EngineUnity>.Instance;
+
+        /// <summary>
         /// Motor generico <see cref="IEngine"/>.
         /// </summary>
         private IEngine engine;
@@ -35,6 +40,9 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         private Space mainPage;
 
+        /// <summary>
+        /// Pagina en que se encuentra actualmente el usuario.
+        /// </summary>
         private Space currentPage;
 
         /// <summary>
@@ -44,16 +52,19 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.MainPage = mainPage;
             this.LevelEngines = levelEngines;
-            this.CurrentPage = mainPage;
+            this.CurrentPage = currentPage;
         }
 
         /// <summary>
         /// Gets or sets del diccionario de motores y niveles.
         /// </summary>
-        /// <value>Dictionario de clave <see cref="Space"/> y valor <see cref="IEngine"/>.</value>
+        /// <value>Diccionario de clave <see cref="Space"/> y valor <see cref="IEngine"/>.</value>
         public Dictionary<Space, IEngine> LevelEngines { get; set; }
 
-        public Space CurrentPage;
+        /// <summary>
+        /// Gets or sets de la pagina en que se encuentra actualmente el usuario.
+        /// </summary>
+        public Space CurrentPage { get; set; }
 
         /// <summary>
         /// Gets or sets de la pagina principal.
@@ -74,14 +85,16 @@ namespace Proyecto.LibraryModelado.Engine
                     Space level = component as Space;
                     try
                     {
-                        this.engine = Activator.CreateInstance(Type.GetType("Proyecto.LibraryModelado.Engine.Engine" + level.Name)) as IEngine;
+                        if (level.Name != "MainPage")
+                        {
+                            this.engine = Activator.CreateInstance(Type.GetType("Proyecto.LibraryModelado.Engine.Engine" + level.Name)) as IEngine;
+                            this.LevelEngines.Add(level, this.engine);
+                        }
                     }
                     catch (System.Exception)
                     {
                         throw new Exception($"Engine \"{"Engine" + level.Name}\" does not exist.");
                     }
-
-                    this.LevelEngines.Add(level, this.engine);
                 }
             }
         }
@@ -90,12 +103,15 @@ namespace Proyecto.LibraryModelado.Engine
         /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, en donde ejecuta para cada
         /// motor de los niveles el metodo de crear un boton que muestre la pagina principal.
         /// </summary>
-        public override void ButtonGoToMain()
+        public override IComponent ButtonGoToMain()
         {
-            foreach (var engine in this.levelEngines)
+            foreach (var engines in this.levelEngines)
             {
-                engine.Value.ButtonGoToMain();
+                IComponent button = engines.Value.ButtonGoToMain();
+                this.engineUnity.SendComponentToUFactory(button);
             }
+
+            return null;
         }
     }
 }

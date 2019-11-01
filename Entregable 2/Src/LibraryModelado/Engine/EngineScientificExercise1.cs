@@ -210,7 +210,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
         /// se debe crear el boton que mostrara la pagina principal al ejecutarlo.
         /// </summary>
-        public override void ButtonGoToMain()
+        public override IComponent ButtonGoToMain()
         {
             foreach (var space in this.engineGame.LevelEngines)
             {
@@ -219,13 +219,15 @@ namespace Proyecto.LibraryModelado.Engine
                     this.level = space.Key;
                 }
             }
-            
-            ButtonGoToPage goToMain = new ButtonGoToPage("GoToMain", this.level, -600, -240, 100, 50, "huevo.png", "#FCFCFC", "MainPage");
+
+            Items goToMain = new ButtonGoToPage("Scientific1ToMain", this.level, -600, 240, 200, 100, "huevo.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
+            return goToMain;
         }
 
         /// <summary>
         /// Procedimiento del juego.
+        /// EN PROCESO.
         /// </summary>
         public void Game()
         {
