@@ -115,14 +115,7 @@ namespace Proyecto.Item.ScientistLevel
             }
             else
             {
-                try
-                {
-                    throw new ArgumentException($"Invalid action: Object not draggable {this.Name}.");
-                }
-                catch (ArgumentException)
-                {
-                    return false;
-                }
+                return false;
             }
         }
     }
