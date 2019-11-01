@@ -41,6 +41,9 @@ namespace Proyecto.Factory.Unity
             // Asignar evento del boton.
             this.buttonGoToPage.Event = adapter.ShowPage;
 
+            // Convierte a la pagina en donde debe ser creado el boton, en la pagina activa.
+            adapter.ShowPage(this.buttonGoToPage.Level.ID);
+
             // Crear objeto en unity y obtener el UnityID.
             this.buttonGoToPage.ID = adapter.CreateButton(this.buttonGoToPage.PositionX, this.buttonGoToPage.PositionY, this.buttonGoToPage.Width, this.buttonGoToPage.Height, this.buttonGoToPage.Color, this.buttonGoToPage.Click);
 

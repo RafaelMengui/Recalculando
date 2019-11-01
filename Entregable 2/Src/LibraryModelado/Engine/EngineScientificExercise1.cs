@@ -216,6 +216,7 @@ namespace Proyecto.LibraryModelado.Engine
             {
                 if (space.Value is EngineScientificExercise1)
                 {
+                    Singleton<EngineUnity>.Instance.Adapter.Debug(space.Key.Name);
                     this.level = space.Key;
                 }
             }

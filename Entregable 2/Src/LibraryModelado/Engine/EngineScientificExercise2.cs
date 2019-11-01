@@ -150,7 +150,7 @@ namespace Proyecto.LibraryModelado.Engine
                     this.level = space.Key;
                 }  
             }
-            
+
             Items goToMain = new ButtonGoToPage("Scientific2ToMain", this.level, -600, 240, 200, 100, "huevo.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
             return goToMain;

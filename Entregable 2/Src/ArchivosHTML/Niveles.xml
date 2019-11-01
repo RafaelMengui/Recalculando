@@ -17,7 +17,7 @@
 		<Image Name="nubeBananas" PositionX="465" PositionY="140" Width="200" Height="200" Photo="nubeBananas.png">
 
 		<Image Name="mesa" PositionX="0" PositionY="-60" Width="300" Height="300" Photo="table.png">
-		<DragContainer Name="bowl" PositionX="645" PositionY="365" Width="150" Height="100" Photo="bowl.png">
+		<DragContainer Name="bowl" PositionX="0" PositionY="120" Width="150" Height="100" Photo="bowl.png">
 		
 		<DragContainer Name="bananaContainer" PositionX="75" PositionY="190" Width="115" Height="115" Photo="recuadro.png">
 		<DragContainer Name="chocolateContainer" PositionX="190" PositionY="190" Width="115" Height="115" Photo="recuadro.png">
@@ -38,19 +38,7 @@
 		<Image Name="nubeBananas" PositionX="465" PositionY="140" Width="200" Height="200" Photo="nubeBananas.png">
 
 		<Image Name="mesa" PositionX="0" PositionY="-60" Width="300" Height="300" Photo="table.png">
-		<DragContainer Name="bowl" PositionX="645" PositionY="365" Width="150" Height="100" Photo="bowl.png">
-		
-		<DragContainer Name="bananaContainer" PositionX="75" PositionY="190" Width="115" Height="115" Photo="recuadro.png">
-		<DragContainer Name="chocolateContainer" PositionX="190" PositionY="190" Width="115" Height="115" Photo="recuadro.png">
-		<DragContainer Name="polloContainer" PositionX="75" PositionY="75" Width="115" Height="115" Photo="recuadro.png">
-		<DragContainer Name="carneContainer" PositionX="190" PositionY="75" Width="115" Height="115" Photo="recuadro.png">
-
-		<DraggableItem Name="banana" PositionX="0" PositionY="0" Width="85" Height="85" Photo="banana.png" Draggable="true" Container="bananaContainer">
-		<DraggableItem Name="chocolate" PositionX="0" PositionY="0" Width="85" Height="85" Photo="chocolate.png" Draggable="true" Container="chocolateContainer">
-		<DraggableItem Name="pollo" PositionX="0" PositionY="0" Width="85" Height="85" Photo="pollo.png" Draggable="true" Container="polloContainer">
-		<DraggableItem Name="carne" PositionX="0" PositionY="0" Width="85" Height="85" Photo="carne.png" Draggable="true" Container="carneContainer">
-		<DragContainer Name="container" PositionX="0" PositionY="-250" Width="115" Height="115" Photo="recuadro.png">
-
+		<DragContainer Name="bowl" PositionX="0" PositionY="120" Width="150" Height="100" Photo="bowl.png">
 	</Space>
 	
 </World>

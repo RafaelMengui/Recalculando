@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Proyecto.Common;
+using Proyecto.Item;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Factory.Unity
@@ -20,7 +21,7 @@ namespace Proyecto.Factory.Unity
         /// <summary>
         /// Diccionario en donde se asociara un componente con su respectivo Unity factory.
         /// </summary>
-        private Dictionary<string, IFactoryUnity> componentUFactories = new Dictionary<string, IFactoryUnity>();
+        private Dictionary<IFactoryUnity, string> componentUFactories = new Dictionary<IFactoryUnity, string>();
 
         /// <summary>
         /// Fabrica de unity generica utilizada para delegar la responsabilidad de agregar cada componente a su respectivo unity factory Concreto.
@@ -46,20 +47,12 @@ namespace Proyecto.Factory.Unity
             try
             {
                 this.uFactory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.Unity.UFactory" + componentType.Last())) as IFactoryUnity;
+                this.componentUFactories.Add(this.uFactory, componentType.Last());
+                this.uFactory.MakeUnityItem(adapter, component);
             }
-            catch (System.Exception)
+            catch(System.ArgumentNullException)
             {
-                throw new System.Exception($"Unity Factory of {componentType.Last()} not found.");
-            }
-            
-            this.componentUFactories.Add(componentType.Last(), this.uFactory);
-            try
-            {
-                this.componentUFactories[componentType.Last()].MakeUnityItem(adapter, component);
-            }
-            catch (System.Exception)
-            {
-                throw new System.Exception($"Fail \"{componentType.Last()}.");
+                throw new System.ArgumentNullException($"Unity Factory of {componentType.Last()} not found.");
             }
         }
     }
