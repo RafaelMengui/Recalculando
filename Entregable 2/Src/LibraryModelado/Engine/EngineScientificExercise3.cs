@@ -149,7 +149,7 @@ namespace Proyecto.LibraryModelado.Engine
                 }
             }
 
-            Items goToMain = new ButtonGoToPage("Scientific3ToMain", this.level, -595, 230, 75, 75, "GoToMain.png", "#FCFCFC", "MainPage");
+            Items goToMain = new ButtonGoToPage("Scientific3ToMain", this.level, -595, 228, 75, 75, "GoToMain.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
             return goToMain;
         }

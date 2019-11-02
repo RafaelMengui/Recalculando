@@ -84,12 +84,25 @@ namespace Proyecto.StudentsCode
         /// </summary>
         private void Setup()
         {
+            // Layout del programa.
             this.adapter.ChangeLayout(Layout.ContentSizeFitter);
+
+            // Se asigna busca la pagina principal y se asigna en EngineGame.
             this.firstPage = this.world.SpaceList[0];
             this.engineGame.MainPage = this.firstPage;
+
+            // Se asigna la pagina principal como la pagina activa actual.
             this.engineGame.CurrentPage = this.firstPage;
+
+            // Se crean todos los botones de pagina principal.
             this.engineGame.ButtonGoToMain();
+
+            // Se muestra la primera pagina.
             this.adapter.ShowPage(this.firstPage.ID);
         }
     }
 }
+
+/*
+static Method() => Setup de tests, despues se llama al metodo en cada caso.
+*/
