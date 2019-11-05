@@ -17,6 +17,10 @@ namespace Proyecto.LibraryModelado
     {
         /// <summary>
         /// Acciones y eventos realizados al hacer click en un boton.
+        /// Esta operación es POLIMÓRFICA debido a que es implementada por dos
+        /// o más objetos de diferentes tipos. El método Click, es implementado
+        /// por todos los botones del juego, por esto, se puede llamar una operación
+        /// Polymórfica. 
         /// </summary>
         /// <param name="text">String.</param>
         void Click(string text);
