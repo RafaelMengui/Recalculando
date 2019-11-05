@@ -6,6 +6,7 @@ _Estas instrucciones te permitirán tener el juego en tu celular, ya sea Android
 
 ### Pre-requisitos 📋
 _Que cosas necesitas para instalar el juego y como instalarlas_
+
 Para comenzar a jugar lo único que se debe hacer es autorizar tu celular para descargar aplicaciones que no necesariamente sean descargadas desde la plataforma de tu celular. ¡Tranquilo nuestro juego es seguro!
 
 ## Juego 😃
