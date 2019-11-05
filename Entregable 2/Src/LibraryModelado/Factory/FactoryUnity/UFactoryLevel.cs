@@ -37,6 +37,10 @@ namespace Proyecto.Factory.Unity
                 throw new System.Exception("Fail to cast component as Space");
             }
 
+            // Se reajustan las correnadas de la pantalla.
+            this.level.Width = adapter.WorldWidth;
+            this.level.Height = adapter.WorldHeight;
+
             // Se crea la pagina en unity y obtiene el UnityID.
             this.level.ID = adapter.AddPage();
 

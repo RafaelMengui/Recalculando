@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using System.Collections.Generic;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Item.ScientistLevel
@@ -11,13 +12,8 @@ namespace Proyecto.Item.ScientistLevel
     /// Clase responsable de crear containers de dinero arrastrable en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
-    public class MoneyContainer : Items
+    public class MoneyContainer : Items, IContainer
     {
-        /// <summary>
-        /// Objeto Money guardado.
-        /// </summary>
-        private Money savedItem;
-
         /// <summary>
         /// Initializes a new instance of MoneyContainer.
         /// </summary>
@@ -32,7 +28,7 @@ namespace Proyecto.Item.ScientistLevel
         public MoneyContainer(string name, Space level, float positionX, float positionY, float width, float height, string image, float acceptableValue)
         : base(name, level, positionX, positionY, width, height, image)
         {
-            this.SavedItem = savedItem;
+            this.SavedItems = new List<Items>();
             this.AcceptableValue = acceptableValue;
         }
 
@@ -46,6 +42,6 @@ namespace Proyecto.Item.ScientistLevel
         /// Gets or sets de objetos Money soltado dentro del container.
         /// </summary>
         /// <value>Money.</value>
-        public Money SavedItem { get; set; }
+        public List<Items> SavedItems { get; }
     }
 }

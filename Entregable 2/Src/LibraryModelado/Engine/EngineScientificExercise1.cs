@@ -10,12 +10,7 @@ using Proyecto.Item.ScientistLevel;
 namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
-    /// Clase EngineScientific, responsable de implementar la logica del nivel scientific.
-    ///  Paraa realizar los motores utilizamos el patrón SINGLETON, este nos permite garantizar 
-    /// la existencia de una sola instancia de clase. Además el acceso a esa única instancia tiene
-    ///  que ser global. Esto es de mucha utilidad debido a que, vamos a necesitar llamar al motor
-    ///  de este juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
-    /// de que solo haya un motor de este juego.
+    /// Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
     /// Hereda de las clases abstractas <see cref="IEngine"/> y <see cref="ILevelEngine"/>.
     /// </summary>
     public class EngineScientificExercise1 : IEngine, ILevelEngine
@@ -50,7 +45,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Gets or sets del nivel asociado a este Motor.
         /// </summary>
-        /// <value> Level. </value>
+        /// <value>Level.</value>
         public Space Level { get { return level; } }
 
         /// <summary>
@@ -134,6 +129,9 @@ namespace Proyecto.LibraryModelado.Engine
         /// Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
         /// Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
         /// </summary>
+        /// <param name="moneyContainer">Container de dinero en donde es soltado el dinero.</param>
+        /// <param name="money">Dinero arrastrado.</param>
+        /// <returns>Bool si el dinero soltado es correcto.</returns>
         public bool VerifyExercise(MoneyContainer moneyContainer, Money money)
         {
             if (VerifyOperation(moneyContainer, money))
@@ -160,7 +158,7 @@ namespace Proyecto.LibraryModelado.Engine
             this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
             this.PageCounter = 0;
-            this.Feedback = CreateFeedback();
+            this.Feedback = this.CreateFeedback();
         }
 
         /// <summary>
@@ -212,18 +210,35 @@ namespace Proyecto.LibraryModelado.Engine
         /// de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
         /// se debe crear el boton que mostrara la pagina principal al ejecutarlo.
         /// </summary>
-        public override void ButtonGoToMain()
+        public override IComponent ButtonGoToMain()
         {
-            foreach (var space in engineGame.LevelEngines)
+            foreach (var space in this.engineGame.LevelEngines)
             {
                 if (space.Value is EngineScientificExercise1)
                 {
                     this.level = space.Key;
                 }
             }
-            
-            ButtonGoToPage goToMain = new ButtonGoToPage("GoToMain", this.level, -600, -240, 100, 50, "huevo.png", "#FCFCFC", "MainPage");
+
+            Items goToMain = new ButtonGoToPage("Scientific1ToMain", this.level, -600, 240, 200, 100, "huevo.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
+            return goToMain;
+        }
+
+        /// <summary>
+        /// Procedimiento del juego.
+        /// EN PROCESO.
+        /// </summary>
+        public void Game()
+        {
+            this.StartLevel();
+            while (!this.VerifyWinLevel())
+            {
+                while (!this.VerifyWinPage())
+                {
+                    
+                }
+            }
         }
     }
 }

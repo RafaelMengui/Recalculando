@@ -8,12 +8,22 @@
             <summary>
             Motor general del juego.
             Tiene la responsabilidad de conocer y controlar la funcionalidad de los demas motores del juego.
-            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>
+            Para realizar los diferentes motores utilizamos el patrón SINGLETON, este nos permite garantizar
+            la existencia de una sola instancia de clase. Además el acceso a esa única instancia tiene
+            que ser global. Esto es de mucha utilidad debido a que vamos a necesitar llamar a los motores
+            de los juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
+            de que solo haya un motor de este juego.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.levelEngines">
             <summary>
             Diccionario en donde se le asocia a un nivel, su respectivo Motor.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.engineUnity">
+            <summary>
+            Instancia de la clase EngineUnity.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.engine">
@@ -26,6 +36,11 @@
             Pagina principal del juego, el motor la conoce para poder viajar a ella en cualquier momento.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineGame.currentPage">
+            <summary>
+            Pagina en que se encuentra actualmente el usuario.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.#ctor">
             <summary>
             Constructor.
@@ -35,7 +50,12 @@
             <summary>
             Gets or sets del diccionario de motores y niveles.
             </summary>
-            <value>Dictionario de clave <see cref="T:Proyecto.LibraryModelado.Space"/> y valor <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.</value>
+            <value>Diccionario de clave <see cref="T:Proyecto.LibraryModelado.Space"/> y valor <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineGame.CurrentPage">
+            <summary>
+            Gets or sets de la pagina en que se encuentra actualmente el usuario.
+            </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineGame.MainPage">
             <summary>
@@ -47,7 +67,7 @@
             <summary>
             Metodo responsable de asociarle a cada nivel su respectivo motor, y agregarlo al diccionario this.LevelEngines.
             </summary>
-            <param name="componentList"></param>
+            <param name="componentList">Lista de componentes creados.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.ButtonGoToMain">
             <summary>
@@ -57,13 +77,8 @@
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise1">
             <summary>
-            Clase EngineScientific, responsable de implementar la logica del nivel scientific.
-             Paraa realizar los motores utilizamos el patrón SINGLETON, este nos permite garantizar 
-            la existencia de una sola instancia de clase. Además el acceso a esa única instancia tiene
-             que ser global. Esto es de mucha utilidad debido a que, vamos a necesitar llamar al motor
-             de este juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
-            de que solo haya un motor de este juego.
-            Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>
+            Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
+            Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.feedback">
@@ -90,7 +105,7 @@
             <summary>
             Gets or sets del nivel asociado a este Motor.
             </summary>
-            <value></value>
+            <value>Level.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Feedback">
             <summary>
@@ -158,6 +173,9 @@
             Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
             Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
             </summary>
+            <param name="moneyContainer">Container de dinero en donde es soltado el dinero.</param>
+            <param name="money">Dinero arrastrado.</param>
+            <returns>Bool si el dinero soltado es correcto.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.StartLevel">
             <summary>
@@ -192,9 +210,20 @@
             se debe crear el boton que mostrara la pagina principal al ejecutarlo.
             </summary>
         </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Game">
+            <summary>
+            Procedimiento del juego.
+            EN PROCESO.
+            </summary>
+        </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise2">
             <summary>
             Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.feedback">
+            <summary>
+            Etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.level">
@@ -246,6 +275,8 @@
             Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
             level counter suma 1.
             </summary>
+            <param name="button">Boton seleccionado.</param>
+            <returns>Bool si el boton es correcto.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.StartLevel">
             <summary>
@@ -278,6 +309,11 @@
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise3">
             <summary>
             Clase EngineScientificExercise3, responsable de implementar la logica del nivel scientific ejercicio 3.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.feedback">
+            <summary>
+            Etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.level">
@@ -358,6 +394,64 @@
             se debe crear el boton que mostrara la pagina principal al ejecutarlo.
             </summary>
         </member>
+        <member name="T:Proyecto.LibraryModelado.Engine.EngineUnity">
+            <summary>
+            Motor resposable de conocer y asignar los metodos relacionados a Unity.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineUnity.unityFactory">
+            <summary>
+            Instancia de la UnityFactory.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineUnity.adapter">
+            <summary>
+            Un <see cref="T:Proyecto.Common.IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineUnity.Adapter">
+            <summary>
+            Gets or sets del adaptador.
+            </summary>
+            <value>Adaptador del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</value>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.OnDrop(System.String,System.Single,System.Single)">
+            <summary>
+            Metodo Drop de un draggableItem.
+            ARREGLAR ESTE METODO.
+            </summary>
+            <param name="draggableItemID"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.FindDragContainer(System.Single,System.Single)">
+            <summary>
+            M
+            Si existe un container en esas coordenadas, lo devolvera.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.FindItem(System.String)">
+            <summary>
+            Metodo responnsable de buscar en la pagina en la que se encuentre el usuario,
+            un Item que tenga el mismo UnityID que el entrante por parametro.
+            </summary>
+            <param name="unityID"></param>
+            <returns>Devuelve el item encontrado.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SendComponentToUFactory(Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Metodo responsable de enviar un IComponent a la UnityFactory.
+            </summary>
+            <param name="component"></param>
+        </member>
         <member name="T:Proyecto.LibraryModelado.Engine.IEngine">
             <summary>
             Clase abstracta de motores.
@@ -392,10 +486,10 @@
         <member name="T:Proyecto.LibraryModelado.IButton">
             <summary>
             Interfaz de Botones.
-            Esta interfaz es creada, debido a que, cuando en un futuro querramos 
-            tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón 
-            que sea una imagen,un botón contador, botón audio, etc. 
-            En este caso, estamos pensando en la funcionalidad futura del código, 
+            Esta interfaz es creada, debido a que, cuando en un futuro querramos
+            tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón
+            que sea una imagen,un botón contador, botón audio, etc.
+            En este caso, estamos pensando en la funcionalidad futura del código,
             para cuando debamos ampliar el juego.
             </summary>
         </member>
@@ -411,13 +505,29 @@
             Todos los objetos creados en el modelado(World, Space, Items) seran de tipo IComponent.
             </summary>
         </member>
+        <member name="T:Proyecto.LibraryModelado.IContainer">
+            <summary>
+            Interfaz de Botones.
+            Esta interfaz es creada, debido a que, cuando en un futuro querramos
+            tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón
+            que sea una imagen,un botón contador, botón audio, etc.
+            En este caso, estamos pensando en la funcionalidad futura del código,
+            para cuando debamos ampliar el juego.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.IContainer.SavedItems">
+            <summary>
+            Gets de Lista de elementos guardados en el container.
+            </summary>
+            <value>Lista de items.</value>
+        </member>
         <member name="T:Proyecto.LibraryModelado.Items">
             <summary>
             Clase abstracta de Items en el modelado.
-            Utilizamos HERENCIA en este caso debido a que, esta clase será la base de mucho de 
-            lo que creado en el proyecto. La clase descendiente (Width, Image, Height, etc.) 
-            va a heredar automáticamente los atributos,propiedades de Items. Las clases 
-            hijas aumentan la especialización dependiendo de lo que deben hacer cada una 
+            Utilizamos HERENCIA en este caso debido a que, esta clase será la base de mucho de
+            lo que creado en el proyecto. La clase descendiente (Width, Image, Height, etc.)
+            va a heredar automáticamente los atributos,propiedades de Items. Las clases
+            hijas aumentan la especialización dependiendo de lo que deben hacer cada una
             de ellas en el juego.
             Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
             </summary>
@@ -503,10 +613,10 @@
         <member name="T:Proyecto.LibraryModelado.Singleton`1">
             <summary>
             El patrón SINGLETON nos permite garantizar la existencia de una sola instancia de clase.
-            Además el acceso a esa única instancia tiene que ser global. Esto es de mucha utilidad 
-            debido a que, tomamos la decisión de que en nuestro juego haya un único World, por tanto, 
-            Singleton es fundamental debido a que se ejecuta una única vez, así nos aseguramos que 
-            sólo existe una instancia. En caso de querer llamarlo en cualquier parte del programa 
+            Además el acceso a esa única instancia tiene que ser global. Esto es de mucha utilidad
+            debido a que, tomamos la decisión de que en nuestro juego haya un único World, por tanto,
+            Singleton es fundamental debido a que se ejecuta una única vez, así nos aseguramos que
+            sólo existe una instancia. En caso de querer llamarlo en cualquier parte del programa
             se puede realizar.
             </summary>
             <typeparam name="T">Clase Generica.</typeparam>
@@ -741,7 +851,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryButtonGoToPage">
             <summary>
             Esta clase es la responsable de crear objetos Boton para ir a la próxima página.
-            Utiliza la floaterfaz IFactoryComponent.
+            Utiliza la interfaz IFactoryComponent.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.name">
@@ -798,6 +908,70 @@
             <summary>
             Sobrescribe el metodo abstracto de IFactoryComponent.
             Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.ButtonGoToPage"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryButtonTrueFalse">
+            <summary>
+            Esta clase es la responsable de crear objetos Botones Genéricos.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.name">
+            <summary>
+            Nombre del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.color">
+            <summary>
+            Color del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.image">
+            <summary>
+            Imagen del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.width">
+            <summary>
+            Ancho del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.height">
+            <summary>
+            Altura del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.positionX">
+            <summary>
+            Posicion en X del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.positionY">
+            <summary>
+            Posicion en Y del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.value">
+            <summary>
+            Valor bool del boton. 
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.level">
+            <summary>
+            Nivel del boton.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.Button"/>.
             </summary>
             <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
@@ -1014,11 +1188,6 @@
         <member name="F:Proyecto.Factory.CSharp.FactoryInputText.name">
             <summary>
             Nombre del input.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Factory.CSharp.FactoryInputText.photo">
-            <summary>
-            Imagen del input.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryInputText.width">
@@ -1326,7 +1495,7 @@
             Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Factory.Unity.UFactory.componentUFactories">
+        <member name="F:Proyecto.Factory.Unity.UFactory.componentUFactories2">
             <summary>
             Diccionario en donde se asociara un componente con su respectivo Unity factory.
             </summary>
@@ -1384,6 +1553,25 @@
             <summary>
             Sobrescribe el metodo abstracto de IFactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ButtonGoToPage"/> a Unity.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryButtonTrueFalse">
+            <summary>
+            Esta clase es la resposable de agregar los componentes ButtonTrueFalse al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryButtonTrueFalse.buttonTrueFalse">
+            <summary>
+            Objeto ButtonTrueFalse que se agregara a Unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryButtonTrueFalse.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ScientistLevel.ButtonTrueFalse"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
@@ -1511,7 +1699,8 @@
         <member name="M:Proyecto.Factory.Unity.UFactoryWorld.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
             Sobrescribe el metodo abstracto de IFactoryUnity.
-            No tiene ninguna funcionalidad debidoa a que no crearemos un objeto World en unity.
+            Debido a que no crearemos un objeto World en unity, esta clase no tiene ninguna responsabilidad,
+            mas que asignarle al motor de unity el adaptador de tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
@@ -1724,7 +1913,7 @@
             </summary>
             <value>Action.</value>
         </member>
-        <member name="M:Proyecto.Item.DraggableItem.Drop">
+        <member name="M:Proyecto.Item.DraggableItem.Drop(System.String,System.Single,System.Single)">
             <summary>
             Accion realizada al soltar el Item.
             </summary>
@@ -1879,7 +2068,7 @@
         </member>
         <member name="P:Proyecto.Item.KitchenLevel.Recipe.FoodList">
             <summary>
-            Gets lista de objetos Food, que seran soltados dentro del container para ganar el juego.
+            Gets lista de objetos Food, que deberan ser soltados dentro del container para ganar el juego.
             </summary>
             <value>Alimentos<see cref="T:Proyecto.Item.KitchenLevel.Food"/>.</value>
         </member>
@@ -1964,6 +2153,11 @@
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
+        <member name="F:Proyecto.Item.ScientistLevel.Money.valor">
+            <summary>
+            Valor del dinero.
+            </summary>
+        </member>
         <member name="F:Proyecto.Item.ScientistLevel.Money.onDropMoney">
             <summary>
             Accion que se ejecutara al soltar el dinero.
@@ -1986,7 +2180,7 @@
         </member>
         <member name="P:Proyecto.Item.ScientistLevel.Money.Value">
             <summary>
-            Gets or sets del valor de la moneda. 
+            Gets or sets del valor de la moneda.
             En caso que, la moneda sea de un valor negativo, se ejecuta la exepción.
             </summary>
             <value>float valor de la moneda.</value>
@@ -2020,11 +2214,6 @@
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.ScientistLevel.MoneyContainer.savedItem">
-            <summary>
-            Objeto Money guardado.
-            </summary>
-        </member>
         <member name="M:Proyecto.Item.ScientistLevel.MoneyContainer.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.Single)">
             <summary>
             Initializes a new instance of MoneyContainer.
@@ -2044,7 +2233,7 @@
             </summary>
             <value>float valor aceptado.</value>
         </member>
-        <member name="P:Proyecto.Item.ScientistLevel.MoneyContainer.SavedItem">
+        <member name="P:Proyecto.Item.ScientistLevel.MoneyContainer.SavedItems">
             <summary>
             Gets or sets de objetos Money soltado dentro del container.
             </summary>

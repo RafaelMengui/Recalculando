@@ -49,8 +49,7 @@ namespace Proyecto.Factory.CSharp
             {
                 this.factory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.CSharp.Factory" + tag.Nombre)) as IFactoryComponent;
             }
-
-            catch (System.Exception)
+            catch(System.Exception)
             {
                 throw new System.Exception($"Invalid Tag Name: {tag.Nombre}");
             }
@@ -63,8 +62,7 @@ namespace Proyecto.Factory.CSharp
                     IComponent component = this.componentFactories[type.Key].MakeComponent(tag);
                     return component;
                 }
-
-                catch (System.Exception)
+                catch(System.Exception)
                 {
                     throw new System.Exception($"Factory {type.Value} not found.");
                 }

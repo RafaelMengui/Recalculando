@@ -17,9 +17,9 @@ namespace Proyecto.StudentsCode
     /// <summary>
     /// Clase que implementa la interfaz IBuilder.
     /// El patrón de diseño Builder separa la creación de un objeto complejo
-    /// de su representación de modo que el mismo proceso de construcción pueda 
+    /// de su representación de modo que el mismo proceso de construcción pueda
     /// crear representaciones diferentes.
-    /// En el caso de nuestro código lo utilizamos para generar los archivos 'StudentsCode.dll' 
+    /// En el caso de nuestro código lo utilizamos para generar los archivos 'StudentsCode.dll'
     /// y 'Common.dll'.
     /// </summary>
     public class Builder : IBuilder
@@ -27,8 +27,13 @@ namespace Proyecto.StudentsCode
         /// <summary>
         /// Instancia del motor principal.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>.</returns>
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
+
+        /// <summary>
+        /// Instancia del motor de unity.
+        /// </summary>
+        private EngineUnity engineUnity = Singleton<EngineUnity>.Instance;
 
         /// <summary>
         /// Adapter del tipo <see cref="IMainViewAdapter"/>.
@@ -53,6 +58,7 @@ namespace Proyecto.StudentsCode
         {
             this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
             this.adapter.AfterBuild += this.Setup;
+            this.engineUnity.Adapter = this.adapter;
 
             const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Niveles.xml";
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
@@ -65,14 +71,11 @@ namespace Proyecto.StudentsCode
             }
 
             this.engineGame.Asociate(componentList);
-
             foreach (IComponent component in componentList)
             {
-                UFactory.InitializeUnityFactories().MakeUnityItem(adapter, component);
+                UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);
             }
 
-            this.firstPage = this.world.SpaceList[0];
-            engineGame.MainPage = this.firstPage;
             this.adapter.AfterBuild();
         }
 
@@ -81,8 +84,11 @@ namespace Proyecto.StudentsCode
         /// </summary>
         private void Setup()
         {
-            this.engineGame.ButtonGoToMain();
             this.adapter.ChangeLayout(Layout.ContentSizeFitter);
+            this.firstPage = this.world.SpaceList[0];
+            this.engineGame.MainPage = this.firstPage;
+            this.engineGame.CurrentPage = this.firstPage;
+            this.engineGame.ButtonGoToMain();
             this.adapter.ShowPage(this.firstPage.ID);
         }
     }

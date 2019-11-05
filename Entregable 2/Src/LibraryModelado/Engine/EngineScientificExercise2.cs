@@ -74,6 +74,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
         /// level counter suma 1.
         /// </summary>
+        /// <param name="button">Boton seleccionado.</param>
+        /// <returns>Bool si el boton es correcto.</returns>
         public bool VerifyQuestion(ButtonTrueFalse button)
         {
             if (button.Value)
@@ -105,7 +107,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns>Etiqueta <see cref="Label"/>.</returns>
         public Label CreateFeedback()
         {
-            foreach (var space in engineGame.LevelEngines)
+            foreach (var space in this.engineGame.LevelEngines)
             {
                 if (space.Value is EngineScientificExercise2)
                 {
@@ -139,9 +141,9 @@ namespace Proyecto.LibraryModelado.Engine
         /// de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
         /// se debe crear el boton que mostrara la pagina principal al ejecutarlo.
         /// </summary>
-        public override void ButtonGoToMain()
+        public override IComponent ButtonGoToMain()
         {
-            foreach (var space in engineGame.LevelEngines)
+            foreach (var space in this.engineGame.LevelEngines)
             {
                 if (space.Value is EngineScientificExercise2)
                 {
@@ -149,8 +151,9 @@ namespace Proyecto.LibraryModelado.Engine
                 }  
             }
             
-            ButtonGoToPage goToMain = new ButtonGoToPage("GoToMain", this.level, -600, -240, 100, 50, "huevo.png", "#FCFCFC", "MainPage");
+            Items goToMain = new ButtonGoToPage("Scientific2ToMain", this.level, -600, 240, 200, 100, "huevo.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
+            return goToMain;
         }
     }
 }

@@ -1,3 +1,5 @@
+using Proyecto.LibraryModelado;
+
 namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
@@ -8,6 +10,6 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo abstracto de crear un boton que muestra la pagina principal, en cada nivel.
         /// </summary>
-        public abstract void ButtonGoToMain();
+        public abstract IComponent ButtonGoToMain();
     }
 }

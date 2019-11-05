@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>Exercise_2</RootNamespace>
+    <RootNamespace>Engine</RootNamespace>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
