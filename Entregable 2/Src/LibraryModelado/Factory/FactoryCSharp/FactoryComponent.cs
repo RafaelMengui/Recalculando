@@ -12,6 +12,10 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de delegar la responsabilidad de crear componentes.
+    /// FactoryComponent cumple cn el PRINICIPIO OCP, el cual nos dice que Las clases
+    /// deben ser abiertas a la extensión, pero cerradas a la modificación.Esto ocurre en
+    /// esta clase debido a que, en caso de querer crear más componentes lo podemos hacer
+    /// sin necesidad de modificar el código.
     /// Utiliza la interfaz IFactoryComponent.
     /// </summary>
     public class FactoryComponent : IFactoryComponent
