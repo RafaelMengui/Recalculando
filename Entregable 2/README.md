@@ -10,6 +10,7 @@ Para comenzar a jugar lo único que se debe hacer es autorizar tu celular para d
 
 ## Juego 😃
 El juego consta de cuatro personajes distintos, cada uno va a ayudar al niño a mejorar en aspectos diferentes. 
+
 _Científico:_ Este juego consta de tres pequeños dentro
 1)  El niño debe realizar las sumas pedidas, arrastrando los billetes.
 2) Por pantalla se muestra una consigna, la cual, pide realizar una cuenta dada. Hay dos botones con diferentes opciones, el niño debe elegir cual es la respuesta correcta, de acuerdo a la suma que se dio. 
