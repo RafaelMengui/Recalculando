@@ -1,3 +1,4 @@
+
 # Bienvenido/a a RECALCULANDO❗️❗️ 
 _Recalculando es un juego creado para niños que padecen discalculía, esta aplicación esta pensada para  ayudarlos a mejorar de forma entretenida_
 
