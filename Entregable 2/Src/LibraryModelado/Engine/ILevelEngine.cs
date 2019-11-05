@@ -13,6 +13,10 @@ namespace Proyecto.LibraryModelado.Engine
         /// <value></value>
         Space Level { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
         Feedback LevelFeedback { get; set; }
 
         /// <summary>

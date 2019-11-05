@@ -482,6 +482,12 @@
             </summary>
             <value></value>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.ILevelEngine.LevelFeedback">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.GoodFeedback">
             <summary>
             Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
@@ -1845,21 +1851,21 @@
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
         </member>
-        <member name="T:Proyecto.Factory.Unity.UFactoryFactory">
+        <member name="T:Proyecto.Factory.Unity.UFactoryFeedback">
             <summary>
             Esta clase es la resposable de agregar los componentes feedback al juego.
             Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Factory.Unity.UFactoryFactory.feedback">
+        <member name="F:Proyecto.Factory.Unity.UFactoryFeedback.feedback">
             <summary>
             Objeto feedback que se agregara a Unity.
             </summary>
         </member>
-        <member name="M:Proyecto.Factory.Unity.UFactoryFactory.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+        <member name="M:Proyecto.Factory.Unity.UFactoryFeedback.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
             Sobrescribe el metodo abstracto de IFactoryUnity.
-            Tiene la responsabilidad de agregar el componente de tipo <see cref="F:Proyecto.Factory.Unity.UFactoryFactory.feedback"/> a Unity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="F:Proyecto.Factory.Unity.UFactoryFeedback.feedback"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>

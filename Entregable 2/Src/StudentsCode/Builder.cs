@@ -75,11 +75,11 @@ namespace Proyecto.StudentsCode
             foreach (IComponent component in componentList)
             {
                 this.engineGame.SetOperations(component);
-                this.engineGame.SetFeedbacks(component);
                 UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);
+                this.engineGame.SetFeedbacks(component);
             }
 
-            this.adapter.AfterBuild();
+            //this.adapter.AfterBuild();
         }
 
         /// <summary>

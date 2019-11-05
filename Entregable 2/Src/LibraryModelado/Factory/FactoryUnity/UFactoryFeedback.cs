@@ -13,7 +13,7 @@ namespace Proyecto.Factory.Unity
     /// Esta clase es la resposable de agregar los componentes feedback al juego.
     /// Implementa la interfaz <see cref="IFactoryUnity"/>.
     /// </summary>
-    public class UFactoryFactory : IFactoryUnity
+    public class UFactoryFeedback : IFactoryUnity
     {
         /// <summary>
         /// Objeto feedback que se agregara a Unity.

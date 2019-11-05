@@ -40,7 +40,11 @@ namespace Proyecto.LibraryModelado.Engine
             this.LevelFeedback = this.levelFeedback;
         }
 
-        public Feedback LevelFeedback { get; set; }
+        public Feedback LevelFeedback
+        {
+            get => levelFeedback;
+            set => levelFeedback = value;
+        }
 
         /// <summary>
         /// Operacion de tipo <see cref="Operation"/>, en donde se guardaran los componentes
@@ -71,6 +75,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// <value>Array de Bools.</value>
         public bool[] ResultsOfLevel { get; private set; }
 
+
+
         /// <summary>
         /// Metodo utilizado para iniciar o reiniciar el motor del juego.
         /// </summary>
@@ -78,6 +84,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[3];
             this.OperationCounter = 0;
+
         }
 
         /// <summary>

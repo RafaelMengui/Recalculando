@@ -108,8 +108,7 @@ namespace Proyecto.LibraryModelado.Engine
             {
                 Feedback feedback = component as Feedback;
                 ILevelEngine levelEngines = this.LevelEngines[feedback.Level] as ILevelEngine;
-
-                
+                levelEngines.LevelFeedback = feedback;
             }
         }
 
