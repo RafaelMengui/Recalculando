@@ -11,20 +11,31 @@ namespace Proyecto.LibraryModelado.test
 {
     public class UnitTestModelado
     {
+        private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
         [Fact]
-        public void TestFactoryC()
+        public void TestFactoryComponents()
         {
-            const string XMLfile = @"..\..\..\..\..\Src\ArchivosHTML\TesteoModelado.xml";
+            const string XMLfile = @"..\..\..\..\..\Src\ArchivosHTML\ElPosta.xml";
 
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
             List<IComponent> componentList = new List<IComponent>();
 
             foreach (Tag tag in tags)
             {
-               Assert.Throws<System.ArgumentNullException>(() => FactoryComponent.InitializeFactories().MakeComponent(tag));
+                IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
+                componentList.Add(component);
             }
 
+            this.engineGame.AsociateLevelsWithEngines(componentList);
+            foreach (IComponent comp in componentList)
+            {
+                if (comp is ButtonStartLevel)
+                {
+                    ButtonStartLevel button = comp as ButtonStartLevel;
+                    button.Click("");
+                }
+            }
         }
     }
 }

@@ -11,5 +11,6 @@ namespace Proyecto.LibraryModelado
     /// </summary>
     public interface IComponent
     {
+        string ID { get; set; }
     }
 }

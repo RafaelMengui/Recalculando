@@ -12,7 +12,7 @@ namespace Proyecto.Item
     /// Clase responsable de crear items arrastrables en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
-    public class DraggableItem : Items
+    public class DraggableItem : Items, IDraggable
     {
         /// <summary>
         /// Accion que se ejecutara al soltar un item.
@@ -60,9 +60,26 @@ namespace Proyecto.Item
         /// <summary>
         /// Accion realizada al soltar el Item.
         /// </summary>
-        public void Drop(string id, float positionX, float positionY)
+        public bool Drop(IContainer container)
         {
-            //this.OnDrop(id, positionX, positionY);
+            DragContainer dragContainer;
+            try
+            {
+                dragContainer = container as DragContainer;
+            }
+            catch (System.InvalidCastException)
+            {
+                throw new System.InvalidCastException($"Invalid cast operation as DragContainer.");
+            }
+
+            if (this.Draggable)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

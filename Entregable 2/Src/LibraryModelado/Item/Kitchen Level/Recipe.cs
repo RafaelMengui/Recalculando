@@ -28,5 +28,7 @@ namespace Proyecto.Item.KitchenLevel
         /// </summary>
         /// <value>Alimentos<see cref="Food"/>.</value>
         public List<Food> FoodList { get; }
+
+        public string ID{get;set;}
     }
 }

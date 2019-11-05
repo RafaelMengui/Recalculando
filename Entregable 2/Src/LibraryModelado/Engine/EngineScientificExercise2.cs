@@ -14,11 +14,6 @@ namespace Proyecto.LibraryModelado.Engine
     public class EngineScientificExercise2 : IEngine, ILevelEngine
     {
         /// <summary>
-        /// Etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
-        /// </summary>
-        private Label feedback;
-
-        /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
         /// </summary>
         private Space level;
@@ -28,6 +23,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
+        private Feedback levelFeedback;
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -35,8 +32,19 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
-            this.Feedback = feedback;
+            this.Operations = new Operation[2] { null, null };
+            this.LevelFeedback = this.levelFeedback;
         }
+
+        public Feedback LevelFeedback{get;set;}
+
+        public Space Level { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
+        public Operation[] Operations { get; set; }
 
         /// <summary>
         /// Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
@@ -54,14 +62,14 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Gets or sets de los resultados del nivel.
         /// Por predeterminado los dos parametros son False.
-        /// true = Completo una pagina correctamente.
+        /// true = Completo una operacion correctamente.
         /// false = No contesto bien la pregunta.
         /// </summary>
         /// <value>Array de Bools.</value>
         public bool[] ResultsOfLevel { get; private set; }
 
         /// <summary>
-        /// Verifica que se hayan completado las dos paginas del nivel.
+        /// Verifica que se hayan completado las dos preguntas del nivel.
         /// </summary>
         /// <returns>Bool.</returns>
         public bool VerifyWinLevel()
@@ -99,6 +107,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
+            this.Feedback = this.CreateFeedback();
         }
 
         /// <summary>
@@ -126,6 +135,7 @@ namespace Proyecto.LibraryModelado.Engine
         public void GoodFeedback()
         {
             this.Feedback.Text = "Correcto! Sigue asi.";
+            this.engineGame.UpdateFeedback(this.LevelFeedback);
         }
 
         /// <summary>
@@ -134,6 +144,7 @@ namespace Proyecto.LibraryModelado.Engine
         public void BadFeedback()
         {
             this.Feedback.Text = "Intentalo de nuevo ¡Tu puedes!";
+            this.engineGame.UpdateFeedback(this.LevelFeedback);
         }
 
         /// <summary>
@@ -148,12 +159,38 @@ namespace Proyecto.LibraryModelado.Engine
                 if (space.Value is EngineScientificExercise2)
                 {
                     this.level = space.Key;
-                }  
+                }
             }
 
             Items goToMain = new ButtonGoToPage("Scientific2ToMain", this.level, -595, 228, 75, 75, "GoToMain.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
             return goToMain;
+        }
+
+        public void ButtonGoToNextLevel()
+        {
+            foreach (var space in this.engineGame.LevelEngines)
+            {
+                if (space.Value is EngineScientificExercise2)
+                {
+                    this.level = space.Key;
+                }
+            }
+
+            Items goToNext = new ButtonGoToPage("Scientific2ToScientific3", this.level, 0, 0, 200, 150, "huevo.png", "#FCFCFC", "ScientificExercise3");
+            this.level.ItemList.Add(goToNext);
+            this.engineGame.CreateInUnity(goToNext);
+        }
+
+        public override void SetOperations(IComponent component)
+        {
+            for (int i = 0; i < this.Operations.Length; i++)
+            {
+                if (this.Operations[i].Equals(null))
+                {
+                    this.Operations[i] = component as Operation;
+                }
+            }
         }
     }
 }

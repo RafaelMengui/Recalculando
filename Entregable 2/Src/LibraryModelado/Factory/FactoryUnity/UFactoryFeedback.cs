@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="UFactoryLabel.cs" company="Universidad Católica del Uruguay">
+// <copyright file="UFactoryFeedback.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -10,19 +10,19 @@ using Proyecto.LibraryModelado;
 namespace Proyecto.Factory.Unity
 {
     /// <summary>
-    /// Esta clase es la resposable de agregar los componentes Label al juego.
+    /// Esta clase es la resposable de agregar los componentes feedback al juego.
     /// Implementa la interfaz <see cref="IFactoryUnity"/>.
     /// </summary>
-    public class UFactoryLabel : IFactoryUnity
+    public class UFactoryFactory : IFactoryUnity
     {
         /// <summary>
-        /// Objeto Label que se agregara a Unity.
+        /// Objeto feedback que se agregara a Unity.
         /// </summary>
-        private Label label;
+        private Feedback feedback;
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
-        /// Tiene la responsabilidad de agregar el componente de tipo <see cref="Label"/> a Unity.
+        /// Tiene la responsabilidad de agregar el componente de tipo <see cref="feedback"/> a Unity.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>
@@ -30,18 +30,19 @@ namespace Proyecto.Factory.Unity
         {
             try
             {
-                // Se castea el componente como Label.
-                this.label = component as Label;
+                // Se castea el componente como feedback.
+                this.feedback = component as Feedback;
             }
             catch (System.Exception)
             {
-                throw new System.Exception("Fail to cast component as Label");
+                throw new System.Exception("Fail to cast component as feedback");
             }
 
             // Se crea el objeto en unity y se obtiene el UnityID.
-            this.label.ID = adapter.CreateLabel(this.label.PositionX, this.label.PositionY, this.label.Width, this.label.Height);            
-            adapter.Debug(label.ID);
-            adapter.SetText(this.label.ID, this.label.Text);
+            this.feedback.ID = adapter.CreateLabel(this.feedback.PositionX, this.feedback.PositionY, this.feedback.Width, this.feedback.Height);    
+
+            // Se asigna el texto inicial del feedback.        
+            adapter.SetText(this.feedback.ID, this.feedback.Text);
         }
     }
 }

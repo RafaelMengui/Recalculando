@@ -110,6 +110,7 @@ namespace Proyecto.Factory.CSharp
             }
             Items draggabledinero = new Money(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, this.container, this.value);
             this.level.ItemList.Add(draggabledinero);
+            this.container.SavedItems.Add(draggabledinero);
             return draggabledinero;
         }
     }

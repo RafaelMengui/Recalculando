@@ -14,11 +14,6 @@ namespace Proyecto.LibraryModelado.Engine
     public class EngineScientificExercise3 : IEngine, ILevelEngine
     {
         /// <summary>
-        /// Etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
-        /// </summary>
-        private Label feedback;
-
-        /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
         /// </summary>
         private Space level;
@@ -28,15 +23,24 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
+        private Feedback levelFeedback;
+
         /// <summary>
         /// Constructor.
         /// </summary>
         public EngineScientificExercise3()
         {
-            this.ResultsOfLevel = new bool[4];
+            this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
-            this.Feedback = this.feedback;
+            this.Operations = new Operation[2] { null, null };
+            this.LevelFeedback = this.levelFeedback;
         }
+
+        public Feedback LevelFeedback { get; set; }
+
+        public Space Level { get; set; }
+
+        public Operation[] Operations { get; set; }
 
         /// <summary>
         /// Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
@@ -66,7 +70,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns>Bool.</returns>
         public bool VerifyWinLevel()
         {
-            return this.ResultsOfLevel[0] && this.ResultsOfLevel[1] && this.ResultsOfLevel[2] && this.ResultsOfLevel[3];
+            return this.ResultsOfLevel[0] && this.ResultsOfLevel[1];
         }
 
         /// <summary>
@@ -95,8 +99,9 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            this.ResultsOfLevel = new bool[4];
+            this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
+            this.Feedback = this.CreateFeedback();
         }
 
         /// <summary>
@@ -113,7 +118,7 @@ namespace Proyecto.LibraryModelado.Engine
                 }
             }
 
-            Label feedback = new Label("Feedback", this.level, 600, 240, 100, 50, "Vacio.png", string.Empty);
+            Label feedback = new Label("Feedback3", this.level, 600, 240, 100, 50, "Vacio.png", string.Empty);
             this.level.ItemList.Add(feedback);
             return feedback;
         }
@@ -124,6 +129,7 @@ namespace Proyecto.LibraryModelado.Engine
         public void GoodFeedback()
         {
             this.Feedback.Text = "Excelente!";
+            this.engineGame.UpdateFeedback(this.LevelFeedback);
         }
 
         /// <summary>
@@ -132,6 +138,7 @@ namespace Proyecto.LibraryModelado.Engine
         public void BadFeedback()
         {
             this.Feedback.Text = "Intentalo de nuevo!";
+            this.engineGame.UpdateFeedback(this.LevelFeedback);
         }
 
         /// <summary>
@@ -152,6 +159,32 @@ namespace Proyecto.LibraryModelado.Engine
             Items goToMain = new ButtonGoToPage("Scientific3ToMain", this.level, -595, 228, 75, 75, "GoToMain.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
             return goToMain;
+        }
+
+        public void ButtonGoToNextLevel()
+        {
+            foreach (var space in this.engineGame.LevelEngines)
+            {
+                if (space.Value is EngineScientificExercise3)
+                {
+                    this.level = space.Key;
+                }
+            }
+
+            Items goToNext = new ButtonGoToPage("Scientific3ToMainPage", this.level, 0, 0, 200, 150, "huevo.png", "#FCFCFC", "MainPage");
+            this.level.ItemList.Add(goToNext);
+            this.engineGame.CreateInUnity(goToNext);
+        }
+
+        public override void SetOperations(IComponent component)
+        {
+            for (int i = 0; i < this.Operations.Length; i++)
+            {
+                if (this.Operations[i].Equals(null))
+                {
+                    this.Operations[i] = component as Operation;
+                }
+            }
         }
     }
 }

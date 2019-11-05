@@ -13,7 +13,7 @@ namespace Proyecto.Item
     /// Clase responsable de crear botones, con la funcionalidad de mostrar una pagina diferente en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
     /// </summary>
-    public class ButtonGoToPage : Items, IButton
+    public class ButtonStartLevel : Items, IButton
     {
         /// <summary>
         /// Accion de mostrar otra pagina.
@@ -31,12 +31,12 @@ namespace Proyecto.Item
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del boton.</param>
         /// <param name="color">Color del boton en Hexadecimal.</param>
-        /// <param name="pageName">Pagina para mostrar.</param>
-        public ButtonGoToPage(string name, Space level, float positionX, float positionY, float width, float height, string image, string color, string pageName)
+        /// <param name="levelName">Pagina para mostrar.</param>
+        public ButtonStartLevel(string name, Space level, float positionX, float positionY, float width, float height, string image, string color, string levelName)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Color = color;
-            this.PageName = pageName;
+            this.LevelName = levelName;
             this.Event = this.evento;
         }
 
@@ -50,7 +50,7 @@ namespace Proyecto.Item
         /// Gets or sets de la pagina a mostrar.
         /// </summary>
         /// <value>string nombre del la pagina.</value>
-        public string PageName { get; set; }
+        public string LevelName { get; set; }
 
         /// <summary>
         /// Gets or sets del evento del boton.
@@ -65,9 +65,10 @@ namespace Proyecto.Item
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
-            Space page = this.Level.World.SpaceList.Find(delegate(Space level) { return level.Name == this.PageName; });
-            Singleton<EngineGame>.Instance.CurrentPage = page;
-            this.Event(page.ID);
+            Space level = this.Level.World.SpaceList.Find(delegate(Space space) { return space.Name == this.LevelName; });
+            Singleton<EngineGame>.Instance.StartLevelEngine(level);
+            Singleton<EngineGame>.Instance.CurrentPage = level;
+            this.Event(level.ID);
         }
     }
 }

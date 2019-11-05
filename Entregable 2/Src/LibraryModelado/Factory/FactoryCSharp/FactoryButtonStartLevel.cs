@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="FactoryDraggableItem.cs" company="Universidad Católica del Uruguay">
+// <copyright file="FactoryButtonGoToPage.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -12,57 +12,55 @@ using Proyecto.LibraryModelado;
 namespace Proyecto.Factory.CSharp
 {
     /// <summary>
-    /// Esta clase es la responsable de crear items que van a ser arrastables.
+    /// Esta clase es la responsable de crear objetos Boton para ir a la próxima página.
     /// Utiliza la interfaz IFactoryComponent.
     /// </summary>
-    public class FactoryDraggableItem : IFactoryComponent
+    public class FactoryButtonStartLevel : IFactoryComponent
     {
         /// <summary>
-        /// Nombre del item.
+        /// Nombre del boton.
         /// </summary>
         private string name;
 
         /// <summary>
-        /// Imagen del item.
+        /// Color del boton.
+        /// </summary>
+        private string color;
+
+        /// <summary>
+        /// Imagen del boton.
         /// </summary>
         private string image;
 
         /// <summary>
-        /// Container del item.
+        /// Pagina de destino del boton.
         /// </summary>
-        private string containerName;
+        private string levelName;
 
         /// <summary>
-        /// Ancho del item.
+        /// Atributos float utilizados para crear el componente.
         /// </summary>
         private float width;
 
         /// <summary>
-        /// Altura del item.
+        /// Altura del boton.
         /// </summary>
         private float height;
 
         /// <summary>
-        /// Posicion en X del item.
+        /// Posicion en X del boton.
         /// </summary>
         private float positionX;
 
         /// <summary>
-        /// Posicion en Y del item.
+        /// Posicion en Y del boton.
         /// </summary>
         private float positionY;
 
         /// <summary>
-        /// Define si el item es arrastrable.
-        /// </summary>
-        private bool draggable;
-
-        /// <summary>
-        /// Nivel al que pertenece el item.
+        /// Nivel al que pertenece el boton.
         /// </summary>
         private Space level;
-
-        DragContainer container;
 
         /// <summary>
         /// Instancia del mundo.
@@ -71,7 +69,7 @@ namespace Proyecto.Factory.CSharp
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryComponent.
-        /// Tiene la responsabilidad de crear el componente de tipo <see cref="DraggableItem"/>.
+        /// Tiene la responsabilidad de crear el componente de tipo <see cref="ButtonGoToPage"/>.
         /// </summary>
         /// <param name="tag">Tag <see cref="Tag"/>.</param>
         /// <returns>Componente <see cref="IComponent"/>.</returns>
@@ -85,10 +83,9 @@ namespace Proyecto.Factory.CSharp
                 this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
                 this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
                 this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+                this.color = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Color"; }).Valor;
                 this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-                this.containerName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Container"; }).Valor;
-                this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
-                this.container = this.level.ItemList.Find(delegate(Items item) { return item.Name == this.containerName; }) as DragContainer;
+                this.levelName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Level"; }).Valor;
             }
             catch(NullReferenceException)
             {
@@ -103,10 +100,9 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Items draggableItem = new DraggableItem(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, this.container);
-            this.level.ItemList.Add(draggableItem);
-            this.container.SavedItems.Add(draggableItem);
-            return draggableItem;
+            Items buttonStartLevel = new ButtonStartLevel(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.color, this.levelName);
+            this.level.ItemList.Add(buttonStartLevel);
+            return buttonStartLevel;
         }
     }
 }

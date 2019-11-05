@@ -11,6 +11,7 @@ using Proyecto.Factory.Unity;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
 using Proyecto.LibraryModelado.Engine;
+using Proyecto.Item;
 
 namespace Proyecto.StudentsCode
 {
@@ -70,9 +71,11 @@ namespace Proyecto.StudentsCode
                 componentList.Add(component);
             }
 
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
             foreach (IComponent component in componentList)
             {
+                this.engineGame.SetOperations(component);
+                this.engineGame.SetFeedbacks(component);
                 UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);
             }
 

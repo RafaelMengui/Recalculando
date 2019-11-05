@@ -13,17 +13,12 @@ namespace Proyecto.Item.ScientistLevel
     /// Clase responsable de crear dinero arrastrable en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
-    public class Money : Items
+    public class Money : Items, IDraggable
     {
         /// <summary>
         /// Valor del dinero.
         /// </summary>
         private float valor;
-
-        /// <summary>
-        /// Accion que se ejecutara al soltar el dinero.
-        /// </summary>
-        private Action<string, float, float> onDropMoney;
 
         /// <summary>
         /// Initializes a new instance of Money.
@@ -44,12 +39,11 @@ namespace Proyecto.Item.ScientistLevel
             this.Value = valor;
             this.Draggable = draggable;
             this.Container = container;
-            this.OnDropMoney = this.onDropMoney;
         }
 
         /// <summary>
         /// Gets or sets del valor de la moneda.
-        /// En caso que, la moneda sea de un valor negativo, se ejecuta la exepción.
+        /// En caso que, la moneda sea de un valor negativo, se vuelve positivo.
         /// </summary>
         /// <value>float valor de la moneda.</value>
         public float Value
@@ -68,7 +62,7 @@ namespace Proyecto.Item.ScientistLevel
         /// Gets or sets del container en el que se encuentra.
         /// </summary>
         /// <value><see cref="DragContainer"/>.</value>
-        public MoneyContainer Container { get; set; }
+        public Items Container { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether el item es arrastrable.
@@ -77,26 +71,24 @@ namespace Proyecto.Item.ScientistLevel
         public bool Draggable { get; set; }
 
         /// <summary>
-        /// Gets or sets de la accion a realizar al soltar el dinero.
-        /// </summary>
-        /// <value>Action.</value>
-        public Action<string, float, float> OnDropMoney { get; set; }
-
-        /// <summary>
         /// Accion realizada al soltar el dinero.
         /// </summary>
-        public bool Drop(MoneyContainer moneyContainer)
+        public bool Drop(IContainer container)
         {
-            if (this.Draggable)
+            MoneyContainer moneyContainer;
+            try
             {
-                EngineScientificExercise1 engineScientific = Singleton<EngineScientificExercise1>.Instance;
-                if (engineScientific.VerifyExercise(moneyContainer, this))
-                {
-                    this.OnDropMoney(this.Name, this.PositionX, this.PositionY);
-                    return true;
-                }
+                moneyContainer = container as MoneyContainer;
+            }
+            catch (System.InvalidCastException)
+            {
+                throw new System.InvalidCastException($"Invalid cast operation as MoneyContainer.");
+            }
 
-                return false;
+            EngineScientificExercise1 engineScientific = Singleton<EngineScientificExercise1>.Instance;
+            if (this.Draggable && engineScientific.VerifyExercise(moneyContainer, this))
+            {
+                return true;
             }
             else
             {

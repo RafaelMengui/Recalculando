@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="FactoryDraggableItem.cs" company="Universidad Católica del Uruguay">
+// <copyright file="FactoryLabel.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -8,61 +8,55 @@ using System.Linq;
 using Proyecto.Item;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Factory.CSharp
 {
     /// <summary>
-    /// Esta clase es la responsable de crear items que van a ser arrastables.
+    /// Esta clase es la responsable de crear las etiquetas.
     /// Utiliza la interfaz IFactoryComponent.
     /// </summary>
-    public class FactoryDraggableItem : IFactoryComponent
+    public class FactoryFeedback : IFactoryComponent
     {
         /// <summary>
-        /// Nombre del item.
+        /// Nombre de la Etiqueta.
         /// </summary>
         private string name;
 
         /// <summary>
-        /// Imagen del item.
+        /// Imagen de la Etiqueta.
         /// </summary>
-        private string image;
+        private string photo;
 
         /// <summary>
-        /// Container del item.
-        /// </summary>
-        private string containerName;
-
-        /// <summary>
-        /// Ancho del item.
+        /// Ancho de la Etiqueta.
         /// </summary>
         private float width;
 
         /// <summary>
-        /// Altura del item.
+        /// Altura de la Etiqueta.
         /// </summary>
         private float height;
 
         /// <summary>
-        /// Posicion en X del item.
+        /// Posicion en X de la Etiqueta.
         /// </summary>
         private float positionX;
 
         /// <summary>
-        /// Posicion en Y del item.
+        /// Posicion en Y de la Etiqueta.
         /// </summary>
         private float positionY;
 
         /// <summary>
-        /// Define si el item es arrastrable.
-        /// </summary>
-        private bool draggable;
-
-        /// <summary>
-        /// Nivel al que pertenece el item.
+        /// Nivel al que pertenece.
         /// </summary>
         private Space level;
 
-        DragContainer container;
+        /// <summary>
+        /// Texto de la etiqueta.
+        /// </summary>
+        private string text;
 
         /// <summary>
         /// Instancia del mundo.
@@ -71,7 +65,7 @@ namespace Proyecto.Factory.CSharp
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryComponent.
-        /// Tiene la responsabilidad de crear el componente de tipo <see cref="DraggableItem"/>.
+        /// Tiene la responsabilidad de crear el componente de tipo <see cref="Label"/>.
         /// </summary>
         /// <param name="tag">Tag <see cref="Tag"/>.</param>
         /// <returns>Componente <see cref="IComponent"/>.</returns>
@@ -85,10 +79,8 @@ namespace Proyecto.Factory.CSharp
                 this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
                 this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
                 this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
-                this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-                this.containerName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Container"; }).Valor;
-                this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
-                this.container = this.level.ItemList.Find(delegate(Items item) { return item.Name == this.containerName; }) as DragContainer;
+                this.photo = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+                this.text = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Text"; }).Valor;
             }
             catch(NullReferenceException)
             {
@@ -103,10 +95,9 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Items draggableItem = new DraggableItem(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, this.container);
-            this.level.ItemList.Add(draggableItem);
-            this.container.SavedItems.Add(draggableItem);
-            return draggableItem;
+            Feedback feedback = new Feedback(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo, this.text);
+            this.level.ItemList.Add(feedback);
+            return feedback;
         }
     }
 }

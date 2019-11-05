@@ -5,6 +5,8 @@
 //--------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using Proyecto.Item;
+using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
@@ -76,7 +78,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// Metodo responsable de asociarle a cada nivel su respectivo motor, y agregarlo al diccionario this.LevelEngines.
         /// </summary>
         /// <param name="componentList">Lista de componentes creados.</param>
-        public void Asociate(List<IComponent> componentList)
+        public void AsociateLevelsWithEngines(List<IComponent> componentList)
         {
             foreach (IComponent component in componentList)
             {
@@ -89,13 +91,38 @@ namespace Proyecto.LibraryModelado.Engine
                         {
                             this.engine = Activator.CreateInstance(Type.GetType("Proyecto.LibraryModelado.Engine.Engine" + level.Name)) as IEngine;
                             this.LevelEngines.Add(level, this.engine);
+                            (this.engine as ILevelEngine).Level = level;
                         }
                     }
                     catch (System.Exception)
                     {
-                        throw new Exception($"Engine \"{"Engine" + level.Name}\" does not exist.");
+                        throw new Exception($"Engine \"Engine{level.Name}\" does not exist or couldn't be created.");
                     }
                 }
+            }
+        }
+
+        public void SetFeedbacks(IComponent component)
+        {
+            if (component is Feedback)
+            {
+                Feedback feedback = component as Feedback;
+                ILevelEngine levelEngines = this.LevelEngines[feedback.Level] as ILevelEngine;
+
+                
+            }
+        }
+
+        /// <summary>
+        /// Metodo que asigna una operacion en su respectivo nivel.
+        /// </summary>
+        /// <param name="component"></param>
+        public override void SetOperations(IComponent component)
+        {
+            if (component is Operation)
+            {
+                Operation operation = component as Operation;
+                this.levelEngines[operation.Level].SetOperations(component);
             }
         }
 
@@ -112,6 +139,35 @@ namespace Proyecto.LibraryModelado.Engine
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Metodo responsable de delegar la responsabilidad al motor de unity, de crear un
+        /// objeto en unity.
+        /// </summary>
+        /// <param name="component"></param>
+        public void CreateInUnity(IComponent component)
+        {
+            this.engineUnity.SendComponentToUFactory(component);
+        }
+
+        /// <summary>
+        /// Metodo responsable de llamar al motor de unity para que actualize el texto de un
+        /// <see cref="Label"/>.
+        /// </summary>
+        /// <param name="feedback"></param>
+        public void UpdateFeedback(Feedback feedback)
+        {
+            this.engineUnity.UpdateFeedback(feedback);
+        }
+
+        /// <summary>
+        /// Metodo utilizado para iniciar o reiniciar el motor del juego de un determinado nivel.
+        /// </summary>
+        /// <param name="level"></param>
+        public void StartLevelEngine(Space level)
+        {
+            (this.LevelEngines[level] as ILevelEngine).StartLevel();
         }
     }
 }

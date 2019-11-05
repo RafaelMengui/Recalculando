@@ -1,9 +1,9 @@
 //--------------------------------------------------------------------------------
-// <copyright file="IContainer.cs" company="Universidad Católica del Uruguay">
+// <copyright file="IDraggable.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using System.Collections.Generic;
+
 namespace Proyecto.LibraryModelado
 {
     /// <summary>
@@ -14,12 +14,14 @@ namespace Proyecto.LibraryModelado
     /// En este caso, estamos pensando en la funcionalidad futura del código,
     /// para cuando debamos ampliar el juego.
     /// </summary>
-    public interface IContainer : IComponent
+    public interface IDraggable : IComponent
     {
+        Items Container { get; set; }
+
         /// <summary>
-        /// Gets de Lista de elementos guardados en el container.
+        /// 
         /// </summary>
-        /// <value>Lista de items.</value>
-        List<Items> SavedItems { get; }
+        /// <param name="container"></param>
+        bool Drop(IContainer container);
     }
 }
