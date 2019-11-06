@@ -39,8 +39,7 @@ namespace Proyecto.Factory.Unity
             }
 
             // Se crea el objeto en unity y se obtiene el UnityID.
-            this.label.ID = adapter.CreateLabel(this.label.PositionX, this.label.PositionY, this.label.Width, this.label.Height);            
-            adapter.Debug(label.ID);
+            this.label.ID = adapter.CreateLabel(this.label.PositionX, this.label.PositionY, this.label.Width, this.label.Height);
             adapter.SetText(this.label.ID, this.label.Text);
         }
     }

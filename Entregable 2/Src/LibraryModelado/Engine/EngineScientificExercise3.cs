@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using System.Collections.Generic;
 using Proyecto.Item.ScientistLevel;
 using Proyecto.Item;
 
@@ -33,10 +34,10 @@ namespace Proyecto.LibraryModelado.Engine
             this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
             this.Operations = new Operation[2] { null, null };
-            this.LevelFeedback = this.levelFeedback;
+            this.FeedbackList = new List<Feedback>();
         }
 
-        public Feedback LevelFeedback { get; set; }
+        public List<Feedback> FeedbackList { get; }
 
         public Space Level { get; set; }
 
@@ -63,6 +64,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         /// <value>Array de Bools.</value>
         public bool[] ResultsOfLevel { get; private set; }
+        public Feedback LevelFeedback { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         /// <summary>
         /// Verifica que se hayan completado las cuatro paginas del nivel.
@@ -148,7 +150,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
         /// se debe crear el boton que mostrara la pagina principal al ejecutarlo.
         /// </summary>
-        public override IComponent ButtonGoToMain()
+        public IComponent ButtonGoToMain()
         {
             foreach (var space in this.engineGame.LevelEngines)
             {
@@ -177,8 +179,10 @@ namespace Proyecto.LibraryModelado.Engine
             this.level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
         }
+        public void SetFeedback(Feedback feedback)
+        {}
 
-        public override void SetOperations(IComponent component)
+        public void SetOperations(IComponent component)
         {
             for (int i = 0; i < this.Operations.Length; i++)
             {

@@ -460,17 +460,6 @@
             Clase abstracta de motores.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.IEngine.ButtonGoToMain">
-            <summary>
-            Metodo abstracto de crear un boton prefabricado que muestra la pagina principal, en cada nivel.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.IEngine.SetOperations(Proyecto.LibraryModelado.IComponent)">
-            <summary>
-            /// Metodo abstracto que asigna las operaciones de cada nivel.
-            </summary>
-            <param name="component"></param>
-        </member>
         <member name="T:Proyecto.LibraryModelado.Engine.ILevelEngine">
             <summary>
             Interfaz para los motores de los niveles.
@@ -479,12 +468,6 @@
         <member name="P:Proyecto.LibraryModelado.Engine.ILevelEngine.Level">
             <summary>
             Gets or sets Nivel asociado al motor.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.ILevelEngine.LevelFeedback">
-            <summary>
-            
             </summary>
             <value></value>
         </member>

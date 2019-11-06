@@ -65,9 +65,16 @@ namespace Proyecto.Item
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
+            EngineGame engineGame = Singleton<EngineGame>.Instance;
             Space level = this.Level.World.SpaceList.Find(delegate(Space space) { return space.Name == this.LevelName; });
-            Singleton<EngineGame>.Instance.StartLevelEngine(level);
-            Singleton<EngineGame>.Instance.CurrentPage = level;
+            foreach (var engine in engineGame.LevelEngines)
+            {
+                if (engine.Value == engineGame.LevelEngines[level])
+                {
+                    engine.Value.StartLevel();
+                    engineGame.CurrentPage = level;
+                }
+            }
             this.Event(level.ID);
         }
     }

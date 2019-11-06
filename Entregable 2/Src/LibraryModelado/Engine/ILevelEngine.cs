@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Proyecto.Item;
 
 namespace Proyecto.LibraryModelado.Engine
@@ -13,11 +14,14 @@ namespace Proyecto.LibraryModelado.Engine
         /// <value></value>
         Space Level { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <value></value>
-        Feedback LevelFeedback { get; set; }
+        Feedback LevelFeedback { get; set;}
+
+        IComponent ButtonGoToMain();
+
+        void SetOperations(IComponent component);
+
+        void SetFeedback(Feedback feedback);
+
 
         /// <summary>
         /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.

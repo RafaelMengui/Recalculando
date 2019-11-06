@@ -75,7 +75,9 @@ namespace Proyecto.Item.ScientistLevel
         /// </summary>
         public bool Drop(IContainer container)
         {
+            EngineGame engineGame = Singleton<EngineGame>.Instance;
             MoneyContainer moneyContainer;
+
             try
             {
                 moneyContainer = container as MoneyContainer;
@@ -85,15 +87,8 @@ namespace Proyecto.Item.ScientistLevel
                 throw new System.InvalidCastException($"Invalid cast operation as MoneyContainer.");
             }
 
-            EngineScientificExercise1 engineScientific = Singleton<EngineScientificExercise1>.Instance;
-            if (this.Draggable && engineScientific.VerifyExercise(moneyContainer, this))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (engineGame.LevelEngines[this.Level] as EngineScientificExercise1).VerifyExercise(moneyContainer, this);
+
         }
     }
 }

@@ -66,7 +66,7 @@
 		<DraggableItem Name="pollo" PositionX="0" PositionY="0" Width="85" Height="85" Photo="pollo.png" Draggable="true" Container="polloContainer">
 		<DraggableItem Name="carne" PositionX="0" PositionY="0" Width="85" Height="85" Photo="carne.png" Draggable="true" Container="carneContainer">
 		<DragContainer Name="container" PositionX="0" PositionY="-150" Width="115" Height="115" Photo="recuadro.png">
-
+	
 	</Space>
 
 	<Space Name="ScientificExercise3" Background="page2.png">

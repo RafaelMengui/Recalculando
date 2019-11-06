@@ -78,8 +78,6 @@ namespace Proyecto.StudentsCode
                 UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);
                 this.engineGame.SetFeedbacks(component);
             }
-
-            //this.adapter.AfterBuild();
         }
 
         /// <summary>

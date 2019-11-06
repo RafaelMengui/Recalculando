@@ -12,6 +12,10 @@ namespace Proyecto.LibraryModelado.test
     public class UnitTestModelado
     {
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
+        private Money money;
+        private MoneyContainer moneyContainer;
+        private Space level;
+        private ButtonStartLevel buttonStart;
 
         [Fact]
         public void TestFactoryComponents()
@@ -30,12 +34,43 @@ namespace Proyecto.LibraryModelado.test
             this.engineGame.AsociateLevelsWithEngines(componentList);
             foreach (IComponent comp in componentList)
             {
+                if (comp is Money)
+                {
+                    if (((Money)comp).Name == "1coin5")
+                    {
+                        this.money = comp as Money;
+                    }
+                }
+                if (comp is MoneyContainer)
+                {
+                    if (((MoneyContainer)comp).Name=="resultContainer1")
+                    {
+                        this.moneyContainer = comp as MoneyContainer;
+                    }
+                }
+                if (comp is Space)
+                {
+                    if (((Level)comp).Name == "ScientificExercise1")
+                    {
+                        this.level = comp as Space;
+                    }
+                }
                 if (comp is ButtonStartLevel)
                 {
-                    ButtonStartLevel button = comp as ButtonStartLevel;
-                    button.Click("");
+                    this.buttonStart = comp as ButtonStartLevel;
                 }
+                this.engineGame.SetOperations(comp);
+                this.engineGame.SetFeedbacks(comp);
             }
+            // foreach (var engine in this.engineGame.LevelEngines)
+            // {
+            //     if (engine.Value is EngineScientificExercise1)
+            //     {
+            //         (engine.Value as EngineScientificExercise1).VerifyExercise(this.moneyContainer, this.money);
+            //     }
+            // }
+            this.buttonStart.Click("");
+            
         }
     }
 }

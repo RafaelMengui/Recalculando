@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Proyecto.Item;
 using Proyecto.Item.ScientistLevel;
@@ -36,7 +37,12 @@ namespace Proyecto.LibraryModelado.Engine
             this.Level = this.level;
             this.ResultsOfLevel = new bool[3];
             this.Operations = new Operation[3] { null, null, null };
-            this.OperationCounter = 0;
+            this.LevelFeedback = this.levelFeedback;
+            this.engineGame.List.Add(this);
+            // if (this.engineGame.List.Count > 1)
+            // {
+            //     throw new Exception("guaaaaaaaaaaaaaaaat");
+            // }
         }
 
         public Feedback LevelFeedback { get; set; }
@@ -70,6 +76,11 @@ namespace Proyecto.LibraryModelado.Engine
         /// <value>Array de Bools.</value>
         public bool[] ResultsOfLevel { get; private set; }
 
+        public void SetFeedback(Feedback feedback)
+        {
+            this.LevelFeedback = feedback;
+        }
+
         /// <summary>
         /// Metodo utilizado para iniciar o reiniciar el motor del juego.
         /// </summary>
@@ -77,16 +88,6 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[3];
             this.OperationCounter = 0;
-            if (this.LevelFeedback is null)
-            {
-                foreach (Items item in this.Level.ItemList)
-                {
-                    if (item is Feedback)
-                    {
-                        this.LevelFeedback = item as Feedback;
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -109,8 +110,8 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (this.ResultsOfLevel[0] && this.ResultsOfLevel[1] && this.ResultsOfLevel[2])
             {
-                //this.LevelFeedback.Text = "Bien Hecho! has contestado correctamente las tres preguntas. Puedes continuar al siguiente nivel.";
-                //this.engineGame.UpdateFeedback(this.LevelFeedback);
+                this.LevelFeedback.Text = "Bien Hecho! has contestado correctamente las tres preguntas. Puedes continuar al siguiente nivel.";
+                this.engineGame.UpdateFeedback(this.LevelFeedback);
                 this.ButtonGoToNextLevel();
                 return true;
             }
@@ -129,7 +130,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (this.VerifyOperation(moneyContainer, money) && !this.ResultsOfLevel[this.OperationCounter])
             {
-                //this.GoodFeedback();
+                this.GoodFeedback();
                 this.ResultsOfLevel[this.OperationCounter] = true;
                 this.OperationCounter += 1;
                 money.Container = moneyContainer;
@@ -140,7 +141,7 @@ namespace Proyecto.LibraryModelado.Engine
             {
                 if (moneyContainer.AcceptableValue != 0)
                 {
-                    //this.BadFeedback();
+                    this.BadFeedback();
                 }
 
                 return false;
@@ -172,7 +173,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
         /// se debe crear el boton que mostrara la pagina principal al ejecutarlo.
         /// </summary>
-        public override IComponent ButtonGoToMain()
+        public IComponent ButtonGoToMain()
         {
             Items goToMain = new ButtonGoToPage("Scientific1ToMain", this.Level, -595, 228, 75, 75, "GoToMain.png", "#FCFCFC", "MainPage");
             this.Level.ItemList.Add(goToMain);
@@ -195,7 +196,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// Metodo que asigna las operaciones presentes en el nivel, al motor.
         /// </summary>
         /// <param name="component"></param>
-        public override void SetOperations(IComponent component)
+        public void SetOperations(IComponent component)
         {
             for (int i = 0; i < this.Operations.Length; i++)
             {
