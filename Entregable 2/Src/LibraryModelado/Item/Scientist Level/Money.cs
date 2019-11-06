@@ -58,24 +58,9 @@ namespace Proyecto.Item.ScientistLevel
             {
                 return this.valor;
             }
-
             set
             {
-                if (value < 0)
-                {
-                    try
-                    {
-                        throw new ArithmeticException($"Invalid Money Value: {this.Name} has negative value.");
-                    }
-                    finally
-                    {
-                        this.valor = Math.Abs(value);
-                    }
-                }
-                else
-                {
-                    this.valor = value;
-                }
+                this.valor = Math.Abs(value);
             }
         }
 
@@ -115,14 +100,7 @@ namespace Proyecto.Item.ScientistLevel
             }
             else
             {
-                try
-                {
-                    throw new ArgumentException($"Invalid action: Object not draggable {this.Name}.");
-                }
-                catch (ArgumentException)
-                {
-                    return false;
-                }
+                return false;
             }
         }
     }

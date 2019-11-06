@@ -21,9 +21,9 @@
     <Copy SourceFiles="@(AllLibraries)" DestinationFolder="..\..\..\..\UnityCode\Unity\Assets" />
   </Target> 
 
-  <!-- <ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
     <AdditionalFiles Include="..\..\stylecop.json" />
-  </ItemGroup>  -->
+  </ItemGroup> 
 </Project>
