@@ -132,19 +132,21 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
         /// </summary>
-        public void GoodFeedback()
+        public bool GoodFeedback()
         {
             this.Feedback.Text = "Correcto! Sigue asi.";
             this.engineGame.UpdateFeedback(this.LevelFeedback);
+            return true;
         }
 
         /// <summary>
         /// Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
         /// </summary>
-        public void BadFeedback()
+        public bool BadFeedback()
         {
             this.Feedback.Text = "Intentalo de nuevo ¡Tu puedes!";
             this.engineGame.UpdateFeedback(this.LevelFeedback);
+            return true;
         }
 
         /// <summary>

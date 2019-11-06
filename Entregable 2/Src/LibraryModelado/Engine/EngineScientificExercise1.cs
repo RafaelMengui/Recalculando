@@ -37,14 +37,9 @@ namespace Proyecto.LibraryModelado.Engine
             this.ResultsOfLevel = new bool[3];
             this.Operations = new Operation[3] { null, null, null };
             this.OperationCounter = 0;
-            this.LevelFeedback = this.levelFeedback;
         }
 
-        public Feedback LevelFeedback
-        {
-            get => levelFeedback;
-            set => levelFeedback = value;
-        }
+        public Feedback LevelFeedback { get; set; }
 
         /// <summary>
         /// Operacion de tipo <see cref="Operation"/>, en donde se guardaran los componentes
@@ -75,8 +70,6 @@ namespace Proyecto.LibraryModelado.Engine
         /// <value>Array de Bools.</value>
         public bool[] ResultsOfLevel { get; private set; }
 
-
-
         /// <summary>
         /// Metodo utilizado para iniciar o reiniciar el motor del juego.
         /// </summary>
@@ -84,7 +77,16 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[3];
             this.OperationCounter = 0;
-
+            if (this.LevelFeedback is null)
+            {
+                foreach (Items item in this.Level.ItemList)
+                {
+                    if (item is Feedback)
+                    {
+                        this.LevelFeedback = item as Feedback;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -107,8 +109,8 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (this.ResultsOfLevel[0] && this.ResultsOfLevel[1] && this.ResultsOfLevel[2])
             {
-                this.LevelFeedback.Text = "Bien Hecho! has contestado correctamente las tres preguntas. Puedes continuar al siguiente nivel.";
-                this.engineGame.UpdateFeedback(this.LevelFeedback);
+                //this.LevelFeedback.Text = "Bien Hecho! has contestado correctamente las tres preguntas. Puedes continuar al siguiente nivel.";
+                //this.engineGame.UpdateFeedback(this.LevelFeedback);
                 this.ButtonGoToNextLevel();
                 return true;
             }
@@ -125,12 +127,12 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns>Bool si el dinero soltado es correcto.</returns>
         public bool VerifyExercise(MoneyContainer moneyContainer, Money money)
         {
-            if (this.VerifyOperation(moneyContainer, money))
+            if (this.VerifyOperation(moneyContainer, money) && !this.ResultsOfLevel[this.OperationCounter])
             {
+                //this.GoodFeedback();
                 this.ResultsOfLevel[this.OperationCounter] = true;
                 this.OperationCounter += 1;
                 money.Container = moneyContainer;
-                this.GoodFeedback();
                 this.VerifyWinLevel();
                 return true;
             }
@@ -138,7 +140,7 @@ namespace Proyecto.LibraryModelado.Engine
             {
                 if (moneyContainer.AcceptableValue != 0)
                 {
-                    this.BadFeedback();
+                    //this.BadFeedback();
                 }
 
                 return false;
@@ -148,19 +150,21 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
         /// </summary>
-        public void GoodFeedback()
+        public bool GoodFeedback()
         {
             this.LevelFeedback.Text = "Muy buen trabajo, ¡Continua asi!";
             this.engineGame.UpdateFeedback(this.LevelFeedback);
+            return true;
         }
 
         /// <summary>
         /// Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
         /// </summary>
-        public void BadFeedback()
+        public bool BadFeedback()
         {
             this.LevelFeedback.Text = "Esa suma no es correcta, ¡Intentalo de nuevo!";
             this.engineGame.UpdateFeedback(this.LevelFeedback);
+            return true;
         }
 
         /// <summary>

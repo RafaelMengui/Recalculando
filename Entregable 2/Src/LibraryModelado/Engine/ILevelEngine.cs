@@ -22,12 +22,12 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
         /// </summary>
-        void GoodFeedback();
+        bool GoodFeedback();
 
         /// <summary>
         /// Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
         /// </summary>
-        void BadFeedback();
+        bool BadFeedback();
 
         /// <summary>
         /// Metodo utilizado para iniciar o reiniciar el motor del juego.
