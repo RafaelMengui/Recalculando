@@ -16,6 +16,7 @@ namespace Proyecto.LibraryModelado.Engine
     /// que ser global. Esto es de mucha utilidad debido a que vamos a necesitar llamar a los motores
     /// de los juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
     /// de que solo haya un motor de este juego.
+    /// 
     /// Hereda de la clase abstracta <see cref="IEngine"/>.
     /// </summary>
     public class EngineGame : IEngine

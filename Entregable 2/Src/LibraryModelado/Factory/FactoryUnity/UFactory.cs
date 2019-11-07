@@ -13,6 +13,9 @@ namespace Proyecto.Factory.Unity
 {
     /// <summary>
     /// Esta clase es la responsable de delegar la responsabilidad de agregar los componentes al juego.
+    /// En esta clase se ve claramente el Patrón de BAJO ACOMPLAMIENTO, debido a que nuestro juego
+    /// esta completamente desacomplado de Unity, en caso de querer desplegar nuestro juego en otra
+    /// plataforma podemos realizarlo. 
     /// Implementa la interfaz <see cref="IFactoryUnity"/>.
     /// </summary>
     public class UFactory : IFactoryUnity
