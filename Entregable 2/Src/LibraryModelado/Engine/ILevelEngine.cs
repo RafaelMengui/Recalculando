@@ -11,17 +11,26 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Gets or sets Nivel asociado al motor.
         /// </summary>
-        /// <value></value>
+        /// <value>Space.</value>
         Space Level { get; set; }
 
-        Feedback LevelFeedback { get; set;}
+        /// <summary>
+        /// Gets or sets del feedback asociado al motor.
+        /// </summary>
+        /// <value>Feedback.</value>
+        Feedback LevelFeedback { get; set; }
 
+        /// <summary>
+        /// Metodo que crea y devuelve un boton prefabricado que al presionarlo mostrara la pantalla principal.
+        /// </summary>
+        /// <returns>IComponent</returns>
         IComponent ButtonGoToMain();
 
-        void SetOperations(IComponent component);
-
+        /// <summary>
+        /// Metodo responsable de asignarle a un motor, su respectivo objeto feedback.
+        /// </summary>
+        /// <param name="feedback">Feedback.</param>
         void SetFeedback(Feedback feedback);
-
 
         /// <summary>
         /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.

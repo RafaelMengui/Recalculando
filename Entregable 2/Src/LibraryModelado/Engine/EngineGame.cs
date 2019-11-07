@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using Proyecto.Item;
-using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
@@ -55,9 +54,7 @@ namespace Proyecto.LibraryModelado.Engine
             this.MainPage = mainPage;
             this.LevelEngines = levelEngines;
             this.CurrentPage = currentPage;
-            this.List = new List<EngineScientificExercise1>();
         }
-        public List<EngineScientificExercise1> List{get;}
 
         /// <summary>
         /// Gets or sets del diccionario de motores y niveles.
@@ -97,7 +94,7 @@ namespace Proyecto.LibraryModelado.Engine
                             this.LevelEngines.Add(level, this.engine);
                         }
                     }
-                    catch (System.Exception)
+                    catch(System.Exception)
                     {
                         throw new Exception($"Engine \"Engine{level.Name}\" does not exist or couldn't be created.");
                     }
@@ -105,25 +102,16 @@ namespace Proyecto.LibraryModelado.Engine
             }
         }
 
-        public void SetFeedbacks(IComponent component)
+        /// <summary>
+        /// Metodo responsable de asignarle a un motor, su respectivo objeto feedback.
+        /// </summary>
+        /// <param name="component">IComponent.</param>
+        public void SetLevelFeedbacks(IComponent component)
         {
             if (component is Feedback)
             {
                 Feedback feedback = component as Feedback;
                 this.LevelEngines[feedback.Level].SetFeedback(feedback);
-            }
-        }
-
-        /// <summary>
-        /// Metodo que asigna una operacion en su respectivo nivel.
-        /// </summary>
-        /// <param name="component"></param>
-        public void SetOperations(IComponent component)
-        {
-            if (component is Operation)
-            {
-                Operation operation = component as Operation;
-                this.levelEngines[operation.Level].SetOperations(component);
             }
         }
 

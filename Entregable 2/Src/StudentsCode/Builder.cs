@@ -74,9 +74,8 @@ namespace Proyecto.StudentsCode
             this.engineGame.AsociateLevelsWithEngines(componentList);
             foreach (IComponent component in componentList)
             {
-                this.engineGame.SetOperations(component);
                 UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);
-                this.engineGame.SetFeedbacks(component);
+                this.engineGame.SetLevelFeedbacks(component);
             }
         }
 
@@ -106,4 +105,6 @@ namespace Proyecto.StudentsCode
 
 /*
 static Method() => Setup de tests, despues se llama al metodo en cada caso.
+
+1656x828
 */

@@ -69,12 +69,6 @@
             </summary>
             <param name="componentList">Lista de componentes creados.</param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.SetOperations(Proyecto.LibraryModelado.IComponent)">
-            <summary>
-            Metodo que asigna una operacion en su respectivo nivel.
-            </summary>
-            <param name="component"></param>
-        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.ButtonGoToMain">
             <summary>
             Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, en donde ejecuta para cada
@@ -112,6 +106,11 @@
             Variable Level utilizada para instanciar un nivel asignable.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.levelFeedback">
+            <summary>
+            Objeto de tipo <see cref="T:Proyecto.Item.Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
+            </summary>
+        </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.engineGame">
             <summary>
             Instancia unica del motor general.
@@ -119,15 +118,14 @@
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.#ctor">
             <summary>
-            Constructor.
+            Constructor del motor.
             </summary>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Operations">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.LevelFeedback">
             <summary>
-            Operacion de tipo <see cref="T:Proyecto.Item.ScientistLevel.Operation"/>, en donde se guardaran los componentes
-            de cada operacion (Operandos, imagenes de suma o resta, y resultado).
+            Gets or sets del Feedback asociado al motor.
             </summary>
-            <value>Operacion.</value>
+            <value>Feedback.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Level">
             <summary>
@@ -150,6 +148,12 @@
             false = No completo las dos operaciones de la pagina.
             </summary>
             <value>Array de Bools.</value>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.SetFeedback(Proyecto.Item.Feedback)">
+            <summary>
+            Metodo responsable de asignarle al motor, su respectivo objeto feedback.
+            </summary>
+            <param name="feedback">Feedback.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.StartLevel">
             <summary>
@@ -205,12 +209,6 @@
             Este boton aparecera en pantalla al terminar un nivel.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.SetOperations(Proyecto.LibraryModelado.IComponent)">
-            <summary>
-            Metodo que asigna las operaciones presentes en el nivel, al motor.
-            </summary>
-            <param name="component"></param>
-        </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise2">
             <summary>
             Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
@@ -230,12 +228,6 @@
             <summary>
             Constructor.
             </summary>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.Operations">
-            <summary>
-            
-            </summary>
-            <value></value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.Feedback">
             <summary>
@@ -414,7 +406,6 @@
         <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.OnDrop(System.String,System.Single,System.Single)">
             <summary>
             Metodo Drop de un draggableItem.
-            [ARREGLAR ESTE METODO.]
             </summary>
             <param name="draggableItemID"></param>
             <param name="x"></param>
@@ -469,7 +460,25 @@
             <summary>
             Gets or sets Nivel asociado al motor.
             </summary>
-            <value></value>
+            <value>Space.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.ILevelEngine.LevelFeedback">
+            <summary>
+            Gets or sets del feedback asociado al motor.
+            </summary>
+            <value>Feedback.</value>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.ButtonGoToMain">
+            <summary>
+            Metodo que crea y devuelve un boton prefabricado que al presionarlo mostrara la pantalla principal.
+            </summary>
+            <returns>IComponent</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.SetFeedback(Proyecto.Item.Feedback)">
+            <summary>
+            Metodo responsable de asignarle a un motor, su respectivo objeto feedback.
+            </summary>
+            <param name="feedback">Feedback.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.GoodFeedback">
             <summary>
@@ -539,11 +548,23 @@
             para cuando debamos ampliar el juego.
             </summary>
         </member>
+        <member name="P:Proyecto.LibraryModelado.IDraggable.Container">
+            <summary>
+            Container en donde se encuentra el draggable item.
+            </summary>
+            <value>IContainer.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.IDraggable.Draggable">
+            <summary>
+            Gets or sets a value indicating whether el item es arrastrable.
+            </summary>
+            <value>Bool arrastrable.</value>
+        </member>
         <member name="M:Proyecto.LibraryModelado.IDraggable.Drop(Proyecto.LibraryModelado.IContainer)">
             <summary>
-            
+            Metodo que se ejecutara al soltar el item.
             </summary>
-            <param name="container"></param>
+            <param name="container">Container en donde se soltara el item.</param>
         </member>
         <member name="T:Proyecto.LibraryModelado.Items">
             <summary>
@@ -1562,60 +1583,6 @@
             <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
         </member>
-        <member name="T:Proyecto.Factory.CSharp.FactoryOperation">
-            <summary>
-            Esta clase es la responsable de crear objetos Operation.
-            Utiliza la interfaz IFactoryComponent.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Factory.CSharp.FactoryOperation.world">
-            <summary>
-            Instancia del mundo.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Factory.CSharp.FactoryOperation.level">
-            <summary>
-            Nivel al que pertenece la operacion.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Factory.CSharp.FactoryOperation.operandsName">
-            <summary>
-            Nombre del operando 1.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Factory.CSharp.FactoryOperation.operand2Name">
-            <summary>
-            Nombre del operando 2.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Factory.CSharp.FactoryOperation.resultContainerName">
-            <summary>
-            Nombre del container que contendra el resultado.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Factory.CSharp.FactoryOperation.operands">
-            <summary>
-            Operando 1.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Factory.CSharp.FactoryOperation.operand2">
-            <summary>
-            Operando 2.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Factory.CSharp.FactoryOperation.resultContainer">
-            <summary>
-            Container que contendra el resultado.
-            </summary>
-        </member>
-        <member name="M:Proyecto.Factory.CSharp.FactoryOperation.MakeComponent(Proyecto.LeerHTML.Tag)">
-            <summary>
-            Sobrescribe el metodo abstracto de IFactoryComponent.
-            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.ScientistLevel.Operation"/>.
-            </summary>
-            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
-            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
-        </member>
         <member name="T:Proyecto.Factory.CSharp.FactorySpace">
             <summary>
             Esta clase es la responsable de crear objetos Space.
@@ -2228,7 +2195,7 @@
             Accion que se ejecutara al soltar un item.
             </summary>
         </member>
-        <member name="M:Proyecto.Item.DraggableItem.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.Boolean,Proyecto.LibraryModelado.Items)">
+        <member name="M:Proyecto.Item.DraggableItem.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.Boolean,Proyecto.LibraryModelado.IContainer)">
             <summary>
             Initializes a new instance of DraggableItem.
             </summary>
@@ -2530,7 +2497,7 @@
             Valor del dinero.
             </summary>
         </member>
-        <member name="M:Proyecto.Item.ScientistLevel.Money.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.Boolean,Proyecto.Item.ScientistLevel.MoneyContainer,System.Single)">
+        <member name="M:Proyecto.Item.ScientistLevel.Money.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.Boolean,Proyecto.LibraryModelado.IContainer,System.Single)">
             <summary>
             Initializes a new instance of Money.
             </summary>
@@ -2599,47 +2566,6 @@
             Gets or sets de objetos Money soltado dentro del container.
             </summary>
             <value>Money.</value>
-        </member>
-        <member name="T:Proyecto.Item.ScientistLevel.Operation">
-            <summary>
-            Una operacion es un conjunto de containers que representan cada parte de una operacion.
-            Consta de un container para cada operando, uno en donde se coloque la imagen de suma o resta,
-            dependiendo de la operacion, y un container en donde se colocara el item que represente el resultado
-            de la operacion.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Item.ScientistLevel.Operation.world">
-            <summary>
-            Instancia del mundo.
-            </summary>
-        </member>
-        <member name="M:Proyecto.Item.ScientistLevel.Operation.#ctor(Proyecto.LibraryModelado.Space,Proyecto.Item.ScientistLevel.MoneyContainer)">
-            <summary>
-            Constructor.
-            </summary>
-            <param name="level">Nivel al que pertenece la operacion.</param>
-            <param name="operand1">Container en donde se colocara el operando 1 de la ecuacion.</param>
-            <param name="operationType">Container en donde se colocara la imagen de suma o resta.</param>
-            <param name="operand2">Container en donde se colocara el operando 2 de la ecuacion.</param>
-            <param name="resultContainer">Container en donde se colocara el resultado de la operacion.</param>
-        </member>
-        <member name="P:Proyecto.Item.ScientistLevel.Operation.Level">
-            <summary>
-            Gets or sets del nivel al que pertenece la operacion.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Proyecto.Item.ScientistLevel.Operation.Operands">
-            <summary>
-            Gets or sets del operando 1.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Proyecto.Item.ScientistLevel.Operation.ResultContainer">
-            <summary>
-            Gets or sets del container en donde se va a soltar el operando del resultado.
-            </summary>
-            <value></value>
         </member>
     </members>
 </doc>

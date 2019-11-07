@@ -33,7 +33,6 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
-            this.Operations = new Operation[2] { null, null };
             this.FeedbackList = new List<Feedback>();
         }
 
@@ -41,7 +40,6 @@ namespace Proyecto.LibraryModelado.Engine
 
         public Space Level { get; set; }
 
-        public Operation[] Operations { get; set; }
 
         /// <summary>
         /// Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
@@ -160,7 +158,7 @@ namespace Proyecto.LibraryModelado.Engine
                 }
             }
 
-            Items goToMain = new ButtonGoToPage("Scientific3ToMain", this.level, -595, 228, 75, 75, "GoToMain.png", "#FCFCFC", "MainPage");
+            Items goToMain = new ButtonGoToPage("Scientific3ToMain", this.level, -890, 345, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
             return goToMain;
         }
@@ -181,16 +179,5 @@ namespace Proyecto.LibraryModelado.Engine
         }
         public void SetFeedback(Feedback feedback)
         {}
-
-        public void SetOperations(IComponent component)
-        {
-            for (int i = 0; i < this.Operations.Length; i++)
-            {
-                if (this.Operations[i].Equals(null))
-                {
-                    this.Operations[i] = component as Operation;
-                }
-            }
-        }
     }
 }

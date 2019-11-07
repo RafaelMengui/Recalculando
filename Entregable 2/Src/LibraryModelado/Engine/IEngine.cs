@@ -1,5 +1,3 @@
-using Proyecto.Item.ScientistLevel;
-
 namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>

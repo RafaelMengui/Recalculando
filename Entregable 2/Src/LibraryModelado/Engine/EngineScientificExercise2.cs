@@ -33,19 +33,12 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
-            this.Operations = new Operation[2] { null, null };
             this.FeedbackList = new List<Feedback>();
         }
 
         public List<Feedback> FeedbackList { get; }
 
         public Space Level { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <value></value>
-        public Operation[] Operations { get; set; }
 
         /// <summary>
         /// Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
@@ -171,7 +164,7 @@ namespace Proyecto.LibraryModelado.Engine
                 }
             }
 
-            Items goToMain = new ButtonGoToPage("Scientific2ToMain", this.level, -595, 228, 75, 75, "GoToMain.png", "#FCFCFC", "MainPage");
+            Items goToMain = new ButtonGoToPage("Scientific2ToMain", this.level, -890, 345, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
             this.level.ItemList.Add(goToMain);
             return goToMain;
         }
@@ -189,17 +182,6 @@ namespace Proyecto.LibraryModelado.Engine
             Items goToNext = new ButtonGoToPage("Scientific2ToScientific3", this.level, 0, 0, 200, 150, "huevo.png", "#FCFCFC", "ScientificExercise3");
             this.level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
-        }
-
-        public void SetOperations(IComponent component)
-        {
-            for (int i = 0; i < this.Operations.Length; i++)
-            {
-                if (this.Operations[i].Equals(null))
-                {
-                    this.Operations[i] = component as Operation;
-                }
-            }
         }
     }
 }

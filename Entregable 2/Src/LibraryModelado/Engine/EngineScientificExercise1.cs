@@ -3,9 +3,6 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Proyecto.Item;
 using Proyecto.Item.ScientistLevel;
 
@@ -22,6 +19,9 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         private Space level;
 
+        /// <summary>
+        /// Objeto de tipo <see cref="Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
+        /// </summary>
         private Feedback levelFeedback;
 
         /// <summary>
@@ -30,29 +30,20 @@ namespace Proyecto.LibraryModelado.Engine
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
         /// <summary>
-        /// Constructor.
+        /// Constructor del motor.
         /// </summary>
         public EngineScientificExercise1()
         {
             this.Level = this.level;
             this.ResultsOfLevel = new bool[3];
-            this.Operations = new Operation[3] { null, null, null };
             this.LevelFeedback = this.levelFeedback;
-            this.engineGame.List.Add(this);
-            // if (this.engineGame.List.Count > 1)
-            // {
-            //     throw new Exception("guaaaaaaaaaaaaaaaat");
-            // }
         }
 
-        public Feedback LevelFeedback { get; set; }
-
         /// <summary>
-        /// Operacion de tipo <see cref="Operation"/>, en donde se guardaran los componentes
-        /// de cada operacion (Operandos, imagenes de suma o resta, y resultado).
+        /// Gets or sets del Feedback asociado al motor.
         /// </summary>
-        /// <value>Operacion.</value>
-        public Operation[] Operations { get; set; }
+        /// <value>Feedback.</value>
+        public Feedback LevelFeedback { get; set; }
 
         /// <summary>
         /// Gets or sets del nivel asociado a este Motor.
@@ -76,9 +67,15 @@ namespace Proyecto.LibraryModelado.Engine
         /// <value>Array de Bools.</value>
         public bool[] ResultsOfLevel { get; private set; }
 
+        /// <summary>
+        /// Metodo responsable de asignarle al motor, su respectivo objeto feedback.
+        /// </summary>
+        /// <param name="feedback">Feedback.</param>
         public void SetFeedback(Feedback feedback)
         {
             this.LevelFeedback = feedback;
+            this.LevelFeedback.Text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
+            this.engineGame.UpdateFeedback(this.LevelFeedback);
         }
 
         /// <summary>
@@ -128,18 +125,25 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns>Bool si el dinero soltado es correcto.</returns>
         public bool VerifyExercise(MoneyContainer moneyContainer, Money money)
         {
-            if (this.VerifyOperation(moneyContainer, money) && !this.ResultsOfLevel[this.OperationCounter])
+            if (this.VerifyOperation(moneyContainer, money))
             {
-                this.GoodFeedback();
                 this.ResultsOfLevel[this.OperationCounter] = true;
                 this.OperationCounter += 1;
-                money.Container = moneyContainer;
+                money.Draggable = false;
+                this.GoodFeedback();
                 this.VerifyWinLevel();
                 return true;
             }
+
             else
             {
-                if (moneyContainer.AcceptableValue != 0)
+                if (moneyContainer.AcceptableValue == 0)
+                {
+                    money.Container = moneyContainer;
+                    return true;
+                }
+
+                else if (moneyContainer.AcceptableValue != -1)
                 {
                     this.BadFeedback();
                 }
@@ -175,7 +179,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public IComponent ButtonGoToMain()
         {
-            Items goToMain = new ButtonGoToPage("Scientific1ToMain", this.Level, -595, 228, 75, 75, "GoToMain.png", "#FCFCFC", "MainPage");
+            Items goToMain = new ButtonGoToPage("Scientific1ToMain", this.Level, -890, 345, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
             this.Level.ItemList.Add(goToMain);
             return goToMain;
         }
@@ -190,21 +194,6 @@ namespace Proyecto.LibraryModelado.Engine
             Items goToNext = new ButtonGoToPage("Scientific1ToScientific2", this.Level, 0, 0, 200, 150, "huevo.png", "#FCFCFC", "ScientificExercise2");
             this.Level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
-        }
-
-        /// <summary>
-        /// Metodo que asigna las operaciones presentes en el nivel, al motor.
-        /// </summary>
-        /// <param name="component"></param>
-        public void SetOperations(IComponent component)
-        {
-            for (int i = 0; i < this.Operations.Length; i++)
-            {
-                if (this.Operations[i] == null)
-                {
-                    this.Operations[i] = component as Operation;
-                }
-            }
         }
     }
 }

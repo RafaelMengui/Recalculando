@@ -33,7 +33,7 @@ namespace Proyecto.Item.ScientistLevel
         /// <param name="draggable">Bool que define si es arrastrable.</param>
         /// <param name="container">Container Source en donde es creado.</param>
         /// <param name="valor">Valor de la moneda.</param>
-        public Money(string name, Space level, float positionX, float positionY, float width, float height, string image, bool draggable, MoneyContainer container, float valor)
+        public Money(string name, Space level, float positionX, float positionY, float width, float height, string image, bool draggable, IContainer container, float valor)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Value = valor;
@@ -62,7 +62,7 @@ namespace Proyecto.Item.ScientistLevel
         /// Gets or sets del container en el que se encuentra.
         /// </summary>
         /// <value><see cref="DragContainer"/>.</value>
-        public Items Container { get; set; }
+        public IContainer Container { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether el item es arrastrable.
@@ -88,7 +88,6 @@ namespace Proyecto.Item.ScientistLevel
             }
 
             return (engineGame.LevelEngines[this.Level] as EngineScientificExercise1).VerifyExercise(moneyContainer, this);
-
         }
     }
 }

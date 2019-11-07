@@ -36,6 +36,10 @@ namespace Proyecto.LibraryModelado
         /// <value>String nombre del mundo.</value>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets del ID.
+        /// </summary>
+        /// <value></value>
         public string ID { get; set; }
 
         /// <summary>

@@ -11,6 +11,10 @@ namespace Proyecto.LibraryModelado
     /// </summary>
     public interface IComponent
     {
+        /// <summary>
+        /// Gets or sets del ID de un objeto asignado al crearlo en unity.
+        /// </summary>
+        /// <value></value>
         string ID { get; set; }
     }
 }

@@ -36,7 +36,6 @@ namespace Proyecto.LibraryModelado.Engine
 
         /// <summary>
         /// Metodo Drop de un draggableItem.
-        /// [ARREGLAR ESTE METODO.]
         /// </summary>
         /// <param name="draggableItemID"></param>
         /// <param name="x"></param>
@@ -51,24 +50,26 @@ namespace Proyecto.LibraryModelado.Engine
                 destination = this.FindDragContainer(x, y);
                 draggableItem = FindItem(draggableItemID) as IDraggable;
             }
-            catch(System.ArgumentNullException)
-            {
-                throw;
-            }
             catch(System.InvalidCastException)
             {
                 throw new System.InvalidCastException($"Failed cast operation of \"{draggableItemID}\" as DraggableItem.");
             }
 
-            if (destination != null && draggableItem.Drop(destination))
+            if (destination != null && !destination.SavedItems.Contains(draggableItem as Items) && draggableItem.Drop(destination))
             {
-                // Mueve el elemento arrastrado al destino si se suelta arriba del destino
+                // Mueve el elemento arrastrado al destino si se suelta arriba del destino.
+                // Se actualiza el container del item.
+                draggableItem.Container.SavedItems.Remove(draggableItem as Items);
+                draggableItem.Container = destination;
+                destination.SavedItems.Add(draggableItem as Items);
                 this.Adapter.Center(draggableItem.ID, destination.ID);
             }
             else
             {
                 this.Adapter.Center(draggableItem.ID, draggableItem.Container.ID);
             }
+
+            this.Adapter.MakeDraggable(draggableItem.ID, draggableItem.Draggable);
         }
 
         /// <summary>

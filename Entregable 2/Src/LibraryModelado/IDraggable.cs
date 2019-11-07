@@ -16,12 +16,22 @@ namespace Proyecto.LibraryModelado
     /// </summary>
     public interface IDraggable : IComponent
     {
-        Items Container { get; set; }
+        /// <summary>
+        /// Container en donde se encuentra el draggable item.
+        /// </summary>
+        /// <value>IContainer.</value>
+        IContainer Container { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets a value indicating whether el item es arrastrable.
         /// </summary>
-        /// <param name="container"></param>
+        /// <value>Bool arrastrable.</value>
+        bool Draggable { get; set; }
+
+        /// <summary>
+        /// Metodo que se ejecutara al soltar el item.
+        /// </summary>
+        /// <param name="container">Container en donde se soltara el item.</param>
         bool Drop(IContainer container);
     }
 }

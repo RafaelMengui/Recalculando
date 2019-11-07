@@ -62,7 +62,7 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private Space level;
 
-        DragContainer container;
+        IContainer container;
 
         /// <summary>
         /// Instancia del mundo.
@@ -88,7 +88,7 @@ namespace Proyecto.Factory.CSharp
                 this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
                 this.containerName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Container"; }).Valor;
                 this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
-                this.container = this.level.ItemList.Find(delegate(Items item) { return item.Name == this.containerName; }) as DragContainer;
+                this.container = this.level.ItemList.Find(delegate(Items item) { return item.Name == this.containerName; }) as IContainer;
             }
             catch(NullReferenceException)
             {
