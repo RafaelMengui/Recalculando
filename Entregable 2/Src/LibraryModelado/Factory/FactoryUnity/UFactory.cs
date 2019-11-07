@@ -14,6 +14,15 @@ namespace Proyecto.Factory.Unity
 {
     /// <summary>
     /// Esta clase es la responsable de delegar la responsabilidad de agregar los componentes al juego.
+    /// En esta clase se ve claramente el Patrón de BAJO ACOMPLAMIENTO, debido a que nuestro juego
+    /// esta completamente desacomplado de Unity, en caso de querer desplegar nuestro juego en otra
+    /// plataforma podemos realizarlo. 
+    /// Esta clase tiene un acomplamiento bajo, de la mano con esto podemos darnos cuenta que también
+    /// cumple con el patron DON’T TALK TO STRANGERS. Esto se debe a que UFactory no conoce las conexiones
+    /// internas y estructuras de otro objeto, sino que, se basa solamente en sí mismo para la creación de
+    /// objetos, no necesita conocer a los objetos indirectos.
+    /// Como dijimos anteriormente, esto lo hacemos para que Unity quede lo mas desacoplado posible de nuestro
+    /// código.
     /// Implementa la interfaz <see cref="IFactoryUnity"/>.
     /// </summary>
     public class UFactory : IFactoryUnity
