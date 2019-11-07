@@ -39,7 +39,9 @@ namespace Proyecto.Factory.Unity
             }
 
             // Se crea el objeto en unity y se obtiene el UnityID.
-            this.feedback.ID = adapter.CreateLabel(this.feedback.PositionX, this.feedback.PositionY, this.feedback.Width, this.feedback.Height);    
+            this.feedback.ID = adapter.CreateLabel(this.feedback.PositionX, this.feedback.PositionY, this.feedback.Width, this.feedback.Height); 
+
+            adapter.SetFont(this.feedback.ID, this.feedback.Bold, this.feedback.Italic, this.feedback.Size);   
 
             // Se asigna el texto inicial del feedback.        
             adapter.SetText(this.feedback.ID, this.feedback.Text);

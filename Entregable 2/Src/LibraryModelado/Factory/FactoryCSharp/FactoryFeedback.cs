@@ -58,6 +58,10 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private string text;
 
+        private int size;
+        private bool bold;
+        private bool italic;
+
         /// <summary>
         /// Instancia del mundo.
         /// </summary>
@@ -81,6 +85,9 @@ namespace Proyecto.Factory.CSharp
                 this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
                 this.photo = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
                 this.text = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Text"; }).Valor;
+                this.size = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Size"; }).Valor);
+                this.bold = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Bold"; }).Valor);
+                this.italic = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Italic"; }).Valor);
             }
             catch(NullReferenceException)
             {
@@ -95,7 +102,7 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Feedback feedback = new Feedback(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo, this.text);
+            Feedback feedback = new Feedback(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo, this.text, this.size, this.bold, this.italic);
             this.level.ItemList.Add(feedback);
             return feedback;
         }
