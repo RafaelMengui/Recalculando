@@ -77,6 +77,10 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo responnsable de buscar en la pagina en la que se encuentre el usuario,
         /// un Item que tenga el mismo UnityID que el entrante por parametro.
+        /// En este método utilizamos una expeción, la finalidad de esta es indicar que el programa
+        /// no puede continuar ejecutando en su estado actual, y como tal, terminarlo. Para maneja
+        /// la excepción y darle una adecuada solucion al programa para que este siga operando. En este caso,
+        /// lanza una expecipon en caso que no encuentre ningún item que tenga el mismo UnityID.
         /// </summary>
         /// <param name="unityID"></param>
         /// <returns>Devuelve el item encontrado.</returns>

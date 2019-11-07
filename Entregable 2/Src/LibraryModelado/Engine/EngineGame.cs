@@ -75,11 +75,14 @@ namespace Proyecto.LibraryModelado.Engine
 
         /// <summary>
         /// Metodo responsable de asociarle a cada nivel su respectivo motor, y agregarlo al diccionario this.LevelEngines.
+        /// En este método utilizamos una excepción, el fin de estas es indicar que el programa no puede continuar ejecutando
+        /// en su estado actual, y como tal, terminarlo. Para manejar la excepción y darle una adecuada solucion al programa
+        /// para que este siga operando. En este caso, lanza una excepción en caso que el motor no exista.
         /// </summary>
         /// <param name="componentList">Lista de componentes creados.</param>
         public void Asociate(List<IComponent> componentList)
         {
-            foreach (IComponent component in componentList)
+            foreach (IComponent compoznent in componentList)
             {
                 if (component is Space)
                 {
