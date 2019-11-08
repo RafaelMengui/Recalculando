@@ -62,6 +62,8 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private Space level;
 
+        IContainer container;
+
         /// <summary>
         /// Instancia del mundo.
         /// </summary>
@@ -86,6 +88,7 @@ namespace Proyecto.Factory.CSharp
                 this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
                 this.containerName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Container"; }).Valor;
                 this.draggable = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Draggable"; }).Valor);
+                this.container = this.level.ItemList.Find(delegate(Items item) { return item.Name == this.containerName; }) as IContainer;
             }
             catch(NullReferenceException)
             {
@@ -100,9 +103,9 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Items container = this.level.ItemList.Find(delegate (Items item) { return item.Name == this.containerName; });
-            Items draggableItem = new DraggableItem(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, container);
+            Items draggableItem = new DraggableItem(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.draggable, this.container);
             this.level.ItemList.Add(draggableItem);
+            this.container.SavedItems.Add(draggableItem);
             return draggableItem;
         }
     }

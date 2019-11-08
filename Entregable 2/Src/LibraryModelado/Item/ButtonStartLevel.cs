@@ -1,28 +1,27 @@
 //--------------------------------------------------------------------------------
-// <copyright file="ButtonTrueFalse.cs" company="Universidad Católica del Uruguay">
+// <copyright file="ButtonGoToPage.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
-using Proyecto.LibraryModelado.Engine;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
-namespace Proyecto.Item.ScientistLevel
+namespace Proyecto.Item
 {
     /// <summary>
-    /// Clase responsable de crear botones true false, utilizados en un ejercicio multipleopcion, solamente un boton
-    /// sera el true (correcto).
+    /// Clase responsable de crear botones, con la funcionalidad de mostrar una pagina diferente en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>, e implementa la interfaz <see cref="IButton"/>.
     /// </summary>
-    public class ButtonTrueFalse : Items, IButton
+    public class ButtonStartLevel : Items, IButton
     {
         /// <summary>
-        /// Accion del boton.
+        /// Accion de mostrar otra pagina.
         /// </summary>
         private Action<string> evento;
 
         /// <summary>
-        /// Initializes a new instance of Button.
+        /// CInitializes a new instance of ButtonGoToPage.
         /// </summary>
         /// <param name="name">Nombre del boton.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -32,21 +31,15 @@ namespace Proyecto.Item.ScientistLevel
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del boton.</param>
         /// <param name="color">Color del boton en Hexadecimal.</param>
-        /// <param name="value">Opcion de verdadero o falso.</param>
-        public ButtonTrueFalse(string name, Space level, float positionX, float positionY, float width, float height, string image, string color, bool value)
+        /// <param name="levelName">Pagina para mostrar.</param>
+        public ButtonStartLevel(string name, Space level, float positionX, float positionY, float width, float height, string image, string color, string levelName)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Color = color;
+            this.LevelName = levelName;
             this.Event = this.evento;
-            this.Value = value;
             this.Pushable = true;
         }
-
-        /// <summary>
-        /// Gets or sets del Color del Boton.
-        /// </summary>
-        /// <value>string codigo en hexadecimal.</value>
-        public string Color { get; set; }
 
         /// <summary>
         /// Gets or sets indicating whether el boton es presionable.
@@ -56,10 +49,16 @@ namespace Proyecto.Item.ScientistLevel
         public bool Pushable { get; set; }
 
         /// <summary>
-        /// Gets or sets del valor bool del boton.
+        /// Gets or sets del Color del Boton.
         /// </summary>
-        /// <value>Bool.</value>
-        public bool Value { get; set; }
+        /// <value>string codigo en hexadecimal.</value>
+        public string Color { get; set; }
+
+        /// <summary>
+        /// Gets or sets de la pagina a mostrar.
+        /// </summary>
+        /// <value>string nombre del la pagina.</value>
+        public string LevelName { get; set; }
 
         /// <summary>
         /// Gets or sets del evento del boton.
@@ -68,7 +67,8 @@ namespace Proyecto.Item.ScientistLevel
         public Action<string> Event { get; set; }
 
         /// <summary>
-        /// Accion realizada por el boton.
+        /// Acciones realizadas por el boton.
+        /// Busca el nivel que coincida con el nivel que mostrara al ser apretado, y obtiene su ID.
         /// </summary>
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
@@ -76,7 +76,16 @@ namespace Proyecto.Item.ScientistLevel
             if (this.Pushable)
             {
                 EngineGame engineGame = Singleton<EngineGame>.Instance;
-                (engineGame.LevelEngines[this.Level] as EngineScientificExercise2).VerifyExercise(this);
+                Space level = this.Level.World.SpaceList.Find(delegate (Space space) { return space.Name == this.LevelName; });
+                foreach (var engine in engineGame.LevelEngines)
+                {
+                    if (engine.Value == engineGame.LevelEngines[level])
+                    {
+                        engine.Value.StartLevel();
+                        engineGame.CurrentPage = level;
+                    }
+                }
+                this.Event(level.ID);
             }
         }
     }

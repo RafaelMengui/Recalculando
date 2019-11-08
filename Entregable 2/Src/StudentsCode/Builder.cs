@@ -11,6 +11,7 @@ using Proyecto.Factory.Unity;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
 using Proyecto.LibraryModelado.Engine;
+using Proyecto.Item;
 
 namespace Proyecto.StudentsCode
 {
@@ -57,10 +58,10 @@ namespace Proyecto.StudentsCode
         public void Build(IMainViewAdapter providedAdapter)
         {
             this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            this.adapter.AfterBuild += this.Setup;
+            this.adapter.AfterBuild = this.Setup;
             this.engineUnity.Adapter = this.adapter;
 
-            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\ElPosta.xml";
+            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\1920x1080.xml";
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
             List<IComponent> componentList = new List<IComponent>();
 
@@ -70,13 +71,13 @@ namespace Proyecto.StudentsCode
                 componentList.Add(component);
             }
 
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
+
             foreach (IComponent component in componentList)
             {
                 UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);
+                this.engineGame.SetLevelFeedbacks(component);
             }
-
-            this.adapter.AfterBuild();
         }
 
         /// <summary>
@@ -105,4 +106,6 @@ namespace Proyecto.StudentsCode
 
 /*
 static Method() => Setup de tests, despues se llama al metodo en cada caso.
+
+1656x828
 */

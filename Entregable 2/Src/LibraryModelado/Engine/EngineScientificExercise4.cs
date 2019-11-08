@@ -11,12 +11,8 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
-    /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
-    /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
-    /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise2
-    /// este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
     /// </summary>
-    public class EngineScientificExercise2 : IEngine, ILevelEngine
+    public class EngineScientificExercise4 : IEngine, ILevelEngine
     {
         /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
@@ -36,11 +32,12 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Constructor del motor.
         /// </summary>
-        public EngineScientificExercise2()
+        public EngineScientificExercise4()
         {
             this.Level = this.level;
-            this.ResultsOfLevel = false;
+            this.ResultsOfLevel = new bool[2];
             this.Operations = new List<Operations>();
+            this.OperationCounter = 0;
             this.LevelFeedback = this.levelFeedback;
         }
 
@@ -56,13 +53,20 @@ namespace Proyecto.LibraryModelado.Engine
         public Space Level { get; set; }
 
         /// <summary>
+        /// Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+        /// Existen dos paginas en el nivel.
+        /// </summary>
+        /// <value>Int.</value>
+        public int OperationCounter { get; private set; }
+
+        /// <summary>
         /// Gets or sets de los resultados del nivel.
         /// Por predeterminado los dos parametros son False.
         /// true = Completo una operacion correctamente.
         /// false = No contesto bien la pregunta.
         /// </summary>
         /// <value>Array de Bools.</value>
-        public bool ResultsOfLevel { get; private set; }
+        public bool[] ResultsOfLevel { get; private set; }
 
         /// <summary>
         /// Gets or sets del Feedback asociado al motor.
@@ -75,14 +79,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            this.ResultsOfLevel = false;
-            foreach (Operations operation in this.Operations)
-            {
-                foreach (Items item in operation.Components)
-                {
-                    (item as ButtonTrueFalse).Pushable = true;
-                }
-            }
+            this.ResultsOfLevel = new bool[2];
+            this.OperationCounter = 0;
         }
 
         /// <summary>
@@ -102,8 +100,10 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns>Bool.</returns>
         public bool VerifyWinLevel()
         {
-            if (this.ResultsOfLevel)
+            if (this.ResultsOfLevel[0] && this.ResultsOfLevel[1])
             {
+                this.LevelFeedback.Text = "Excelente! Has contestado correctamente las dos preguntas. Puedes continuar al siguiente nivel.";
+                this.engineGame.UpdateFeedback(this.LevelFeedback);
                 this.ButtonGoToNextLevel();
                 return true;
             }
@@ -121,7 +121,8 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (button.Value)
             {
-                this.ResultsOfLevel = true;
+                this.ResultsOfLevel[this.OperationCounter] = true;
+                this.OperationCounter += 1;
                 this.GoodFeedback();
                 this.VerifyWinLevel();
 
@@ -149,7 +150,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public bool GoodFeedback()
         {
-            this.LevelFeedback.Text = "Excelente! Has contestado correctamente la pregunta. Puedes continuar al siguiente nivel.";
+            this.LevelFeedback.Text = "Correcto! Continua asi.";
             this.engineGame.UpdateFeedback(this.LevelFeedback);
             return true;
         }

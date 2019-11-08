@@ -46,7 +46,6 @@ namespace Proyecto.Factory.Unity
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
         /// Delega la responsabilidad de agregar el componente en unity, al respectivo Unity Factory del componente.
-        /// ARREGLAR, ACA ESTA EL ERROR DE KEY REPETIDO.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>

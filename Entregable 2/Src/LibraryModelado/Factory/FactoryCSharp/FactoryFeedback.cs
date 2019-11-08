@@ -15,7 +15,7 @@ namespace Proyecto.Factory.CSharp
     /// Esta clase es la responsable de crear las etiquetas.
     /// Utiliza la interfaz IFactoryComponent.
     /// </summary>
-    public class FactoryLabel : IFactoryComponent
+    public class FactoryFeedback : IFactoryComponent
     {
         /// <summary>
         /// Nombre de la Etiqueta.
@@ -112,9 +112,9 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Items label = new Label(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo, this.text, this.size, this.bold, this.italic);
-            this.level.ItemList.Add(label);
-            return label;
+            Feedback feedback = new Feedback(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo, this.text, this.size, this.bold, this.italic);
+            this.level.ItemList.Add(feedback);
+            return feedback;
         }
     }
 }

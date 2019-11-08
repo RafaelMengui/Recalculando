@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="Label.cs" company="Universidad Católica del Uruguay">
+// <copyright file="Feedback.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -8,13 +8,13 @@ using Proyecto.LibraryModelado;
 namespace Proyecto.Item
 {
     /// <summary>
-    /// Clase responsable de crear etiquetas en el modelado.
+    /// Clase responsable de crear feedbacks en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
-    public class Label : Items
+    public class Feedback : Items
     {
         /// <summary>
-        /// Initializes a new instance of Label.
+        /// Initializes a new instance of Feedback.
         /// </summary>
         /// <param name="name">Nombre del texto.</param>
         /// <param name="level">Nivel al que pertence.</param>
@@ -27,7 +27,7 @@ namespace Proyecto.Item
         /// <param name="size">Tamaño del texto.</param>
         /// <param name="bold">Bool si el texto es en bold.</param>
         /// <param name="italic">Bool si el texto es en italic.</param>
-        public Label(string name, Space level, float positionX, float positionY, float width, float height, string image, string text, int size, bool bold, bool italic)
+        public Feedback(string name, Space level, float positionX, float positionY, float width, float height, string image, string text, int size, bool bold, bool italic)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Text = text;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Proyecto.Item;
 
 namespace Proyecto.LibraryModelado.Engine
@@ -8,19 +9,53 @@ namespace Proyecto.LibraryModelado.Engine
     public interface ILevelEngine
     {
         /// <summary>
-        /// Metodo que crea la etiqueta de texto que servira de feedback a las acciones realizadas.
+        /// Gets de la lista de operaciones propias de cada nivel.
         /// </summary>
-        /// <returns>Etiqueta de texto.</returns>
-        Label CreateFeedback();
+        /// <value>Lista de operaciones.</value>
+        List<Operations> Operations { get; }
+
+        /// <summary>
+        /// Gets or sets Nivel asociado al motor.
+        /// </summary>
+        /// <value>Space.</value>
+        Space Level { get; set; }
+
+        /// <summary>
+        /// Gets or sets del feedback asociado al motor.
+        /// </summary>
+        /// <value>Feedback.</value>
+        Feedback LevelFeedback { get; set; }
+
+        /// <summary>
+        /// Metodo que crea y devuelve un boton prefabricado que al presionarlo mostrara la pantalla principal.
+        /// </summary>
+        /// <returns>IComponent</returns>
+        IComponent ButtonGoToMain();
+
+        /// <summary>
+        /// Metodo responsable de asignarle a un motor, su respectivo objeto feedback.
+        /// </summary>
+        /// <param name="feedback">Feedback.</param>
+        void SetFeedback(Feedback feedback);
 
         /// <summary>
         /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
         /// </summary>
-        void GoodFeedback();
+        bool GoodFeedback();
 
         /// <summary>
         /// Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
         /// </summary>
-        void BadFeedback();
+        bool BadFeedback();
+
+        /// <summary>
+        /// Metodo utilizado para iniciar o reiniciar el motor del juego.
+        /// </summary>
+        void StartLevel();
+
+        /// <summary>
+        /// Al finalizar el nivel, se creara en pantalla un boton que permitira ir al siguiente nivel.
+        /// </summary>
+        void ButtonGoToNextLevel();
     }
 }

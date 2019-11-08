@@ -10,7 +10,7 @@ using Proyecto.LibraryModelado.Engine;
 namespace Proyecto.Factory.Unity
 {
     /// <summary>
-    /// Esta clase es la resposable de agregar los componentes Space al juego.
+    /// Esta clase es la resposable de agregar los componentes World al juego.
     /// Implementa la interfaz <see cref="IFactoryUnity"/>.
     /// </summary>
     public class UFactoryWorld : IFactoryUnity

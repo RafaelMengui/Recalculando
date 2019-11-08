@@ -64,7 +64,7 @@ namespace Proyecto.Factory.CSharp
                 }
                 catch(System.Exception)
                 {
-                    throw new System.Exception($"Factory {type.Value} not found.");
+                    throw new System.Exception($"Factory \"{type.Value}\" not found.");
                 }
             }
 

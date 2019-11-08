@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="FactoryLabel.cs" company="Universidad Católica del Uruguay">
+// <copyright file="FactoryButtonGoToPage.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -12,65 +12,55 @@ using Proyecto.LibraryModelado;
 namespace Proyecto.Factory.CSharp
 {
     /// <summary>
-    /// Esta clase es la responsable de crear las etiquetas.
+    /// Esta clase es la responsable de crear objetos Boton para ir a la próxima página.
     /// Utiliza la interfaz IFactoryComponent.
     /// </summary>
-    public class FactoryLabel : IFactoryComponent
+    public class FactoryButtonStartLevel : IFactoryComponent
     {
         /// <summary>
-        /// Nombre de la Etiqueta.
+        /// Nombre del boton.
         /// </summary>
         private string name;
 
         /// <summary>
-        /// Imagen de la Etiqueta.
+        /// Color del boton.
         /// </summary>
-        private string photo;
+        private string color;
 
         /// <summary>
-        /// Ancho de la Etiqueta.
+        /// Imagen del boton.
+        /// </summary>
+        private string image;
+
+        /// <summary>
+        /// Pagina de destino del boton.
+        /// </summary>
+        private string levelName;
+
+        /// <summary>
+        /// Atributos float utilizados para crear el componente.
         /// </summary>
         private float width;
 
         /// <summary>
-        /// Altura de la Etiqueta.
+        /// Altura del boton.
         /// </summary>
         private float height;
 
         /// <summary>
-        /// Posicion en X de la Etiqueta.
+        /// Posicion en X del boton.
         /// </summary>
         private float positionX;
 
         /// <summary>
-        /// Posicion en Y de la Etiqueta.
+        /// Posicion en Y del boton.
         /// </summary>
         private float positionY;
 
         /// <summary>
-        /// Nivel al que pertenece.
+        /// Nivel al que pertenece el boton.
         /// </summary>
         private Space level;
-
-        /// <summary>
-        /// Texto de la etiqueta.
-        /// </summary>
-        private string text;
-
-        /// <summary>
-        /// Tamaño del texto.
-        /// </summary>
-        private int size;
-
-        /// <summary>
-        /// Bool si el texto va en negrita.
-        /// </summary>
-        private bool bold;
-
-        /// <summary>
-        /// Bool si el texto va en cursiva.
-        /// </summary>
-        private bool italic;
 
         /// <summary>
         /// Instancia del mundo.
@@ -79,7 +69,7 @@ namespace Proyecto.Factory.CSharp
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryComponent.
-        /// Tiene la responsabilidad de crear el componente de tipo <see cref="Label"/>.
+        /// Tiene la responsabilidad de crear el componente de tipo <see cref="ButtonGoToPage"/>.
         /// </summary>
         /// <param name="tag">Tag <see cref="Tag"/>.</param>
         /// <returns>Componente <see cref="IComponent"/>.</returns>
@@ -93,11 +83,9 @@ namespace Proyecto.Factory.CSharp
                 this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
                 this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
                 this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
-                this.photo = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-                this.text = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Text"; }).Valor.Replace("_", " ");
-                this.size = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Size"; }).Valor);
-                this.bold = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Bold"; }).Valor);
-                this.italic = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Italic"; }).Valor);
+                this.color = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Color"; }).Valor;
+                this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+                this.levelName = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Level"; }).Valor;
             }
             catch(NullReferenceException)
             {
@@ -112,9 +100,9 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Items label = new Label(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo, this.text, this.size, this.bold, this.italic);
-            this.level.ItemList.Add(label);
-            return label;
+            Items buttonStartLevel = new ButtonStartLevel(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.color, this.levelName);
+            this.level.ItemList.Add(buttonStartLevel);
+            return buttonStartLevel;
         }
     }
 }

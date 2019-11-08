@@ -1,31 +1,34 @@
 //--------------------------------------------------------------------------------
-// <copyright file="UFactoryDraggableItem.cs" company="Universidad Católica del Uruguay">
+// <copyright file="UFactoryMoney.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
 using Proyecto.Common;
-using Proyecto.Item;
+using Proyecto.Item.ScientistLevel;
 using Proyecto.LibraryModelado;
 using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Factory.Unity
 {
     /// <summary>
-    /// Esta clase es la resposable de agregar los componentes DraggableItem al juego.
+    /// Esta clase es la resposable de agregar los componentes Money al juego.
     /// Implementa la interfaz <see cref="IFactoryUnity"/>.
     /// </summary>
-    public class UFactoryDraggableItem : IFactoryUnity
+    public class UFactoryMoney : IFactoryUnity
     {
         /// <summary>
-        /// Objeto DraggableItem que se agregara a Unity.
+        /// Objeto Money que se agregara a Unity.
         /// </summary>
-        private DraggableItem draggableItem;
+        private Money money;
 
+        /// <summary>
+        /// Instancia del motor de unity.
+        /// </summary>
         private EngineUnity engineUnity = Singleton<EngineUnity>.Instance;
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
-        /// Tiene la responsabilidad de agregar el componente de tipo <see cref="DraggableItem"/> a Unity.
+        /// Tiene la responsabilidad de agregar el componente de tipo <see cref="Money"/> a Unity.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>
@@ -33,27 +36,28 @@ namespace Proyecto.Factory.Unity
         {
             try
             {
-                // Castear como DraggableItem.
-                this.draggableItem = component as DraggableItem;
+                // Castear como Money.
+                this.money = component as Money;
             }
             catch (System.Exception)
             {
-                throw new System.Exception("Fail to cast component as DraggableItem");
+                throw new System.Exception("Fail to cast component as Money");
             }
 
             // Crear objeto en unity y obtener el UnityID.
-            this.draggableItem.ID = adapter.CreateImage(this.draggableItem.PositionX, this.draggableItem.PositionY, this.draggableItem.Width, this.draggableItem.Height);
+            this.money.ID = adapter.CreateImage(this.money.PositionX, this.money.PositionY, this.money.Width, this.money.Height);
 
+            // Se asigna el metodo OnDrop.
             adapter.OnDrop = this.engineUnity.OnDrop;
 
             // Se define el objeto como arrastrable.
-            adapter.MakeDraggable(this.draggableItem.ID, this.draggableItem.Draggable);
+            adapter.MakeDraggable(this.money.ID, this.money.Draggable);
 
             // Se centra el objeto en su respectivo container.
-            adapter.Center(this.draggableItem.ID, this.draggableItem.Container.ID);
+            adapter.Center(this.money.ID, this.money.Container.ID);
 
             // Asignarle su imagen al item.
-            adapter.SetImage(this.draggableItem.ID, this.draggableItem.Image);
+            adapter.SetImage(this.money.ID, this.money.Image);
         }
     }
 }
