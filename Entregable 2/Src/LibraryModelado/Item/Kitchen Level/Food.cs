@@ -17,7 +17,7 @@ namespace Proyecto.Item.KitchenLevel
         /// <summary>
         /// Accion que se ejecutara al soltar un alimento.
         /// </summary>
-        private Action<string, float, float> onDrop;
+        private Action<string, float, float> onDropFood;
 
         /// <summary>
         /// Initializes a new instance of Food.
@@ -36,7 +36,7 @@ namespace Proyecto.Item.KitchenLevel
         {
             this.Draggable = draggable;
             this.Container = container;
-            this.OnDrop = this.onDrop;
+            this.OnDropFood = this.onDropFood;
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Proyecto.Item.KitchenLevel
         /// Gets or sets de la accion a realizar al soltar el alimento.
         /// </summary>
         /// <value>Action.</value>
-        public Action<string, float, float> OnDrop { get; set; }
+        public Action<string, float, float> OnDropFood { get; set; }
 
         /// <summary>
         /// Accion realizada al soltar el alimento.
