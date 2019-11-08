@@ -44,7 +44,7 @@ namespace Proyecto.Factory.Unity
             adapter.SetFont(this.feedback.ID, this.feedback.Bold, this.feedback.Italic, this.feedback.Size);   
 
             // Se asigna el texto inicial del feedback.        
-            adapter.SetText(this.feedback.ID, this.feedback.Text);
+            adapter.SetText(this.feedback.ID, this.feedback.Text, true);
         }
     }
 }

@@ -158,5 +158,10 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.LevelEngines[level].StartLevel();
         }
+
+        public void CenterInContainer(IDraggable item)
+        {
+            this.engineUnity.CenterInUnity(item);
+        }
     }
 }

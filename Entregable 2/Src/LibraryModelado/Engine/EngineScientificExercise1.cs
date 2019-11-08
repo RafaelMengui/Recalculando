@@ -82,6 +82,13 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[3];
             this.OperationCounter = 0;
+            foreach (Operations operation in this.Operations)
+            {
+                foreach (Items container in operation.Components)
+                {
+                    
+                }
+            }
         }
 
         /// <summary>

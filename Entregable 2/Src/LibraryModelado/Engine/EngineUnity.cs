@@ -128,7 +128,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <param name="feedback"></param>
         public void UpdateFeedback(Feedback feedback)
         {
-            this.Adapter.SetText(feedback.ID, feedback.Text);
+            this.Adapter.SetText(feedback.ID, feedback.Text, true);
         }
 
         /// <summary>
@@ -139,6 +139,11 @@ namespace Proyecto.LibraryModelado.Engine
         public void UpdateItemImage(Items items, string image)
         {
             this.Adapter.SetImage(items.ID, image);
+        }
+
+        public void CenterInUnity(IDraggable item)
+        {
+            this.Adapter.Center(item.ID, item.Container.ID);
         }
     }
 }
