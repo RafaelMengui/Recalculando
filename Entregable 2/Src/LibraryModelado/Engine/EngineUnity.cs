@@ -65,7 +65,6 @@ namespace Proyecto.LibraryModelado.Engine
                 // Mueve el elemento arrastrado al destino si se suelta arriba del destino.
                 // Se actualiza el container del item.
                 draggableItem.Container.SavedItems.Remove(draggableItem as Items);
-                draggableItem.Container = destination;
                 destination.SavedItems.Add(draggableItem as Items);
                 this.Adapter.Center(draggableItem.ID, destination.ID);
             }

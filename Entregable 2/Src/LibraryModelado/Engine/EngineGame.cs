@@ -83,7 +83,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <param name="componentList">Lista de componentes creados.</param>
         public void AsociateLevelsWithEngines(List<IComponent> componentList)
         {
-            foreach (IComponent compoznent in componentList)
+            foreach (IComponent component in componentList)
             {
                 if (component is Space)
                 {
