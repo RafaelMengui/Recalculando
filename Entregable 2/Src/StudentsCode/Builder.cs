@@ -58,10 +58,10 @@ namespace Proyecto.StudentsCode
         public void Build(IMainViewAdapter providedAdapter)
         {
             this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            this.adapter.AfterBuild += this.Setup;
+            this.adapter.AfterBuild = this.Setup;
             this.engineUnity.Adapter = this.adapter;
 
-            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\ElPosta.xml";
+            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\FreeAspect.xml";
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
             List<IComponent> componentList = new List<IComponent>();
 
@@ -72,6 +72,7 @@ namespace Proyecto.StudentsCode
             }
 
             this.engineGame.AsociateLevelsWithEngines(componentList);
+
             foreach (IComponent component in componentList)
             {
                 UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);

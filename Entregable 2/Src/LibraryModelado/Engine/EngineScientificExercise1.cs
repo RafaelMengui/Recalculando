@@ -185,7 +185,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public IComponent ButtonGoToMain()
         {
-            Items goToMain = new ButtonGoToPage("Scientific1ToMain", this.Level, -890, 345, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
+            Items goToMain = new ButtonGoToPage("Scientific1ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
             this.Level.ItemList.Add(goToMain);
             return goToMain;
         }
@@ -195,7 +195,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void ButtonGoToNextLevel()
         {
-            Items goToNext = new ButtonGoToPage("Scientific1ToScientific2", this.Level, 0, 0, 200, 150, "huevo.png", "#FCFCFC", "ScientificExercise2");
+            Items goToNext = new ButtonStartLevel("Scientific1ToScientific2", this.Level, 0, 0, 500, 300, "siguienteNivel.png", "#FCFCFC", "ScientificExercise2");
             this.Level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
         }

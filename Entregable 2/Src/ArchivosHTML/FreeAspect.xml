@@ -1,0 +1,98 @@
+<World Name="world1">
+
+	<Space Name="MainPage" Background="page1.png">
+
+		<ButtonStartLevel Name="gotoscientist1" PositionX="-640" PositionY="-250" Width="560" Height="350" Photo="Vacio.png" Color="#FCFCFC" Level="ScientificExercise1">
+		<ButtonStartLevel Name="gotoscientist2" PositionX="-250" PositionY="-390" Width="250" Height="150" Photo="Vacio.png" Color="#FCFCFC" Level="ScientificExercise1">
+		<ButtonStartLevel Name="gotoscientist5" PositionX="-750" PositionY="-250" Width="240" Height="300" Photo="Cientifica.png" Color="#FCFCFC" Level="ScientificExercise1">
+
+	</Space>
+
+	<Space Name="ScientificExercise1" Background="page4.png">
+
+		<Image Name="Cientifica" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Cientifica.png">
+		<Image Name="nube2" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+		<Image Name="linea" PositionX="-220" PositionY="-250" Width="1400" Height="12" Photo="resta.png">
+		
+
+		<MoneyContainer Name="moneyContainer11" PositionX="-390" PositionY="400" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainer21" PositionX="-10" PositionY="400" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="resultContainer1" PositionX="370" PositionY="400" Width="180" Height="105" Photo="recuadro2.png" Value="5">
+		<Image Name="resta1" PositionX="-200" PositionY="400" Width="110" Height="30" Photo="resta.png">
+		<Image Name="igual1" PositionX="180" PositionY="400" Width="110" Height="70" Photo="igual.png">
+		<Money Name="1bill10" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill10.png" Draggable="false" Container="moneyContainer11" Value="10">
+		<Money Name="1coin5" PositionX="0" PositionY="0" Width="100" Height="100" Photo="coin5.png" Draggable="false" Container="moneyContainer21" Value="5">
+
+
+		<MoneyContainer Name="moneyContainer12" PositionX="-770" PositionY="150" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainer22" PositionX="-390" PositionY="150" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainer32" PositionX="-10" PositionY="150" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="resultContainer2" PositionX="370" PositionY="150" Width="180" Height="105" Photo="recuadro2.png" Value="20">
+		<Image Name="resta2" PositionX="-200" PositionY="150" Width="110" Height="30" Photo="resta.png">
+		<Image Name="resta3" PositionX="-580" PositionY="150" Width="110" Height="30" Photo="resta.png">
+		<Image Name="igual1" PositionX="180" PositionY="150" Width="110" Height="70" Photo="igual.png">
+		<Money Name="1bill50" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill50.png" Draggable="false" Container="moneyContainer12" Value="50">
+		<Money Name="1bill20" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill20.png" Draggable="false" Container="moneyContainer22" Value="20">
+		<Money Name="2bill10" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill10.png" Draggable="false" Container="moneyContainer32" Value="10">
+
+
+		<MoneyContainer Name="moneyContainer13" PositionX="-770" PositionY="-100" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainer23" PositionX="-390" PositionY="-100" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainer33" PositionX="-10" PositionY="-100" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="resultContainer3" PositionX="370" PositionY="-100" Width="180" Height="105" Photo="recuadro2.png" Value="500">
+		<Image Name="resta4" PositionX="-200" PositionY="-100" Width="110" Height="30" Photo="resta.png">
+		<Image Name="suma1" PositionX="-580" PositionY="-100" Width="110" Height="110" Photo="suma.png">
+		<Image Name="igual1" PositionX="180" PositionY="-100" Width="110" Height="70" Photo="igual.png">
+		<Money Name="1bill200" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill200.png" Draggable="false" Container="moneyContainer13" Value="200">
+		<Money Name="1bill500" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill500.png" Draggable="false" Container="moneyContainer23" Value="500">
+		<Money Name="2bill200" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill200.png" Draggable="false" Container="moneyContainer33" Value="200">
+
+
+		<MoneyContainer Name="moneyContainerDrag1" PositionX="-700" PositionY="-400" Width="180" Height="105" Photo="recuadro2.png" Value="0">
+		<MoneyContainer Name="moneyContainerDrag2" PositionX="-450" PositionY="-400" Width="180" Height="105" Photo="recuadro2.png" Value="0">
+		<MoneyContainer Name="moneyContainerDrag3" PositionX="-200" PositionY="-400" Width="180" Height="105" Photo="recuadro2.png" Value="0">
+		<MoneyContainer Name="moneyContainerDrag4" PositionX="50" PositionY="-400" Width="180" Height="105" Photo="recuadro2.png" Value="0">
+		<MoneyContainer Name="moneyContainerDrag5" PositionX="300" PositionY="-400" Width="180" Height="105" Photo="recuadro2.png" Value="0">
+		<Money Name="3bill10" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill10.png" Draggable="true" Container="moneyContainerDrag1" Value="10">
+		<Money Name="4coin5" PositionX="0" PositionY="0" Width="100" Height="100" Photo="coin5.png" Draggable="true" Container="moneyContainerDrag2" Value="5">
+		<Money Name="3bill200" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill200.png" Draggable="true" Container="moneyContainerDrag3" Value="200">
+		<Money Name="2bil500" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill500.png" Draggable="true" Container="moneyContainerDrag4" Value="500">
+		<Money Name="2bill20" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill20.png" Draggable="true" Container="moneyContainerDrag5" Value="20">
+
+		<Operations Components="moneyContainer11,moneyContainer21,resultContainer1">
+		<Operations Components="moneyContainer12,moneyContainer22,moneyContainer32,resultContainer2">
+		<Operations Components="moneyContainer13,moneyContainer23,moneyContainer33,resultContainer3">
+
+		<Feedback Name="feedback1" PositionX="700" PositionY="50" Width="300" Height="400" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="30">
+
+	</Space>
+
+	<Space Name="ScientificExercise2" Background="page4.png">
+
+		<Image Name="cientifica2" PositionX="770" PositionY="-180" Width="350" Height="480" Photo="Cientifica.png">
+		<Image Name="nube2" PositionX="750" PositionY="210" Width="400" Height="400" Photo="nube2.png">
+
+
+		<Image Name="recuadrotexto1" PositionX="-200" PositionY="150" Width="1300" Height="150" Photo="recuadroTexto1.png">
+		<Label Name="etiqueta1" PositionX="-200" PositionY="100" Width="1100" Height="150" Photo="Vacio.png" Text="Tengo_15_manzanas._Si_le_doy_4_a_mi_hermano,_¿Cuántas_me_quedan?" Bold="true" Italic="false" Size="35">
+
+		<ButtonTrueFalse Name="opcion11" PositionX="-700" PositionY="-200" Width="200" Height="200" Photo="manzana9.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion21" PositionX="-400" PositionY="-200" Width="200" Height="200" Photo="manzana13.png" Color="#FCFCFC" Value="true">
+		<ButtonTrueFalse Name="opcion31" PositionX="-100" PositionY="-200" Width="200" Height="200" Photo="manzana11.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion41" PositionX="200" PositionY="-200" Width="200" Height="200" Photo="manzana22.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion51" PositionX="500" PositionY="-200" Width="200" Height="200" Photo="manzana19.png" Color="#FCFCFC" Value="false">
+
+		<Operations Components="opcion11,opcion21,opcion31,opcion41,opcion51">
+
+		<Feedback Name="feedback2" PositionX="690" PositionY="130" Width="100" Height="330" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="30">
+	
+	</Space>
+
+	<Space Name="ScientificExercise3" Background="page4.png">
+
+		<Image Name="mesa" PositionX="0" PositionY="-60" Width="300" Height="300" Photo="table.png">
+		<DragContainer Name="bowl" PositionX="0" PositionY="120" Width="150" Height="100" Photo="bowl.png">
+
+	</Space>
+	
+</World>

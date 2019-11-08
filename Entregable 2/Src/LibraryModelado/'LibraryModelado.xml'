@@ -253,13 +253,6 @@
             </summary>
             <value>Level.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.OperationCounter">
-            <summary>
-            Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
-            Existen dos paginas en el nivel.
-            </summary>
-            <value>Int.</value>
-        </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ResultsOfLevel">
             <summary>
             Gets or sets de los resultados del nivel.
@@ -398,6 +391,110 @@
             se debe crear el boton que mostrara la pagina principal al ejecutarlo.
             </summary>
         </member>
+        <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise4">
+            <summary>
+            Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.level">
+            <summary>
+            Variable Level utilizada para instanciar un nivel asignable.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.engineGame">
+            <summary>
+            Instancia unica del motor general.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.levelFeedback">
+            <summary>
+            Objeto de tipo <see cref="T:Proyecto.Item.Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.#ctor">
+            <summary>
+            Constructor del motor.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.Operations">
+            <summary>
+            Gets de lista de operaciones del nivel
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.Level">
+            <summary>
+            Gets or sets del nivel asociado a este Motor.
+            </summary>
+            <value>Level.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.OperationCounter">
+            <summary>
+            Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+            Existen dos paginas en el nivel.
+            </summary>
+            <value>Int.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.ResultsOfLevel">
+            <summary>
+            Gets or sets de los resultados del nivel.
+            Por predeterminado los dos parametros son False.
+            true = Completo una operacion correctamente.
+            false = No contesto bien la pregunta.
+            </summary>
+            <value>Array de Bools.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.LevelFeedback">
+            <summary>
+            Gets or sets del Feedback asociado al motor.
+            </summary>
+            <value>Feedback.</value>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.StartLevel">
+            <summary>
+            Metodo utilizado para iniciar o reiniciar el motor del nivel.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.SetFeedback(Proyecto.Item.Feedback)">
+            <summary>
+            Metodo responsable de asignarle al motor, su respectivo objeto feedback.
+            </summary>
+            <param name="feedback">Feedback.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.VerifyWinLevel">
+            <summary>
+            Verifica que se hayan completado las dos preguntas del nivel.
+            </summary>
+            <returns>Bool.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.VerifyExercise(Proyecto.Item.ScientistLevel.ButtonTrueFalse)">
+            <summary>
+            Metodo que se utiliza para verificar que se responda la pregunta de forma correcta.
+            Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
+            level counter suma 1.
+            </summary>
+            <param name="button">Boton seleccionado.</param>
+            <returns>Bool si el boton es correcto.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.GoodFeedback">
+            <summary>
+            Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.BadFeedback">
+            <summary>
+            Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.ButtonGoToMain">
+            <summary>
+            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.ButtonGoToNextLevel">
+            <summary>
+            Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+            </summary>
+        </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineUnity">
             <summary>
             Motor resposable de conocer y asignar los metodos relacionados a Unity.
@@ -476,6 +573,12 @@
             <summary>
             Interfaz para los motores de los niveles.
             </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.ILevelEngine.Operations">
+            <summary>
+            Gets de la lista de operaciones propias de cada nivel.
+            </summary>
+            <value>Lista de operaciones.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.ILevelEngine.Level">
             <summary>
