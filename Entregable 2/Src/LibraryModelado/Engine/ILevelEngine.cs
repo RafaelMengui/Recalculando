@@ -9,6 +9,12 @@ namespace Proyecto.LibraryModelado.Engine
     public interface ILevelEngine
     {
         /// <summary>
+        /// Gets de la lista de operaciones propias de cada nivel.
+        /// </summary>
+        /// <value>Lista de operaciones.</value>
+        List<Operations> Operations { get; }
+
+        /// <summary>
         /// Gets or sets Nivel asociado al motor.
         /// </summary>
         /// <value>Space.</value>

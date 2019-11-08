@@ -127,6 +127,12 @@
             Constructor del motor.
             </summary>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Operations">
+            <summary>
+            Gets de lista de operaciones del nivel.
+            </summary>
+            <value>Lista de operacions.</value>
+        </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.LevelFeedback">
             <summary>
             Gets or sets del Feedback asociado al motor.
@@ -155,16 +161,16 @@
             </summary>
             <value>Array de Bools.</value>
         </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.StartLevel">
+            <summary>
+            Metodo utilizado para iniciar o reiniciar el motor del juego.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.SetFeedback(Proyecto.Item.Feedback)">
             <summary>
             Metodo responsable de asignarle al motor, su respectivo objeto feedback.
             </summary>
             <param name="feedback">Feedback.</param>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.StartLevel">
-            <summary>
-            Metodo utilizado para iniciar o reiniciar el motor del juego.
-            </summary>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.VerifyOperation(Proyecto.Item.ScientistLevel.MoneyContainer,Proyecto.Item.ScientistLevel.Money)">
             <summary>
@@ -203,16 +209,12 @@
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ButtonGoToMain">
             <summary>
-            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, en donde se recorre el diccionario
-            de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
-            se debe crear el boton que mostrara la pagina principal al ejecutarlo.
+            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
             </summary>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ButtonGoToNextLevel">
             <summary>
-            Metodo en donde se  recorre el diccionario de motores asociados a niveles (EngineGame.LevelEngines)
-            para reconocer en que nivel se debe crear el boton que mostrara la siguiente pagina al ejecutarlo.
-            Este boton aparecera en pantalla al terminar un nivel.
+            Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise2">
@@ -230,18 +232,28 @@
             Instancia unica del motor general.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.levelFeedback">
+            <summary>
+            Objeto de tipo <see cref="T:Proyecto.Item.Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.#ctor">
             <summary>
-            Constructor.
+            Constructor del motor.
             </summary>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.Feedback">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.Operations">
             <summary>
-            Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+            Gets de lista de operaciones del nivel
             </summary>
-            <value>Etiqueta <see cref="T:Proyecto.Item.Label"/>.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.LevelCounter">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.Level">
+            <summary>
+            Gets or sets del nivel asociado a este Motor.
+            </summary>
+            <value>Level.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.OperationCounter">
             <summary>
             Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
             Existen dos paginas en el nivel.
@@ -257,13 +269,30 @@
             </summary>
             <value>Array de Bools.</value>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.LevelFeedback">
+            <summary>
+            Gets or sets del Feedback asociado al motor.
+            </summary>
+            <value>Feedback.</value>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.StartLevel">
+            <summary>
+            Metodo utilizado para iniciar o reiniciar el motor del nivel.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.SetFeedback(Proyecto.Item.Feedback)">
+            <summary>
+            Metodo responsable de asignarle al motor, su respectivo objeto feedback.
+            </summary>
+            <param name="feedback">Feedback.</param>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.VerifyWinLevel">
             <summary>
             Verifica que se hayan completado las dos preguntas del nivel.
             </summary>
             <returns>Bool.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.VerifyQuestion(Proyecto.Item.ScientistLevel.ButtonTrueFalse)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.VerifyExercise(Proyecto.Item.ScientistLevel.ButtonTrueFalse)">
             <summary>
             Metodo que se utiliza para verificar que se responda la pregunta de forma correcta.
             Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
@@ -271,17 +300,6 @@
             </summary>
             <param name="button">Boton seleccionado.</param>
             <returns>Bool si el boton es correcto.</returns>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.StartLevel">
-            <summary>
-            Metodo utilizado para iniciar o reiniciar el motor del nivel.
-            </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.CreateFeedback">
-            <summary>
-            Metodo responsable de crear la etiqueta de texto que servira de feedback a las acciones realizadas.
-            </summary>
-            <returns>Etiqueta <see cref="T:Proyecto.Item.Label"/>.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.GoodFeedback">
             <summary>
@@ -295,9 +313,12 @@
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ButtonGoToMain">
             <summary>
-            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, en donde se recorre el diccionario
-            de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
-            se debe crear el boton que mostrara la pagina principal al ejecutarlo.
+            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ButtonGoToNextLevel">
+            <summary>
+            Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise3">
@@ -359,12 +380,6 @@
             <summary>
             Metodo utilizado para iniciar o reiniciar el motor del nivel.
             </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.CreateFeedback">
-            <summary>
-            Metodo responsable de crear la etiqueta de texto que servira de feedback a las acciones realizadas.
-            </summary>
-            <returns>Etiqueta <see cref="T:Proyecto.Item.Label"/>.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.GoodFeedback">
             <summary>
@@ -516,6 +531,13 @@
             para cuando debamos ampliar el juego.
             </summary>
         </member>
+        <member name="P:Proyecto.LibraryModelado.IButton.Pushable">
+            <summary>
+            Gets or sets indicating whether el boton es presionable.
+            Por defecto es true.
+            </summary>
+            <value>Bool.</value>
+        </member>
         <member name="M:Proyecto.LibraryModelado.IButton.Click(System.String)">
             <summary>
             Acciones y eventos realizados al hacer click en un boton.
@@ -653,6 +675,40 @@
             Gets or sets la imagen del item.
             </summary>
             <value>String path to image.</value>
+        </member>
+        <member name="T:Proyecto.LibraryModelado.Operations">
+            <summary>
+            Las objetos Operations son utilizados como herramienta en donde en un lista
+            se almacenan los objetos que esten presentes en una operacion de un juego.
+            Por ejemplo: En el nivel ScientificExercise1 los Operations se utilizan para
+            almacenar todos los containers utilizados en una sola cuenta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Operations.#ctor(Proyecto.LibraryModelado.Space,System.Collections.Generic.List{Proyecto.LibraryModelado.Items})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="level">Nivel al que pertenece la operacion.</param>
+            <param name="components">Lista de componentes.</param>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Operations.Level">
+            <summary>
+            Gets or sets del nivel a que pertenece la operacion.
+            </summary>
+            <value>Space.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Operations.Components">
+            <summary>
+            Gets or sets de la lista de componentes.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Operations.ID">
+            <summary>
+            Gets or sets del ID del objeto, siempre tendra valor null debido a que la Operation no sera un
+            objeto unity, sino que solamente una herramienta.
+            </summary>
+            <value></value>
         </member>
         <member name="T:Proyecto.LibraryModelado.Level">
             <summary>
@@ -1298,6 +1354,21 @@
             Texto de la etiqueta.
             </summary>
         </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFeedback.size">
+            <summary>
+            Tamaño del texto.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFeedback.bold">
+            <summary>
+            Bool si el texto va en negrita.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFeedback.italic">
+            <summary>
+            Bool si el texto va en cursiva.
+            </summary>
+        </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryFeedback.world">
             <summary>
             Instancia del mundo.
@@ -1460,6 +1531,21 @@
             Texto de la etiqueta.
             </summary>
         </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.size">
+            <summary>
+            Tamaño del texto.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.bold">
+            <summary>
+            Bool si el texto va en negrita.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryLabel.italic">
+            <summary>
+            Bool si el texto va en cursiva.
+            </summary>
+        </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryLabel.world">
             <summary>
             Instancia del mundo.
@@ -1597,6 +1683,35 @@
             <summary>
             Sobrescribe el metodo abstracto de IFactoryComponent.
             Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.ScientistLevel.MoneyContainer"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryOperations">
+            <summary>
+            Esta clase es la responsable de crear las Operationsnes.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryOperations.level">
+            <summary>
+            Nivel al que pertenece.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryOperations.componentList">
+            <summary>
+            Lista en donde se guardaran los componentes asociados a la operacion.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryOperations.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryOperations.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.LibraryModelado.Operations"/>.
             </summary>
             <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
@@ -1957,17 +2072,17 @@
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
         </member>
-        <member name="T:Proyecto.Factory.Unity.UFactoryOperation">
+        <member name="T:Proyecto.Factory.Unity.UFactoryOperations">
             <summary>
             Esta clase es la resposable de agregar los componentes Operation al juego.
             Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
             </summary>
         </member>
-        <member name="M:Proyecto.Factory.Unity.UFactoryOperation.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+        <member name="M:Proyecto.Factory.Unity.UFactoryOperations.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
             Sobrescribe el metodo abstracto de IFactoryUnity.
-            Debido a que no crearemos un objeto World en unity, esta clase no tiene ninguna responsabilidad,
-            mas que asignarle al motor de unity el adaptador de tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
+            Tiene la responsabilidad de asignarle la operacion a su respectivo motor de su nivel.
+            No se creara el objeto en unity, debido a que las operaciones no son objetos, sino que una herramienta.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
@@ -2011,6 +2126,13 @@
             <param name="image">Imagen del boton.</param>
             <param name="color">Color del boton en Hexadecimal.</param>
         </member>
+        <member name="P:Proyecto.Item.Button.Pushable">
+            <summary>
+            Gets or sets indicating whether el boton es presionable.
+            Por defecto es true.
+            </summary>
+            <value>Bool.</value>
+        </member>
         <member name="P:Proyecto.Item.Button.Color">
             <summary>
             Gets or sets del Color del Boton.
@@ -2053,6 +2175,13 @@
             <param name="image">Imagen del boton.</param>
             <param name="color">Color del boton en Hexadecimal.</param>
             <param name="audioFile">Audio a reproducir por el boton.</param>
+        </member>
+        <member name="P:Proyecto.Item.ButtonAudio.Pushable">
+            <summary>
+            Gets or sets indicating whether el boton es presionable.
+            Por defecto es true.
+            </summary>
+            <value>Bool.</value>
         </member>
         <member name="P:Proyecto.Item.ButtonAudio.Color">
             <summary>
@@ -2103,6 +2232,13 @@
             <param name="color">Color del boton en Hexadecimal.</param>
             <param name="pageName">Pagina para mostrar.</param>
         </member>
+        <member name="P:Proyecto.Item.ButtonGoToPage.Pushable">
+            <summary>
+            Gets or sets indicating whether el boton es presionable.
+            Por defecto es true.
+            </summary>
+            <value>Bool.</value>
+        </member>
         <member name="P:Proyecto.Item.ButtonGoToPage.Color">
             <summary>
             Gets or sets del Color del Boton.
@@ -2152,6 +2288,13 @@
             <param name="image">Imagen del boton.</param>
             <param name="color">Color del boton en Hexadecimal.</param>
             <param name="levelName">Pagina para mostrar.</param>
+        </member>
+        <member name="P:Proyecto.Item.ButtonStartLevel.Pushable">
+            <summary>
+            Gets or sets indicating whether el boton es presionable.
+            Por defecto es true.
+            </summary>
+            <value>Bool.</value>
         </member>
         <member name="P:Proyecto.Item.ButtonStartLevel.Color">
             <summary>
@@ -2456,7 +2599,7 @@
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
-        <member name="M:Proyecto.Item.Label.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.String)">
+        <member name="M:Proyecto.Item.Label.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.String,System.Int32,System.Boolean,System.Boolean)">
             <summary>
             Initializes a new instance of Label.
             </summary>
@@ -2468,12 +2611,33 @@
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del texto.</param>
             <param name="text">Texto de la etiqueta.</param>
+            <param name="size">Tamaño del texto.</param>
+            <param name="bold">Bool si el texto es en bold.</param>
+            <param name="italic">Bool si el texto es en italic.</param>
         </member>
         <member name="P:Proyecto.Item.Label.Text">
             <summary>
             Gets or sets del texto.
             </summary>
             <value></value>
+        </member>
+        <member name="P:Proyecto.Item.Label.Size">
+            <summary>
+            Gets or sets del Tamaño del texto.
+            </summary>
+            <value>Int.</value>
+        </member>
+        <member name="P:Proyecto.Item.Label.Bold">
+            <summary>
+            Gets or sets indicating whether el texto va en bold.
+            </summary>
+            <value>Bool.</value>
+        </member>
+        <member name="P:Proyecto.Item.Label.Italic">
+            <summary>
+            Gets or sets indicating whether el texto va en italics.
+            </summary>
+            <value>Bool.</value>
         </member>
         <member name="T:Proyecto.Item.ScientistLevel.ButtonTrueFalse">
             <summary>
@@ -2506,6 +2670,13 @@
             Gets or sets del Color del Boton.
             </summary>
             <value>string codigo en hexadecimal.</value>
+        </member>
+        <member name="P:Proyecto.Item.ScientistLevel.ButtonTrueFalse.Pushable">
+            <summary>
+            Gets or sets indicating whether el boton es presionable.
+            Por defecto es true.
+            </summary>
+            <value>Bool.</value>
         </member>
         <member name="P:Proyecto.Item.ScientistLevel.ButtonTrueFalse.Value">
             <summary>

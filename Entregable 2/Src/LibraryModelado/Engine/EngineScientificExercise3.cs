@@ -36,6 +36,7 @@ namespace Proyecto.LibraryModelado.Engine
             this.FeedbackList = new List<Feedback>();
         }
 
+        public List<Operations> Operations { get; }
         public List<Feedback> FeedbackList { get; }
 
         public Space Level { get; set; }
@@ -101,26 +102,6 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
-            this.Feedback = this.CreateFeedback();
-        }
-
-        /// <summary>
-        /// Metodo responsable de crear la etiqueta de texto que servira de feedback a las acciones realizadas.
-        /// </summary>
-        /// <returns>Etiqueta <see cref="Label"/>.</returns>
-        public Label CreateFeedback()
-        {
-            foreach (var space in this.engineGame.LevelEngines)
-            {
-                if (space.Value is EngineScientificExercise3)
-                {
-                    this.level = space.Key;
-                }
-            }
-
-            Label feedback = new Label("Feedback3", this.level, 600, 240, 100, 50, "Vacio.png", string.Empty);
-            this.level.ItemList.Add(feedback);
-            return feedback;
         }
 
         /// <summary>
@@ -178,6 +159,6 @@ namespace Proyecto.LibraryModelado.Engine
             this.engineGame.CreateInUnity(goToNext);
         }
         public void SetFeedback(Feedback feedback)
-        {}
+        { }
     }
 }

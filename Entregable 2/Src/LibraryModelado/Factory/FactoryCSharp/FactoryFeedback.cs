@@ -8,7 +8,6 @@ using System.Linq;
 using Proyecto.Item;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
-using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Factory.CSharp
 {
@@ -58,8 +57,19 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private string text;
 
+        /// <summary>
+        /// Tamaño del texto.
+        /// </summary>
         private int size;
+
+        /// <summary>
+        /// Bool si el texto va en negrita.
+        /// </summary>
         private bool bold;
+
+        /// <summary>
+        /// Bool si el texto va en cursiva.
+        /// </summary>
         private bool italic;
 
         /// <summary>
@@ -84,7 +94,7 @@ namespace Proyecto.Factory.CSharp
                 this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
                 this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
                 this.photo = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-                this.text = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Text"; }).Valor;
+                this.text = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Text"; }).Valor.Replace("_", " ");
                 this.size = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Size"; }).Valor);
                 this.bold = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Bold"; }).Valor);
                 this.italic = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Italic"; }).Valor);

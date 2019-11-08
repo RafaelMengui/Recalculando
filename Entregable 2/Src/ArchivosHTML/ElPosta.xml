@@ -59,27 +59,33 @@
 		<Money Name="2bil500" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill500.png" Draggable="true" Container="moneyContainerDrag4" Value="500">
 		<Money Name="2bill20" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill20.png" Draggable="true" Container="moneyContainerDrag5" Value="20">
 
+		<Operations Components="moneyContainer11,moneyContainer21,resultContainer1">
+		<Operations Components="moneyContainer12,moneyContainer22,moneyContainer32,resultContainer2">
+		<Operations Components="moneyContainer13,moneyContainer23,moneyContainer33,resultContainer3">
 
 		<Feedback Name="feedback1" PositionX="690" PositionY="130" Width="100" Height="330" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="30">
-
 
 	</Space>
 
 	<Space Name="ScientificExercise2" Background="page4.png">
 
-		<Image Name="mesa" PositionX="0" PositionY="-60" Width="300" Height="300" Photo="table.png">
-		<DragContainer Name="bowl" PositionX="0" PositionY="120" Width="150" Height="100" Photo="bowl.png">
-		
-		<DragContainer Name="bananaContainer" PositionX="-500" PositionY="-60" Width="115" Height="115" Photo="recuadro.png">
-		<DragContainer Name="chocolateContainer" PositionX="-400" PositionY="-60" Width="115" Height="115" Photo="recuadro.png">
-		<DragContainer Name="polloContainer" PositionX="-500" PositionY="-175" Width="115" Height="115" Photo="recuadro.png">
-		<DragContainer Name="carneContainer" PositionX="-400" PositionY="-175" Width="115" Height="115" Photo="recuadro.png">
+		<Image Name="recuadrotexto1" PositionX="0" PositionY="250" Width="500" Height="150" Photo="recuadroTexto1.png">
+		<Label Name="etiqueta1" PositionX="0" PositionY="240" Width="900" Height="150" Photo="Vacio.png" Text="Prueba_de_espacios" Bold="true" Italic="false" Size="40">
+		<Image Name="recuadrotexto2" PositionX="0" PositionY="-250" Width="500" Height="150" Photo="recuadroTexto1.png">
+		<Label Name="etiqueta2" PositionX="0" PositionY="-240" Width="900" Height="150" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="40">
 
-		<DraggableItem Name="banana" PositionX="0" PositionY="0" Width="85" Height="85" Photo="banana.png" Draggable="true" Container="bananaContainer">
-		<DraggableItem Name="chocolate" PositionX="0" PositionY="0" Width="85" Height="85" Photo="chocolate.png" Draggable="true" Container="chocolateContainer">
-		<DraggableItem Name="pollo" PositionX="0" PositionY="0" Width="85" Height="85" Photo="pollo.png" Draggable="true" Container="polloContainer">
-		<DraggableItem Name="carne" PositionX="0" PositionY="0" Width="85" Height="85" Photo="carne.png" Draggable="true" Container="carneContainer">
-		<DragContainer Name="container" PositionX="0" PositionY="-150" Width="115" Height="115" Photo="recuadro.png">
+		<ButtonTrueFalse Name="opcion11" PositionX="0" PositionY="0" Width="100" Height="100" Photo="huevo.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion21" PositionX="150" PositionY="0" Width="100" Height="100" Photo="huevo.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion31" PositionX="-150" PositionY="0" Width="100" Height="100" Photo="huevo.png" Color="#FCFCFC" Value="true">
+
+		<ButtonTrueFalse Name="opcion12" PositionX="0" PositionY="-300" Width="100" Height="100" Photo="huevo.png" Color="#FCFCFC" Value="true">
+		<ButtonTrueFalse Name="opcion22" PositionX="150" PositionY="-300" Width="100" Height="100" Photo="huevo.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion32" PositionX="-150" PositionY="-300" Width="100" Height="100" Photo="huevo.png" Color="#FCFCFC" Value="false">
+
+		<Operations Components="opcion11,opcion21,opcion31">
+		<Operations Components="opcion12,opcion22,opcion32">
+
+		<Feedback Name="feedback2" PositionX="690" PositionY="130" Width="100" Height="330" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="30">
 	
 	</Space>
 

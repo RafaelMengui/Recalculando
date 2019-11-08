@@ -38,7 +38,15 @@ namespace Proyecto.Item
             this.Color = color;
             this.PageName = pageName;
             this.Event = this.evento;
+            this.Pushable = true;
         }
+
+        /// <summary>
+        /// Gets or sets indicating whether el boton es presionable.
+        /// Por defecto es true.
+        /// </summary>
+        /// <value>Bool.</value>
+        public bool Pushable { get; set; }
 
         /// <summary>
         /// Gets or sets del Color del Boton.
@@ -65,9 +73,12 @@ namespace Proyecto.Item
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
-            Space page = this.Level.World.SpaceList.Find(delegate(Space level) { return level.Name == this.PageName; });
-            Singleton<EngineGame>.Instance.CurrentPage = page;
-            this.Event(page.ID);
+            if (this.Pushable)
+            {
+                Space page = this.Level.World.SpaceList.Find(delegate (Space level) { return level.Name == this.PageName; });
+                Singleton<EngineGame>.Instance.CurrentPage = page;
+                this.Event(page.ID);
+            }
         }
     }
 }

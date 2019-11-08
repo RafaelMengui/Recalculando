@@ -59,18 +59,7 @@ namespace Proyecto.LibraryModelado.test
                 {
                     this.buttonStart = comp as ButtonStartLevel;
                 }
-                this.engineGame.SetOperations(comp);
-                this.engineGame.SetFeedbacks(comp);
             }
-            // foreach (var engine in this.engineGame.LevelEngines)
-            // {
-            //     if (engine.Value is EngineScientificExercise1)
-            //     {
-            //         (engine.Value as EngineScientificExercise1).VerifyExercise(this.moneyContainer, this.money);
-            //     }
-            // }
-            this.buttonStart.Click("");
-            
         }
     }
 }

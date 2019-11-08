@@ -31,7 +31,7 @@ namespace Proyecto.Factory.Unity
             try
             {
                 // Castear como MoneyContainer.
-            this.moneyContainer = component as MoneyContainer;
+                this.moneyContainer = component as MoneyContainer;
             }
             catch (System.Exception)
             {

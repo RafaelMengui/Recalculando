@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using System.Collections.Generic;
 using Proyecto.Item;
 using Proyecto.Item.ScientistLevel;
 
@@ -37,7 +38,14 @@ namespace Proyecto.LibraryModelado.Engine
             this.Level = this.level;
             this.ResultsOfLevel = new bool[3];
             this.LevelFeedback = this.levelFeedback;
+            this.Operations = new List<Operations>();
         }
+
+        /// <summary>
+        /// Gets de lista de operaciones del nivel.
+        /// </summary>
+        /// <value>Lista de operacions.</value>
+        public List<Operations> Operations { get; }
 
         /// <summary>
         /// Gets or sets del Feedback asociado al motor.
@@ -68,6 +76,15 @@ namespace Proyecto.LibraryModelado.Engine
         public bool[] ResultsOfLevel { get; private set; }
 
         /// <summary>
+        /// Metodo utilizado para iniciar o reiniciar el motor del juego.
+        /// </summary>
+        public void StartLevel()
+        {
+            this.ResultsOfLevel = new bool[3];
+            this.OperationCounter = 0;
+        }
+
+        /// <summary>
         /// Metodo responsable de asignarle al motor, su respectivo objeto feedback.
         /// </summary>
         /// <param name="feedback">Feedback.</param>
@@ -76,15 +93,6 @@ namespace Proyecto.LibraryModelado.Engine
             this.LevelFeedback = feedback;
             this.LevelFeedback.Text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
             this.engineGame.UpdateFeedback(this.LevelFeedback);
-        }
-
-        /// <summary>
-        /// Metodo utilizado para iniciar o reiniciar el motor del juego.
-        /// </summary>
-        public void StartLevel()
-        {
-            this.ResultsOfLevel = new bool[3];
-            this.OperationCounter = 0;
         }
 
         /// <summary>
@@ -173,9 +181,7 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, en donde se recorre el diccionario
-        /// de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
-        /// se debe crear el boton que mostrara la pagina principal al ejecutarlo.
+        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
         /// </summary>
         public IComponent ButtonGoToMain()
         {
@@ -185,9 +191,7 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Metodo en donde se  recorre el diccionario de motores asociados a niveles (EngineGame.LevelEngines)
-        /// para reconocer en que nivel se debe crear el boton que mostrara la siguiente pagina al ejecutarlo.
-        /// Este boton aparecera en pantalla al terminar un nivel.
+        /// Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
         /// </summary>
         public void ButtonGoToNextLevel()
         {

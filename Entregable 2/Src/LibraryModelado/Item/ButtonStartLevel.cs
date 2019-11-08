@@ -38,7 +38,15 @@ namespace Proyecto.Item
             this.Color = color;
             this.LevelName = levelName;
             this.Event = this.evento;
+            this.Pushable = true;
         }
+
+        /// <summary>
+        /// Gets or sets indicating whether el boton es presionable.
+        /// Por defecto es true.
+        /// </summary>
+        /// <value>Bool.</value>
+        public bool Pushable { get; set; }
 
         /// <summary>
         /// Gets or sets del Color del Boton.
@@ -65,17 +73,20 @@ namespace Proyecto.Item
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
-            EngineGame engineGame = Singleton<EngineGame>.Instance;
-            Space level = this.Level.World.SpaceList.Find(delegate(Space space) { return space.Name == this.LevelName; });
-            foreach (var engine in engineGame.LevelEngines)
+            if (this.Pushable)
             {
-                if (engine.Value == engineGame.LevelEngines[level])
+                EngineGame engineGame = Singleton<EngineGame>.Instance;
+                Space level = this.Level.World.SpaceList.Find(delegate (Space space) { return space.Name == this.LevelName; });
+                foreach (var engine in engineGame.LevelEngines)
                 {
-                    engine.Value.StartLevel();
-                    engineGame.CurrentPage = level;
+                    if (engine.Value == engineGame.LevelEngines[level])
+                    {
+                        engine.Value.StartLevel();
+                        engineGame.CurrentPage = level;
+                    }
                 }
+                this.Event(level.ID);
             }
-            this.Event(level.ID);
         }
     }
 }

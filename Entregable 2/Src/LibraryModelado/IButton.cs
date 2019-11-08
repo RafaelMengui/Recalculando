@@ -16,6 +16,13 @@ namespace Proyecto.LibraryModelado
     public interface IButton
     {
         /// <summary>
+        /// Gets or sets indicating whether el boton es presionable.
+        /// Por defecto es true.
+        /// </summary>
+        /// <value>Bool.</value>
+        bool Pushable { get; set; }
+
+        /// <summary>
         /// Acciones y eventos realizados al hacer click en un boton.
         /// </summary>
         /// <param name="text">String.</param>
