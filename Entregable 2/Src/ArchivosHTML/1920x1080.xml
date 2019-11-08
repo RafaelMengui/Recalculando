@@ -73,14 +73,14 @@
 		<Image Name="nube2" PositionX="750" PositionY="210" Width="400" Height="400" Photo="nube2.png">
 
 
-		<Image Name="recuadrotexto1" PositionX="-200" PositionY="150" Width="1300" Height="150" Photo="recuadroTexto1.png">
-		<Label Name="etiqueta1" PositionX="-200" PositionY="100" Width="1100" Height="150" Photo="Vacio.png" Text="Tengo_15_manzanas._Si_le_doy_4_a_mi_hermano,_¿Cuántas_me_quedan?" Bold="true" Italic="false" Size="35">
+		<Image Name="recuadrotexto1" PositionX="-200" PositionY="200" Width="1300" Height="150" Photo="recuadroTexto1.png">
+		<Label Name="etiqueta1" PositionX="-200" PositionY="150" Width="1100" Height="150" Photo="Vacio.png" Text="Tengo_15_manzanas._Si_le_doy_4_a_mi_hermano,_¿Cuántas_me_quedan?" Bold="true" Italic="false" Size="35">
 
-		<ButtonTrueFalse Name="opcion11" PositionX="-700" PositionY="-200" Width="200" Height="200" Photo="manzana9.png" Color="#FCFCFC" Value="false">
-		<ButtonTrueFalse Name="opcion21" PositionX="-400" PositionY="-200" Width="200" Height="200" Photo="manzana13.png" Color="#FCFCFC" Value="true">
-		<ButtonTrueFalse Name="opcion31" PositionX="-100" PositionY="-200" Width="200" Height="200" Photo="manzana11.png" Color="#FCFCFC" Value="false">
-		<ButtonTrueFalse Name="opcion41" PositionX="200" PositionY="-200" Width="200" Height="200" Photo="manzana22.png" Color="#FCFCFC" Value="false">
-		<ButtonTrueFalse Name="opcion51" PositionX="500" PositionY="-200" Width="200" Height="200" Photo="manzana19.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion11" PositionX="-600" PositionY="-100" Width="200" Height="200" Photo="manzana9.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion21" PositionX="-200" PositionY="-100" Width="200" Height="200" Photo="manzana11.png" Color="#FCFCFC" Value="true">
+		<ButtonTrueFalse Name="opcion31" PositionX="200" PositionY="-100" Width="200" Height="200" Photo="manzana13.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion41" PositionX="-400" PositionY="-400" Width="200" Height="200" Photo="manzana22.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion51" PositionX="0" PositionY="-400" Width="200" Height="200" Photo="manzana19.png" Color="#FCFCFC" Value="false">
 
 		<Operations Components="opcion11,opcion21,opcion31,opcion41,opcion51">
 

@@ -61,7 +61,7 @@ namespace Proyecto.StudentsCode
             this.adapter.AfterBuild = this.Setup;
             this.engineUnity.Adapter = this.adapter;
 
-            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\FreeAspect.xml";
+            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\1920x1080.xml";
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
             List<IComponent> componentList = new List<IComponent>();
 
