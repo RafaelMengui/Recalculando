@@ -60,12 +60,11 @@ namespace Proyecto.LibraryModelado.Engine
                 throw new System.InvalidCastException($"Failed cast operation of \"{draggableItemID}\" as DraggableItem.");
             }
 
-            if (destination != null && !destination.SavedItems.Contains(draggableItem as Items) && draggableItem.Drop(destination))
+            if (destination != null && draggableItem.Drop(destination))
             {
                 // Mueve el elemento arrastrado al destino si se suelta arriba del destino.
                 // Se actualiza el container del item.
                 draggableItem.Container.SavedItems.Remove(draggableItem as Items);
-                draggableItem.Container = destination;
                 destination.SavedItems.Add(draggableItem as Items);
                 this.Adapter.Center(draggableItem.ID, destination.ID);
             }
@@ -144,6 +143,11 @@ namespace Proyecto.LibraryModelado.Engine
         public void CenterInUnity(IDraggable item)
         {
             this.Adapter.Center(item.ID, item.Container.ID);
+        }
+
+        public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
+        {
+            this.Adapter.MakeDraggable(draggableItem.ID, isDraggable);
         }
     }
 }

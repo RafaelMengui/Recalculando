@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System.Collections.Generic;
+using System.Linq;
 using Proyecto.Item;
 using Proyecto.Item.ScientistLevel;
 
@@ -80,13 +81,28 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
+            this.SetFeedback(this.LevelFeedback);
             this.ResultsOfLevel = new bool[3];
             this.OperationCounter = 0;
+
             foreach (Operations operation in this.Operations)
             {
-                foreach (Items container in operation.Components)
+                foreach (Items item in operation.Components)
                 {
-                    
+                    if (item is IContainer)
+                    {
+                        IContainer container = item as IContainer;
+                        foreach (Items savedItem in container.SavedItems)
+                        {
+                            if (savedItem is IDraggable)
+                            {
+                                IDraggable draggableItem = savedItem as IDraggable;
+                                draggableItem.Draggable = true;
+                                this.engineGame.CenterInContainer(draggableItem);
+                                this.engineGame.SetItemDraggable(draggableItem, draggableItem.Draggable);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -122,7 +138,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (this.ResultsOfLevel[0] && this.ResultsOfLevel[1] && this.ResultsOfLevel[2])
             {
-                this.LevelFeedback.Text = "Bien Hecho! has contestado correctamente las tres preguntas. Puedes continuar al siguiente nivel.";
+                this.LevelFeedback.Text = "Excelente trabajo! Puedes continuar al siguiente nivel.";
                 this.engineGame.UpdateFeedback(this.LevelFeedback);
                 this.ButtonGoToNextLevel();
                 return true;
@@ -154,7 +170,6 @@ namespace Proyecto.LibraryModelado.Engine
             {
                 if (moneyContainer.AcceptableValue == 0)
                 {
-                    money.Container = moneyContainer;
                     return true;
                 }
 

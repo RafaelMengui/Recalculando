@@ -145,7 +145,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public bool GoodFeedback()
         {
-            this.LevelFeedback.Text = "Excelente! Has contestado correctamente la pregunta. Puedes continuar al siguiente nivel.";
+            this.LevelFeedback.Text = "Excelente trabajo! Puedes continuar al siguiente nivel.";
             this.engineGame.UpdateFeedback(this.LevelFeedback);
             return true;
         }

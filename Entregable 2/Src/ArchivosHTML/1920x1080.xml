@@ -63,7 +63,7 @@
 		<Operations Components="moneyContainer12,moneyContainer22,moneyContainer32,resultContainer2">
 		<Operations Components="moneyContainer13,moneyContainer23,moneyContainer33,resultContainer3">
 
-		<Feedback Name="feedback1" PositionX="700" PositionY="50" Width="300" Height="400" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="30">
+		<Feedback Name="feedback1" PositionX="710" PositionY="70" Width="320" Height="400" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="30">
 
 	</Space>
 

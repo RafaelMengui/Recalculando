@@ -163,5 +163,10 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.engineUnity.CenterInUnity(item);
         }
+
+        public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
+        {
+            this.engineUnity.SetItemDraggable(draggableItem, isDraggable);
+        }
     }
 }
