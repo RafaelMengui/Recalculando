@@ -13,14 +13,17 @@ namespace Proyecto.Item.KitchenLevel
     /// </summary>
     public class Recipe : IComponent
     {
+
         /// <summary>
         /// Initializes a new instance of Recipe.
         /// </summary>
         /// <param name="name">Nombre del Item.</param>
         /// <param name="food">Receta que contiene los items Food.</param>
-        public Recipe(string name, Food food)
+        /// <param name="level">Level que contiene la recipe.</param>
+        public Recipe(string name, Food food, Space level)
         {
             this.FoodList = new List<Food>();
+            this.ID = id;
         }
 
         /// <summary>
@@ -29,6 +32,11 @@ namespace Proyecto.Item.KitchenLevel
         /// <value>Alimentos<see cref="Food"/>.</value>
         public List<Food> FoodList { get; }
 
-        public string ID{get;set;}
+        private string id;
+        /// <summary>
+        /// Gets y Sets del ID.
+        /// </summary>
+        /// <value>ID</value>
+        public string ID { get; set; }
     }
 }
