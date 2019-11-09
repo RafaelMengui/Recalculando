@@ -146,13 +146,11 @@ namespace Proyecto.LibraryModelado.Engine
                 this.VerifyWinLevel();
                 return true;
             }
-
             else
             {
                 if (moneyContainer.AcceptableValue == 0)
                 {
                     money.Container = moneyContainer;
-                    return true;
                 }
 
                 else if (moneyContainer.AcceptableValue != -1)

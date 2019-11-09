@@ -44,7 +44,7 @@ namespace Proyecto.Factory.Unity
             // Crear objeto en unity y obtener el UnityID.
             this.draggableItem.ID = adapter.CreateImage(this.draggableItem.PositionX, this.draggableItem.PositionY, this.draggableItem.Width, this.draggableItem.Height);
 
-            adapter.OnDrop = this.engineUnity.OnDrop;
+            //adapter.OnDrop = this.engineUnity.OnDrop;
 
             // Se define el objeto como arrastrable.
             adapter.MakeDraggable(this.draggableItem.ID, this.draggableItem.Draggable);

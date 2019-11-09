@@ -60,6 +60,7 @@ namespace Proyecto.StudentsCode
             this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
             this.adapter.AfterBuild = this.Setup;
             this.engineUnity.Adapter = this.adapter;
+            this.adapter.OnDrop = this.engineUnity.OnDrop;
 
             const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\1920x1080.xml";
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
