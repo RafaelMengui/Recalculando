@@ -6,7 +6,6 @@
 using Proyecto.Common;
 using Proyecto.Factory.Unity;
 using Proyecto.Item;
-using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
@@ -19,6 +18,11 @@ namespace Proyecto.LibraryModelado.Engine
         /// Instancia de la UnityFactory.
         /// </summary>
         private UFactory unityFactory = Singleton<UFactory>.Instance;
+
+        /// <summary>
+        /// Instancia del motor general.
+        /// </summary>
+        private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
         /// <summary>
         /// Un <see cref="IMainViewAdapter"/> que permite construir una interfaz de usuario interactiva.
@@ -53,7 +57,7 @@ namespace Proyecto.LibraryModelado.Engine
             try
             {
                 destination = this.FindDragContainer(x, y);
-                draggableItem = FindItem(draggableItemID) as IDraggable;
+                draggableItem = this.FindItem(draggableItemID) as IDraggable;
             }
             catch(System.InvalidCastException)
             {
@@ -84,7 +88,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns></returns>
         private IContainer FindDragContainer(float x, float y)
         {
-            foreach (Items item in Singleton<EngineGame>.Instance.CurrentPage.ItemList)
+            foreach (Items item in this.engineGame.CurrentPage.ItemList)
             {
                 if (item is IContainer && this.Adapter.Contains(item.ID, x, y))
                 {
@@ -95,7 +99,7 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Metodo responnsable de buscar en la pagina en la que se encuentre el usuario,
+        /// Metodo responsable de buscar en la pagina en la que se encuentre el usuario,
         /// un Item que tenga el mismo UnityID que el entrante por parametro.
         /// En este método utilizamos una expeción, la finalidad de esta es indicar que el programa
         /// no puede continuar ejecutando en su estado actual, y como tal, terminarlo. Para maneja
@@ -104,9 +108,9 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         /// <param name="unityID"></param>
         /// <returns>Devuelve el item encontrado.</returns>
-        private static Items FindItem(string unityID)
+        private Items FindItem(string unityID)
         {
-            foreach (Items item in Singleton<EngineGame>.Instance.CurrentPage.ItemList)
+            foreach (Items item in this.engineGame.CurrentPage.ItemList)
             {
                 if (unityID == item.ID)
                 {

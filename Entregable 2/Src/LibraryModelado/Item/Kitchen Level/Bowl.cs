@@ -27,13 +27,13 @@ namespace Proyecto.Item.KitchenLevel
         public Bowl(string name, Space level, float positionX, float positionY, float width, float height, string image)
         : base(name, level, positionX, positionY, width, height, image)
         {
-            this.SavedFoods = new List<Items>();
+            this.SavedItems = new List<Items>();
         }
 
         /// <summary>
         /// Gets lista de objetos Food, que seran soltados dentro del container.
         /// </summary>
         /// <value>Alimentos <see cref="Food"/>.</value>
-        public List<Food> SavedFoods { get; }
+        public List<Items> SavedItems { get; }
     }
 }

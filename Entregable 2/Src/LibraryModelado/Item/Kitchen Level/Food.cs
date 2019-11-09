@@ -62,7 +62,6 @@ namespace Proyecto.Item.KitchenLevel
         /// </summary>
         public void Drop()
         {
-            this.OnDrop(this.ID, this.PositionX, this.PositionY);
         }
     }
 }
