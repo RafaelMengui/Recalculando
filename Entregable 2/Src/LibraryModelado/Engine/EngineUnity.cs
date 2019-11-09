@@ -6,7 +6,6 @@
 using Proyecto.Common;
 using Proyecto.Factory.Unity;
 using Proyecto.Item;
-using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
@@ -55,25 +54,24 @@ namespace Proyecto.LibraryModelado.Engine
                 destination = this.FindDragContainer(x, y);
                 draggableItem = FindItem(draggableItemID) as IDraggable;
             }
-            catch(System.InvalidCastException)
+            catch (System.InvalidCastException)
             {
                 throw new System.InvalidCastException($"Failed cast operation of \"{draggableItemID}\" as DraggableItem.");
             }
 
-            if (destination != null && !destination.SavedItems.Contains(draggableItem as Items) && draggableItem.Drop(destination))
+            if (destination != null && draggableItem.Drop(destination))
             {
                 // Mueve el elemento arrastrado al destino si se suelta arriba del destino.
                 // Se actualiza el container del item.
                 draggableItem.Container.SavedItems.Remove(draggableItem as Items);
                 destination.SavedItems.Add(draggableItem as Items);
                 this.Adapter.Center(draggableItem.ID, destination.ID);
+                this.Adapter.MakeDraggable(draggableItem.ID, draggableItem.Draggable);
             }
             else
             {
                 this.Adapter.Center(draggableItem.ID, draggableItem.Container.ID);
             }
-
-            this.Adapter.MakeDraggable(draggableItem.ID, draggableItem.Draggable);
         }
 
         /// <summary>
@@ -97,10 +95,6 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo responnsable de buscar en la pagina en la que se encuentre el usuario,
         /// un Item que tenga el mismo UnityID que el entrante por parametro.
-        /// En este método utilizamos una expeción, la finalidad de esta es indicar que el programa
-        /// no puede continuar ejecutando en su estado actual, y como tal, terminarlo. Para maneja
-        /// la excepción y darle una adecuada solucion al programa para que este siga operando. En este caso,
-        /// lanza una expecipon en caso que no encuentre ningún item que tenga el mismo UnityID.
         /// </summary>
         /// <param name="unityID"></param>
         /// <returns>Devuelve el item encontrado.</returns>
@@ -131,7 +125,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <param name="feedback"></param>
         public void UpdateFeedback(Feedback feedback)
         {
-            this.Adapter.SetText(feedback.ID, feedback.Text);
+            this.Adapter.SetText(feedback.ID, feedback.Text, true);
         }
 
         /// <summary>
@@ -142,6 +136,11 @@ namespace Proyecto.LibraryModelado.Engine
         public void UpdateItemImage(Items items, string image)
         {
             this.Adapter.SetImage(items.ID, image);
+        }
+
+        public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
+        {
+            this.Adapter.MakeDraggable(draggableItem.ID, isDraggable);
         }
     }
 }
