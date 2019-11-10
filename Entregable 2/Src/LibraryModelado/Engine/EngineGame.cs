@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using Proyecto.Item;
 
 namespace Proyecto.LibraryModelado.Engine
 {
@@ -29,7 +30,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Diccionario en donde se le asocia a un nivel, su respectivo Motor.
         /// </summary>
-        private Dictionary<Space, IEngine> levelEngines = new Dictionary<Space, IEngine>();
+        private Dictionary<Space, ILevelEngine> levelEngines = new Dictionary<Space, ILevelEngine>();
 
         /// <summary>
         /// Instancia de la clase EngineUnity.
@@ -39,7 +40,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Motor generico <see cref="IEngine"/>.
         /// </summary>
-        private IEngine engine;
+        private ILevelEngine engine;
 
         /// <summary>
         /// Pagina principal del juego, el motor la conoce para poder viajar a ella en cualquier momento.
@@ -65,7 +66,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// Gets or sets del diccionario de motores y niveles.
         /// </summary>
         /// <value>Diccionario de clave <see cref="Space"/> y valor <see cref="IEngine"/>.</value>
-        public Dictionary<Space, IEngine> LevelEngines { get; set; }
+        public Dictionary<Space, ILevelEngine> LevelEngines { get; set; }
 
         /// <summary>
         /// Gets or sets de la pagina en que se encuentra actualmente el usuario.
@@ -85,9 +86,9 @@ namespace Proyecto.LibraryModelado.Engine
         /// para que este siga operando. En este caso, lanza una excepción en caso que el motor no exista.
         /// </summary>
         /// <param name="componentList">Lista de componentes creados.</param>
-        public void Asociate(List<IComponent> componentList)
+        public void AsociateLevelsWithEngines(List<IComponent> componentList)
         {
-            foreach (IComponent compoznent in componentList)
+            foreach (IComponent component in componentList)
             {
                 if (component is Space)
                 {
@@ -96,31 +97,90 @@ namespace Proyecto.LibraryModelado.Engine
                     {
                         if (level.Name != "MainPage")
                         {
-                            this.engine = Activator.CreateInstance(Type.GetType("Proyecto.LibraryModelado.Engine.Engine" + level.Name)) as IEngine;
+                            Type engineType = Type.GetType("Proyecto.LibraryModelado.Engine.Engine" + level.Name);
+                            this.engine = Activator.CreateInstance(engineType) as ILevelEngine;
+                            this.engine.Level = level;
                             this.LevelEngines.Add(level, this.engine);
                         }
                     }
-                    catch (System.Exception)
+                    catch(System.Exception)
                     {
-                        throw new Exception($"Engine \"{"Engine" + level.Name}\" does not exist.");
+                        throw new Exception($"Engine \"Engine{level.Name}\" does not exist or couldn't be created.");
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, en donde ejecuta para cada
-        /// motor de los niveles el metodo de crear un boton que muestre la pagina principal.
+        /// Metodo responsable de delegar la responsabilidad al motor de unity, de crear un
+        /// objeto en unity.
         /// </summary>
-        public override IComponent ButtonGoToMain()
+        /// <param name="component"></param>
+        public void CreateInUnity(IComponent component)
         {
-            foreach (var engines in this.levelEngines)
-            {
-                IComponent button = engines.Value.ButtonGoToMain();
-                this.engineUnity.SendComponentToUFactory(button);
-            }
+            this.engineUnity.SendComponentToUFactory(component);
+        }
 
-            return null;
+        /// <summary>
+        /// Metodo responsable de llamar al motor de unity para que actualize el texto de un
+        /// <see cref="Label"/>.
+        /// </summary>
+        /// <param name="feedback"></param>
+        /// <param name="text">Nuevo texto del feedback.</param>
+        public void UpdateFeedback(Feedback feedback, string text)
+        {
+            this.engineUnity.UpdateFeedback(feedback, text);
+            feedback.Text = text;
+        }
+
+        /// <summary>
+        /// Metodo utilizado para iniciar o reiniciar el motor del juego de un determinado nivel.
+        /// </summary>
+        /// <param name="level">Nivel que este asociado al motor a iniciar.</param>
+        public void StartLevelEngine(Space level)
+        {
+            this.LevelEngines[level].StartLevel();
+        }
+
+        /// <summary>
+        /// Metodo responsable de llamar al motor de unity para Centrar un IDraggable en
+        /// un IContainer.
+        /// </summary>
+        /// <param name="item">IDraggableItem.</param>
+        public void CenterInContainer(IDraggable item)
+        {
+            this.engineUnity.CenterInUnity(item);
+        }
+
+        /// <summary>
+        /// Metodo responsable de llamar al motor de unity para actualizar un item
+        /// para que sea arrastrable o no.
+        /// Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
+        /// </summary>
+        /// <param name="draggableItem">Item que se va a actualizar.</param>
+        /// <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
+        public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
+        {
+            if (!draggableItem.Draggable.Equals(isDraggable))
+            {
+                this.engineUnity.SetItemDraggable(draggableItem, isDraggable);
+                draggableItem.Draggable = isDraggable;
+            }
+        }
+
+        /// <summary>
+        /// Metodo responsable de llamar al motor de unity para actualizar si un item es
+        /// mostrado por pantalla u ocultado.
+        /// </summary>
+        /// <param name="component">Componente que se va a actualizar.</param>
+        /// <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
+        public void SetActive(IComponent component, bool active)
+        {
+            if (!component.IsActive.Equals(active))
+            {
+                this.engineUnity.SetActive(component, active);
+                component.IsActive = active;
+            }
         }
     }
 }

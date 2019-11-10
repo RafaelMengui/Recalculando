@@ -41,11 +41,9 @@ namespace Proyecto.Factory.Unity
             // Se crea el objeto en unity y se obtiene el UnityID.
             this.label.ID = adapter.CreateLabel(this.label.PositionX, this.label.PositionY, this.label.Width, this.label.Height);
 
-            // Se asigna su imagen al Label.
-            adapter.SetImage(this.label.ID, this.label.Image);
+            adapter.SetText(this.label.ID, this.label.Text, true);
 
-            // Se asigna el texto al Label.
-            adapter.SetText(this.label.ID, this.label.Text);
+            adapter.SetFont(this.label.ID, this.label.Bold, this.label.Italic, this.label.Size);
         }
     }
 }

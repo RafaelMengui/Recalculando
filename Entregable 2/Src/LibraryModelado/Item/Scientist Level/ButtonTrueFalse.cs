@@ -39,6 +39,7 @@ namespace Proyecto.Item.ScientistLevel
             this.Color = color;
             this.Event = this.evento;
             this.Value = value;
+            this.Pushable = true;
         }
 
         /// <summary>
@@ -46,6 +47,13 @@ namespace Proyecto.Item.ScientistLevel
         /// </summary>
         /// <value>string codigo en hexadecimal.</value>
         public string Color { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicating whether el boton es presionable.
+        /// Por defecto es true.
+        /// </summary>
+        /// <value>Bool.</value>
+        public bool Pushable { get; set; }
 
         /// <summary>
         /// Gets or sets del valor bool del boton.
@@ -65,9 +73,11 @@ namespace Proyecto.Item.ScientistLevel
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
-            EngineScientificExercise2 engineScientific2 = Singleton<EngineScientificExercise2>.Instance;
-            engineScientific2.VerifyQuestion(this);
-            this.Event(string.Empty);
+            if (this.Pushable)
+            {
+                EngineGame engineGame = Singleton<EngineGame>.Instance;
+                (engineGame.LevelEngines[this.Level] as EngineScientificExercise2).VerifyExercise(this);
+            }
         }
     }
 }

@@ -35,7 +35,15 @@ namespace Proyecto.Item
         {
             this.Color = color;
             this.Event = this.evento;
+            this.Pushable = true;
         }
+
+        /// <summary>
+        /// Gets or sets indicating whether el boton es presionable.
+        /// Por defecto es true.
+        /// </summary>
+        /// <value>Bool.</value>
+        public bool Pushable {get;set;}
 
         /// <summary>
         /// Gets or sets del Color del Boton.
@@ -55,7 +63,10 @@ namespace Proyecto.Item
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
-            this.Event(string.Empty);
+            if (this.Pushable)
+            {
+                this.Event(string.Empty);
+            }
         }
     }
 }

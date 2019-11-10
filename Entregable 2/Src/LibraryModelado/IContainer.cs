@@ -12,7 +12,7 @@ namespace Proyecto.LibraryModelado
     /// que definen comportamientos, las clases que necesiten de estos comportamientos van a
     /// implementar esta interfaz..
     /// </summary>
-    public interface IContainer
+    public interface IContainer : IComponent
     {
         /// <summary>
         /// Gets de Lista de elementos guardados en el container.

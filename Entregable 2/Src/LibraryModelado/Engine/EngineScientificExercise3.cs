@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using System.Collections.Generic;
 using Proyecto.Item.ScientistLevel;
 using Proyecto.Item;
 
@@ -23,11 +24,6 @@ namespace Proyecto.LibraryModelado.Engine
     public class EngineScientificExercise3 : IEngine, ILevelEngine
     {
         /// <summary>
-        /// Etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
-        /// </summary>
-        private Label feedback;
-
-        /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
         /// </summary>
         private Space level;
@@ -38,14 +34,47 @@ namespace Proyecto.LibraryModelado.Engine
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
         /// <summary>
+        /// Objeto de tipo <see cref="Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
+        /// </summary>
+        private Feedback levelFeedback;
+
+        /// <summary>
+        /// Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+        /// </summary>
+        private ButtonStartLevel buttonNextLevel;
+
+        /// <summary>
+        /// Boton que al apretarlo aparecera la pantalla principal.
+        /// </summary>
+        private ButtonGoToPage buttonGoToMain;
+
+        /// <summary>
         /// Constructor.
         /// </summary>
         public EngineScientificExercise3()
         {
-            this.ResultsOfLevel = new bool[4];
+            this.ResultsOfLevel = new bool[2];
             this.LevelCounter = 0;
-            this.Feedback = this.feedback;
+            this.LevelFeedback = this.levelFeedback;
+            this.ButtonGoToMain = this.buttonGoToMain;
+            this.ButtonNextLevel = this.buttonNextLevel;
+            this.Operations = new List<Operations>();
         }
+
+        /// <summary>
+        /// Gets or sets Boton que al apretarlo aparecera la pantalla principal.
+        /// </summary>
+        public ButtonGoToPage ButtonGoToMain { get; set; }
+
+        /// <summary>
+        /// Gets or sets del boton que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+        /// </summary>
+        public ButtonStartLevel ButtonNextLevel { get; set; }
+
+        public List<Operations> Operations { get; }
+
+        public Space Level { get; set; }
+
 
         /// <summary>
         /// Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
@@ -68,6 +97,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         /// <value>Array de Bools.</value>
         public bool[] ResultsOfLevel { get; private set; }
+        public Feedback LevelFeedback { get ; set ; }
 
         /// <summary>
         /// Verifica que se hayan completado las cuatro paginas del nivel.
@@ -75,7 +105,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns>Bool.</returns>
         public bool VerifyWinLevel()
         {
-            return this.ResultsOfLevel[0] && this.ResultsOfLevel[1] && this.ResultsOfLevel[2] && this.ResultsOfLevel[3];
+            return this.ResultsOfLevel[0] && this.ResultsOfLevel[1];
         }
 
         /// <summary>
@@ -104,27 +134,24 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            this.ResultsOfLevel = new bool[4];
-            this.LevelCounter = 0;
-        }
-
-        /// <summary>
-        /// Metodo responsable de crear la etiqueta de texto que servira de feedback a las acciones realizadas.
-        /// </summary>
-        /// <returns>Etiqueta <see cref="Label"/>.</returns>
-        public Label CreateFeedback()
-        {
-            foreach (var space in this.engineGame.LevelEngines)
+            string text = "Hola! En este juego deberas seleccionar la respuesta correcta.";
+            if (this.buttonGoToMain is null)
             {
-                if (space.Value is EngineScientificExercise3)
-                {
-                    this.level = space.Key;
-                }
+                this.CreateButtonGoToMain();
+            }
+            if (this.ButtonNextLevel is null)
+            {
+                this.CreateButtonGoToNextLevel();
+            }
+            if (this.LevelFeedback is null)
+            {
+                this.CreateFeedback();
             }
 
-            Label feedback = new Label("Feedback", this.level, 600, 240, 100, 50, "Vacio.png", string.Empty);
-            this.level.ItemList.Add(feedback);
-            return feedback;
+            this.engineGame.SetActive(this.buttonNextLevel, false);
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
+            this.ResultsOfLevel = new bool[2];
+            this.LevelCounter = 0;
         }
 
         /// <summary>
@@ -132,7 +159,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void GoodFeedback()
         {
-            this.Feedback.Text = "Excelente!";
+            string text = "Excelente trabajo! Puedes continuar al siguiente nivel.";
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
         /// <summary>
@@ -140,27 +168,40 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void BadFeedback()
         {
-            this.Feedback.Text = "Intentalo de nuevo!";
+            string text = "Intentalo de nuevo ¡Tu puedes!";
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, en donde se recorre el diccionario
-        /// de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
-        /// se debe crear el boton que mostrara la pagina principal al ejecutarlo.
+        /// Metodo responsable de asignarle al motor, su respectivo objeto feedback.
         /// </summary>
-        public override IComponent ButtonGoToMain()
+        public void CreateFeedback()
         {
-            foreach (var space in this.engineGame.LevelEngines)
-            {
-                if (space.Value is EngineScientificExercise3)
-                {
-                    this.level = space.Key;
-                }
-            }
+            Feedback feedback = new Feedback("Feedback3", this.Level, 710, 70, 320, 400, "Vacio.png", string.Empty, 30, true, false);
+            this.engineGame.CreateInUnity(feedback);
+            this.LevelFeedback = feedback;
+        }
 
-            Items goToMain = new ButtonGoToPage("Scientific3ToMain", this.level, -595, 228, 75, 75, "GoToMain.png", "#FCFCFC", "MainPage");
-            this.level.ItemList.Add(goToMain);
-            return goToMain;
+        /// <summary>
+        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+        /// </summary>
+        public void CreateButtonGoToMain()
+        {
+            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific3ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
+            this.Level.ItemList.Add(goToMain);
+            this.engineGame.CreateInUnity(goToMain);
+            this.ButtonGoToMain = goToMain;
+        }
+
+        /// <summary>
+        /// Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+        /// </summary>
+        public void CreateButtonGoToNextLevel()
+        {
+            ButtonStartLevel goToNext = new ButtonStartLevel("Scientific3ToScientific4", this.Level, 0, 0, 500, 300, "siguienteNivel.png", "#FCFCFC", "ScientificExercise4");
+            this.Level.ItemList.Add(goToNext);
+            this.engineGame.CreateInUnity(goToNext);
+            this.ButtonNextLevel = goToNext;
         }
     }
 }
