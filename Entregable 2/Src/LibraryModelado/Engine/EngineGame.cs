@@ -16,7 +16,12 @@ namespace Proyecto.LibraryModelado.Engine
     /// que ser global. Esto es de mucha utilidad debido a que vamos a necesitar llamar a los motores
     /// de los juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
     /// de que solo haya un motor de este juego.
-    /// 
+    /// En esta clase se puede observar el patrón de INVERSIÓN DE DEPENDENCIAS, este nos dice que,
+    /// Las clases de alto nivel no deben depender de clases de bajo nivel; ambas deben depender de abstracciones.
+    /// Nuestra clase de alto nivel sería EngineGame, y la de bajo nivel todos los motores de cientifico.
+    /// En este caso, creamos una interfaz ILevelEngine, de esta forma no accedemos directamente a los motores
+    /// sino que, llamamos a los métodos de la intefaz (utilizamos una abstracción). Esto nos permite poder
+    /// realizar cambios en la clase EngineScientific1 sin que cambie EngineGame y viceversa.
     /// Hereda de la clase abstracta <see cref="IEngine"/>.
     /// </summary>
     public class EngineGame : IEngine

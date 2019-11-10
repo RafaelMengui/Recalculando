@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> d2ded7ae245e005b4bc8397c73c5c5782c4b4a49
 # Bienvenido/a a RECALCULANDO❗️❗️ 
 _Recalculando es un juego creado para niños que padecen discalculía, esta aplicación esta pensada para  ayudarlos a mejorar de forma entretenida_
 

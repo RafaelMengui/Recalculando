@@ -15,6 +15,11 @@ namespace Proyecto.LibraryModelado.Engine
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise1
     /// este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
+    /// Además también cumple con el patrón EXPERT, este nos dice que, debemos asignar la responsabilidad al experto en
+    /// información, es decir, a la clase que tiene la información necesaria para poder cumplir con la responsabilidad. En este
+    /// caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise1, por esto, es la experta.
+    /// Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
+    /// llevar a cabo sus tareas.
     /// Hereda de las clases abstractas <see cref="IEngine"/> y <see cref="ILevelEngine"/>.
     /// </summary>
     public class EngineScientificExercise1 : IEngine, ILevelEngine
