@@ -34,12 +34,12 @@ namespace Proyecto.LibraryModelado.Engine.test
                 IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
                 componentList.Add(component);
             }
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
             this.engineScientific1.StartLevel();
             MoneyContainer dragcontainerSource = new MoneyContainer("source", level, 1, 10, 10, 10, null, 0);
             MoneyContainer dragcontainerDestintantion = new MoneyContainer("dragC", level, 1, 10, 10, 10, null, 120);
             Money moneydrag = new Money("drag", level, 20, 20, 2, 2, null, true, dragcontainerSource, 120);
-            Assert.Equal(true, EngineScientificExercise1.VerifyOperation(dragcontainerDestintantion, moneydrag));
+            Assert.Equal(true, engineScientific1.VerifyOperation(dragcontainerDestintantion, moneydrag));
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Proyecto.LibraryModelado.Engine.test
                 IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
                 componentList.Add(component);
             }
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
             this.engineScientific1.StartLevel();
             MoneyContainer dragSource = new MoneyContainer("drag", level, 1, 10, 10, 10, null, 1);
             MoneyContainer dragcontainerDestintantion = new MoneyContainer("dragC", level, 1, 10, 10, 10, null, 120);
@@ -83,7 +83,7 @@ namespace Proyecto.LibraryModelado.Engine.test
                 IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
                 componentList.Add(component);
             }
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
             this.engineScientific1.StartLevel();
             MoneyContainer dragcontainerSource = new MoneyContainer("source", level, 1, 10, 10, 10, null, 0);
             MoneyContainer dragcontainerDestintantion = new MoneyContainer("dragC", level, 1, 10, 10, 10, null, 120);
@@ -106,7 +106,7 @@ namespace Proyecto.LibraryModelado.Engine.test
                 IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
                 componentList.Add(component);
             }
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
             this.engineScientific1.StartLevel();
             MoneyContainer container1 = new MoneyContainer("cont1", this.level, 50, 50, 60, 60, null, 10);
             Assert.Throws<ArithmeticException>(() => new Money("name", this.level, 50, 40, 30, 20, null, false, container1, -10));
@@ -133,7 +133,7 @@ namespace Proyecto.LibraryModelado.Engine.test
             moneyDrag1.Drop(containerDestination1);
             moneyDrag2.Drop(containerDestination2);
 
-            Assert.Equal(true, engineScientific1.VerifyWinPage());
+            Assert.Equal(true, engineScientific1.VerifyWinLevel());
         }
 
         /// <summary>
@@ -157,11 +157,11 @@ namespace Proyecto.LibraryModelado.Engine.test
             moneyDrag2.Drop(containerDestination2);
 
             // Si fueron correctamente soltados los dos dineros, se pasa a la segunda parte del nivel.
-            if (engineScientific1.VerifyWinPage())
+            if (engineScientific1.VerifyWinLevel())
             {
                 // Pagina 2.
                 // Se reinicia la pagina y sus contadores, se crean los nuevos containers y dinero.
-                this.engineScientific1.StartPage();
+                this.engineScientific1.StartLevel();
                 MoneyContainer containerDestination3 = new MoneyContainer("Dest3", this.level, 50, 50, 60, 60, null, 50);
                 MoneyContainer containerDestination4 = new MoneyContainer("Dest4", this.level, 50, 50, 60, 60, null, 200);
                 MoneyContainer containerSource3 = new MoneyContainer("Source3", this.level, 50, 50, 60, 60, null, 0);
@@ -176,7 +176,7 @@ namespace Proyecto.LibraryModelado.Engine.test
 
                 // Se verifica que se hayan completado correctamente las dos etapas del juego
                 // (Se tienen que haber hecho correctamente las cuatro sumas.)
-                engineScientific1.VerifyWinPage();
+                engineScientific1.VerifyWinLevel();
 
                 Assert.Equal(true, engineScientific1.VerifyWinLevel());
             }
@@ -194,7 +194,7 @@ namespace Proyecto.LibraryModelado.Engine.test
                 IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
                 componentList.Add(component);
             }
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
             this.engineScientific1.StartLevel();
 
             MoneyContainer containerDestination = new MoneyContainer("Dest1", this.level, 50, 50, 60, 60, null, 10);
@@ -202,7 +202,7 @@ namespace Proyecto.LibraryModelado.Engine.test
             Money moneyDrag = new Money("Drag1", this.level, 20, 20, 2, 2, null, true, containerSource, 10);
 
             engineScientific1.VerifyExercise(containerDestination, moneyDrag);
-            Assert.Equal("Muy buen trabajo, ¡Continua asi!", engineScientific1.Feedback.Text);
+            Assert.Equal("Muy buen trabajo, ¡Continua asi!", engineScientific1.LevelFeedback.Text);
         }
 
         [Fact]
@@ -217,14 +217,14 @@ namespace Proyecto.LibraryModelado.Engine.test
                 IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
                 componentList.Add(component);
             }
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
             this.engineScientific1.StartLevel();
             MoneyContainer containerDestination = new MoneyContainer("Dest1", this.level, 50, 50, 60, 60, null, 200);
             MoneyContainer containerSource = new MoneyContainer("Source1", this.level, 50, 50, 60, 60, null, 0);
             Money moneyDrag = new Money("Drag1", this.level, 20, 20, 2, 2, null, true, containerSource, 10);
 
             engineScientific1.VerifyExercise(containerDestination, moneyDrag);
-            Assert.Equal("Esa suma no es correcta, ¡Intentalo de nuevo!", engineScientific1.Feedback.Text);
+            Assert.Equal("Esa suma no es correcta, ¡Intentalo de nuevo!", engineScientific1.LevelFeedback.Text);
         }
 
         [Fact]
@@ -240,7 +240,7 @@ namespace Proyecto.LibraryModelado.Engine.test
                 IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
                 componentList.Add(component);
             }
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
             this.engineGame.ButtonGoToMain();
             this.engineScientific1.StartLevel();
             foreach (Items item in this.engineScientific1.Level.ItemList)
