@@ -47,7 +47,6 @@ namespace Proyecto.Factory.Unity
             // Crear objeto en unity y obtener el UnityID.
             this.money.ID = adapter.CreateImage(this.money.PositionX, this.money.PositionY, this.money.Width, this.money.Height);
 
-            // Se asigna el metodo OnDrop.
             adapter.OnDrop = this.engineUnity.OnDrop;
 
             // Se define el objeto como arrastrable.

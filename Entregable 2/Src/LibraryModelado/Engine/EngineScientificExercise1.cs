@@ -12,6 +12,10 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
+    /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
+    /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
+    /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise1
+    /// este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
     /// Hereda de las clases abstractas <see cref="IEngine"/> y <see cref="ILevelEngine"/>.
     /// </summary>
     public class EngineScientificExercise1 : IEngine, ILevelEngine
@@ -200,7 +204,6 @@ namespace Proyecto.LibraryModelado.Engine
                 this.VerifyWinLevel();
                 return true;
             }
-
             else
             {
                 if (moneyContainer.AcceptableValue != -1)
