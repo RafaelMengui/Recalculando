@@ -431,7 +431,6 @@
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.FindDragContainer(System.Single,System.Single)">
             <summary>
-            M
             Si existe un container en esas coordenadas, lo devolvera.
             </summary>
             <param name="x"></param>
@@ -1495,7 +1494,7 @@
             Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Factory.Unity.UFactory.componentUFactories2">
+        <member name="F:Proyecto.Factory.Unity.UFactory.componentUFactories">
             <summary>
             Diccionario en donde se asociara un componente con su respectivo Unity factory.
             </summary>
@@ -1515,6 +1514,7 @@
             <summary>
             Sobrescribe el metodo abstracto de IFactoryUnity.
             Delega la responsabilidad de agregar el componente en unity, al respectivo Unity Factory del componente.
+            ARREGLAR, ACA ESTA EL ERROR DE KEY REPETIDO.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
