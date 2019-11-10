@@ -22,7 +22,7 @@ namespace Proyecto.LibraryModelado.Engine.test
                 IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
                 componentList.Add(component);
             }
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
             List<string> array = new List<string>();
 
             foreach (var s in this.engineGame.LevelEngines)
