@@ -41,7 +41,15 @@ namespace Proyecto.LibraryModelado
             this.Width = width;
             this.Height = height;
             this.Image = image;
+            this.IsActive = true;
         }
+
+        /// <summary>
+        /// Gets or sets que indican si el item esta actualmente activo en pantalla.
+        /// Por predeterminado sera true.
+        /// </summary>
+        /// <value></value>
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Gets or sets del nombre del item.

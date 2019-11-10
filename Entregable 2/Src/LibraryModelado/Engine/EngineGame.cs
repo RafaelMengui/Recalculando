@@ -103,34 +103,6 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Metodo responsable de asignarle a un motor, su respectivo objeto feedback.
-        /// </summary>
-        /// <param name="component">IComponent.</param>
-        public void SetLevelFeedbacks(IComponent component)
-        {
-            if (component is Feedback)
-            {
-                Feedback feedback = component as Feedback;
-                this.LevelEngines[feedback.Level].SetFeedback(feedback);
-            }
-        }
-
-        /// <summary>
-        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, en donde ejecuta para cada
-        /// motor de los niveles el metodo de crear un boton que muestre la pagina principal.
-        /// </summary>
-        public IComponent ButtonGoToMain()
-        {
-            foreach (var engines in this.levelEngines)
-            {
-                IComponent button = engines.Value.ButtonGoToMain();
-                this.engineUnity.SendComponentToUFactory(button);
-            }
-
-            return null;
-        }
-
-        /// <summary>
         /// Metodo responsable de delegar la responsabilidad al motor de unity, de crear un
         /// objeto en unity.
         /// </summary>
@@ -145,9 +117,10 @@ namespace Proyecto.LibraryModelado.Engine
         /// <see cref="Label"/>.
         /// </summary>
         /// <param name="feedback"></param>
-        public void UpdateFeedback(Feedback feedback)
+        public void UpdateFeedback(Feedback feedback, string text)
         {
-            this.engineUnity.UpdateFeedback(feedback);
+            this.engineUnity.UpdateFeedback(feedback, text);
+            feedback.Text = text;
         }
 
         /// <summary>
@@ -166,7 +139,20 @@ namespace Proyecto.LibraryModelado.Engine
 
         public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
         {
-            this.engineUnity.SetItemDraggable(draggableItem, isDraggable);
+            if (!draggableItem.Draggable.Equals(isDraggable))
+            {
+                this.engineUnity.SetItemDraggable(draggableItem, isDraggable);
+                draggableItem.Draggable = isDraggable;
+            }
+        }
+
+        public void SetActive(IComponent component, bool active)
+        {
+            if (!component.IsActive.Equals(active))
+            {
+                this.engineUnity.SetActive(component, active);
+                component.IsActive = active;
+            }
         }
     }
 }

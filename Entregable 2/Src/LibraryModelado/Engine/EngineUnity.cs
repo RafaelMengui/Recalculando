@@ -55,7 +55,7 @@ namespace Proyecto.LibraryModelado.Engine
                 destination = this.FindDragContainer(x, y);
                 draggableItem = FindItem(draggableItemID) as IDraggable;
             }
-            catch(System.InvalidCastException)
+            catch (System.InvalidCastException)
             {
                 throw new System.InvalidCastException($"Failed cast operation of \"{draggableItemID}\" as DraggableItem.");
             }
@@ -67,13 +67,12 @@ namespace Proyecto.LibraryModelado.Engine
                 draggableItem.Container.SavedItems.Remove(draggableItem as Items);
                 destination.SavedItems.Add(draggableItem as Items);
                 this.Adapter.Center(draggableItem.ID, destination.ID);
+                this.Adapter.MakeDraggable(draggableItem.ID, false);
             }
             else
             {
                 this.Adapter.Center(draggableItem.ID, draggableItem.Container.ID);
             }
-
-            this.Adapter.MakeDraggable(draggableItem.ID, draggableItem.Draggable);
         }
 
         /// <summary>
@@ -125,9 +124,9 @@ namespace Proyecto.LibraryModelado.Engine
         /// Metodo responsable de actualizar el mensaje de feedback mostrado en pantalla.
         /// </summary>
         /// <param name="feedback"></param>
-        public void UpdateFeedback(Feedback feedback)
+        public void UpdateFeedback(Feedback feedback, string text)
         {
-            this.Adapter.SetText(feedback.ID, feedback.Text, true);
+            this.Adapter.SetText(feedback.ID, text, true);
         }
 
         /// <summary>
@@ -148,6 +147,11 @@ namespace Proyecto.LibraryModelado.Engine
         public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
         {
             this.Adapter.MakeDraggable(draggableItem.ID, isDraggable);
+        }
+
+        public void SetActive(IComponent component, bool active)
+        {
+            this.Adapter.SetActive(component.ID, active);
         }
     }
 }

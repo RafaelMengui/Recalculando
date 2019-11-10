@@ -24,7 +24,15 @@ namespace Proyecto.LibraryModelado
         {
             this.Level = level;
             this.Components = components;
+            this.IsActive = true;
         }
+
+        /// <summary>
+        /// Gets or sets que indican si el item esta actualmente activo en pantalla.
+        /// Por predeterminado sera true.
+        /// </summary>
+        /// <value></value>
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Gets or sets del nivel a que pertenece la operacion.

@@ -28,7 +28,15 @@ namespace Proyecto.LibraryModelado
             this.Name = this.name;
             this.ID = id;
             this.SpaceList = new List<Space>();
+            this.IsActive = true;
         }
+
+        /// <summary>
+        /// Gets or sets que indican si el item esta actualmente activo en pantalla.
+        /// Por predeterminado sera true.
+        /// </summary>
+        /// <value></value>
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Gets or sets del nombre del mundo.

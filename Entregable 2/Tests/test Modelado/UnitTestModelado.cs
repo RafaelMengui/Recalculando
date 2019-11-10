@@ -20,7 +20,7 @@ namespace Proyecto.LibraryModelado.test
         [Fact]
         public void TestFactoryComponents()
         {
-            const string XMLfile = @"..\..\..\..\..\Src\ArchivosHTML\ElPosta.xml";
+            const string XMLfile = @"..\..\..\..\..\Src\ArchivosHTML\1920x1080.xml";
 
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
             List<IComponent> componentList = new List<IComponent>();
@@ -58,7 +58,9 @@ namespace Proyecto.LibraryModelado.test
                 if (comp is ButtonStartLevel)
                 {
                     this.buttonStart = comp as ButtonStartLevel;
+                    this.buttonStart.Click("");
                 }
+
             }
         }
     }
