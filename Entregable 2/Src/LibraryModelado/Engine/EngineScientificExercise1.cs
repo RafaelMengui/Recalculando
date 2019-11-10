@@ -241,7 +241,7 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+        /// Metodo para crear un boton que al ejecutarlo ira a la pantalla principal.
         /// </summary>
         public void CreateButtonGoToMain()
         {
@@ -252,7 +252,8 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+        /// Metodo para crear un boton que al ejecutarlo ira al proximo nivel del nivel cientifico.
+        /// Este boton aparecera en pantalla al terminar un nivel.
         /// </summary>
         public void CreateButtonGoToNextLevel()
         {

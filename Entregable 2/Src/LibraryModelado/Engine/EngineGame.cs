@@ -117,6 +117,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// <see cref="Label"/>.
         /// </summary>
         /// <param name="feedback"></param>
+        /// <param name="text">Nuevo texto del feedback.</param>
         public void UpdateFeedback(Feedback feedback, string text)
         {
             this.engineUnity.UpdateFeedback(feedback, text);
@@ -126,17 +127,29 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo utilizado para iniciar o reiniciar el motor del juego de un determinado nivel.
         /// </summary>
-        /// <param name="level"></param>
+        /// <param name="level">Nivel que este asociado al motor a iniciar.</param>
         public void StartLevelEngine(Space level)
         {
             this.LevelEngines[level].StartLevel();
         }
 
+        /// <summary>
+        /// Metodo responsable de llamar al motor de unity para Centrar un IDraggable en
+        /// un IContainer.
+        /// </summary>
+        /// <param name="item">IDraggableItem.</param>
         public void CenterInContainer(IDraggable item)
         {
             this.engineUnity.CenterInUnity(item);
         }
 
+        /// <summary>
+        /// Metodo responsable de llamar al motor de unity para actualizar un item
+        /// para que sea arrastrable o no.
+        /// Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
+        /// </summary>
+        /// <param name="draggableItem">Item que se va a actualizar.</param>
+        /// <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
         public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
         {
             if (!draggableItem.Draggable.Equals(isDraggable))
@@ -146,6 +159,12 @@ namespace Proyecto.LibraryModelado.Engine
             }
         }
 
+        /// <summary>
+        /// Metodo responsable de llamar al motor de unity para actualizar si un item es
+        /// mostrado por pantalla u ocultado.
+        /// </summary>
+        /// <param name="component">Componente que se va a actualizar.</param>
+        /// <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
         public void SetActive(IComponent component, bool active)
         {
             if (!component.IsActive.Equals(active))
