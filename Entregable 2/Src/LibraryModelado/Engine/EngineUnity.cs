@@ -66,7 +66,7 @@ namespace Proyecto.LibraryModelado.Engine
                 draggableItem.Container.SavedItems.Remove(draggableItem as Items);
                 destination.SavedItems.Add(draggableItem as Items);
                 this.Adapter.Center(draggableItem.ID, destination.ID);
-                this.Adapter.MakeDraggable(draggableItem.ID, draggableItem.Draggable);
+                this.Adapter.MakeDraggable(draggableItem.ID, false);
             }
             else
             {
@@ -123,9 +123,9 @@ namespace Proyecto.LibraryModelado.Engine
         /// Metodo responsable de actualizar el mensaje de feedback mostrado en pantalla.
         /// </summary>
         /// <param name="feedback"></param>
-        public void UpdateFeedback(Feedback feedback)
+        public void UpdateFeedback(Feedback feedback, string text)
         {
-            this.Adapter.SetText(feedback.ID, feedback.Text, true);
+            this.Adapter.SetText(feedback.ID, text, true);
         }
 
         /// <summary>
@@ -138,9 +138,19 @@ namespace Proyecto.LibraryModelado.Engine
             this.Adapter.SetImage(items.ID, image);
         }
 
+        public void CenterInUnity(IDraggable item)
+        {
+            this.Adapter.Center(item.ID, item.Container.ID);
+        }
+
         public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
         {
             this.Adapter.MakeDraggable(draggableItem.ID, isDraggable);
+        }
+
+        public void SetActive(IComponent component, bool active)
+        {
+            this.Adapter.SetActive(component.ID, active);
         }
     }
 }

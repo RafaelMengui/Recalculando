@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System.Collections.Generic;
+using System.Linq;
 using Proyecto.Item;
 using Proyecto.Item.ScientistLevel;
 
@@ -30,6 +31,16 @@ namespace Proyecto.LibraryModelado.Engine
         private Feedback levelFeedback;
 
         /// <summary>
+        /// Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+        /// </summary>
+        private ButtonStartLevel buttonNextLevel;
+
+        /// <summary>
+        /// Boton que al apretarlo aparecera la pantalla principal.
+        /// </summary>
+        private ButtonGoToPage buttonGoToMain;
+
+        /// <summary>
         /// Instancia unica del motor general.
         /// </summary>
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
@@ -42,8 +53,20 @@ namespace Proyecto.LibraryModelado.Engine
             this.Level = this.level;
             this.ResultsOfLevel = new bool[3];
             this.LevelFeedback = this.levelFeedback;
+            this.ButtonGoToMain = this.buttonGoToMain;
+            this.ButtonNextLevel = this.buttonNextLevel;
             this.Operations = new List<Operations>();
         }
+
+        /// <summary>
+        /// Gets or sets Boton que al apretarlo aparecera la pantalla principal.
+        /// </summary>
+        public ButtonGoToPage ButtonGoToMain { get; set; }
+
+        /// <summary>
+        /// Gets or sets del boton que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+        /// </summary>
+        public ButtonStartLevel ButtonNextLevel { get; set; }
 
         /// <summary>
         /// Gets de lista de operaciones del nivel.
@@ -81,22 +104,53 @@ namespace Proyecto.LibraryModelado.Engine
 
         /// <summary>
         /// Metodo utilizado para iniciar o reiniciar el motor del juego.
+        /// Reinicia el feedback, el array de resultados, y el contador.
+        /// Ademas recorre las operaciones, toma el ultimo container de la lista, debido a que
+        /// este siempre sera el container del resultado. Toma el item guardado en este container,
+        /// y lo retorna a su container inicial. Solamente si el Draggable item no es draggble
+        /// (draggableItem.Draggable = false) lo convierte en true, para evitars errores.
         /// </summary>
         public void StartLevel()
         {
+            string text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
+
+            if (this.buttonGoToMain is null)
+            {
+                this.CreateButtonGoToMain();
+            }
+            if (this.ButtonNextLevel is null)
+            {
+                this.CreateButtonGoToNextLevel();
+            }
+            if (this.LevelFeedback is null)
+            {
+                this.CreateFeedback();
+            }
+
             this.ResultsOfLevel = new bool[3];
             this.OperationCounter = 0;
-        }
+            this.engineGame.SetActive(this.ButtonNextLevel, false);
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
 
-        /// <summary>
-        /// Metodo responsable de asignarle al motor, su respectivo objeto feedback.
-        /// </summary>
-        /// <param name="feedback">Feedback.</param>
-        public void SetFeedback(Feedback feedback)
-        {
-            this.LevelFeedback = feedback;
-            this.LevelFeedback.Text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
-            this.engineGame.UpdateFeedback(this.LevelFeedback);
+            foreach (Operations operation in this.Operations)
+            {
+                Items item = operation.Components.Last();
+                if (item is IContainer)
+                {
+                    IContainer resultContainer = item as IContainer;
+                    foreach (Items savedItem in resultContainer.SavedItems)
+                    {
+                        if (savedItem is IDraggable)
+                        {
+                            IDraggable draggableItem = savedItem as IDraggable;
+                            this.engineGame.SetItemDraggable(draggableItem, true);
+                            this.engineGame.CenterInContainer(draggableItem);
+                        }
+                    }
+
+                    resultContainer.SavedItems.Clear();
+                }
+            }
         }
 
         /// <summary>
@@ -119,11 +173,15 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (this.ResultsOfLevel[0] && this.ResultsOfLevel[1] && this.ResultsOfLevel[2])
             {
-                this.LevelFeedback.Text = "Bien Hecho! has contestado correctamente las tres preguntas. Puedes continuar al siguiente nivel.";
-                this.engineGame.UpdateFeedback(this.LevelFeedback);
-                this.ButtonGoToNextLevel();
+                // Se Actualiza el Feedback.
+                string text = "Excelente trabajo! Puedes continuar al siguiente nivel.";
+                this.engineGame.UpdateFeedback(this.LevelFeedback, text);
+
+                // Se muestra el boton para el proximo nivel.
+                this.engineGame.SetActive(this.ButtonNextLevel, true);
                 return true;
             }
+
             return false;
         }
 
@@ -141,19 +199,14 @@ namespace Proyecto.LibraryModelado.Engine
             {
                 this.ResultsOfLevel[this.OperationCounter] = true;
                 this.OperationCounter += 1;
-                money.Draggable = false;
                 this.GoodFeedback();
+                this.engineGame.SetItemDraggable(money, false);
                 this.VerifyWinLevel();
                 return true;
             }
             else
             {
-                if (moneyContainer.AcceptableValue == 0)
-                {
-                    money.Container = moneyContainer;
-                }
-
-                else if (moneyContainer.AcceptableValue != -1)
+                if (moneyContainer.AcceptableValue != -1)
                 {
                     this.BadFeedback();
                 }
@@ -165,41 +218,52 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
         /// </summary>
-        public bool GoodFeedback()
+        public void GoodFeedback()
         {
-            this.LevelFeedback.Text = "Muy buen trabajo, ¡Continua asi!";
-            this.engineGame.UpdateFeedback(this.LevelFeedback);
-            return true;
+            string text = "Muy buen trabajo, ¡Continua asi!";
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
         /// <summary>
         /// Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
         /// </summary>
-        public bool BadFeedback()
+        public void BadFeedback()
         {
-            this.LevelFeedback.Text = "Esa suma no es correcta, ¡Intentalo de nuevo!";
-            this.engineGame.UpdateFeedback(this.LevelFeedback);
-            return true;
+            string text = "Esa suma no es correcta, ¡Intentalo de nuevo!";
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+        /// Metodo responsable de Crear y asignarle al motor, su respectivo objeto feedback.
         /// </summary>
-        public IComponent ButtonGoToMain()
+        public void CreateFeedback()
         {
-            Items goToMain = new ButtonGoToPage("Scientific1ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
+            Feedback feedback = new Feedback("Feedback1", this.Level, 710, 70, 320, 400, "Vacio.png", string.Empty, 30, true, false);
+            this.engineGame.CreateInUnity(feedback);
+            this.LevelFeedback = feedback;
+        }
+
+        /// <summary>
+        /// Metodo para crear un boton que al ejecutarlo ira a la pantalla principal.
+        /// </summary>
+        public void CreateButtonGoToMain()
+        {
+            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific1ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
             this.Level.ItemList.Add(goToMain);
-            return goToMain;
+            this.engineGame.CreateInUnity(goToMain);
+            this.ButtonGoToMain = goToMain;
         }
 
         /// <summary>
-        /// Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+        /// Metodo para crear un boton que al ejecutarlo ira al proximo nivel del nivel cientifico.
+        /// Este boton aparecera en pantalla al terminar un nivel.
         /// </summary>
-        public void ButtonGoToNextLevel()
+        public void CreateButtonGoToNextLevel()
         {
-            Items goToNext = new ButtonStartLevel("Scientific1ToScientific2", this.Level, 0, 0, 500, 300, "siguienteNivel.png", "#FCFCFC", "ScientificExercise2");
+            ButtonStartLevel goToNext = new ButtonStartLevel("Scientific1ToScientific2", this.Level, 0, 0, 500, 300, "siguienteNivel.png", "#FCFCFC", "ScientificExercise2");
             this.Level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
+            this.ButtonNextLevel = goToNext;
         }
     }
 }

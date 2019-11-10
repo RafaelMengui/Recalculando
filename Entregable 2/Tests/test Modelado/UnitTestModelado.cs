@@ -58,7 +58,9 @@ namespace Proyecto.LibraryModelado.test
                 if (comp is ButtonStartLevel)
                 {
                     this.buttonStart = comp as ButtonStartLevel;
+                    this.buttonStart.Click("");
                 }
+
             }
         }
     }

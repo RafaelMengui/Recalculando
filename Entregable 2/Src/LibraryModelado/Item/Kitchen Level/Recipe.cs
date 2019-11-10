@@ -21,7 +21,15 @@ namespace Proyecto.Item.KitchenLevel
         public Recipe(string name, Food food)
         {
             this.FoodList = new List<Food>();
+            this.IsActive = true;
         }
+
+        /// <summary>
+        /// Gets or sets que indican si el item esta actualmente activo en pantalla.
+        /// Por predeterminado sera true.
+        /// </summary>
+        /// <value></value>
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Gets lista de objetos Food, que deberan ser soltados dentro del container para ganar el juego.

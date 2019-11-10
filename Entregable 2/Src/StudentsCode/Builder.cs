@@ -76,7 +76,6 @@ namespace Proyecto.StudentsCode
             foreach (IComponent component in componentList)
             {
                 UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);
-                this.engineGame.SetLevelFeedbacks(component);
             }
         }
 
@@ -94,9 +93,6 @@ namespace Proyecto.StudentsCode
 
             // Se asigna la pagina principal como la pagina activa actual.
             this.engineGame.CurrentPage = this.firstPage;
-
-            // Se crean todos los botones de pagina principal.
-            this.engineGame.ButtonGoToMain();
 
             // Se muestra la primera pagina.
             this.adapter.ShowPage(this.firstPage.ID);

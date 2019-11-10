@@ -30,16 +30,27 @@ namespace Proyecto.LibraryModelado.Engine
         private Feedback levelFeedback;
 
         /// <summary>
+        /// Boton que al apretarlo aparecera la pantalla principal.
+        /// </summary>
+        private ButtonGoToPage buttonGoToMain;
+
+        /// <summary>
         /// Constructor del motor.
         /// </summary>
         public EngineScientificExercise4()
         {
             this.Level = this.level;
             this.ResultsOfLevel = new bool[2];
-            this.Operations = new List<Operations>();
             this.OperationCounter = 0;
             this.LevelFeedback = this.levelFeedback;
+            this.ButtonGoToMain = this.buttonGoToMain;
+            this.Operations = new List<Operations>();
         }
+
+        /// <summary>
+        /// Gets or sets Boton que al apretarlo aparecera la pantalla principal.
+        /// </summary>
+        public ButtonGoToPage ButtonGoToMain { get; set; }
 
         /// <summary>
         /// Gets de lista de operaciones del nivel
@@ -79,19 +90,19 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
+            string text = "Hola! En este juego deberas seleccionar la respuesta correcta.";
+            if (this.buttonGoToMain is null)
+            {
+                this.CreateButtonGoToMain();
+            }
+            if (this.LevelFeedback is null)
+            {
+                this.CreateFeedback();
+            }
+
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
             this.ResultsOfLevel = new bool[2];
             this.OperationCounter = 0;
-        }
-
-        /// <summary>
-        /// Metodo responsable de asignarle al motor, su respectivo objeto feedback.
-        /// </summary>
-        /// <param name="feedback">Feedback.</param>
-        public void SetFeedback(Feedback feedback)
-        {
-            this.LevelFeedback = feedback;
-            this.LevelFeedback.Text = "Hola! En este juego deberas seleccionar la opcion correcta a la pregunta.";
-            this.engineGame.UpdateFeedback(this.LevelFeedback);
         }
 
         /// <summary>
@@ -102,9 +113,8 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (this.ResultsOfLevel[0] && this.ResultsOfLevel[1])
             {
-                this.LevelFeedback.Text = "Excelente! Has contestado correctamente las dos preguntas. Puedes continuar al siguiente nivel.";
-                this.engineGame.UpdateFeedback(this.LevelFeedback);
-                this.ButtonGoToNextLevel();
+                string text = "Excelente! Has contestado correctamente las dos preguntas. Puedes continuar al siguiente nivel.";
+                this.engineGame.UpdateFeedback(this.LevelFeedback, text);
                 return true;
             }
             return false;
@@ -148,41 +158,40 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
         /// </summary>
-        public bool GoodFeedback()
+        public void GoodFeedback()
         {
-            this.LevelFeedback.Text = "Correcto! Continua asi.";
-            this.engineGame.UpdateFeedback(this.LevelFeedback);
-            return true;
+            string text = "Excelente trabajo! Puedes continuar al siguiente nivel.";
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
         /// <summary>
         /// Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
         /// </summary>
-        public bool BadFeedback()
+        public void BadFeedback()
         {
-            this.LevelFeedback.Text = "Intentalo de nuevo ¡Tu puedes!";
-            this.engineGame.UpdateFeedback(this.LevelFeedback);
-            return true;
+            string text = "Intentalo de nuevo ¡Tu puedes!";
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
+        }
+
+        /// <summary>
+        /// Metodo responsable de asignarle al motor, su respectivo objeto feedback.
+        /// </summary>
+        public void CreateFeedback()
+        {
+            Feedback feedback = new Feedback("Feedback4", this.Level, 710, 70, 320, 400, "Vacio.png", string.Empty, 30, true, false);
+            this.engineGame.CreateInUnity(feedback);
+            this.LevelFeedback = feedback;
         }
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
         /// </summary>
-        public IComponent ButtonGoToMain()
+        public void CreateButtonGoToMain()
         {
-            Items goToMain = new ButtonGoToPage("Scientific2ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
+            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific4ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
             this.Level.ItemList.Add(goToMain);
-            return goToMain;
-        }
-
-        /// <summary>
-        /// Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
-        /// </summary>
-        public void ButtonGoToNextLevel()
-        {
-            Items goToNext = new ButtonStartLevel("Scientific2ToScientific3", this.Level, 0, 0, 500, 300, "siguienteNivel.png", "#FCFCFC", "ScientificExercise3");
-            this.Level.ItemList.Add(goToNext);
-            this.engineGame.CreateInUnity(goToNext);
+            this.engineGame.CreateInUnity(goToMain);
+            this.ButtonGoToMain = goToMain;
         }
     }
 }

@@ -34,6 +34,16 @@ namespace Proyecto.LibraryModelado.Engine
         private Feedback levelFeedback;
 
         /// <summary>
+        /// Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+        /// </summary>
+        private ButtonStartLevel buttonNextLevel;
+
+        /// <summary>
+        /// Boton que al apretarlo aparecera la pantalla principal.
+        /// </summary>
+        private ButtonGoToPage buttonGoToMain;
+
+        /// <summary>
         /// Constructor del motor.
         /// </summary>
         public EngineScientificExercise2()
@@ -41,8 +51,20 @@ namespace Proyecto.LibraryModelado.Engine
             this.Level = this.level;
             this.ResultsOfLevel = false;
             this.Operations = new List<Operations>();
+            this.ButtonGoToMain = this.buttonGoToMain;
+            this.ButtonNextLevel = this.buttonNextLevel;
             this.LevelFeedback = this.levelFeedback;
         }
+
+        /// <summary>
+        /// Gets or sets Boton que al apretarlo aparecera la pantalla principal.
+        /// </summary>
+        public ButtonGoToPage ButtonGoToMain { get; set; }
+
+        /// <summary>
+        /// Gets or sets del boton que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+        /// </summary>
+        public ButtonStartLevel ButtonNextLevel { get; set; }
 
         /// <summary>
         /// Gets de lista de operaciones del nivel
@@ -57,11 +79,10 @@ namespace Proyecto.LibraryModelado.Engine
 
         /// <summary>
         /// Gets or sets de los resultados del nivel.
-        /// Por predeterminado los dos parametros son False.
-        /// true = Completo una operacion correctamente.
+        /// true = Completo la pregunta correctamente.
         /// false = No contesto bien la pregunta.
         /// </summary>
-        /// <value>Array de Bools.</value>
+        /// <value>Bool.</value>
         public bool ResultsOfLevel { get; private set; }
 
         /// <summary>
@@ -75,7 +96,25 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
+            string text = "Hola! En este juego deberas seleccionar la respuesta correcta.";
+
+            if (this.buttonGoToMain is null)
+            {
+                this.CreateButtonGoToMain();
+            }
+            if (this.ButtonNextLevel is null)
+            {
+                this.CreateButtonGoToNextLevel();
+            }
+            if (this.LevelFeedback is null)
+            {
+                this.CreateFeedback();
+            }
+
             this.ResultsOfLevel = false;
+            this.engineGame.SetActive(this.ButtonNextLevel, false);
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
+
             foreach (Operations operation in this.Operations)
             {
                 foreach (Items item in operation.Components)
@@ -86,17 +125,6 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Metodo responsable de asignarle al motor, su respectivo objeto feedback.
-        /// </summary>
-        /// <param name="feedback">Feedback.</param>
-        public void SetFeedback(Feedback feedback)
-        {
-            this.LevelFeedback = feedback;
-            this.LevelFeedback.Text = "Hola! En este juego deberas seleccionar la opcion correcta a la pregunta.";
-            this.engineGame.UpdateFeedback(this.LevelFeedback);
-        }
-
-        /// <summary>
         /// Verifica que se hayan completado las dos preguntas del nivel.
         /// </summary>
         /// <returns>Bool.</returns>
@@ -104,9 +132,15 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (this.ResultsOfLevel)
             {
-                this.ButtonGoToNextLevel();
+                // Se Actualiza el Feedback.
+                string text = "Excelente trabajo! Puedes continuar al siguiente nivel.";
+                this.engineGame.UpdateFeedback(this.LevelFeedback, text);
+
+                // Se muestra el boton para el proximo nivel.
+                this.engineGame.SetActive(this.ButtonNextLevel, true);
                 return true;
             }
+
             return false;
         }
 
@@ -127,12 +161,9 @@ namespace Proyecto.LibraryModelado.Engine
 
                 foreach (Operations operation in this.Operations)
                 {
-                    if (operation.Components.Contains(button))
+                    foreach (Items item in operation.Components)
                     {
-                        foreach (Items item in operation.Components)
-                        {
-                            (item as ButtonTrueFalse).Pushable = false;
-                        }
+                        (item as ButtonTrueFalse).Pushable = false;
                     }
                 }
                 return true;
@@ -147,41 +178,52 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
         /// </summary>
-        public bool GoodFeedback()
+        public void GoodFeedback()
         {
-            this.LevelFeedback.Text = "Excelente! Has contestado correctamente la pregunta. Puedes continuar al siguiente nivel.";
-            this.engineGame.UpdateFeedback(this.LevelFeedback);
-            return true;
+            string text = "Excelente trabajo! Puedes continuar al siguiente nivel.";
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
         /// <summary>
         /// Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
         /// </summary>
-        public bool BadFeedback()
+        public void BadFeedback()
         {
-            this.LevelFeedback.Text = "Intentalo de nuevo ¡Tu puedes!";
-            this.engineGame.UpdateFeedback(this.LevelFeedback);
-            return true;
+            string text = "Intentalo de nuevo ¡Tu puedes!";
+            this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+        /// Metodo responsable de Crear y asignarle al motor, su respectivo objeto feedback.
         /// </summary>
-        public IComponent ButtonGoToMain()
+        public void CreateFeedback()
         {
-            Items goToMain = new ButtonGoToPage("Scientific2ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
+            Feedback feedback = new Feedback("Feedback2", this.Level, 720, 90, 320, 400, "Vacio.png", string.Empty, 30, true, false);
+            this.engineGame.CreateInUnity(feedback);
+            this.LevelFeedback = feedback;
+        }
+
+        /// <summary>
+        /// Metodo para crear un boton que al ejecutarlo ira a la pantalla principal.
+        /// </summary>
+        public void CreateButtonGoToMain()
+        {
+            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific2ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
             this.Level.ItemList.Add(goToMain);
-            return goToMain;
+            this.engineGame.CreateInUnity(goToMain);
+            this.ButtonGoToMain = goToMain;
         }
 
         /// <summary>
-        /// Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+        /// Metodo para crear un boton que al ejecutarlo ira al proximo nivel del nivel cientifico.
+        /// Este boton aparecera en pantalla al terminar un nivel.
         /// </summary>
-        public void ButtonGoToNextLevel()
+        public void CreateButtonGoToNextLevel()
         {
-            Items goToNext = new ButtonStartLevel("Scientific2ToScientific3", this.Level, 0, 0, 500, 300, "siguienteNivel.png", "#FCFCFC", "ScientificExercise3");
+            ButtonStartLevel goToNext = new ButtonStartLevel("Scientific2ToScientific3", this.Level, 0, 0, 500, 300, "siguienteNivel.png", "#FCFCFC", "ScientificExercise3");
             this.Level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
+            this.ButtonNextLevel = goToNext;
         }
     }
 }
