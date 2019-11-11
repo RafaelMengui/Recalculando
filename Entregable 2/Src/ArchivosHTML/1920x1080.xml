@@ -2,9 +2,9 @@
 
 	<Space Name="MainPage" Background="page1.png">
 
-		<ButtonStartLevel Name="gotoscientist1" PositionX="-640" PositionY="-250" Width="560" Height="350" Photo="Vacio.png" Color="#FCFCFC" Level="ScientificExercise1">
-		<ButtonStartLevel Name="gotoscientist2" PositionX="-250" PositionY="-390" Width="250" Height="150" Photo="Vacio.png" Color="#FCFCFC" Level="ScientificExercise1">
-		<ButtonStartLevel Name="gotoscientist5" PositionX="-750" PositionY="-250" Width="240" Height="300" Photo="Cientifica.png" Color="#FCFCFC" Level="ScientificExercise1">
+		<ButtonStartLevel Name="gotoscientistMenu1" PositionX="-640" PositionY="-250" Width="560" Height="350" Photo="Vacio.png" Color="#FCFCFC" Level="ScientificExercise1">
+		<ButtonStartLevel Name="gotoscientistMenu2" PositionX="-250" PositionY="-390" Width="250" Height="150" Photo="Vacio.png" Color="#FCFCFC" Level="ScientificExercise1">
+		<ButtonStartLevel Name="gotoscientistMenu3" PositionX="-750" PositionY="-250" Width="240" Height="300" Photo="Cientifica.png" Color="#FCFCFC" Level="ScientificExercise1">
 
 	</Space>
 
@@ -67,8 +67,8 @@
 
 	<Space Name="ScientificExercise2" Background="page4.png">
 
-		<Image Name="cientifica2" PositionX="770" PositionY="-180" Width="350" Height="480" Photo="Cientifica.png">
-		<Image Name="nube2" PositionX="750" PositionY="210" Width="400" Height="400" Photo="nube2.png">
+		<Image Name="Cientifica" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Cientifica.png">
+		<Image Name="nube2" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
 
 
 		<Image Name="recuadrotexto1" PositionX="-200" PositionY="200" Width="1300" Height="150" Photo="recuadroTexto1.png">
@@ -86,13 +86,29 @@
 
 	<Space Name="ScientificExercise3" Background="page4.png">
 
-		<Image Name="mesa" PositionX="0" PositionY="-60" Width="300" Height="300" Photo="table.png">
-		<DragContainer Name="bowl" PositionX="0" PositionY="120" Width="150" Height="100" Photo="bowl.png">
+		<Image Name="Cientifica" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Cientifica.png">
+		<Image Name="nube2" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+
+		<Image Name="suma1" PositionX="-400" PositionY="0" Width="800" Height="1000" Photo="suma1.png">
+		<ButtonTrueFalse Name="CorrectoSuma1" PositionX="200" PositionY="200" Width="300" Height="300" Photo="correcto.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="IncorrectoSuma1" PositionX="200" PositionY="-200" Width="300" Height="300" Photo="incorrecto.png" Color="#FCFCFC" Value="true">
+
+		<Image Name="suma2" PositionX="-400" PositionY="0" Width="800" Height="1000" Photo="suma2.png">
+		<ButtonTrueFalse Name="CorrectoSuma2" PositionX="200" PositionY="200" Width="300" Height="300" Photo="correcto.png" Color="#FCFCFC" Value="true">
+		<ButtonTrueFalse Name="IncorrectoSuma2" PositionX="200" PositionY="-200" Width="300" Height="300" Photo="incorrecto.png" Color="#FCFCFC" Value="false">
+
+		<Image Name="suma3" PositionX="-400" PositionY="0" Width="800" Height="1000" Photo="suma3.png">
+		<ButtonTrueFalse Name="CorrectoSuma3" PositionX="200" PositionY="200" Width="300" Height="300" Photo="correcto.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="IncorrectoSuma3" PositionX="200" PositionY="-200" Width="300" Height="300" Photo="incorrecto.png" Color="#FCFCFC" Value="true">
+
+		<Operations Components="suma1,CorrectoSuma1,IncorrectoSuma1">
+		<Operations Components="suma2,CorrectoSuma2,IncorrectoSuma2">
+		<Operations Components="suma3,CorrectoSuma3,IncorrectoSuma3">
 
 	</Space>
 
 	<Space Name="ScientificExercise4" Background="page4.png">
 
 	</Space>
-	
+
 </World>

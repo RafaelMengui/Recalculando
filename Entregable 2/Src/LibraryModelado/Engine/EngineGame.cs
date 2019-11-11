@@ -86,7 +86,12 @@ namespace Proyecto.LibraryModelado.Engine
                     Space level = component as Space;
                     try
                     {
-                        if (level.Name != "MainPage")
+                        if (level.Name.Equals("MainPage"))
+                        {
+                            this.MainPage = level;
+                            this.CurrentPage = level;
+                        }
+                        else
                         {
                             Type engineType = Type.GetType("Proyecto.LibraryModelado.Engine.Engine" + level.Name);
                             this.engine = Activator.CreateInstance(engineType) as ILevelEngine;
