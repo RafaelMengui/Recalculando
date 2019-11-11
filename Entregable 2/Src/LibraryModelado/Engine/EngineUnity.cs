@@ -6,7 +6,6 @@
 using Proyecto.Common;
 using Proyecto.Factory.Unity;
 using Proyecto.Item;
-using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
