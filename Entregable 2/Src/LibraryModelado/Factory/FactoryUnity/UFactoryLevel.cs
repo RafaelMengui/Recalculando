@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="UFactorySpace.cs" company="Universidad Católica del Uruguay">
+// <copyright file="UFactoryLevel.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
