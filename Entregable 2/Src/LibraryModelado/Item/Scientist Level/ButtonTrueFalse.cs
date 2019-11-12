@@ -80,9 +80,13 @@ namespace Proyecto.Item.ScientistLevel
                 {
                     (engineGame.LevelEngines[this.Level] as EngineScientificExercise2).VerifyExercise(this);
                 }
-                else if (engineGame.LevelEngines[this.Level] is EngineScientificExercise3)
+                if (engineGame.LevelEngines[this.Level] is EngineScientificExercise3)
                 {
                     (engineGame.LevelEngines[this.Level] as EngineScientificExercise3).VerifyExercise(this);
+                }
+                else if((engineGame.LevelEngines[this.Level] is EngineScientificExercise4))
+                {
+                    (engineGame.LevelEngines[this.Level] as EngineScientificExercise4).VerifyExercise(this);
                 }
             }
         }

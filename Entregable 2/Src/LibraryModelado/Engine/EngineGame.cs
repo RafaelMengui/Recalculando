@@ -95,7 +95,7 @@ namespace Proyecto.LibraryModelado.Engine
                             this.MainPage = level;
                             this.CurrentPage = level;
                         }
-                        else
+                        else if (!level.Name.Contains("Menu"))
                         {
                             Type engineType = Type.GetType("Proyecto.LibraryModelado.Engine.Engine" + level.Name);
                             this.engine = Activator.CreateInstance(engineType) as ILevelEngine;

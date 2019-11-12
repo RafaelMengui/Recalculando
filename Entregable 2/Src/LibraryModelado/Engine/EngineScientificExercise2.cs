@@ -98,7 +98,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             string text = "Hola! En este juego deberas seleccionar la respuesta correcta.";
 
-            if (this.buttonGoToMain is null)
+            if (this.ButtonGoToMain is null)
             {
                 this.CreateButtonGoToMain();
             }
@@ -208,7 +208,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateButtonGoToMain()
         {
-            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific2ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
+            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific2ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MenuScientific");
             this.Level.ItemList.Add(goToMain);
             this.engineGame.CreateInUnity(goToMain);
             this.ButtonGoToMain = goToMain;
