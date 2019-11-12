@@ -24,23 +24,11 @@ namespace Proyecto.Item.KitchenLevel
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del Item.</param>
-        /// <param name="recipe">Recipe del Item.</param>
-        public Bowl(string name, Space level, float positionX, float positionY, float width, float height, string image, Recipe recipe)
+        public Bowl(string name, Space level, float positionX, float positionY, float width, float height, string image)
         : base(name, level, positionX, positionY, width, height, image)
         {
-            this.Recipe = recipe;
             this.SavedItems = new List<Items>();   
         }
-        /// <summary>
-        /// Receta del bowl
-        /// </summary>
-        private Recipe recipe;
-
-        /// <summary>
-        /// Gets de la recipe perteneciente .
-        /// </summary>
-        /// <value>Alimentos <see cref="Food"/>.</value>
-        public Recipe Recipe { get; }
 
         /// <summary>
         /// Gets lista de objetos Food, que seran soltados dentro del container.

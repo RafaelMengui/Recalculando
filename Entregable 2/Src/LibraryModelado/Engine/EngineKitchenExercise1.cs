@@ -117,7 +117,7 @@ namespace Proyecto.LibraryModelado.Engine
 
         /// <summary>
         /// Metodo responsable de verificar si el objeto tipo Food soltado dentro del Bowl,
-        /// tiene el tipo que acepta el bowl.
+        /// tiene el tipo que aceptado por la.
         /// </summary>
         /// <param name="bowl">Container tipo <see cref="Bowl"/>.</param>
         /// <param name="food">DraggableItem tipo <see cref="Food"/>.</param>
