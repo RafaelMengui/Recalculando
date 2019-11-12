@@ -52,6 +52,8 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private string acceptableValue;
 
+        private string photo;
+
         /// <summary>
         /// Instancia del mundo.
         /// </summary>
@@ -74,6 +76,7 @@ namespace Proyecto.Factory.CSharp
                 this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
                 this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
                 this.acceptableValue = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Value"; }).Valor;
+                this.photo = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Photo";}).Valor;
             }
             catch(NullReferenceException)
             {
@@ -88,7 +91,7 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Items input = new InputVerifyText(this.name, this.level, this.positionX, this.positionY, this.width, this.height, null, this.acceptableValue);
+            Items input = new InputVerifyText(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo, this.acceptableValue);
             this.level.ItemList.Add(input);
             return input;
         }

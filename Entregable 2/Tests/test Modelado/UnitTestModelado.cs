@@ -20,7 +20,7 @@ namespace Proyecto.LibraryModelado.test
         [Fact]
         public void TestFactoryComponents()
         {
-            const string XMLfile = @"..\..\..\..\..\Src\ArchivosHTML\1920x1080.xml";
+            const string XMLfile = @"..\..\..\..\..\Src\ArchivosHTML\1920x1080 Test.xml";
 
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
             List<IComponent> componentList = new List<IComponent>();
@@ -32,36 +32,6 @@ namespace Proyecto.LibraryModelado.test
             }
 
             this.engineGame.AsociateLevelsWithEngines(componentList);
-            foreach (IComponent comp in componentList)
-            {
-                if (comp is Money)
-                {
-                    if (((Money)comp).Name == "1coin5")
-                    {
-                        this.money = comp as Money;
-                    }
-                }
-                if (comp is MoneyContainer)
-                {
-                    if (((MoneyContainer)comp).Name=="resultContainer1")
-                    {
-                        this.moneyContainer = comp as MoneyContainer;
-                    }
-                }
-                if (comp is Space)
-                {
-                    if (((Level)comp).Name == "ScientificExercise1")
-                    {
-                        this.level = comp as Space;
-                    }
-                }
-                if (comp is ButtonStartLevel)
-                {
-                    this.buttonStart = comp as ButtonStartLevel;
-                    this.buttonStart.Click("");
-                }
-
-            }
         }
     }
 }

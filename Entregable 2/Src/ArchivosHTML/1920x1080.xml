@@ -2,9 +2,9 @@
 
 	<Space Name="MainPage" Background="page1.png">
 
-		<ButtonGoToPage Name="gotoscientistMenu1" PositionX="-640" PositionY="-250" Width="560" Height="350" Photo="Vacio.png" Color="#FCFCFC" GoToPage="MenuScientific">
-		<ButtonGoToPage Name="gotoscientistMenu2" PositionX="-250" PositionY="-390" Width="250" Height="150" Photo="Vacio.png" Color="#FCFCFC" GoToPage="MenuScientific">
-		<ButtonGoToPage Name="gotoscientistMenu3" PositionX="-750" PositionY="-250" Width="240" Height="300" Photo="Cientifica.png" Color="#FCFCFC" GoToPage="MenuScientific">
+		<ButtonGoToPage Name="gotoscientistMenu" PositionX="-750" PositionY="-250" Width="240" Height="300" Photo="Cientifica.png" Color="#FCFCFC" GoToPage="MenuScientific">
+		<ButtonStartLevel Name="StartMagician1" PositionX="100" PositionY="250" Width="240" Height="300" Photo="Mago.png" Color="#FCFCFC" Level="Magician">
+
 
 	</Space>
 
@@ -152,7 +152,47 @@
 
 		<Image Name="mago" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Mago.png">
 		<Image Name="nube5" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+		<Image Name="Verificacion" PositionX="-500" PositionY="350" Width="470" Height="250" Photo="verificacionNumero.png">
 
-		<InputVerifyText Name="arbol1" PositionX="710" PositionY="-300" Width="400" Height="530" Value="50"
+		<Image Name="num16" PositionX="-800" PositionY="-30" Width="150" Height="150" Photo="num16.png">
+		<Image Name="num17" PositionX="-450" PositionY="30" Width="100" Height="100" Photo="num17.png">
+		<Image Name="questionIcon1" PositionX="-150" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num19" PositionX="220" PositionY="240" Width="80" Height="80" Photo="num19.png">
+		<Image Name="num20" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num20.png">
+		<InputVerifyText Name="verify1" PositionX="-500" PositionY="310" Width="420" Height="150" Value="18" Photo="Vacio.png">
+
+		<Image Name="num97" PositionX="-800" PositionY="-30" Width="150" Height="150" Photo="num97.png">
+		<Image Name="num98" PositionX="-450" PositionY="30" Width="100" Height="100" Photo="num98.png">
+		<Image Name="num99" PositionX="-150" PositionY="150" Width="90" Height="90" Photo="num99.png">
+		<Image Name="questionIcon2" PositionX="220" PositionY="240" Width="80" Height="80" Height="90" Photo="questionIcon.png">
+		<Image Name="num101" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num101.png">
+		<InputVerifyText Name="verify2" PositionX="-500" PositionY="310" Width="420" Height="150" Value="100" Photo="Vacio.png">
+
+		<Image Name="num50" PositionX="-800" PositionY="-30" Width="150" Height="150" Photo="num50.png">
+		<Image Name="num49" PositionX="-450" PositionY="30" Width="100" Height="100" Photo="num49.png">
+		<Image Name="questionIcon3" PositionX="-150" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num47" PositionX="220" PositionY="240" Width="80" Height="80" Photo="num47.png">
+		<Image Name="num46" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num46.png">
+		<InputVerifyText Name="verify3" PositionX="-500" PositionY="310" Width="420" Height="150" Value="48" Photo="Vacio.png">
+
+		<Image Name="num2" PositionX="-800" PositionY="-30" Width="150" Height="150" Photo="num2.png">
+		<Image Name="num4" PositionX="-450" PositionY="30" Width="100" Height="100" Photo="num4.png">
+		<Image Name="questionIcon4" PositionX="-150" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num8" PositionX="220" PositionY="240" Width="80" Height="80" Photo="num8.png">
+		<Image Name="num10" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num10.png">
+		<InputVerifyText Name="verify4" PositionX="-500" PositionY="310" Width="420" Height="150" Value="6" Photo="Vacio.png">
+
+		<Image Name="num15" PositionX="-800" PositionY="-30" Width="150" Height="150" Photo="num15.png">
+		<Image Name="N_um20" PositionX="-450" PositionY="30" Width="100" Height="100" Photo="num20.png">
+		<Image Name="questionIcon5" PositionX="-150" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num30" PositionX="220" PositionY="240" Width="80" Height="80" Photo="num30.png">
+		<Image Name="num35" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num35.png">
+		<InputVerifyText Name="verify5" PositionX="-500" PositionY="310" Width="420" Height="150" Value="25" Photo="Vacio.png">
+
+		<Operations Components="num16,num17,num19,num20,questionIcon1,verify1">
+		<Operations Components="num97,num98,num99,num101,questionIcon2,verify2">
+		<Operations Components="num50,num49,num47,num46,questionIcon3,verify3">
+		<Operations Components="num2,num4,num8,num10,questionIcon4,verify4">
+		<Operations Components="num15,N_um20,num30,num35,questionIcon5,verify5">
 
 </World>

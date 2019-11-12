@@ -57,12 +57,12 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.Level = this.level;
             this.ResultsOfLevel = new bool[5];
-            this.CurrentOperation = this.currentOperation;
             this.LevelFeedback = this.levelFeedback;
             this.ButtonGoToMain = this.buttonGoToMain;
             this.ButtonNextLevel = this.buttonNextLevel;
             this.LevelCounter = 0;
             this.Operations = new List<Operations>();
+            this.CurrentOperation = this.currentOperation;
         }
 
         /// <summary>
@@ -153,19 +153,11 @@ namespace Proyecto.LibraryModelado.Engine
                     this.engineGame.SetActive(item, false);
                 }
             }
-            this.engineGame.SetActive(this.CurrentOperation, true);
-        }
 
-        /// <summary>
-        /// Metodo responsable de verificar si el objeto tipo Money soltado dentro del MoneyContainer,
-        /// tiene el valor que acepta el container.
-        /// </summary>
-        /// <param name="moneyContainer">Container tipo <see cref="MoneyContainer"/>.</param>
-        /// <param name="money">DraggableItem tipo <see cref="Money"/>.</param>
-        /// <returns>Bool si el valor es correcto o no.</returns>
-        public bool VerifyOperation(MoneyContainer moneyContainer, Money money)
-        {
-            return moneyContainer.AcceptableValue == money.Value;
+            foreach (Items items in this.CurrentOperation.Components)
+            {
+                this.engineGame.SetActive(items, true);
+            }
         }
 
         /// <summary>
@@ -212,7 +204,10 @@ namespace Proyecto.LibraryModelado.Engine
             }
             else
             {
-                this.BadFeedback();
+                if (!text.Equals(string.Empty))
+                {
+                    this.BadFeedback();
+                }
                 return false;
             }
         }
@@ -250,7 +245,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateButtonGoToMain()
         {
-            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific1ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MenuScientific");
+            ButtonGoToPage goToMain = new ButtonGoToPage("MagicianToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
             this.Level.ItemList.Add(goToMain);
             this.engineGame.CreateInUnity(goToMain);
             this.ButtonGoToMain = goToMain;
@@ -262,7 +257,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateButtonGoToNextLevel()
         {
-            ButtonGoToPage goToNext = new ButtonGoToPage("Magician", this.Level, 0, 0, 500, 300, "botonToMain.png", "#FCFCFC", "MainPage");
+            ButtonGoToPage goToNext = new ButtonGoToPage("magicianToMain", this.Level, 0, 0, 500, 300, "botonToMain.png", "#FCFCFC", "MainPage");
             this.Level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
             this.ButtonNextLevel = goToNext;

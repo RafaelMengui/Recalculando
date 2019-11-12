@@ -16,16 +16,6 @@ namespace Proyecto.Item
     public class InputVerifyText : Items
     {
         /// <summary>
-        /// Método a ejecutar cuando se cambia el texto de la entrada de texto.
-        /// </summary>
-        private Action<string, string> onChange;
-
-        /// <summary>
-        /// Método a ejecutar cuando se termina de editar el texto de la entrada de texto.
-        /// </summary>
-        private Action<string, string> onEdited;
-
-        /// <summary>
         /// Initializes a new instance of InputVerifyText.
         /// </summary>
         /// <param name="name">Nombre de la imagen.</param>
@@ -40,8 +30,6 @@ namespace Proyecto.Item
         {
             this.AcceptableValue = acceptableValue;
             this.CurrentText = string.Empty;
-            this.OnChange = onChange;
-            this.OnEdited = onEdited;
         }
 
         public string AcceptableValue { get; set; }
@@ -51,18 +39,6 @@ namespace Proyecto.Item
         /// </summary>
         /// <value></value>
         public string CurrentText { get; set; }
-
-        /// <summary>
-        /// Gets or sets del método a ejecutar cuando se termina de editar el texto de la entrada de texto.
-        /// </summary>
-        /// <value>Action.</value>
-        public Action<string, string> OnEdited { get; set; }
-
-        /// <summary>
-        /// Gets or sets del método a ejecutar cuando se cambia el texto de la entrada de texto.
-        /// </summary>
-        /// <value>Action.</value>
-        public Action<string, string> OnChange { get; set; }
 
         public void Edit(string itemID, string text)
         {

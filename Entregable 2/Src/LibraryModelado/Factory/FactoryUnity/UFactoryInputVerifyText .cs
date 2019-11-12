@@ -18,7 +18,7 @@ namespace Proyecto.Factory.Unity
         /// <summary>
         /// Objeto InputText que se agregara a Unity.
         /// </summary>
-        private InputText input;
+        private InputVerifyText inputVerify;
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
@@ -31,7 +31,7 @@ namespace Proyecto.Factory.Unity
             try
             {
                 // Se castea el componente como InputText.
-                this.input = component as InputText;
+                this.inputVerify = component as InputVerifyText;
             }
             catch (System.Exception)
             {
@@ -39,7 +39,7 @@ namespace Proyecto.Factory.Unity
             }
 
             // Se crea el objeto en unity y se obtiene el UnityID.
-            this.input.ID = adapter.CreateInputField(this.input.PositionX, this.input.PositionY, this.input.Width, this.input.Height, this.input.Edit, this.input.Change);
+            this.inputVerify.ID = adapter.CreateInputField(this.inputVerify.PositionX, this.inputVerify.PositionY, this.inputVerify.Width, this.inputVerify.Height, this.inputVerify.Change, this.inputVerify.Edit);
         }
     }
 }

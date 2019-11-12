@@ -223,15 +223,6 @@
             (draggableItem.Draggable = false) lo convierte en true, para evitars errores.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.VerifyOperation(Proyecto.Item.ScientistLevel.MoneyContainer,Proyecto.Item.ScientistLevel.Money)">
-            <summary>
-            Metodo responsable de verificar si el objeto tipo Money soltado dentro del MoneyContainer,
-            tiene el valor que acepta el container.
-            </summary>
-            <param name="moneyContainer">Container tipo <see cref="T:Proyecto.Item.ScientistLevel.MoneyContainer"/>.</param>
-            <param name="money">DraggableItem tipo <see cref="T:Proyecto.Item.ScientistLevel.Money"/>.</param>
-            <returns>Bool si el valor es correcto o no.</returns>
-        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.VerifyWinLevel">
             <summary>
             Verifica que se hayan completado las tres operaciones del nivel.
@@ -2571,7 +2562,7 @@
             Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Factory.Unity.UFactoryInputVerifyText.input">
+        <member name="F:Proyecto.Factory.Unity.UFactoryInputVerifyText.inputVerify">
             <summary>
             Objeto InputText que se agregara a Unity.
             </summary>
@@ -3245,16 +3236,6 @@
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.InputVerifyText.onChange">
-            <summary>
-            Método a ejecutar cuando se cambia el texto de la entrada de texto.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Item.InputVerifyText.onEdited">
-            <summary>
-            Método a ejecutar cuando se termina de editar el texto de la entrada de texto.
-            </summary>
-        </member>
         <member name="M:Proyecto.Item.InputVerifyText.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.String)">
             <summary>
             Initializes a new instance of InputVerifyText.
@@ -3272,18 +3253,6 @@
             Gets or sets del texto que se encuentra actualmente en el input text.
             </summary>
             <value></value>
-        </member>
-        <member name="P:Proyecto.Item.InputVerifyText.OnEdited">
-            <summary>
-            Gets or sets del método a ejecutar cuando se termina de editar el texto de la entrada de texto.
-            </summary>
-            <value>Action.</value>
-        </member>
-        <member name="P:Proyecto.Item.InputVerifyText.OnChange">
-            <summary>
-            Gets or sets del método a ejecutar cuando se cambia el texto de la entrada de texto.
-            </summary>
-            <value>Action.</value>
         </member>
         <member name="T:Proyecto.Item.ScientistLevel.ButtonTrueFalse">
             <summary>
