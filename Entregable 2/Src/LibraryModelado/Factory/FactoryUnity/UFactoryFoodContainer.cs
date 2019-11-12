@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="UFactoryBowl.cs" company="Universidad Católica del Uruguay">
+// <copyright file="UFactoryFoodContainer.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -13,7 +13,7 @@ namespace Proyecto.Factory.Unity
     /// Esta clase es la resposable de agregar los componentes Bowl al juego.
     /// Implementa la interfaz <see cref="IFactoryUnity"/>.
     /// </summary>
-    public class UFactoryBowl : IFactoryUnity
+    public class UFactoryFoodContainer : IFactoryUnity
     {
         /// <summary>
         /// Objeto Bowl que se agregara a Unity.
