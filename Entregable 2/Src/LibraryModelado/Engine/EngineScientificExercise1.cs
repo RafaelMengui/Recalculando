@@ -138,25 +138,8 @@ namespace Proyecto.LibraryModelado.Engine
             this.engineGame.SetActive(this.ButtonNextLevel, false);
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
 
-            foreach (Operations operation in this.Operations)
-            {
-                Items item = operation.Components.Last();
-                if (item is IContainer)
-                {
-                    IContainer resultContainer = item as IContainer;
-                    foreach (Items savedItem in resultContainer.SavedItems)
-                    {
-                        if (savedItem is IDraggable)
-                        {
-                            IDraggable draggableItem = savedItem as IDraggable;
-                            this.engineGame.SetItemDraggable(draggableItem, true);
-                            this.engineGame.CenterInContainer(draggableItem);
-                        }
-                    }
+            this.RestartContainers();
 
-                    resultContainer.SavedItems.Clear();
-                }
-            }
         }
 
         /// <summary>
@@ -270,6 +253,32 @@ namespace Proyecto.LibraryModelado.Engine
             this.Level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
             this.ButtonNextLevel = goToNext;
+        }
+
+        /// <summary>
+        /// Método que devuelve cada objeto a su container originario.
+        /// </summary>
+        public void RestartContainers()
+        {
+            foreach (Operations operation in this.Operations)
+            {
+                Items item = operation.Components.Last();
+                if (item is IContainer)
+                {
+                    IContainer resultContainer = item as IContainer;
+                    foreach (Items savedItem in resultContainer.SavedItems)
+                    {
+                        if (savedItem is IDraggable)
+                        {
+                            IDraggable draggableItem = savedItem as IDraggable;
+                            this.engineGame.SetItemDraggable(draggableItem, true);
+                            this.engineGame.CenterInContainer(draggableItem);
+                        }
+                    }
+
+                    resultContainer.SavedItems.Clear();
+                }
+            }
         }
     }
 }

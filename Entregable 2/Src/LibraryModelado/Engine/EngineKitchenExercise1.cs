@@ -132,26 +132,8 @@ namespace Proyecto.LibraryModelado.Engine
             this.OperationCounter = 0;
             this.actualRecipe = 0;
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
+            this.RestartContainers();
 
-            foreach (Operations operation in this.Operations)
-            {
-                Items item = operation.Components.Last();
-                if (item is IContainer)
-                {
-                    IContainer resultContainer = item as IContainer;
-                    foreach (Items savedItem in resultContainer.SavedItems)
-                    {
-                        if (savedItem is IDraggable)
-                        {
-                            IDraggable draggableItem = savedItem as IDraggable;
-                            this.engineGame.SetItemDraggable(draggableItem, true);
-                            this.engineGame.CenterInContainer(draggableItem);
-                        }
-                    }
-
-                    resultContainer.SavedItems.Clear();
-                }
-            }
         }
 
 
@@ -214,7 +196,8 @@ namespace Proyecto.LibraryModelado.Engine
                 this.ResultsOfLevel[this.OperationCounter] = true;
                 this.OperationCounter += 1;
                 this.VerifyWinLevel();
-                
+                this.RestartContainers();
+
                 return true;
             }
             else
@@ -290,6 +273,32 @@ namespace Proyecto.LibraryModelado.Engine
             this.Level.ItemList.Add(goToMain);
             this.engineGame.CreateInUnity(goToMain);
             this.ButtonGoToMain = goToMain;
+        }
+
+        /// <summary>
+        /// Método que devuelve cada objeto a su container originario.
+        /// </summary>
+        public void RestartContainers()
+        {
+            foreach (Operations operation in this.Operations)
+            {
+                Items item = operation.Components.Last();
+                if (item is IContainer)
+                {
+                    IContainer resultContainer = item as IContainer;
+                    foreach (Items savedItem in resultContainer.SavedItems)
+                    {
+                        if (savedItem is IDraggable)
+                        {
+                            IDraggable draggableItem = savedItem as IDraggable;
+                            this.engineGame.SetItemDraggable(draggableItem, true);
+                            this.engineGame.CenterInContainer(draggableItem);
+                        }
+                    }
+
+                    resultContainer.SavedItems.Clear();
+                }
+            }
         }
     }
 }
