@@ -15,10 +15,12 @@
   <Target Name="CopyFiles" AfterTargets="Build">
     <ItemGroup>
       <AllLibraries Include="$(OutDir)\*.dll" />
+      <AllPDB Include="$(OutDir)\*.pdb" />
     </ItemGroup>
 
     <Message Text="Copying output file: @(AllLibraries) to: ..\..\..\..\UnityCode\Unity\Assets" Importance="High" />
     <Copy SourceFiles="@(AllLibraries)" DestinationFolder="..\..\..\..\UnityCode\Unity\Assets" />
+    <Copy SourceFiles="@(AllPDB)" DestinationFolder="..\..\..\..\UnityCode\Unity\Assets" />
   </Target> 
 
   <ItemGroup>

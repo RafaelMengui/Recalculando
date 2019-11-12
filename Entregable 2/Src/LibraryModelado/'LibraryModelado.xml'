@@ -13,6 +13,7 @@
             que ser global. Esto es de mucha utilidad debido a que vamos a necesitar llamar a los motores
             de los juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
             de que solo haya un motor de este juego.
+            
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.
             </summary>
         </member>
@@ -66,20 +67,11 @@
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.AsociateLevelsWithEngines(System.Collections.Generic.List{Proyecto.LibraryModelado.IComponent})">
             <summary>
             Metodo responsable de asociarle a cada nivel su respectivo motor, y agregarlo al diccionario this.LevelEngines.
+            En este método utilizamos una excepción, el fin de estas es indicar que el programa no puede continuar ejecutando
+            en su estado actual, y como tal, terminarlo. Para manejar la excepción y darle una adecuada solucion al programa
+            para que este siga operando. En este caso, lanza una excepción en caso que el motor no exista.
             </summary>
             <param name="componentList">Lista de componentes creados.</param>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.SetLevelFeedbacks(Proyecto.LibraryModelado.IComponent)">
-            <summary>
-            Metodo responsable de asignarle a un motor, su respectivo objeto feedback.
-            </summary>
-            <param name="component">IComponent.</param>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.ButtonGoToMain">
-            <summary>
-            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, en donde ejecuta para cada
-            motor de los niveles el metodo de crear un boton que muestre la pagina principal.
-            </summary>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.CreateInUnity(Proyecto.LibraryModelado.IComponent)">
             <summary>
@@ -88,22 +80,51 @@
             </summary>
             <param name="component"></param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.UpdateFeedback(Proyecto.Item.Feedback)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.UpdateFeedback(Proyecto.Item.Feedback,System.String)">
             <summary>
             Metodo responsable de llamar al motor de unity para que actualize el texto de un
             <see cref="T:Proyecto.Item.Label"/>.
             </summary>
             <param name="feedback"></param>
+            <param name="text">Nuevo texto del feedback.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.StartLevelEngine(Proyecto.LibraryModelado.Space)">
             <summary>
             Metodo utilizado para iniciar o reiniciar el motor del juego de un determinado nivel.
             </summary>
-            <param name="level"></param>
+            <param name="level">Nivel que este asociado al motor a iniciar.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.CenterInContainer(Proyecto.LibraryModelado.IDraggable)">
+            <summary>
+            Metodo responsable de llamar al motor de unity para Centrar un IDraggable en
+            un IContainer.
+            </summary>
+            <param name="item">IDraggableItem.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.SetItemDraggable(Proyecto.LibraryModelado.IDraggable,System.Boolean)">
+            <summary>
+            Metodo responsable de llamar al motor de unity para actualizar un item
+            para que sea arrastrable o no.
+            Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
+            </summary>
+            <param name="draggableItem">Item que se va a actualizar.</param>
+            <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.SetActive(Proyecto.LibraryModelado.IComponent,System.Boolean)">
+            <summary>
+            Metodo responsable de llamar al motor de unity para actualizar si un item es
+            mostrado por pantalla u ocultado.
+            </summary>
+            <param name="component">Componente que se va a actualizar.</param>
+            <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise1">
             <summary>
             Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
+            Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
+            relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
+            y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise1
+            este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
             Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
@@ -117,6 +138,16 @@
             Objeto de tipo <see cref="T:Proyecto.Item.Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.buttonNextLevel">
+            <summary>
+            Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.buttonGoToMain">
+            <summary>
+            Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.engineGame">
             <summary>
             Instancia unica del motor general.
@@ -125,6 +156,16 @@
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.#ctor">
             <summary>
             Constructor del motor.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ButtonGoToMain">
+            <summary>
+            Gets or sets Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ButtonNextLevel">
+            <summary>
+            Gets or sets del boton que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.Operations">
@@ -145,7 +186,7 @@
             </summary>
             <value>Level.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.OperationCounter">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.LevelCounter">
             <summary>
             Gets or sets de contador utilizado para saber en que operacion de la pagina nos encontramos.
             Existen dos operaciones dentro de la pagina.
@@ -164,13 +205,12 @@
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.StartLevel">
             <summary>
             Metodo utilizado para iniciar o reiniciar el motor del juego.
+            Reinicia el feedback, el array de resultados, y el contador.
+            Ademas recorre las operaciones, toma el ultimo container de la lista, debido a que
+            este siempre sera el container del resultado. Toma el item guardado en este container,
+            y lo retorna a su container inicial. Solamente si el Draggable item no es draggble
+            (draggableItem.Draggable = false) lo convierte en true, para evitars errores.
             </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.SetFeedback(Proyecto.Item.Feedback)">
-            <summary>
-            Metodo responsable de asignarle al motor, su respectivo objeto feedback.
-            </summary>
-            <param name="feedback">Feedback.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.VerifyOperation(Proyecto.Item.ScientistLevel.MoneyContainer,Proyecto.Item.ScientistLevel.Money)">
             <summary>
@@ -207,19 +247,29 @@
             Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ButtonGoToMain">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.CreateFeedback">
             <summary>
-            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+            Metodo responsable de Crear y asignarle al motor, su respectivo objeto feedback.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ButtonGoToNextLevel">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.CreateButtonGoToMain">
             <summary>
-            Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+            Metodo para crear un boton que al ejecutarlo ira a la pantalla principal.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.CreateButtonGoToNextLevel">
+            <summary>
+            Metodo para crear un boton que al ejecutarlo ira al proximo nivel del nivel cientifico.
+            Este boton aparecera en pantalla al terminar un nivel.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise2">
             <summary>
             Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
+            Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
+            relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
+            y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise2
+            este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.level">
@@ -237,9 +287,29 @@
             Objeto de tipo <see cref="T:Proyecto.Item.Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.buttonNextLevel">
+            <summary>
+            Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.buttonGoToMain">
+            <summary>
+            Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.#ctor">
             <summary>
             Constructor del motor.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ButtonGoToMain">
+            <summary>
+            Gets or sets Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ButtonNextLevel">
+            <summary>
+            Gets or sets del boton que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.Operations">
@@ -256,11 +326,10 @@
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ResultsOfLevel">
             <summary>
             Gets or sets de los resultados del nivel.
-            Por predeterminado los dos parametros son False.
-            true = Completo una operacion correctamente.
+            true = Completo la pregunta correctamente.
             false = No contesto bien la pregunta.
             </summary>
-            <value>Array de Bools.</value>
+            <value>Bool.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.LevelFeedback">
             <summary>
@@ -272,12 +341,6 @@
             <summary>
             Metodo utilizado para iniciar o reiniciar el motor del nivel.
             </summary>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.SetFeedback(Proyecto.Item.Feedback)">
-            <summary>
-            Metodo responsable de asignarle al motor, su respectivo objeto feedback.
-            </summary>
-            <param name="feedback">Feedback.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.VerifyWinLevel">
             <summary>
@@ -304,19 +367,29 @@
             Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ButtonGoToMain">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.CreateFeedback">
             <summary>
-            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+            Metodo responsable de Crear y asignarle al motor, su respectivo objeto feedback.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.ButtonGoToNextLevel">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.CreateButtonGoToMain">
             <summary>
-            Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+            Metodo para crear un boton que al ejecutarlo ira a la pantalla principal.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.CreateButtonGoToNextLevel">
+            <summary>
+            Metodo para crear un boton que al ejecutarlo ira al proximo nivel del nivel cientifico.
+            Este boton aparecera en pantalla al terminar un nivel.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise3">
             <summary>
             Clase EngineScientificExercise3, responsable de implementar la logica del nivel scientific ejercicio 3.
+            Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
+            relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
+            y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise3
+            este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.level">
@@ -329,10 +402,58 @@
             Instancia unica del motor general.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.levelFeedback">
+            <summary>
+            Objeto de tipo <see cref="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.buttonNextLevel">
+            <summary>
+            Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.buttonGoToMain">
+            <summary>
+            Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.currentOperation">
+            <summary>
+            Operacion que se este ejecutando acutalmente.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.#ctor">
             <summary>
             Constructor.
             </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.ButtonGoToMain">
+            <summary>
+            Gets or sets Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.ButtonNextLevel">
+            <summary>
+            Gets or sets del boton que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.Operations">
+            <summary>
+            Gets de la lista de operaciones propias de cada nivel.
+            </summary>
+            <value>Lista de operaciones.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.CurrentOperation">
+            <summary>
+            Gets or sets del operacion que se este ejecutando acutalmente.
+            </summary>
+            <value>Operation.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.Level">
+            <summary>
+            Gets or sets Nivel asociado al motor.
+            </summary>
+            <value>Space.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.Feedback">
             <summary>
@@ -356,13 +477,19 @@
             </summary>
             <value>Array de Bools.</value>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.LevelFeedback">
+            <summary>
+            Gets or sets del feedback asociado al motor.
+            </summary>
+            <value>Feedback.</value>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.VerifyWinLevel">
             <summary>
             Verifica que se hayan completado las cuatro paginas del nivel.
             </summary>
             <returns>Bool.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.VerifyQuestion(Proyecto.Item.ScientistLevel.ButtonTrueFalse)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.VerifyExercise(Proyecto.Item.ScientistLevel.ButtonTrueFalse)">
             <summary>
             Metodo que se utiliza para verificar la opcion selccionada.
             Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
@@ -384,11 +511,25 @@
             Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.ButtonGoToMain">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.CreateFeedback">
             <summary>
-            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, en donde se recorre el diccionario
-            de motores asociados a niveles (EngineGame.LevelEngines), para reconocer en que nivel
-            se debe crear el boton que mostrara la pagina principal al ejecutarlo.
+            Metodo responsable de asignarle al motor, su respectivo objeto feedback.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.CreateButtonGoToMain">
+            <summary>
+            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.CreateButtonGoToNextLevel">
+            <summary>
+            Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.ChangeOperation">
+            <summary>
+            Metodo utilizado para actualizar la operacion que se encuentre en pantalla,
+            Para su uso, el contador del nivel (this.LevelCounter) ya debe estar actualizado.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise4">
@@ -411,14 +552,46 @@
             Objeto de tipo <see cref="T:Proyecto.Item.Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.buttonGoToMain">
+            <summary>
+            Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.buttonNextLevel">
+            <summary>
+            Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+            Como este es el ultimo nivel, solamente ira al menu.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.currentOperation">
+            <summary>
+            Operacion que se este ejecutando acutalmente.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.#ctor">
             <summary>
             Constructor del motor.
             </summary>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.ButtonGoToMain">
+            <summary>
+            Gets or sets Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.ButtonNextLevel">
+            <summary>
+            Gets or sets del boton que aparecera al completarse el nivel.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.CurrentOperation">
+            <summary>
+            Gets or sets del operacion que se este ejecutando acutalmente.
+            </summary>
+            <value>Operation.</value>
+        </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.Operations">
             <summary>
-            Gets de lista de operaciones del nivel
+            Gets de lista de operaciones del nivel.
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.Level">
@@ -427,7 +600,7 @@
             </summary>
             <value>Level.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.OperationCounter">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.LevelCounter">
             <summary>
             Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
             Existen dos paginas en el nivel.
@@ -454,12 +627,6 @@
             Metodo utilizado para iniciar o reiniciar el motor del nivel.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.SetFeedback(Proyecto.Item.Feedback)">
-            <summary>
-            Metodo responsable de asignarle al motor, su respectivo objeto feedback.
-            </summary>
-            <param name="feedback">Feedback.</param>
-        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.VerifyWinLevel">
             <summary>
             Verifica que se hayan completado las dos preguntas del nivel.
@@ -485,14 +652,26 @@
             Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.ButtonGoToMain">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.CreateFeedback">
+            <summary>
+            Metodo responsable de asignarle al motor, su respectivo objeto feedback.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.CreateButtonGoToNextLevel">
+            <summary>
+            Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+            Como este es el ultimo nivel, ira al menu.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.CreateButtonGoToMain">
             <summary>
             Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.ButtonGoToNextLevel">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.ChangeOperation">
             <summary>
-            Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+            Metodo utilizado para actualizar la operacion que se encuentre en pantalla,
+            Para su uso, el contador del nivel (this.LevelCounter) ya debe estar actualizado.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineUnity">
@@ -551,11 +730,12 @@
             </summary>
             <param name="component"></param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.UpdateFeedback(Proyecto.Item.Feedback)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.UpdateFeedback(Proyecto.Item.Feedback,System.String)">
             <summary>
             Metodo responsable de actualizar el mensaje de feedback mostrado en pantalla.
             </summary>
-            <param name="feedback"></param>
+            <param name="feedback">Feedback que se vaya a actualizar.</param>
+            <param name="text">Nuevo texto.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.UpdateItemImage(Proyecto.LibraryModelado.Items,System.String)">
             <summary>
@@ -563,6 +743,27 @@
             </summary>
             <param name="items">Item que se va cambiar la imagen.</param>
             <param name="image">string del nombre de la nueva imagen.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.CenterInUnity(Proyecto.LibraryModelado.IDraggable)">
+            <summary>
+            Metodo responsable de Centrar un IDraggable en su IContainer.
+            </summary>
+            <param name="item">IDraggableItem.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SetItemDraggable(Proyecto.LibraryModelado.IDraggable,System.Boolean)">
+            <summary>
+            Metodo responsable actualizar un item para que sea arrastrable o no.
+            Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
+            </summary>
+            <param name="draggableItem">Item que se va a actualizar.</param>
+            <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SetActive(Proyecto.LibraryModelado.IComponent,System.Boolean)">
+            <summary>
+            Metodo responsable de actualizar si un item es mostrado por pantalla u ocultado.
+            </summary>
+            <param name="component">Componente que se va a actualizar.</param>
+            <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.IEngine">
             <summary>
@@ -592,17 +793,10 @@
             </summary>
             <value>Feedback.</value>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.ButtonGoToMain">
+        <member name="P:Proyecto.LibraryModelado.Engine.ILevelEngine.ButtonGoToMain">
             <summary>
-            Metodo que crea y devuelve un boton prefabricado que al presionarlo mostrara la pantalla principal.
+            Gets or sets del boton que al apretarlo aparecera la pantalla principal.
             </summary>
-            <returns>IComponent</returns>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.SetFeedback(Proyecto.Item.Feedback)">
-            <summary>
-            Metodo responsable de asignarle a un motor, su respectivo objeto feedback.
-            </summary>
-            <param name="feedback">Feedback.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.GoodFeedback">
             <summary>
@@ -619,19 +813,24 @@
             Metodo utilizado para iniciar o reiniciar el motor del juego.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.ButtonGoToNextLevel">
+        <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.CreateButtonGoToMain">
             <summary>
-            Al finalizar el nivel, se creara en pantalla un boton que permitira ir al siguiente nivel.
+            Metodo que crea un boton prefabricado que al presionarlo mostrara la pantalla principal.
+            </summary>
+            <returns>IComponent</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.ILevelEngine.CreateFeedback">
+            <summary>
+            Metodo responsable de asignarle a un motor, su respectivo objeto feedback.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.IButton">
             <summary>
             Interfaz de Botones.
-            Esta interfaz es creada, debido a que, cuando en un futuro querramos
-            tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón
-            que sea una imagen,un botón contador, botón audio, etc.
-            En este caso, estamos pensando en la funcionalidad futura del código,
-            para cuando debamos ampliar el juego.
+            En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
+            ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
+            que definen comportamientos, las clases que necesiten de estos comportamientos van a
+            implementar esta interfaz.Ejemplo: Botón 
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.IButton.Pushable">
@@ -644,13 +843,20 @@
         <member name="M:Proyecto.LibraryModelado.IButton.Click(System.String)">
             <summary>
             Acciones y eventos realizados al hacer click en un boton.
+            Esta operación es POLIMÓRFICA debido a que es implementada por dos
+            o más objetos de diferentes tipos. El método Click, es implementado
+            por todos los botones del juego, por esto, se puede llamar una operación
+            Polymórfica. 
             </summary>
             <param name="text">String.</param>
         </member>
         <member name="T:Proyecto.LibraryModelado.IComponent">
             <summary>
             Interfaz IComponent.
-            Todos los objetos creados en el modelado(World, Space, Items) seran de tipo IComponent.
+            En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
+            ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
+            que definen comportamientos, las clases que necesiten de estos comportamientos van a
+            implementar esta interfaz.Ejemplo: Space, World
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.IComponent.ID">
@@ -659,14 +865,19 @@
             </summary>
             <value></value>
         </member>
+        <member name="P:Proyecto.LibraryModelado.IComponent.IsActive">
+            <summary>
+            Gets or sets que indican si el item esta actualmente activo en pantalla.
+            Por predeterminado para todos los items, el valor sera true.
+            </summary>
+            <value></value>
+        </member>
         <member name="T:Proyecto.LibraryModelado.IContainer">
             <summary>
-            Interfaz de Botones.
-            Esta interfaz es creada, debido a que, cuando en un futuro querramos
-            tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón
-            que sea una imagen,un botón contador, botón audio, etc.
-            En este caso, estamos pensando en la funcionalidad futura del código,
-            para cuando debamos ampliar el juego.
+            En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
+            ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
+            que definen comportamientos, las clases que necesiten de estos comportamientos van a
+            implementar esta interfaz..
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.IContainer.SavedItems">
@@ -731,6 +942,13 @@
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del Item.</param>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Items.IsActive">
+            <summary>
+            Gets or sets que indican si el item esta actualmente activo en pantalla.
+            Por predeterminado sera true.
+            </summary>
+            <value></value>
+        </member>
         <member name="P:Proyecto.LibraryModelado.Items.Name">
             <summary>
             Gets or sets del nombre del item.
@@ -793,6 +1011,13 @@
             </summary>
             <param name="level">Nivel al que pertenece la operacion.</param>
             <param name="components">Lista de componentes.</param>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Operations.IsActive">
+            <summary>
+            Gets or sets que indican si el item esta actualmente activo en pantalla.
+            Por predeterminado sera true.
+            </summary>
+            <value></value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Operations.Level">
             <summary>
@@ -871,6 +1096,13 @@
             <param name="name">Nombre del Espacio.</param>
             <param name="image">Nombre de la imagen de fondo del espacio.</param>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Space.IsActive">
+            <summary>
+            Gets or sets que indican si el item esta actualmente activo en pantalla.
+            Por predeterminado sera true.
+            </summary>
+            <value></value>
+        </member>
         <member name="P:Proyecto.LibraryModelado.Space.Name">
             <summary>
             Gets or sets del nombre del espacio.
@@ -928,6 +1160,13 @@
             <summary>
             Initializes a new instance of world.
             </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.World.IsActive">
+            <summary>
+            Gets or sets que indican si el item esta actualmente activo en pantalla.
+            Por predeterminado sera true.
+            </summary>
+            <value></value>
         </member>
         <member name="P:Proyecto.LibraryModelado.World.Name">
             <summary>
@@ -1265,6 +1504,10 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryComponent">
             <summary>
             Esta clase es la responsable de delegar la responsabilidad de crear componentes.
+            FactoryComponent cumple cn el PRINICIPIO OCP, el cual nos dice que Las clases
+            deben ser abiertas a la extensión, pero cerradas a la modificación.Esto ocurre en
+            esta clase debido a que, en caso de querer crear más componentes lo podemos hacer
+            sin necesidad de modificar el código.
             Utiliza la interfaz IFactoryComponent.
             </summary>
         </member>
@@ -1883,7 +2126,10 @@
         <member name="T:Proyecto.Factory.Unity.IFactoryUnity">
             <summary>
             Interfaz IFactoryUnity.
-            Todos los Unity Factory serán de tipo IFactoryUnity.
+            En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
+            ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
+            que definen comportamientos, las clases que necesiten de estos comportamientos van a
+            implementar esta interfaz.En este caso, todos los factory de unity utiluzan esta interfaz. 
             </summary>
         </member>
         <member name="M:Proyecto.Factory.Unity.IFactoryUnity.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
@@ -1896,6 +2142,15 @@
         <member name="T:Proyecto.Factory.Unity.UFactory">
             <summary>
             Esta clase es la responsable de delegar la responsabilidad de agregar los componentes al juego.
+            En esta clase se ve claramente el Patrón de BAJO ACOMPLAMIENTO, debido a que nuestro juego
+            esta completamente desacomplado de Unity, en caso de querer desplegar nuestro juego en otra
+            plataforma podemos realizarlo. 
+            Esta clase tiene un acomplamiento bajo, de la mano con esto podemos darnos cuenta que también
+            cumple con el patron DON’T TALK TO STRANGERS. Esto se debe a que UFactory no conoce las conexiones
+            internas y estructuras de otro objeto, sino que, se basa solamente en sí mismo para la creación de
+            objetos, no necesita conocer a los objetos indirectos.
+            Como dijimos anteriormente, esto lo hacemos para que Unity quede lo mas desacoplado posible de nuestro
+            código.
             Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
             </summary>
         </member>
@@ -2618,17 +2873,11 @@
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del Item.</param>
         </member>
-        <member name="P:Proyecto.Item.KitchenLevel.Bowl.SavedFoods">
+        <member name="P:Proyecto.Item.KitchenLevel.Bowl.SavedItems">
             <summary>
             Gets lista de objetos Food, que seran soltados dentro del container.
             </summary>
             <value>Alimentos <see cref="T:Proyecto.Item.KitchenLevel.Food"/>.</value>
-        </member>
-        <member name="P:Proyecto.Item.KitchenLevel.Bowl.IncorrectItems">
-            <summary>
-            Gets lista de alimentos incorrecto soltados dentro del container.
-            </summary>
-            <value>Items arrastrables <see cref="T:Proyecto.Item.DraggableItem"/>.</value>
         </member>
         <member name="T:Proyecto.Item.KitchenLevel.Food">
             <summary>
@@ -2636,7 +2885,7 @@
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.KitchenLevel.Food.onDrop">
+        <member name="F:Proyecto.Item.KitchenLevel.Food.onDropFood">
             <summary>
             Accion que se ejecutara al soltar un alimento.
             </summary>
@@ -2667,7 +2916,7 @@
             </summary>
             <value>Bool arrastrable.</value>
         </member>
-        <member name="P:Proyecto.Item.KitchenLevel.Food.OnDrop">
+        <member name="P:Proyecto.Item.KitchenLevel.Food.OnDropFood">
             <summary>
             Gets or sets de la accion a realizar al soltar el alimento.
             </summary>
@@ -2689,6 +2938,13 @@
             </summary>
             <param name="name">Nombre del Item.</param>
             <param name="food">Receta que contiene los items Food.</param>
+        </member>
+        <member name="P:Proyecto.Item.KitchenLevel.Recipe.IsActive">
+            <summary>
+            Gets or sets que indican si el item esta actualmente activo en pantalla.
+            Por predeterminado sera true.
+            </summary>
+            <value></value>
         </member>
         <member name="P:Proyecto.Item.KitchenLevel.Recipe.FoodList">
             <summary>

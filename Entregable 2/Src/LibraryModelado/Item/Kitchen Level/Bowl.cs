@@ -27,7 +27,7 @@ namespace Proyecto.Item.KitchenLevel
         public Bowl(string name, Space level, float positionX, float positionY, float width, float height, string image)
         : base(name, level, positionX, positionY, width, height, image)
         {
-            this.SavedItems = new List<Items>();   
+            this.SavedItems = new List<Items>();
         }
 
         /// <summary>

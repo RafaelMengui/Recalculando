@@ -6,7 +6,6 @@
 using Proyecto.Common;
 using Proyecto.Factory.Unity;
 using Proyecto.Item;
-using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
@@ -55,26 +54,24 @@ namespace Proyecto.LibraryModelado.Engine
                 destination = this.FindDragContainer(x, y);
                 draggableItem = FindItem(draggableItemID) as IDraggable;
             }
-            catch(System.InvalidCastException)
+            catch (System.InvalidCastException)
             {
                 throw new System.InvalidCastException($"Failed cast operation of \"{draggableItemID}\" as DraggableItem.");
             }
 
-            if (destination != null && !destination.SavedItems.Contains(draggableItem as Items) && draggableItem.Drop(destination))
+            if (destination != null && draggableItem.Drop(destination))
             {
                 // Mueve el elemento arrastrado al destino si se suelta arriba del destino.
                 // Se actualiza el container del item.
                 draggableItem.Container.SavedItems.Remove(draggableItem as Items);
-                draggableItem.Container = destination;
                 destination.SavedItems.Add(draggableItem as Items);
                 this.Adapter.Center(draggableItem.ID, destination.ID);
+                this.Adapter.MakeDraggable(draggableItem.ID, false);
             }
             else
             {
                 this.Adapter.Center(draggableItem.ID, draggableItem.Container.ID);
             }
-
-            this.Adapter.MakeDraggable(draggableItem.ID, draggableItem.Draggable);
         }
 
         /// <summary>
@@ -98,10 +95,6 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo responnsable de buscar en la pagina en la que se encuentre el usuario,
         /// un Item que tenga el mismo UnityID que el entrante por parametro.
-        /// En este método utilizamos una expeción, la finalidad de esta es indicar que el programa
-        /// no puede continuar ejecutando en su estado actual, y como tal, terminarlo. Para maneja
-        /// la excepción y darle una adecuada solucion al programa para que este siga operando. En este caso,
-        /// lanza una expecipon en caso que no encuentre ningún item que tenga el mismo UnityID.
         /// </summary>
         /// <param name="unityID"></param>
         /// <returns>Devuelve el item encontrado.</returns>
@@ -129,10 +122,11 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo responsable de actualizar el mensaje de feedback mostrado en pantalla.
         /// </summary>
-        /// <param name="feedback"></param>
-        public void UpdateFeedback(Feedback feedback)
+        /// <param name="feedback">Feedback que se vaya a actualizar.</param>
+        /// <param name="text">Nuevo texto.</param>
+        public void UpdateFeedback(Feedback feedback, string text)
         {
-            this.Adapter.SetText(feedback.ID, feedback.Text);
+            this.Adapter.SetText(feedback.ID, text, true);
         }
 
         /// <summary>
@@ -143,6 +137,36 @@ namespace Proyecto.LibraryModelado.Engine
         public void UpdateItemImage(Items items, string image)
         {
             this.Adapter.SetImage(items.ID, image);
+        }
+
+        /// <summary>
+        /// Metodo responsable de Centrar un IDraggable en su IContainer.
+        /// </summary>
+        /// <param name="item">IDraggableItem.</param>
+        public void CenterInUnity(IDraggable item)
+        {
+            this.Adapter.Center(item.ID, item.Container.ID);
+        }
+
+        /// <summary>
+        /// Metodo responsable actualizar un item para que sea arrastrable o no.
+        /// Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
+        /// </summary>
+        /// <param name="draggableItem">Item que se va a actualizar.</param>
+        /// <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
+        public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
+        {
+            this.Adapter.MakeDraggable(draggableItem.ID, isDraggable);
+        }
+
+        /// <summary>
+        /// Metodo responsable de actualizar si un item es mostrado por pantalla u ocultado.
+        /// </summary>
+        /// <param name="component">Componente que se va a actualizar.</param>
+        /// <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
+        public void SetActive(IComponent component, bool active)
+        {
+            this.Adapter.SetActive(component.ID, active);
         }
     }
 }

@@ -27,26 +27,19 @@ namespace Proyecto.LibraryModelado.Engine
         Feedback LevelFeedback { get; set; }
 
         /// <summary>
-        /// Metodo que crea y devuelve un boton prefabricado que al presionarlo mostrara la pantalla principal.
+        /// Gets or sets del boton que al apretarlo aparecera la pantalla principal.
         /// </summary>
-        /// <returns>IComponent</returns>
-        IComponent ButtonGoToMain();
-
-        /// <summary>
-        /// Metodo responsable de asignarle a un motor, su respectivo objeto feedback.
-        /// </summary>
-        /// <param name="feedback">Feedback.</param>
-        void SetFeedback(Feedback feedback);
+        ButtonGoToPage ButtonGoToMain { get; set; }
 
         /// <summary>
         /// Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
         /// </summary>
-        bool GoodFeedback();
+        void GoodFeedback();
 
         /// <summary>
         /// Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
         /// </summary>
-        bool BadFeedback();
+        void BadFeedback();
 
         /// <summary>
         /// Metodo utilizado para iniciar o reiniciar el motor del juego.
@@ -54,8 +47,14 @@ namespace Proyecto.LibraryModelado.Engine
         void StartLevel();
 
         /// <summary>
-        /// Al finalizar el nivel, se creara en pantalla un boton que permitira ir al siguiente nivel.
+        /// Metodo que crea un boton prefabricado que al presionarlo mostrara la pantalla principal.
         /// </summary>
-        void ButtonGoToNextLevel();
+        /// <returns>IComponent</returns>
+        void CreateButtonGoToMain();
+
+        /// <summary>
+        /// Metodo responsable de asignarle a un motor, su respectivo objeto feedback.
+        /// </summary>
+        void CreateFeedback();
     }
 }
