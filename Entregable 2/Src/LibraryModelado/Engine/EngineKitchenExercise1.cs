@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="EngineScientificExercise1.cs" company="Universidad Católica del Uruguay">
+// <copyright file="EngineKitchenExercise1.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
