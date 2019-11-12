@@ -35,16 +35,29 @@ namespace Proyecto.LibraryModelado.Engine
         private ButtonGoToPage buttonGoToMain;
 
         /// <summary>
+        /// Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+        /// Como este es el ultimo nivel, solamente ira al menu.
+        /// </summary>
+        private ButtonGoToPage buttonNextLevel;
+
+        /// <summary>
+        /// Operacion que se este ejecutando acutalmente.
+        /// </summary>
+        private Operations currentOperation;
+
+        /// <summary>
         /// Constructor del motor.
         /// </summary>
         public EngineScientificExercise4()
         {
             this.Level = this.level;
             this.ResultsOfLevel = new bool[2];
-            this.OperationCounter = 0;
+            this.LevelCounter = 0;
             this.LevelFeedback = this.levelFeedback;
             this.ButtonGoToMain = this.buttonGoToMain;
+            this.ButtonNextLevel = this.buttonNextLevel;
             this.Operations = new List<Operations>();
+            this.CurrentOperation = this.currentOperation;
         }
 
         /// <summary>
@@ -53,7 +66,18 @@ namespace Proyecto.LibraryModelado.Engine
         public ButtonGoToPage ButtonGoToMain { get; set; }
 
         /// <summary>
-        /// Gets de lista de operaciones del nivel
+        /// Gets or sets del boton que aparecera al completarse el nivel.
+        /// </summary>
+        public ButtonGoToPage ButtonNextLevel { get; set; }
+
+        /// <summary>
+        /// Gets or sets del operacion que se este ejecutando acutalmente.
+        /// </summary>
+        /// <value>Operation.</value>
+        public Operations CurrentOperation { get; set; }
+
+        /// <summary>
+        /// Gets de lista de operaciones del nivel.
         /// </summary>
         public List<Operations> Operations { get; }
 
@@ -68,7 +92,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// Existen dos paginas en el nivel.
         /// </summary>
         /// <value>Int.</value>
-        public int OperationCounter { get; private set; }
+        public int LevelCounter { get; private set; }
 
         /// <summary>
         /// Gets or sets de los resultados del nivel.
@@ -90,10 +114,14 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! En este juego deberas seleccionar la respuesta correcta.";
-            if (this.buttonGoToMain is null)
+            string text = "Hola! En este juego deberas seleccionar la operacion correcta.";
+            if (this.ButtonGoToMain is null)
             {
                 this.CreateButtonGoToMain();
+            }
+            if (this.ButtonNextLevel is null)
+            {
+                this.CreateButtonGoToNextLevel();
             }
             if (this.LevelFeedback is null)
             {
@@ -101,8 +129,23 @@ namespace Proyecto.LibraryModelado.Engine
             }
 
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
+            this.engineGame.SetActive(this.ButtonNextLevel, false);
             this.ResultsOfLevel = new bool[2];
-            this.OperationCounter = 0;
+            this.CurrentOperation = this.Operations[0];
+            this.LevelCounter = 0;
+
+            foreach (Operations operation in this.Operations)
+            {
+                foreach (Items item in operation.Components)
+                {
+                    this.engineGame.SetActive(item, false);
+                }
+            }
+
+            foreach (Items item in this.CurrentOperation.Components)
+            {
+                this.engineGame.SetActive(item, true);
+            }
         }
 
         /// <summary>
@@ -115,6 +158,7 @@ namespace Proyecto.LibraryModelado.Engine
             {
                 string text = "Excelente! Has contestado correctamente las dos preguntas. Puedes continuar al siguiente nivel.";
                 this.engineGame.UpdateFeedback(this.LevelFeedback, text);
+                this.engineGame.SetActive(this.ButtonNextLevel, true);
                 return true;
             }
             return false;
@@ -131,21 +175,11 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (button.Value)
             {
-                this.ResultsOfLevel[this.OperationCounter] = true;
-                this.OperationCounter += 1;
+                this.ResultsOfLevel[this.LevelCounter] = true;
+                this.LevelCounter += 1;
+                this.ChangeOperation();
                 this.GoodFeedback();
                 this.VerifyWinLevel();
-
-                foreach (Operations operation in this.Operations)
-                {
-                    if (operation.Components.Contains(button))
-                    {
-                        foreach (Items item in operation.Components)
-                        {
-                            (item as ButtonTrueFalse).Pushable = false;
-                        }
-                    }
-                }
                 return true;
             }
             else
@@ -160,7 +194,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void GoodFeedback()
         {
-            string text = "Excelente trabajo! Puedes continuar al siguiente nivel.";
+            string text = "Correcto!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
@@ -184,14 +218,47 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
+        /// Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+        /// Como este es el ultimo nivel, ira al menu.
+        /// </summary>
+        public void CreateButtonGoToNextLevel()
+        {
+            ButtonGoToPage goToNext = new ButtonGoToPage("Scientific4Tomain", this.Level, 0, 0, 500, 300, "siguienteNivel.png", "#FCFCFC", "MenuScientific");
+            this.Level.ItemList.Add(goToNext);
+            this.engineGame.CreateInUnity(goToNext);
+            this.ButtonNextLevel = goToNext;
+        }
+
+        /// <summary>
         /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
         /// </summary>
         public void CreateButtonGoToMain()
         {
-            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific4ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
+            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific4ToMenu", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MenuScientific");
             this.Level.ItemList.Add(goToMain);
             this.engineGame.CreateInUnity(goToMain);
             this.ButtonGoToMain = goToMain;
+        }
+
+        /// <summary>
+        /// Metodo utilizado para actualizar la operacion que se encuentre en pantalla,
+        /// Para su uso, el contador del nivel (this.LevelCounter) ya debe estar actualizado.
+        /// </summary>
+        public void ChangeOperation()
+        {
+            foreach (Items item in this.CurrentOperation.Components)
+            {
+                this.engineGame.SetActive(item, false);
+            }
+
+            if (this.LevelCounter < this.Operations.Count)
+            {
+                this.CurrentOperation = this.Operations[this.LevelCounter];
+                foreach (Items newItem in this.CurrentOperation.Components)
+                {
+                    this.engineGame.SetActive(newItem, true);
+                }
+            }
         }
     }
 }

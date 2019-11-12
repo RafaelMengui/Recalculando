@@ -186,7 +186,7 @@
             </summary>
             <value>Level.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.OperationCounter">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.LevelCounter">
             <summary>
             Gets or sets de contador utilizado para saber en que operacion de la pagina nos encontramos.
             Existen dos operaciones dentro de la pagina.
@@ -417,6 +417,11 @@
             Boton que al apretarlo aparecera la pantalla principal.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.currentOperation">
+            <summary>
+            Operacion que se este ejecutando acutalmente.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.#ctor">
             <summary>
             Constructor.
@@ -431,6 +436,24 @@
             <summary>
             Gets or sets del boton que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
             </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.Operations">
+            <summary>
+            Gets de la lista de operaciones propias de cada nivel.
+            </summary>
+            <value>Lista de operaciones.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.CurrentOperation">
+            <summary>
+            Gets or sets del operacion que se este ejecutando acutalmente.
+            </summary>
+            <value>Operation.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.Level">
+            <summary>
+            Gets or sets Nivel asociado al motor.
+            </summary>
+            <value>Space.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.Feedback">
             <summary>
@@ -454,13 +477,19 @@
             </summary>
             <value>Array de Bools.</value>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.LevelFeedback">
+            <summary>
+            Gets or sets del feedback asociado al motor.
+            </summary>
+            <value>Feedback.</value>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.VerifyWinLevel">
             <summary>
             Verifica que se hayan completado las cuatro paginas del nivel.
             </summary>
             <returns>Bool.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.VerifyQuestion(Proyecto.Item.ScientistLevel.ButtonTrueFalse)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.VerifyExercise(Proyecto.Item.ScientistLevel.ButtonTrueFalse)">
             <summary>
             Metodo que se utiliza para verificar la opcion selccionada.
             Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
@@ -497,6 +526,12 @@
             Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
             </summary>
         </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.ChangeOperation">
+            <summary>
+            Metodo utilizado para actualizar la operacion que se encuentre en pantalla,
+            Para su uso, el contador del nivel (this.LevelCounter) ya debe estar actualizado.
+            </summary>
+        </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise4">
             <summary>
             Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
@@ -522,6 +557,17 @@
             Boton que al apretarlo aparecera la pantalla principal.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.buttonNextLevel">
+            <summary>
+            Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+            Como este es el ultimo nivel, solamente ira al menu.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.currentOperation">
+            <summary>
+            Operacion que se este ejecutando acutalmente.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.#ctor">
             <summary>
             Constructor del motor.
@@ -532,9 +578,20 @@
             Gets or sets Boton que al apretarlo aparecera la pantalla principal.
             </summary>
         </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.ButtonNextLevel">
+            <summary>
+            Gets or sets del boton que aparecera al completarse el nivel.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.CurrentOperation">
+            <summary>
+            Gets or sets del operacion que se este ejecutando acutalmente.
+            </summary>
+            <value>Operation.</value>
+        </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.Operations">
             <summary>
-            Gets de lista de operaciones del nivel
+            Gets de lista de operaciones del nivel.
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.Level">
@@ -543,7 +600,7 @@
             </summary>
             <value>Level.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.OperationCounter">
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.LevelCounter">
             <summary>
             Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
             Existen dos paginas en el nivel.
@@ -600,9 +657,21 @@
             Metodo responsable de asignarle al motor, su respectivo objeto feedback.
             </summary>
         </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.CreateButtonGoToNextLevel">
+            <summary>
+            Este boton aparecera en pantalla al terminar un nivel, al ejecutarlo ira a la proxima pantalla del nivel scientific.
+            Como este es el ultimo nivel, ira al menu.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.CreateButtonGoToMain">
             <summary>
             Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.ChangeOperation">
+            <summary>
+            Metodo utilizado para actualizar la operacion que se encuentre en pantalla,
+            Para su uso, el contador del nivel (this.LevelCounter) ya debe estar actualizado.
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineUnity">
@@ -665,7 +734,8 @@
             <summary>
             Metodo responsable de actualizar el mensaje de feedback mostrado en pantalla.
             </summary>
-            <param name="feedback"></param>
+            <param name="feedback">Feedback que se vaya a actualizar.</param>
+            <param name="text">Nuevo texto.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.UpdateItemImage(Proyecto.LibraryModelado.Items,System.String)">
             <summary>
@@ -673,6 +743,27 @@
             </summary>
             <param name="items">Item que se va cambiar la imagen.</param>
             <param name="image">string del nombre de la nueva imagen.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.CenterInUnity(Proyecto.LibraryModelado.IDraggable)">
+            <summary>
+            Metodo responsable de Centrar un IDraggable en su IContainer.
+            </summary>
+            <param name="item">IDraggableItem.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SetItemDraggable(Proyecto.LibraryModelado.IDraggable,System.Boolean)">
+            <summary>
+            Metodo responsable actualizar un item para que sea arrastrable o no.
+            Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
+            </summary>
+            <param name="draggableItem">Item que se va a actualizar.</param>
+            <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SetActive(Proyecto.LibraryModelado.IComponent,System.Boolean)">
+            <summary>
+            Metodo responsable de actualizar si un item es mostrado por pantalla u ocultado.
+            </summary>
+            <param name="component">Componente que se va a actualizar.</param>
+            <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.IEngine">
             <summary>

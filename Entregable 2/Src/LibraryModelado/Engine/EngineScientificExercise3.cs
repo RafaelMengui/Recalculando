@@ -49,6 +49,11 @@ namespace Proyecto.LibraryModelado.Engine
         private ButtonGoToPage buttonGoToMain;
 
         /// <summary>
+        /// Operacion que se este ejecutando acutalmente.
+        /// </summary>
+        private Operations currentOperation;
+
+        /// <summary>
         /// Constructor.
         /// </summary>
         public EngineScientificExercise3()
@@ -59,6 +64,7 @@ namespace Proyecto.LibraryModelado.Engine
             this.ButtonGoToMain = this.buttonGoToMain;
             this.ButtonNextLevel = this.buttonNextLevel;
             this.Operations = new List<Operations>();
+            this.CurrentOperation = this.currentOperation;
         }
 
         /// <summary>
@@ -71,10 +77,23 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public ButtonStartLevel ButtonNextLevel { get; set; }
 
+        /// <summary>
+        /// Gets de la lista de operaciones propias de cada nivel.
+        /// </summary>
+        /// <value>Lista de operaciones.</value>
         public List<Operations> Operations { get; }
 
-        public Space Level { get; set; }
+        /// <summary>
+        /// Gets or sets del operacion que se este ejecutando acutalmente.
+        /// </summary>
+        /// <value>Operation.</value>
+        public Operations CurrentOperation { get; set; }
 
+        /// <summary>
+        /// Gets or sets Nivel asociado al motor.
+        /// </summary>
+        /// <value>Space.</value>
+        public Space Level { get; set; }
 
         /// <summary>
         /// Gets or sets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
@@ -97,7 +116,12 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         /// <value>Array de Bools.</value>
         public bool[] ResultsOfLevel { get; private set; }
-        public Feedback LevelFeedback { get ; set ; }
+
+        /// <summary>
+        /// Gets or sets del feedback asociado al motor.
+        /// </summary>
+        /// <value>Feedback.</value>
+        public Feedback LevelFeedback { get; set; }
 
         /// <summary>
         /// Verifica que se hayan completado las cuatro paginas del nivel.
@@ -105,21 +129,34 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns>Bool.</returns>
         public bool VerifyWinLevel()
         {
-            return this.ResultsOfLevel[0] && this.ResultsOfLevel[1];
+            if (this.ResultsOfLevel[0] && this.ResultsOfLevel[1] && this.ResultsOfLevel[2])
+            {
+                // Se Actualiza el Feedback.
+                string text = "Excelente trabajo! Puedes continuar al siguiente nivel.";
+                this.engineGame.UpdateFeedback(this.LevelFeedback, text);
+
+                // Se muestra el boton para el proximo nivel.
+                this.engineGame.SetActive(this.ButtonNextLevel, true);
+                return true;
+            }
+            return false;
         }
+
 
         /// <summary>
         /// Metodo que se utiliza para verificar la opcion selccionada.
         /// Si esta bien contestada, el bool de la pagina (this.ResultsOfLevel) pasa a ser true, y el
         /// level counter suma 1.
         /// </summary>
-        public bool VerifyQuestion(ButtonTrueFalse button)
+        public bool VerifyExercise(ButtonTrueFalse button)
         {
             if (button.Value)
             {
                 this.ResultsOfLevel[this.LevelCounter] = true;
                 this.LevelCounter += 1;
+                this.ChangeOperation();
                 this.GoodFeedback();
+                this.VerifyWinLevel();
                 return true;
             }
             else
@@ -135,7 +172,7 @@ namespace Proyecto.LibraryModelado.Engine
         public void StartLevel()
         {
             string text = "Hola! En este juego deberas seleccionar la respuesta correcta.";
-            if (this.buttonGoToMain is null)
+            if (this.ButtonGoToMain is null)
             {
                 this.CreateButtonGoToMain();
             }
@@ -148,10 +185,23 @@ namespace Proyecto.LibraryModelado.Engine
                 this.CreateFeedback();
             }
 
-            this.engineGame.SetActive(this.buttonNextLevel, false);
+            this.engineGame.SetActive(this.ButtonNextLevel, false);
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
-            this.ResultsOfLevel = new bool[2];
+            this.CurrentOperation = this.Operations[0];
+            this.ResultsOfLevel = new bool[3];
             this.LevelCounter = 0;
+
+            foreach (Operations operation in this.Operations)
+            {
+                foreach (Items item in operation.Components)
+                {
+                    this.engineGame.SetActive(item, false);
+                }
+            }
+            foreach (Items component in this.CurrentOperation.Components)
+            {
+                this.engineGame.SetActive(component, true);
+            }
         }
 
         /// <summary>
@@ -159,7 +209,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void GoodFeedback()
         {
-            string text = "Excelente trabajo! Puedes continuar al siguiente nivel.";
+            string text = "Correcto!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
@@ -187,7 +237,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateButtonGoToMain()
         {
-            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific3ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
+            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific3ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MenuScientific");
             this.Level.ItemList.Add(goToMain);
             this.engineGame.CreateInUnity(goToMain);
             this.ButtonGoToMain = goToMain;
@@ -202,6 +252,27 @@ namespace Proyecto.LibraryModelado.Engine
             this.Level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
             this.ButtonNextLevel = goToNext;
+        }
+
+        /// <summary>
+        /// Metodo utilizado para actualizar la operacion que se encuentre en pantalla,
+        /// Para su uso, el contador del nivel (this.LevelCounter) ya debe estar actualizado.
+        /// </summary>
+        public void ChangeOperation()
+        {
+            foreach (Items item in this.CurrentOperation.Components)
+            {
+                this.engineGame.SetActive(item, false);
+            }
+
+            if (this.LevelCounter < this.Operations.Count)
+            {
+                this.CurrentOperation = this.Operations[this.LevelCounter];
+                foreach (Items newItem in this.CurrentOperation.Components)
+                {
+                    this.engineGame.SetActive(newItem, true);
+                }
+            }
         }
     }
 }

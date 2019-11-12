@@ -60,6 +60,7 @@ namespace Proyecto.LibraryModelado.Engine
             this.LevelFeedback = this.levelFeedback;
             this.ButtonGoToMain = this.buttonGoToMain;
             this.ButtonNextLevel = this.buttonNextLevel;
+            this.LevelCounter = 0;
             this.Operations = new List<Operations>();
         }
 
@@ -96,7 +97,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// Existen dos operaciones dentro de la pagina.
         /// </summary>
         /// <value>Int.</value>
-        public int OperationCounter { get; private set; }
+        public int LevelCounter { get; private set; }
 
         /// <summary>
         /// Gets or sets de los resultados del nivel.
@@ -119,7 +120,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             string text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
 
-            if (this.buttonGoToMain is null)
+            if (this.ButtonGoToMain is null)
             {
                 this.CreateButtonGoToMain();
             }
@@ -133,7 +134,7 @@ namespace Proyecto.LibraryModelado.Engine
             }
 
             this.ResultsOfLevel = new bool[3];
-            this.OperationCounter = 0;
+            this.LevelCounter = 0;
             this.engineGame.SetActive(this.ButtonNextLevel, false);
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
 
@@ -202,8 +203,8 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (this.VerifyOperation(moneyContainer, money))
             {
-                this.ResultsOfLevel[this.OperationCounter] = true;
-                this.OperationCounter += 1;
+                this.ResultsOfLevel[this.LevelCounter] = true;
+                this.LevelCounter += 1;
                 this.GoodFeedback();
                 this.engineGame.SetItemDraggable(money, false);
                 this.VerifyWinLevel();
@@ -253,7 +254,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateButtonGoToMain()
         {
-            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific1ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
+            ButtonGoToPage goToMain = new ButtonGoToPage("Scientific1ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MenuScientific");
             this.Level.ItemList.Add(goToMain);
             this.engineGame.CreateInUnity(goToMain);
             this.ButtonGoToMain = goToMain;

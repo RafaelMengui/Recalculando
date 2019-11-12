@@ -76,7 +76,18 @@ namespace Proyecto.Item.ScientistLevel
             if (this.Pushable)
             {
                 EngineGame engineGame = Singleton<EngineGame>.Instance;
-                (engineGame.LevelEngines[this.Level] as EngineScientificExercise2).VerifyExercise(this);
+                if (engineGame.LevelEngines[this.Level] is EngineScientificExercise2)
+                {
+                    (engineGame.LevelEngines[this.Level] as EngineScientificExercise2).VerifyExercise(this);
+                }
+                if (engineGame.LevelEngines[this.Level] is EngineScientificExercise3)
+                {
+                    (engineGame.LevelEngines[this.Level] as EngineScientificExercise3).VerifyExercise(this);
+                }
+                else if((engineGame.LevelEngines[this.Level] is EngineScientificExercise4))
+                {
+                    (engineGame.LevelEngines[this.Level] as EngineScientificExercise4).VerifyExercise(this);
+                }
             }
         }
     }

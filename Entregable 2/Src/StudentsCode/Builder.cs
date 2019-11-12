@@ -87,12 +87,8 @@ namespace Proyecto.StudentsCode
             // Layout del programa.
             this.adapter.ChangeLayout(Layout.ContentSizeFitter);
 
-            // Se asigna busca la pagina principal y se asigna en EngineGame.
-            this.firstPage = this.world.SpaceList[0];
-            this.engineGame.MainPage = this.firstPage;
-
-            // Se asigna la pagina principal como la pagina activa actual.
-            this.engineGame.CurrentPage = this.firstPage;
+            // Se asigna la primera pagina.
+            this.firstPage = this.engineGame.MainPage;
 
             // Se muestra la primera pagina.
             this.adapter.ShowPage(this.firstPage.ID);
@@ -102,6 +98,4 @@ namespace Proyecto.StudentsCode
 
 /*
 static Method() => Setup de tests, despues se llama al metodo en cada caso.
-
-1656x828
 */
