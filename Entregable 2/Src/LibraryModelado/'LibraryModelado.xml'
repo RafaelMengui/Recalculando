@@ -13,7 +13,12 @@
             que ser global. Esto es de mucha utilidad debido a que vamos a necesitar llamar a los motores
             de los juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
             de que solo haya un motor de este juego.
-            
+            En esta clase se puede observar el patrón de INVERSIÓN DE DEPENDENCIAS, este nos dice que,
+            Las clases de alto nivel no deben depender de clases de bajo nivel; ambas deben depender de abstracciones.
+            Nuestra clase de alto nivel sería EngineGame, y la de bajo nivel todos los motores de cientifico.
+            En este caso, creamos una interfaz ILevelEngine, de esta forma no accedemos directamente a los motores
+            sino que, llamamos a los métodos de la intefaz (utilizamos una abstracción). Esto nos permite poder
+            realizar cambios en la clase EngineScientific1 sin que cambie EngineGame y viceversa.
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.
             </summary>
         </member>
@@ -118,6 +123,165 @@
             <param name="component">Componente que se va a actualizar.</param>
             <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
         </member>
+        <member name="T:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1">
+            <summary>
+            Clase EngineKitchenExercise1, responsable de implementar la logica del ejercicio 1 del nivel Kitchen.
+            Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
+            relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
+            y debe estar (en la medida de lo posible) relacionada con la clase. Esto sucede claramente en EngineKitchenExercise1
+            este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
+            Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.recipe">
+            <summary>
+            Variable Recipe utilizada para guardar la recipe actual.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.recipeList">
+            <summary>
+            Lista con las recipes del nivel
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.level">
+            <summary>
+            Variable Level utilizada para instanciar un nivel asignable.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.levelFeedback">
+            <summary>
+            Objeto de tipo <see cref="T:Proyecto.Item.Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.buttonNextLevel">
+            <summary>
+            Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.buttonGoToMain">
+            <summary>
+            Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.engineGame">
+            <summary>
+            Instancia unica del motor general.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.#ctor">
+            <summary>
+            Constructor del motor.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.ButtonGoToMain">
+            <summary>
+            Gets or sets Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.Operations">
+            <summary>
+            Gets de lista de operaciones del nivel.
+            </summary>
+            <value>Lista de operacions.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.LevelFeedback">
+            <summary>
+            Gets or sets del Feedback asociado al motor.
+            </summary>
+            <value>Feedback.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.Level">
+            <summary>
+            Gets or sets del nivel asociado a este Motor.
+            </summary>
+            <value>Level.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.OperationCounter">
+            <summary>
+            Gets or sets de contador utilizado para saber en que operacion de la pagina nos encontramos.
+            Existen dos operaciones dentro de la pagina.
+            </summary>
+            <value>Int.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.actualRecipe">
+            <summary>
+            Gets or sets del contador de receta actual.
+            </summary>
+            <value>Int.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.ResultsOfLevel">
+            <summary>
+            Gets or sets de los resultados del nivel.
+            Por predeterminado los dos parametros son False.
+            true = Completo una pagina correctamente (los dos parametros de this.ResultsOfPage son true).
+            false = No completo las dos operaciones de la pagina.
+            </summary>
+            <value>Array de Bools.</value>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.StartLevel">
+            <summary>
+            Metodo utilizado para iniciar o reiniciar el motor del juego.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.VerifyOperation(Proyecto.Item.KitchenLevel.Bowl,Proyecto.Item.KitchenLevel.Food)">
+            <summary>
+            Metodo responsable de verificar si el objeto tipo Food soltado dentro del Bowl,
+            tiene el tipo que aceptado por la.
+            </summary>
+            <param name="bowl">Container tipo <see cref="T:Proyecto.Item.KitchenLevel.Bowl"/>.</param>
+            <param name="food">DraggableItem tipo <see cref="T:Proyecto.Item.KitchenLevel.Food"/>.</param>
+            <returns>Bool si el alimento está en la receta o no.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.VerifyWinLevel">
+            <summary>
+            Verifica que se hayan completado las tres operaciones de recetas.
+            </summary>
+            <returns>Bool.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.VerifyRecipe">
+            <summary>
+            Verifica que se haya completado la receta.
+            </summary>
+            <returns>Bool.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.VerifyExercise(Proyecto.Item.KitchenLevel.Bowl,Proyecto.Item.KitchenLevel.Food)">
+            <summary>
+            Metodo que se utiliza para verificar que este correctamente realizada una de las operaciones.
+            Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
+            Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
+            </summary>
+            <param name="bowl">Container de alimentos donde se encuentra la receta.</param>
+            <param name="food">Alimento arrastrado.</param>
+            <returns>Bool si el alimento soltado es correcto.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.GoodFeedback">
+            <summary>
+            Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.BadFeedback">
+            <summary>
+            Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.CreateFeedback">
+            <summary>
+            Sobrescribe el metodo abstracto de <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
+            </summary>
+            <summary>
+            Metodo responsable de Crear y asignarle al motor, su respectivo objeto feedback.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.CreateButtonGoToMain">
+            <summary>
+            Metodo para crear un boton que al ejecutarlo ira a la pantalla principal.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.RestartContainers">
+            <summary>
+            Método que devuelve cada objeto a su container originario.
+            </summary>
+        </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise1">
             <summary>
             Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
@@ -125,6 +289,11 @@
             relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
             y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise1
             este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
+            Además también cumple con el patrón EXPERT, este nos dice que, debemos asignar la responsabilidad al experto en
+            información, es decir, a la clase que tiene la información necesaria para poder cumplir con la responsabilidad. En este
+            caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise1, por esto, es la experta.
+            Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
+            llevar a cabo sus tareas.
             Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
@@ -263,6 +432,11 @@
             Este boton aparecera en pantalla al terminar un nivel.
             </summary>
         </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.RestartContainers">
+            <summary>
+            Método que devuelve cada objeto a su container originario.
+            </summary>
+        </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise2">
             <summary>
             Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
@@ -270,6 +444,11 @@
             relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
             y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise2
             este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
+            Además también cumple con el patrón EXPERT, este nos dice que, debemos asignar la responsabilidad al experto en
+            información, es decir, a la clase que tiene la información necesaria para poder cumplir con la responsabilidad. En este
+            caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise2, por esto, es la experta.
+            Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
+            llevar a cabo sus tareas.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.level">
@@ -390,6 +569,11 @@
             relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
             y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise3
             este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
+            Además también cumple con el patrón EXPERT, este nos dice que, debemos asignar la responsabilidad al experto en
+            información, es decir, a la clase que tiene la información necesaria para poder cumplir con la responsabilidad. En este
+            caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise3, por esto, es la experta.
+            Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
+            llevar a cabo sus tareas.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.level">
@@ -534,7 +718,16 @@
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise4">
             <summary>
-            Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
+            Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 4.
+            Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
+            relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
+            y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise4
+            este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
+            Además también cumple con el patrón EXPERT, este nos dice que, debemos asignar la responsabilidad al experto en
+            información, es decir, a la clase que tiene la información necesaria para poder cumplir con la responsabilidad. En este
+            caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise4, por esto, es la experta.
+            Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
+            llevar a cabo sus tareas.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.level">
@@ -922,6 +1115,13 @@
             va a heredar automáticamente los atributos,propiedades de Items. Las clases
             hijas aumentan la especialización dependiendo de lo que deben hacer cada una
             de ellas en el juego.
+            Esta clase cumple con El principio de SUSTITUCIÓN de LISKOV, este nos dice que si en alguna
+            parte de nuestro código estamos usando una clase, y esta clase es extendida, tenemos que poder
+            utilizar cualquiera de las clases hijas y que el programa siga siendo válido. Esto nos obliga
+            a asegurarnos de que cuando extendemos una clase no estamos alterando el comportamiento. En este
+            caso, podemos utilizar Items o cualquiera de sus clases hijas como Button y nuestro programa
+            funcionará de igual forma.
+            de la padre.
             Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
             </summary>
         </member>
@@ -1185,6 +1385,65 @@
             Gets de la lista de espacios pertenecientes a un mundo.
             </summary>
             <value>Lista de Objetos <see cref="T:Proyecto.LibraryModelado.Space"/>.</value>
+        </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryBowl">
+            <summary>
+            Esta clase es la responsable de crear objetos Container.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryBowl.name">
+            <summary>
+            Nombre del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryBowl.image">
+            <summary>
+            Imagen del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryBowl.width">
+            <summary>
+            Ancho del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryBowl.height">
+            <summary>
+            Altura del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryBowl.positionX">
+            <summary>
+            Posicion en X del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryBowl.positionY">
+            <summary>
+            Posicion en Y del container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryBowl.level">
+            <summary>
+            Nivel al que pertenece el item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryBowl.acceptableValue">
+            <summary>
+            Valor que aceptara el container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryBowl.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryBowl.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.KitchenLevel.Bowl"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
         </member>
         <member name="T:Proyecto.Factory.CSharp.FactoryButton">
             <summary>
@@ -1728,6 +1987,70 @@
             <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
         </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryFood">
+            <summary>
+            Esta clase es la responsable de crear items que van a ser arrastables.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFood.name">
+            <summary>
+            Nombre del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFood.image">
+            <summary>
+            Imagen del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFood.containerName">
+            <summary>
+            Container del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFood.width">
+            <summary>
+            Ancho del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFood.height">
+            <summary>
+            Altura del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFood.positionX">
+            <summary>
+            Posicion en X del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFood.positionY">
+            <summary>
+            Posicion en Y del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFood.draggable">
+            <summary>
+            Define si el item es arrastrable.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFood.level">
+            <summary>
+            Nivel al que pertenece el item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryFood.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryFood.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.KitchenLevel.Food"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
         <member name="T:Proyecto.Factory.CSharp.FactoryImage">
             <summary>
             Esta clase es la responsable de crear las imagenes.
@@ -2062,6 +2385,50 @@
             <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
         </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryRecipe">
+            <summary>
+            Esta clase es la responsable de crear items que van a ser arrastables.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryRecipe.name">
+            <summary>
+            Nombre del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryRecipe.level">
+            <summary>
+            Espacio del item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryRecipe.foodList">
+            <summary>
+            Lista de objetos food de item.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryRecipe.foodListString">
+            <summary>
+            Lista de strings con los tipos de food.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryRecipe.foodQuantityInt">
+            <summary>
+            Lista con la cantidad de objetos food.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryRecipe.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryRecipe.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.KitchenLevel.Recipe"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
         <member name="T:Proyecto.Factory.CSharp.FactorySpace">
             <summary>
             Esta clase es la responsable de crear objetos Space.
@@ -2174,6 +2541,25 @@
             <summary>
             Sobrescribe el metodo abstracto de IFactoryUnity.
             Delega la responsabilidad de agregar el componente en unity, al respectivo Unity Factory del componente.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryBowl">
+            <summary>
+            Esta clase es la resposable de agregar los componentes Bowl al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryBowl.bowl">
+            <summary>
+            Objeto Bowl que se agregara a Unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryBowl.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.KitchenLevel.Bowl"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
@@ -2311,6 +2697,30 @@
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
         </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryFood">
+            <summary>
+            Esta clase es la resposable de agregar los componentes Food al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryFood.food">
+            <summary>
+            Objeto Food que se agregara a Unity.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryFood.engineUnity">
+            <summary>
+            Instancia del motor de unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryFood.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.KitchenLevel.Food"/> a Unity.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
         <member name="T:Proyecto.Factory.Unity.UFactoryImage">
             <summary>
             Esta clase es la resposable de agregar los componentes Image al juego.
@@ -2441,6 +2851,21 @@
             Sobrescribe el metodo abstracto de IFactoryUnity.
             Tiene la responsabilidad de asignarle la operacion a su respectivo motor de su nivel.
             No se creara el objeto en unity, debido a que las operaciones no son objetos, sino que una herramienta.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryRecipe">
+            <summary>
+            Esta clase es la resposable de agregar los componentes Recipe al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryRecipe.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Debido a que no crearemos un objeto Recipe en unity, esta clase no tiene ninguna responsabilidad,
+            mas que asignarle al motor de unity el adaptador de tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
@@ -2885,12 +3310,12 @@
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
             </summary>
         </member>
-        <member name="F:Proyecto.Item.KitchenLevel.Food.onDropFood">
+        <member name="F:Proyecto.Item.KitchenLevel.Food.type">
             <summary>
-            Accion que se ejecutara al soltar un alimento.
-            </summary>
+            Tipo de Food
+            </summary>        
         </member>
-        <member name="M:Proyecto.Item.KitchenLevel.Food.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.Boolean,Proyecto.LibraryModelado.Items)">
+        <member name="M:Proyecto.Item.KitchenLevel.Food.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.Boolean,Proyecto.LibraryModelado.IContainer,System.String)">
             <summary>
             Initializes a new instance of Food.
             </summary>
@@ -2903,6 +3328,13 @@
             <param name="image">Imagen del Food.</param>
             <param name="draggable">Bool que define si es arrastrable.</param>
             <param name="container">Container Source en donde es creado.</param>
+            <param name="type">String del tipo de Food.</param>
+        </member>
+        <member name="P:Proyecto.Item.KitchenLevel.Food.Type">
+            <summary>
+            Gets or sets del type.
+            </summary>
+            <value>Tipo de fruta.</value>
         </member>
         <member name="P:Proyecto.Item.KitchenLevel.Food.Container">
             <summary>
@@ -2916,13 +3348,7 @@
             </summary>
             <value>Bool arrastrable.</value>
         </member>
-        <member name="P:Proyecto.Item.KitchenLevel.Food.OnDropFood">
-            <summary>
-            Gets or sets de la accion a realizar al soltar el alimento.
-            </summary>
-            <value>Action.</value>
-        </member>
-        <member name="M:Proyecto.Item.KitchenLevel.Food.Drop">
+        <member name="M:Proyecto.Item.KitchenLevel.Food.Drop(Proyecto.LibraryModelado.IContainer)">
             <summary>
             Accion realizada al soltar el alimento.
             </summary>
@@ -2932,12 +3358,13 @@
             Clase responsable de crear recetas en el modelado.
             </summary>
         </member>
-        <member name="M:Proyecto.Item.KitchenLevel.Recipe.#ctor(System.String,Proyecto.Item.KitchenLevel.Food)">
+        <member name="M:Proyecto.Item.KitchenLevel.Recipe.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Collections.Generic.List{Proyecto.Item.KitchenLevel.Food})">
             <summary>
             Initializes a new instance of Recipe.
             </summary>
             <param name="name">Nombre del Item.</param>
-            <param name="food">Receta que contiene los items Food.</param>
+            <param name="level">Level que contiene la recipe.</param>
+            <param name="foodList">Lista de alimentos.</param>
         </member>
         <member name="P:Proyecto.Item.KitchenLevel.Recipe.IsActive">
             <summary>
@@ -2951,6 +3378,12 @@
             Gets lista de objetos Food, que deberan ser soltados dentro del container para ganar el juego.
             </summary>
             <value>Alimentos<see cref="T:Proyecto.Item.KitchenLevel.Food"/>.</value>
+        </member>
+        <member name="P:Proyecto.Item.KitchenLevel.Recipe.ID">
+            <summary>
+            Gets y Sets del ID.
+            </summary>
+            <value>ID</value>
         </member>
         <member name="T:Proyecto.Item.Label">
             <summary>
