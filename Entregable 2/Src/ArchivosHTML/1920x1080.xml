@@ -148,4 +148,11 @@
 
 	</Space>
 
+	<Space Name="Magician" Background="page2.png">
+
+		<Image Name="mago" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Mago.png">
+		<Image Name="nube5" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+
+		<InputVerifyText Name="arbol1" PositionX="710" PositionY="-300" Width="400" Height="530" Value="50"
+
 </World>

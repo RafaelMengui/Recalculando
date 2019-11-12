@@ -223,7 +223,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateButtonGoToNextLevel()
         {
-            ButtonGoToPage goToNext = new ButtonGoToPage("Scientific4Tomain", this.Level, 0, 0, 500, 300, "siguienteNivel.png", "#FCFCFC", "MenuScientific");
+            ButtonGoToPage goToNext = new ButtonGoToPage("Scientific4Tomain", this.Level, 0, 0, 500, 300, "botonToMain.png", "#FCFCFC", "MenuScientific");
             this.Level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
             this.ButtonNextLevel = goToNext;

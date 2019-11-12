@@ -118,6 +118,168 @@
             <param name="component">Componente que se va a actualizar.</param>
             <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
         </member>
+        <member name="T:Proyecto.LibraryModelado.Engine.EngineMagician">
+            <summary>
+            Clase EngineMagician, responsable de implementar la logica del ejercicio 1 del nivel scientific.
+            Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
+            relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
+            y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineMagician
+            este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
+            Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineMagician.level">
+            <summary>
+            Variable Level utilizada para instanciar un nivel asignable.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineMagician.levelFeedback">
+            <summary>
+            Objeto de tipo <see cref="T:Proyecto.Item.Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineMagician.buttonNextLevel">
+            <summary>
+            Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineMagician.buttonGoToMain">
+            <summary>
+            Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineMagician.engineGame">
+            <summary>
+            Instancia unica del motor general.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineMagician.currentOperation">
+            <summary>
+            Operacion que se este ejecutando acutalmente.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.#ctor">
+            <summary>
+            Constructor del motor.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.CurrentOperation">
+            <summary>
+            Gets or sets del operacion que se este ejecutando acutalmente.
+            </summary>
+            <value>Operation.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.ButtonGoToMain">
+            <summary>
+            Gets or sets Boton que al apretarlo aparecera la pantalla principal.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.ButtonNextLevel">
+            <summary>
+            Gets or sets del boton que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.Operations">
+            <summary>
+            Gets de lista de operaciones del nivel.
+            </summary>
+            <value>Lista de operacions.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.LevelFeedback">
+            <summary>
+            Gets or sets del Feedback asociado al motor.
+            </summary>
+            <value>Feedback.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.Level">
+            <summary>
+            Gets or sets del nivel asociado a este Motor.
+            </summary>
+            <value>Level.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.LevelCounter">
+            <summary>
+            Gets or sets de contador utilizado para saber en que operacion de la pagina nos encontramos.
+            Existen dos operaciones dentro de la pagina.
+            </summary>
+            <value>Int.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.ResultsOfLevel">
+            <summary>
+            Gets or sets de los resultados del nivel.
+            Por predeterminado los dos parametros son False.
+            true = Completo una pagina correctamente (los dos parametros de this.ResultsOfPage son true).
+            false = No completo las dos operaciones de la pagina.
+            </summary>
+            <value>Array de Bools.</value>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.StartLevel">
+            <summary>
+            Metodo utilizado para iniciar o reiniciar el motor del juego.
+            Reinicia el feedback, el array de resultados, y el contador.
+            Ademas recorre las operaciones, toma el ultimo container de la lista, debido a que
+            este siempre sera el container del resultado. Toma el item guardado en este container,
+            y lo retorna a su container inicial. Solamente si el Draggable item no es draggble
+            (draggableItem.Draggable = false) lo convierte en true, para evitars errores.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.VerifyOperation(Proyecto.Item.ScientistLevel.MoneyContainer,Proyecto.Item.ScientistLevel.Money)">
+            <summary>
+            Metodo responsable de verificar si el objeto tipo Money soltado dentro del MoneyContainer,
+            tiene el valor que acepta el container.
+            </summary>
+            <param name="moneyContainer">Container tipo <see cref="T:Proyecto.Item.ScientistLevel.MoneyContainer"/>.</param>
+            <param name="money">DraggableItem tipo <see cref="T:Proyecto.Item.ScientistLevel.Money"/>.</param>
+            <returns>Bool si el valor es correcto o no.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.VerifyWinLevel">
+            <summary>
+            Verifica que se hayan completado las tres operaciones del nivel.
+            </summary>
+            <returns>Bool.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.VerifyExercise(Proyecto.Item.InputVerifyText,System.String)">
+            <summary>
+            Metodo que se utiliza para verificar que este correctamente realizada una de las operaciones.
+            Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
+            Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
+            </summary>
+            <param name="input">Container de dinero en donde es soltado el dinero.</param>
+            <param name="text">Dinero arrastrado.</param>
+            <returns>Bool si el dinero soltado es correcto.</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.GoodFeedback">
+            <summary>
+            Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.BadFeedback">
+            <summary>
+            Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.CreateFeedback">
+            <summary>
+            Metodo responsable de Crear y asignarle al motor, su respectivo objeto feedback.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.CreateButtonGoToMain">
+            <summary>
+            Metodo para crear un boton que al ejecutarlo ira a la pantalla principal.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.CreateButtonGoToNextLevel">
+            <summary>
+            Metodo para crear un boton que al ejecutarlo ira al proximo nivel del nivel cientifico.
+            Este boton aparecera en pantalla al terminar un nivel.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineMagician.ChangeOperation">
+            <summary>
+            Metodo utilizado para actualizar la operacion que se encuentre en pantalla,
+            Para su uso, el contador del nivel (this.LevelCounter) ya debe estar actualizado.
+            </summary>
+        </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise1">
             <summary>
             Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
@@ -1831,6 +1993,60 @@
             <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
         </member>
+        <member name="T:Proyecto.Factory.CSharp.FactoryInputVerifyText">
+            <summary>
+            Esta clase es la responsable de crear las InputText.
+            Utiliza la interfaz IFactoryComponent.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryInputVerifyText.name">
+            <summary>
+            Nombre del input.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryInputVerifyText.width">
+            <summary>
+            Ancho del input.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryInputVerifyText.height">
+            <summary>
+            Altura del input.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryInputVerifyText.positionX">
+            <summary>
+            Posicion en X del input.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryInputVerifyText.positionY">
+            <summary>
+            Posicion en Y del input.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryInputVerifyText.level">
+            <summary>
+            Nivel al que pertenece.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryInputVerifyText.acceptableValue">
+            <summary>
+            Valor que aceptara el container.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryInputVerifyText.world">
+            <summary>
+            Instancia del mundo.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.CSharp.FactoryInputVerifyText.MakeComponent(Proyecto.LeerHTML.Tag)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryComponent.
+            Tiene la responsabilidad de crear el componente de tipo <see cref="T:Proyecto.Item.InputText"/>.
+            </summary>
+            <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
+            <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
+        </member>
         <member name="T:Proyecto.Factory.CSharp.FactoryLabel">
             <summary>
             Esta clase es la responsable de crear las etiquetas.
@@ -2349,6 +2565,25 @@
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
             <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
         </member>
+        <member name="T:Proyecto.Factory.Unity.UFactoryInputVerifyText">
+            <summary>
+            Esta clase es la resposable de agregar los componentes InputText al juego.
+            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryInputVerifyText.input">
+            <summary>
+            Objeto InputText que se agregara a Unity.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Factory.Unity.UFactoryInputVerifyText.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.InputText"/> a Unity.
+            </summary>
+            <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
+            <param name="component">Componente que se agregara a Unity <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</param>
+        </member>
         <member name="T:Proyecto.Factory.Unity.UFactoryLabel">
             <summary>
             Esta clase es la resposable de agregar los componentes Label al juego.
@@ -2843,6 +3078,12 @@
             <param name="height">Altura en pixeles.</param>
             <param name="image">Imagen del input.</param>
         </member>
+        <member name="P:Proyecto.Item.InputText.CurrentText">
+            <summary>
+            Gets or sets del texto que se encuentra actualmente en el input text.
+            </summary>
+            <value></value>
+        </member>
         <member name="P:Proyecto.Item.InputText.OnEdited">
             <summary>
             Gets or sets del método a ejecutar cuando se termina de editar el texto de la entrada de texto.
@@ -2997,6 +3238,52 @@
             Gets or sets indicating whether el texto va en italics.
             </summary>
             <value>Bool.</value>
+        </member>
+        <member name="T:Proyecto.Item.InputVerifyText">
+            <summary>
+            Clase responsable de crear InputVerifyText en el modelado.
+            Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Items"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.InputVerifyText.onChange">
+            <summary>
+            Método a ejecutar cuando se cambia el texto de la entrada de texto.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Item.InputVerifyText.onEdited">
+            <summary>
+            Método a ejecutar cuando se termina de editar el texto de la entrada de texto.
+            </summary>
+        </member>
+        <member name="M:Proyecto.Item.InputVerifyText.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Single,System.Single,System.Single,System.Single,System.String,System.String)">
+            <summary>
+            Initializes a new instance of InputVerifyText.
+            </summary>
+            <param name="name">Nombre de la imagen.</param>
+            <param name="level">Nivel al que pertence.</param>
+            <param name="positionX">Posicion en eje horizontal en pixeles.</param>
+            <param name="positionY">Posicion en eje vertical en pixeles.</param>
+            <param name="width">Ancho en pixeles.</param>
+            <param name="height">Altura en pixeles.</param>
+            <param name="image">Imagen del input.</param>
+        </member>
+        <member name="P:Proyecto.Item.InputVerifyText.CurrentText">
+            <summary>
+            Gets or sets del texto que se encuentra actualmente en el input text.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Proyecto.Item.InputVerifyText.OnEdited">
+            <summary>
+            Gets or sets del método a ejecutar cuando se termina de editar el texto de la entrada de texto.
+            </summary>
+            <value>Action.</value>
+        </member>
+        <member name="P:Proyecto.Item.InputVerifyText.OnChange">
+            <summary>
+            Gets or sets del método a ejecutar cuando se cambia el texto de la entrada de texto.
+            </summary>
+            <value>Action.</value>
         </member>
         <member name="T:Proyecto.Item.ScientistLevel.ButtonTrueFalse">
             <summary>
