@@ -20,6 +20,15 @@ namespace Proyecto.LibraryModelado.Engine
     public class EngineKitchenExercise1 : IEngine, ILevelEngine
     {
         /// <summary>
+        /// Variable Recipe utilizada para guardar la recipe actual.
+        /// </summary>
+        private Recipe recipe;
+        /// <summary>
+        /// Lista con las recipes del nivel
+        /// </summary>
+        public List<Recipe> recipeList { get; set; }
+
+        /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
         /// </summary>
         private Space level;
@@ -71,6 +80,12 @@ namespace Proyecto.LibraryModelado.Engine
         public int OperationCounter { get; private set; }
 
         /// <summary>
+        /// Gets or sets del contador de receta actual.
+        /// </summary>
+        /// <value>Int.</value>
+        public int actualRecipe { get; set; }
+
+        /// <summary>
         /// Gets or sets de los resultados del nivel.
         /// Por predeterminado los dos parametros son False.
         /// true = Completo una pagina correctamente (los dos parametros de this.ResultsOfPage son true).
@@ -86,6 +101,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             this.ResultsOfLevel = new bool[3];
             this.OperationCounter = 0;
+            this.actualRecipe = 0;
         }
 
         /// <summary>
@@ -109,15 +125,19 @@ namespace Proyecto.LibraryModelado.Engine
         public bool VerifyOperation(Bowl bowl, Food food)
         {
             bool result = false;
-            foreach (Food _food in bowl.Recipe.FoodList)
+
+            this.recipe = this.recipeList[this.actualRecipe];  //acá podría regenerarse la lista (cuidado de error)
+
+            foreach (Food _food in this.recipe.FoodList)
             {
                 if (food.Type == _food.Type)
                 {
-                    bowl.Recipe.FoodList.Remove(_food);
+                    this.recipe.FoodList.Remove(_food);
                     result = true;
                     break;
                 }
             }
+
             return result;
         }
 
@@ -138,6 +158,27 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
+        /// Verifica que se haya completado la receta.
+        /// </summary>
+        /// <returns>Bool.</returns>
+        public bool VerifyRecipe()
+        {
+            if (this.recipe.FoodList.Count == 0)
+            {
+                this.actualRecipe += 1;
+                this.ResultsOfLevel[this.OperationCounter] = true;
+                this.OperationCounter += 1;
+                this.VerifyWinLevel();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        /// <summary>
         /// Metodo que se utiliza para verificar que este correctamente realizada una de las operaciones.
         /// Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
         /// Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
@@ -149,27 +190,14 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (this.VerifyOperation(bowl, food))
             {
-                this.ResultsOfLevel[this.OperationCounter] = true;
-                this.OperationCounter += 1;
-                food.Draggable = false;
+                food.Draggable = false;     //puede pasar que cuando se haga el clear() el food siga siendo draggable = flase
                 this.GoodFeedback();
-                this.VerifyWinLevel();
+                this.VerifyRecipe();
                 return true;
             }
-
             else
             {
-                if (bowl.Recipe.FoodList.Count == 0)
-                {
-                    food.Container = bowl;
-                    return true;
-                }
-
-                else if (bowl.Recipe.FoodList.Count != 0)
-                {
-                    this.BadFeedback();
-                }
-
+                this.BadFeedback();
                 return false;
             }
         }
