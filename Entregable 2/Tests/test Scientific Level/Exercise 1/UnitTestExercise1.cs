@@ -241,7 +241,6 @@ namespace Proyecto.LibraryModelado.Engine.test
                 componentList.Add(component);
             }
             this.engineGame.AsociateLevelsWithEngines(componentList);
-            this.engineGame.ButtonGoToMain();
             this.engineScientific1.StartLevel();
             foreach (Items item in this.engineScientific1.Level.ItemList)
             {
