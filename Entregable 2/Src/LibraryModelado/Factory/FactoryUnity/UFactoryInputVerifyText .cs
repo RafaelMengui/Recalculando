@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="UFactoryInputText.cs" company="Universidad Católica del Uruguay">
+// <copyright file="UFactoryInputVerifyText.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -13,12 +13,12 @@ namespace Proyecto.Factory.Unity
     /// Esta clase es la resposable de agregar los componentes InputText al juego.
     /// Implementa la interfaz <see cref="IFactoryUnity"/>.
     /// </summary>
-    public class UFactoryInputText : IFactoryUnity
+    public class UFactoryInputVerifyText : IFactoryUnity
     {
         /// <summary>
         /// Objeto InputText que se agregara a Unity.
         /// </summary>
-        private InputText input;
+        private InputVerifyText inputVerify;
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
@@ -31,7 +31,7 @@ namespace Proyecto.Factory.Unity
             try
             {
                 // Se castea el componente como InputText.
-                this.input = component as InputText;
+                this.inputVerify = component as InputVerifyText;
             }
             catch (System.Exception)
             {
@@ -39,7 +39,7 @@ namespace Proyecto.Factory.Unity
             }
 
             // Se crea el objeto en unity y se obtiene el UnityID.
-            this.input.ID = adapter.CreateInputField(this.input.PositionX, this.input.PositionY, this.input.Width, this.input.Height, this.input.Change, this.input.Edit);
+            this.inputVerify.ID = adapter.CreateInputField(this.inputVerify.PositionX, this.inputVerify.PositionY, this.inputVerify.Width, this.inputVerify.Height, this.inputVerify.Change, this.inputVerify.Edit);
         }
     }
 }

@@ -47,6 +47,8 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private Space level;
 
+        private string photo;
+
         /// <summary>
         /// Instancia del mundo.
         /// </summary>
@@ -68,6 +70,7 @@ namespace Proyecto.Factory.CSharp
                 this.height = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Height"; }).Valor);
                 this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
                 this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
+                this.photo = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
             }
             catch(NullReferenceException)
             {
@@ -82,7 +85,7 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Items input = new InputText(this.name, this.level, this.positionX, this.positionY, this.width, this.height, null);
+            Items input = new InputText(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo);
             this.level.ItemList.Add(input);
             return input;
         }
