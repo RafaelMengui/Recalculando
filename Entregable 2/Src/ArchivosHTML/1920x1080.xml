@@ -194,5 +194,24 @@
 		<Operations Components="num50,num49,num47,num46,questionIcon3,verify3">
 		<Operations Components="num2,num4,num8,num10,questionIcon4,verify4">
 		<Operations Components="num15,N_um20,num30,num35,questionIcon5,verify5">
+      
+  </Space>
 
+	<Space Name="MenuNerd" Background="page5.png">
+
+		<Image Name="Nerd" PositionX="0" PositionY="-300" Width="400" Height="530" Photo="SabeloTodo.png">
+		<Image Name="nube2" PositionX="0" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+		<Label Name="etiqueta1Nerd" PositionX="50" PositionY="160" Width="420" Height="470" Photo="Vacio.png" Text="Soy_el_Sabelotodo,_todo_lo_que_necesitás_saber_está_aquí" Bold="true" Italic="false" Size="40">
+		<ButtonGoToPage Name="GoToMainPage" PositionX="-890" PositionY="470" Width="125" Height="125" Photo="GoToMain.png" Color="#FCFCFC" GoToPage="MainPage">
+
+		<Label Name="TablaMultiplicarNerd" PositionX="-500" PositionY="470" Width="350" Height="209" Photo="Vacio.png" Text="Tabla_Multiplicar" Bold="true" Italic="false" Size="20">
+		<ButtonShowImage Name="TablaMultiplicar" PositionX="-500" PositionY="300" Width="350" Height="300" Photo="tablanum.png" Color="#FCFCFC" Level="MenuNerd">
+
+		<Label Name="RectaNumericaNerd" PositionX="-500" PositionY="-130" Width="350" Height="209" Photo="Vacio.png" Text="Recta_númerica" Bold="true" Italic="false" Size="20">
+		<ButtonShowImage Name="RectaNumerica" PositionX="-500" PositionY="-300" Width="350" Height="300" Photo="RectaNumerica.png" Color="#FCFCFC" Level="MenuNerd">
+
+		<Label Name="NumerosNerd" PositionX="500" PositionY="-130" Width="350" Height="209" Photo="Vacio.png" Text="Números_del_1_al_10" Bold="true" Italic="false" Size="20">
+		<ButtonShowImage Name="Numeros1al10" PositionX="500" PositionY="-300" Width="350" Height="300" Photo="num.png" Color="#FCFCFC" Level="MenuNerd">
+
+	</Space>
 </World>

@@ -12,6 +12,13 @@ namespace Proyecto.LibraryModelado
     /// va a heredar automáticamente los atributos,propiedades de Items. Las clases
     /// hijas aumentan la especialización dependiendo de lo que deben hacer cada una
     /// de ellas en el juego.
+    /// Esta clase cumple con El principio de SUSTITUCIÓN de LISKOV, este nos dice que si en alguna
+    /// parte de nuestro código estamos usando una clase, y esta clase es extendida, tenemos que poder
+    /// utilizar cualquiera de las clases hijas y que el programa siga siendo válido. Esto nos obliga
+    /// a asegurarnos de que cuando extendemos una clase no estamos alterando el comportamiento. En este
+    /// caso, podemos utilizar Items o cualquiera de sus clases hijas como Button y nuestro programa
+    /// funcionará de igual forma.
+    /// de la padre.
     /// Implementa la interfaz <see cref="IComponent"/>.
     /// </summary>
     public abstract class Items : IComponent

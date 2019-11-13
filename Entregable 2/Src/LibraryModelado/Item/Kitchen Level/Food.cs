@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 using System;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Item.KitchenLevel
 {
@@ -12,12 +13,12 @@ namespace Proyecto.Item.KitchenLevel
     /// Clase responsable de crear objetos de alimentos arrastrables en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
-    public class Food : Items
+    public class Food : Items, IDraggable
     {
         /// <summary>
-        /// Accion que se ejecutara al soltar un alimento.
-        /// </summary>
-        private Action<string, float, float> onDropFood;
+        /// Tipo de Food
+        /// </summary>        
+        private string type;
 
         /// <summary>
         /// Initializes a new instance of Food.
@@ -31,19 +32,26 @@ namespace Proyecto.Item.KitchenLevel
         /// <param name="image">Imagen del Food.</param>
         /// <param name="draggable">Bool que define si es arrastrable.</param>
         /// <param name="container">Container Source en donde es creado.</param>
-        public Food(string name, Space level, float positionX, float positionY, float width, float height, string image, bool draggable, Items container)
+        /// <param name="type">String del tipo de Food.</param>
+        public Food(string name, Space level, float positionX, float positionY, float width, float height, string image, bool draggable, IContainer container, string type)
         : base(name, level, positionX, positionY, width, height, image)
         {
+            this.Type = type;
             this.Draggable = draggable;
             this.Container = container;
-            this.OnDropFood = this.onDropFood;
         }
+
+        /// <summary>
+        /// Gets or sets del type.
+        /// </summary>
+        /// <value>Tipo de fruta.</value>
+        public string Type {get; set;}
 
         /// <summary>
         /// Gets or sets del container.
         /// </summary>
         /// <value><see cref="Items"/>.</value>
-        public Items Container { get; set; }
+        public IContainer Container { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether el item es arrastrable.
@@ -52,16 +60,23 @@ namespace Proyecto.Item.KitchenLevel
         public bool Draggable { get; set; }
 
         /// <summary>
-        /// Gets or sets de la accion a realizar al soltar el alimento.
-        /// </summary>
-        /// <value>Action.</value>
-        public Action<string, float, float> OnDropFood { get; set; }
-
-        /// <summary>
         /// Accion realizada al soltar el alimento.
         /// </summary>
-        public void Drop()
+        public bool Drop(IContainer container)
         {
+            EngineGame engineGame = Singleton<EngineGame>.Instance;
+            Bowl bowl;
+
+            try
+            {
+                bowl = container as Bowl;
+            }
+            catch(System.InvalidCastException)
+            {
+                throw new System.InvalidCastException($"Invalid cast operation as MoneyContainer.");
+            }
+
+            return (engineGame.LevelEngines[this.Level] as EngineKitchenExercise1).VerifyExercise(bowl, this);
         }
     }
 }
