@@ -25,6 +25,7 @@ namespace Proyecto.Item
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del input.</param>
+        /// <param name="acceptableValue">Valor que aceptara el input.</param>
         public InputVerifyText(string name, Space level, float positionX, float positionY, float width, float height, string image, string acceptableValue)
         : base(name, level, positionX, positionY, width, height, image)
         {
@@ -32,6 +33,10 @@ namespace Proyecto.Item
             this.CurrentText = string.Empty;
         }
 
+        /// <summary>
+        /// Gets or sets del valor que aceptara el input.
+        /// </summary>
+        /// <value>string.</value>
         public string AcceptableValue { get; set; }
 
         /// <summary>
@@ -40,6 +45,11 @@ namespace Proyecto.Item
         /// <value></value>
         public string CurrentText { get; set; }
 
+        /// <summary>
+        /// Action a ejecutar cuando se termine de editar un InputVerifyText.
+        /// </summary>
+        /// <param name="itemID">Id del objeto.</param>
+        /// <param name="text">Nuevo texto.</param>
         public void Edit(string itemID, string text)
         {
             EngineGame engineGame = Singleton<EngineGame>.Instance;
@@ -52,9 +62,14 @@ namespace Proyecto.Item
             }
         }
 
+        /// <summary>
+        /// Metodo a ejecutar cuando se vaya cambiando un texto.
+        /// No contiene funcionalidad debido a que no es necesario.
+        /// </summary>
+        /// <param name="itemID">Id del objeto.</param>
+        /// <param name="text">Texto del objeto.</param>
         public void Change(string itemID, string text)
         {
-
         }
     }
 }

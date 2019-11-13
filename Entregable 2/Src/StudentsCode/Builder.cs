@@ -61,8 +61,10 @@ namespace Proyecto.StudentsCode
             this.adapter.AfterBuild = this.Setup;
             this.engineUnity.Adapter = this.adapter;
 
-            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\1920x1080.xml";
-            List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
+            // const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\1920x1080.xml";
+            // List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
+
+            List<Tag> tags = Parser.ParserHTML(this.adapter.GetFileContents("html.xml"));
             List<IComponent> componentList = new List<IComponent>();
 
             foreach (Tag tag in tags)
@@ -85,7 +87,7 @@ namespace Proyecto.StudentsCode
         private void Setup()
         {
             // Layout del programa.
-            this.adapter.ChangeLayout(Layout.ContentSizeFitter);
+            this.adapter.ChangeLayout(Layout.Horizontal);
 
             // Se asigna la primera pagina.
             this.firstPage = this.engineGame.MainPage;

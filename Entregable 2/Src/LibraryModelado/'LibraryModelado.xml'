@@ -890,6 +890,7 @@
             <param name="feedback">Feedback que se vaya a actualizar.</param>
             <param name="text">Nuevo texto.</param>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Proyecto.LibraryModelado.Engine.EngineUnity.UpdateText(Proyecto.LibraryModelado.Items,System.String)" -->
         <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.UpdateItemImage(Proyecto.LibraryModelado.Items,System.String)">
             <summary>
             Metodo que actualiza la imagen de un unity item.

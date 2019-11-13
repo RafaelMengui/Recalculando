@@ -134,6 +134,16 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
+        /// Metodo responsable de llamar al motor de unity para que actualize el texto de un objeto.
+        /// </summary>
+        /// <param name="items">Item que se vaya actualizar.</param>
+        /// <param name="text">Nuevo texto del item.</param>
+        public void UpdateText(Items items, string text)
+        {
+            this.engineUnity.UpdateText(items, text);
+        }
+
+        /// <summary>
         /// Metodo utilizado para iniciar o reiniciar el motor del juego de un determinado nivel.
         /// </summary>
         /// <param name="level">Nivel que este asociado al motor a iniciar.</param>

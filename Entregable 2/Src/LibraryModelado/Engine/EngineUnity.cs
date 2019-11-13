@@ -130,6 +130,16 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
+        /// Metodo responsable de actualizar el texto de un objeto.
+        /// </summary>
+        /// <param name="item">Item que se vaya a actualizar.</param>
+        /// <param name="text">Nuevo texto.</param>
+        public void UpdateText(Items item, string text)
+        {
+            this.Adapter.SetText(item.ID, text, true);
+        }
+
+        /// <summary>
         /// Metodo que actualiza la imagen de un unity item.
         /// </summary>
         /// <param name="items">Item que se va cambiar la imagen.</param>

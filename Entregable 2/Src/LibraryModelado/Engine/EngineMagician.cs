@@ -6,7 +6,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Proyecto.Item;
-using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
@@ -151,6 +150,11 @@ namespace Proyecto.LibraryModelado.Engine
                 foreach (Items item in operations.Components)
                 {
                     this.engineGame.SetActive(item, false);
+                    if (item is InputVerifyText)
+                    {
+                        (item as InputVerifyText).CurrentText = string.Empty;
+                        this.engineGame.UpdateText(item, string.Empty);
+                    }
                 }
             }
 

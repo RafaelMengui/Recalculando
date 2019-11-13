@@ -39,7 +39,7 @@ namespace Proyecto.Factory.Unity
             }
 
             // Se crea el objeto en unity y se obtiene el UnityID.
-            this.input.ID = adapter.CreateInputField(this.input.PositionX, this.input.PositionY, this.input.Width, this.input.Height, this.input.OnChange, this.input.OnEdited);
+            this.input.ID = adapter.CreateInputField(this.input.PositionX, this.input.PositionY, this.input.Width, this.input.Height, this.input.Change, this.input.Edit);
         }
     }
 }

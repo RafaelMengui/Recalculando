@@ -39,8 +39,6 @@ namespace Proyecto.Item
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.CurrentText = string.Empty;
-            this.OnChange = onChange;
-            this.OnEdited = onEdited;
         }
 
         /// <summary>
@@ -50,25 +48,23 @@ namespace Proyecto.Item
         public string CurrentText { get; set; }
 
         /// <summary>
-        /// Gets or sets del método a ejecutar cuando se termina de editar el texto de la entrada de texto.
+        /// Action a ejecutar cuando se termine de editar un texto.
         /// </summary>
-        /// <value>Action.</value>
-        public Action<string, string> OnEdited { get; set; }
-
-        /// <summary>
-        /// Gets or sets del método a ejecutar cuando se cambia el texto de la entrada de texto.
-        /// </summary>
-        /// <value>Action.</value>
-        public Action<string, string> OnChange { get; set; }
-
+        /// <param name="itemID">Id del objeto.</param>
+        /// <param name="text">Nuevo texto.</param>
         public void Edit(string itemID, string text)
         {
             this.CurrentText = text;
         }
 
+        /// <summary>
+        /// Metodo a ejecutar cuando se vaya cambiando un texto.
+        /// No contiene funcionalidad debido a que no es necesario.
+        /// </summary>
+        /// <param name="itemID">Id del objeto.</param>
+        /// <param name="text">Texto del objeto.</param>
         public void Change(string itemID, string text)
         {
-
         }
     }
 }
