@@ -20,6 +20,7 @@ namespace Proyecto.LibraryModelado.Engine
     /// caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise3, por esto, es la experta.
     /// Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
     /// llevar a cabo sus tareas.
+    /// Hereda de la interfaz <see cref="ILevelEngine"/>.
     /// </summary>
     public class EngineScientificExercise3 : ILevelEngine
     {

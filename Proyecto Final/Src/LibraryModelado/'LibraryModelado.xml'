@@ -13,6 +13,12 @@
             que ser global. Esto es de mucha utilidad debido a que vamos a necesitar llamar a los motores
             de los juego desde diferentes partes del código. Como se ejecuta una única vez nos aseguramos
             de que solo haya un motor de este juego.
+            En esta clase se puede observar el patrón de INVERSIÓN DE DEPENDENCIAS, este nos dice que,
+            Las clases de alto nivel no deben depender de clases de bajo nivel; ambas deben depender de abstracciones.
+            Nuestra clase de alto nivel sería EngineGame, y la de bajo nivel todos los motores de cientifico.
+            En este caso, creamos una interfaz ILevelEngine, de esta forma no accedemos directamente a los motores
+            sino que, llamamos a los métodos de la intefaz (utilizamos una abstracción). Esto nos permite poder
+            realizar cambios en la clase EngineScientific1 sin que cambie EngineGame y viceversa.
             Hereda de la clase abstracta <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.
             </summary>
         </member>
@@ -81,8 +87,8 @@
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.UpdateFeedback(Proyecto.Item.Feedback,System.String)">
             <summary>
-            Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
-            Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
+            Metodo responsable de llamar al motor de unity para que actualize el texto de un
+            <see cref="T:Proyecto.Item.Label"/>.
             </summary>
             <param name="feedback"></param>
             <param name="text">Nuevo texto del feedback.</param>
@@ -118,41 +124,45 @@
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.SetActive(Proyecto.LibraryModelado.Items,System.Boolean)">
             <summary>
-            Gets del nivel asociado a este Motor.
+            Metodo responsable de llamar al motor de unity para actualizar si un item es
+            mostrado por pantalla u ocultado.
             </summary>
-            <value>Level.</value>
+            <param name="item">item que se va a actualizar.</param>
+            <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1">
             <summary>
-            Gets de la etiqueta de texto utilizado para especificar si la accion fue correcta o incorrecta.
+            Clase EngineKitchenExercise1, responsable de implementar la logica del ejercicio 1 del nivel Kitchen.
+            Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
+            relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
+            y debe estar (en la medida de lo posible) relacionada con la clase. Esto sucede claramente en EngineKitchenExercise1
+            este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
+            Además también cumple con el patrón EXPERT, este nos dice que, debemos asignar la responsabilidad al experto en
+            información, es decir, a la clase que tiene la información necesaria para poder cumplir con la responsabilidad. En este
+            caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineKitchenExcerise1, por esto, es la experta.
+            Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
+            llevar a cabo sus tareas.
+            Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.recipe">
             <summary>
-            Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
-            Existen dos paginas en el nivel.
+            Variable Recipe utilizada para guardar la recipe actual.
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.recipeList">
             <summary>
-            Gets de contador utilizado para saber en que operacion de la pagina nos encontramos.
-            Existen dos operaciones dentro de la pagina.
+            Lista con las recipes del nivel
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.level">
             <summary>
-            Gets de los resultados de las sumas de una pagina.
-            Por predeterminado los dos parametros son False.
-            true = resutlado correcto.
-            false = resultado Incorrecto.
+            Variable Level utilizada para instanciar un nivel asignable.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.levelFeedback">
             <summary>
-            Gets de los resultados del nivel.
-            Por predeterminado los dos parametros son False.
-            true = Completo una pagina correctamente (los dos parametros de this.ResultsOfPage son true).
-            false = No completo las dos operaciones de la pagina.
+            Objeto de tipo <see cref="T:Proyecto.Item.Feedback"/> que mostrara por pantalla textos para interactuar con el usuario.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.buttonNextLevel">
@@ -174,9 +184,6 @@
             <summary>
             Constructor del motor.
             </summary>
-            <param name="moneyContainer">Container de dinero en donde es soltado el dinero.</param>
-            <param name="money">Dinero arrastrado.</param>
-            <returns>Bool si el dinero soltado es correcto.</returns>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.ButtonGoToMain">
             <summary>
@@ -261,16 +268,12 @@
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.GoodFeedback">
             <summary>
-            Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
-            Existen dos paginas en el nivel.
+            Metodo que asigna al texto un buen feedback. Utilizado cuando la accion realizada es correcta.
             </summary>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.BadFeedback">
             <summary>
-            Gets de los resultados del nivel.
-            Por predeterminado los dos parametros son False.
-            true = Completo una pagina correctamente.
-            false = No contesto bien la pregunta.
+            Metodo que asigna al texto un mal feedback. Utilizado cuando la accion realizada es incorrecta.
             </summary>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.CreateFeedback">
@@ -280,8 +283,6 @@
             <summary>
             Metodo responsable de Crear y asignarle al motor, su respectivo objeto feedback.
             </summary>
-            <param name="button">Boton seleccionado.</param>
-            <returns>Bool si el boton es correcto.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.CreateButtonGoToMain">
             <summary>
@@ -346,16 +347,12 @@
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.ButtonGoToMain">
             <summary>
-            Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
-            Existen dos paginas en el nivel.
+            Gets or sets Boton que al apretarlo aparecera la pantalla principal.
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.ButtonNextLevel">
             <summary>
-            Gets de los resultados del nivel.
-            Por predeterminado los cuatro parametros son False.
-            true = Completo una pagina correctamente.
-            false = No contesto bien la pregunta.
+            Gets or sets del boton que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.Operations">
@@ -368,8 +365,7 @@
             <summary>
             Gets or sets del Feedback asociado al motor.
             </summary>
-            <param name="button">Boton presionado.</param>
-            <returns>Bool si el boton es correcto.</returns>
+            <value>Feedback.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineMagician.Level">
             <summary>
@@ -533,7 +529,7 @@
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.ResultsOfLevel">
             <summary>
-            Gets or sets de los resultados del nivel.
+            Gets de los resultados del nivel.
             Por predeterminado los dos parametros son False.
             true = Completo una pagina correctamente (los dos parametros de this.ResultsOfPage son true).
             false = No completo las dos operaciones de la pagina.
@@ -816,14 +812,14 @@
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.LevelCounter">
             <summary>
-            Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+            Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
             Existen dos paginas en el nivel.
             </summary>
             <value>Int.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.ResultsOfLevel">
             <summary>
-            Gets or sets de los resultados del nivel.
+            Gets de los resultados del nivel.
             Por predeterminado los cuatro parametros son False.
             true = Completo una pagina correctamente.
             false = No contesto bien la pregunta.
@@ -1130,7 +1126,9 @@
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.IEngine">
             <summary>
-            Clase abstracta de motores.
+            Interfaz implementada por los motores generales del juego (<see cref="T:Proyecto.LibraryModelado.Engine.EngineGame"/> y <see cref="T:Proyecto.LibraryModelado.Engine.EngineUnity"/>).
+            Contiene todos los metodos utilizados para el funcionamiento del juego, y para la comunicacion
+            entre motores.
             </summary>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.IEngine.CreateInUnity(Proyecto.LibraryModelado.IComponent)">
@@ -1170,7 +1168,8 @@
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.ILevelEngine">
             <summary>
-            Interfaz para los motores de los niveles.
+            Interfaz implementada por los motores especificos de niveles.
+            Contiene todos los metodos, atributos y herramientas utilizadas para el funcionamiento de cada uno.
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.ILevelEngine.Operations">
@@ -2099,6 +2098,7 @@
             Metodo responsable de delegar la responsabilidad de crear el componente.
             Intenta crear y asocia en el diccionario el nombre del componente (Tag.Nombre),
             con su respectivo factory.
+            [OCP]
             </summary>
             <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
@@ -2688,7 +2688,7 @@
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryMoney.container">
             <summary>
-            Contenedor en donde sera creado el dinero.
+            Container en donde sera creado el dinero.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryMoney.world">
@@ -4089,7 +4089,7 @@
         </member>
         <member name="P:Proyecto.Item.ScientistLevel.ButtonTrueFalse.Value">
             <summary>
-            Gets or sets a value indicating whether el valor del boton es el correcto.
+            Gets or sets del valor bool del boton.
             </summary>
             <value>Bool.</value>
         </member>
@@ -4112,11 +4112,6 @@
             </summary>
         </member>
         <member name="F:Proyecto.Item.ScientistLevel.Money.valor">
-            <summary>
-            Valor del dinero.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Item.ScientistLevel.Money.onDropMoney">
             <summary>
             Valor del dinero.
             </summary>
@@ -4159,8 +4154,6 @@
             <summary>
             Accion realizada al soltar el dinero.
             </summary>
-            <param name="moneyContainer">Container donde es soltado el dinero.</param>
-            <returns>Bool si es el dinero correcto.</returns>
         </member>
         <member name="T:Proyecto.Item.ScientistLevel.MoneyContainer">
             <summary>

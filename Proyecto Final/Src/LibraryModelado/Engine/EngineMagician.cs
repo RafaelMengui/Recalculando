@@ -15,7 +15,7 @@ namespace Proyecto.LibraryModelado.Engine
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineMagician
     /// este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
-    /// Hereda de las clases abstractas <see cref="IEngine"/> y <see cref="ILevelEngine"/>.
+    /// Hereda de la interfaz <see cref="ILevelEngine"/>.
     /// </summary>
     public class EngineMagician : ILevelEngine
     {
