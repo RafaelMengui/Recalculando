@@ -14,9 +14,9 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear objetos Boton para mostrar la imagen.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryButtonShowImage : IFactoryComponent
+    public class FactoryButtonShowImage : CFactory
     {
         /// <summary>
         /// Nombre del boton.

@@ -11,9 +11,9 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear objetos Space.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactorySpace : IFactoryComponent
+    public class FactorySpace : CFactory
     {
         /// <summary>
         /// Nombre del espacio.

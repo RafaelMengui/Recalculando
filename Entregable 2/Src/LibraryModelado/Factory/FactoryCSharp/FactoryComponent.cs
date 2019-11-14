@@ -3,9 +3,9 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using Proyecto.LeerHTML;
 using System;
 using System.Collections.Generic;
+using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Factory.CSharp
@@ -16,25 +16,25 @@ namespace Proyecto.Factory.CSharp
     /// deben ser abiertas a la extensión, pero cerradas a la modificación.Esto ocurre en
     /// esta clase debido a que, en caso de querer crear más componentes lo podemos hacer
     /// sin necesidad de modificar el código.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryComponent : IFactoryComponent
+    public class FactoryComponent : CFactory
     {
         /// <summary>
         /// Diccionario en donde se asociara un tag con su respectivo factory.
         /// </summary>
-        private Dictionary<string, IFactoryComponent> componentFactories = new Dictionary<string, IFactoryComponent>();
+        private Dictionary<string, CFactory> componentFactories = new Dictionary<string, CFactory>();
 
         /// <summary>
         /// Fabrica generica utilizada para delegar la responsabilidad de crear cada componente a su respectivo factory Concreto.
         /// </summary>
-        private IFactoryComponent factory;
+        private CFactory factory;
 
         /// <summary>
         /// Metodo estatico reponsable de instanciar la clase FactoryComponent.
         /// </summary>
-        /// <returns><see cref="IFactoryComponent"/>.</returns>
-        public static IFactoryComponent InitializeFactories() => new FactoryComponent();
+        /// <returns><see cref="CFactory"/>.</returns>
+        public static CFactory InitializeFactories() => new FactoryComponent();
 
         /// <summary>
         /// Metodo responsable de delegar la responsabilidad de crear el componente.
@@ -47,7 +47,7 @@ namespace Proyecto.Factory.CSharp
         {
             try
             {
-                this.factory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.CSharp.Factory" + tag.Nombre)) as IFactoryComponent;
+                this.factory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.CSharp.Factory" + tag.Nombre)) as CFactory;
             }
             catch(System.Exception)
             {

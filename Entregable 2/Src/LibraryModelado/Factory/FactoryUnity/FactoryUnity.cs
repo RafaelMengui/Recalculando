@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="IFactoryUnity.cs" company="Universidad Católica del Uruguay">
+// <copyright file="FactoryUnity.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -9,13 +9,13 @@ using Proyecto.LibraryModelado;
 namespace Proyecto.Factory.Unity
 {
     /// <summary>
-    /// Interfaz IFactoryUnity.
+    /// Clase Abstacta FactoryUnity.
     /// En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
     /// ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
     /// que definen comportamientos, las clases que necesiten de estos comportamientos van a
     /// implementar esta interfaz.En este caso, todos los factory de unity utiluzan esta interfaz. 
     /// </summary>
-    public abstract class IFactoryUnity
+    public abstract class FactoryUnity
     {
         /// <summary>
         /// Metodo Abstracto para agregar un objeto <see cref="IComponent"/>, a unity.

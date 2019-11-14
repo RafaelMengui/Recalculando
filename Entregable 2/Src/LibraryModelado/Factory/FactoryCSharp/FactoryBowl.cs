@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------
 using System;
 using System.Linq;
-using Proyecto.Item;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
 using Proyecto.Item.KitchenLevel;
@@ -14,9 +13,9 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear objetos Container.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryBowl : IFactoryComponent
+    public class FactoryBowl : CFactory
     {
         /// <summary>
         /// Nombre del container.

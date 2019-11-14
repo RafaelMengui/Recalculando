@@ -12,19 +12,22 @@ namespace Proyecto.Factory.Unity
 {
     /// <summary>
     /// Esta clase es la resposable de agregar los componentes DraggableItem al juego.
-    /// Implementa la interfaz <see cref="IFactoryUnity"/>.
+    /// Hereda de la Clase abstracta <see cref="FactoryUnity"/>.
     /// </summary>
-    public class UFactoryDraggableItem : IFactoryUnity
+    public class UFactoryDraggableItem : FactoryUnity
     {
         /// <summary>
         /// Objeto DraggableItem que se agregara a Unity.
         /// </summary>
         private DraggableItem draggableItem;
 
+        /// <summary>
+        /// Instancia del motor.
+        /// </summary>
         private EngineUnity engineUnity = Singleton<EngineUnity>.Instance;
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de IFactoryUnity.
+        /// Sobrescribe el metodo abstracto de FactoryUnity.
         /// Tiene la responsabilidad de agregar el componente de tipo <see cref="DraggableItem"/> a Unity.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
@@ -50,7 +53,7 @@ namespace Proyecto.Factory.Unity
             adapter.MakeDraggable(this.draggableItem.ID, this.draggableItem.Draggable);
 
             // Se centra el objeto en su respectivo container.
-            adapter.Center(this.draggableItem.ID, this.draggableItem.Container.ID);
+            adapter.Center(this.draggableItem.ID, (this.draggableItem.Container as Items).ID);
 
             // Asignarle su imagen al item.
             adapter.SetImage(this.draggableItem.ID, this.draggableItem.Image);

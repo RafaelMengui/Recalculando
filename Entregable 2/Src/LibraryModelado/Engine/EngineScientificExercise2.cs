@@ -21,7 +21,7 @@ namespace Proyecto.LibraryModelado.Engine
     /// Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
     /// llevar a cabo sus tareas.
     /// </summary>
-    public class EngineScientificExercise2 : IEngine, ILevelEngine
+    public class EngineScientificExercise2 : ILevelEngine
     {
         /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.

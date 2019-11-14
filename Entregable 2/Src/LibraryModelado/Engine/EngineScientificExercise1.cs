@@ -23,7 +23,7 @@ namespace Proyecto.LibraryModelado.Engine
     /// llevar a cabo sus tareas.
     /// Hereda de las clases abstractas <see cref="IEngine"/> y <see cref="ILevelEngine"/>.
     /// </summary>
-    public class EngineScientificExercise1 : IEngine, ILevelEngine
+    public class EngineScientificExercise1 : ILevelEngine
     {
         /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
@@ -268,12 +268,8 @@ namespace Proyecto.LibraryModelado.Engine
                     IContainer resultContainer = item as IContainer;
                     foreach (Items savedItem in resultContainer.SavedItems)
                     {
-                        if (savedItem is IDraggable)
-                        {
-                            IDraggable draggableItem = savedItem as IDraggable;
-                            this.engineGame.SetItemDraggable(draggableItem, true);
-                            this.engineGame.CenterInContainer(draggableItem);
-                        }
+                        this.engineGame.SetItemDraggable(savedItem, true);
+                        this.engineGame.CenterInContainer(savedItem);
                     }
 
                     resultContainer.SavedItems.Clear();

@@ -13,9 +13,9 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear las etiquetas.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryFeedback : IFactoryComponent
+    public class FactoryFeedback : CFactory
     {
         /// <summary>
         /// Nombre de la Etiqueta.

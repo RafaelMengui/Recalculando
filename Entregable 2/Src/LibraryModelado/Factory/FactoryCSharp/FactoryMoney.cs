@@ -13,9 +13,9 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear objetos Money arrastables.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryMoney : IFactoryComponent
+    public class FactoryMoney : CFactory
     {
         /// <summary>
         /// Nombre del dinero.
@@ -67,6 +67,9 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private float value;
 
+        /// <summary>
+        /// Container en donde sera creado el dinero.
+        /// </summary>
         private MoneyContainer container;
 
         /// <summary>

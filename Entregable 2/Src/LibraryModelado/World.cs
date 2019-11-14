@@ -18,15 +18,12 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         private string name;
 
-        private string id;
-
         /// <summary>
         /// Initializes a new instance of world.
         /// </summary>
         public World()
         {
             this.Name = this.name;
-            this.ID = id;
             this.SpaceList = new List<Space>();
             this.IsActive = true;
         }
@@ -43,12 +40,6 @@ namespace Proyecto.LibraryModelado
         /// </summary>
         /// <value>String nombre del mundo.</value>
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets del ID.
-        /// </summary>
-        /// <value></value>
-        public string ID { get; set; }
 
         /// <summary>
         /// Gets de la lista de espacios pertenecientes a un mundo.

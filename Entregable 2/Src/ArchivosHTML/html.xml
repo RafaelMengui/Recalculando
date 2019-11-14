@@ -84,9 +84,9 @@
 		<Money Name="2bil500" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill500.png" Draggable="true" Container="moneyContainerDrag4" Value="500">
 		<Money Name="2bill20" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill20.png" Draggable="true" Container="moneyContainerDrag5" Value="20">
 
-		<Operations Components="moneyContainer11,moneyContainer21,resultContainer1">
-		<Operations Components="moneyContainer12,moneyContainer22,moneyContainer32,resultContainer2">
-		<Operations Components="moneyContainer13,moneyContainer23,moneyContainer33,resultContainer3">
+		<Operations Name="op1" Components="moneyContainer11,moneyContainer21,resultContainer1">
+		<Operations Name="op2" Components="moneyContainer12,moneyContainer22,moneyContainer32,resultContainer2">
+		<Operations Name="op3" Components="moneyContainer13,moneyContainer23,moneyContainer33,resultContainer3">
 
 	</Space>
 
@@ -104,7 +104,7 @@
 		<ButtonTrueFalse Name="opcion41" PositionX="-400" PositionY="-400" Width="300" Height="300" Photo="manzana22.png" Color="#FCFCFC" Value="false">
 		<ButtonTrueFalse Name="opcion51" PositionX="0" PositionY="-400" Width="300" Height="300" Photo="manzana19.png" Color="#FCFCFC" Value="false">
 
-		<Operations Components="opcion11,opcion21,opcion31,opcion41,opcion51">
+		<Operations Name="op4" Components="opcion11,opcion21,opcion31,opcion41,opcion51">
 
 	</Space>
 
@@ -125,9 +125,9 @@
 		<ButtonTrueFalse Name="CorrectoSuma3" PositionX="200" PositionY="200" Width="300" Height="300" Photo="correcto.png" Color="#FCFCFC" Value="false">
 		<ButtonTrueFalse Name="IncorrectoSuma3" PositionX="200" PositionY="-200" Width="300" Height="300" Photo="incorrecto.png" Color="#FCFCFC" Value="true">
 
-		<Operations Components="suma1,CorrectoSuma1,IncorrectoSuma1">
-		<Operations Components="suma2,CorrectoSuma2,IncorrectoSuma2">
-		<Operations Components="suma3,CorrectoSuma3,IncorrectoSuma3">
+		<Operations Name="op5" Components="suma1,CorrectoSuma1,IncorrectoSuma1">
+		<Operations Name="op6" Components="suma2,CorrectoSuma2,IncorrectoSuma2">
+		<Operations Name="op7" Components="suma3,CorrectoSuma3,IncorrectoSuma3">
 
 	</Space>
 
@@ -146,8 +146,8 @@
 		<ButtonTrueFalse Name="restaICon2" PositionX="100" PositionY="-300" Width="300" Height="300" Photo="restaIcon.png" Color="#FCFCFC" Value="true">
 		<Label Name="texto2" PositionX="-200" PositionY="100" Width="1100" Height="400" Photo="Vacio.png" Text="En_el_supermercado_tengo_que_pagar_$352,_si_pago_con_un_billete_de_$500,_¿Que_operación_debo_realizar_para_saber_cuánto_dinero_me_devolverá_la_cajera?" Bold="true" Italic="false" Size="60">
 
-		<Operations Components="sumaIcon1,restaICon1,texto1">
-		<Operations Components="sumaIcon2,restaICon2,texto2">
+		<Operations Name="op8" Components="sumaIcon1,restaICon1,texto1">
+		<Operations Name="op9" Components="sumaIcon2,restaICon2,texto2">
 
 	</Space>
 
@@ -192,11 +192,11 @@
 		<Image Name="num35" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num35.png">
 		<InputVerifyText Name="verify5" PositionX="-500" PositionY="310" Width="420" Height="150" Value="25" Photo="Vacio.png" Bold="true" Italic="false" Size="50">
 
-		<Operations Components="num16,num17,num19,num20,questionIcon1,verify1">
-		<Operations Components="num97,num98,num99,num101,questionIcon2,verify2">
-		<Operations Components="num50,num49,num47,num46,questionIcon3,verify3">
-		<Operations Components="num2,num4,num8,num10,questionIcon4,verify4">
-		<Operations Components="num15,N_um20,num30,num35,questionIcon5,verify5">
+		<Operations Name="op10" Components="num16,num17,num19,num20,questionIcon1,verify1">
+		<Operations Name="op11" Components="num97,num98,num99,num101,questionIcon2,verify2">
+		<Operations Name="op12" Components="num50,num49,num47,num46,questionIcon3,verify3">
+		<Operations Name="op13" Components="num2,num4,num8,num10,questionIcon4,verify4">
+		<Operations Name="op14" Components="num15,N_um20,num30,num35,questionIcon5,verify5">
       
   </Space>
 

@@ -15,9 +15,9 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear items que van a ser arrastables.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryRecipe : IFactoryComponent
+    public class FactoryRecipe : CFactory
     {
         /// <summary>
         /// Nombre del item.
@@ -69,7 +69,6 @@ namespace Proyecto.Factory.CSharp
                     {
                         try
                         {
-
                             if (food.Type == foodString)
                             {
                                 int index = Array.IndexOf(this.foodListString, foodString);

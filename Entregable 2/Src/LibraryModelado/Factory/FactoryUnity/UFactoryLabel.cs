@@ -11,9 +11,9 @@ namespace Proyecto.Factory.Unity
 {
     /// <summary>
     /// Esta clase es la resposable de agregar los componentes Label al juego.
-    /// Implementa la interfaz <see cref="IFactoryUnity"/>.
+    /// Hereda de la Clase abstracta <see cref="FactoryUnity"/>.
     /// </summary>
-    public class UFactoryLabel : IFactoryUnity
+    public class UFactoryLabel : FactoryUnity
     {
         /// <summary>
         /// Objeto Label que se agregara a Unity.
@@ -21,7 +21,7 @@ namespace Proyecto.Factory.Unity
         private Label label;
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de IFactoryUnity.
+        /// Sobrescribe el metodo abstracto de FactoryUnity.
         /// Tiene la responsabilidad de agregar el componente de tipo <see cref="Label"/> a Unity.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
