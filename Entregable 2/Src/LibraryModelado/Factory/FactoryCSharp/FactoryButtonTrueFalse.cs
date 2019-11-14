@@ -4,11 +4,11 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
+using System.Linq;
 using Proyecto.Item;
 using Proyecto.Item.ScientistLevel;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
-using System.Linq;
 
 namespace Proyecto.Factory.CSharp
 {
@@ -54,7 +54,7 @@ namespace Proyecto.Factory.CSharp
         private float positionY;
 
         /// <summary>
-        /// Valor bool del boton. 
+        /// Valor bool del boton.
         /// </summary>
         private bool value;
 
@@ -88,15 +88,15 @@ namespace Proyecto.Factory.CSharp
                 this.value = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Value"; }).Valor);
                 this.level = this.world.SpaceList.Last();
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
             }
-            catch(InvalidCastException)
+            catch (InvalidCastException)
             {
                 throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }

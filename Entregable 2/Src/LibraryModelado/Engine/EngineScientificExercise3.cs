@@ -102,14 +102,14 @@ namespace Proyecto.LibraryModelado.Engine
         public Label Feedback { get; set; }
 
         /// <summary>
-        /// Gets or sets de contador utilizado para saber en que pagina del nivel nos encontramos.
+        /// Gets de contador utilizado para saber en que pagina del nivel nos encontramos.
         /// Existen dos paginas en el nivel.
         /// </summary>
         /// <value>Int.</value>
         public int LevelCounter { get; private set; }
 
         /// <summary>
-        /// Gets or sets de los resultados del nivel.
+        /// Gets de los resultados del nivel.
         /// Por predeterminado los cuatro parametros son False.
         /// true = Completo una pagina correctamente.
         /// false = No contesto bien la pregunta.

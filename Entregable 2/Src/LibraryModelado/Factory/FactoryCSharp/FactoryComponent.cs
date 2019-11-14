@@ -40,6 +40,7 @@ namespace Proyecto.Factory.CSharp
         /// Metodo responsable de delegar la responsabilidad de crear el componente.
         /// Intenta crear y asocia en el diccionario el nombre del componente (Tag.Nombre),
         /// con su respectivo factory.
+        /// [OCP]
         /// </summary>
         /// <param name="tag">Tag <see cref="Tag"/>.</param>
         /// <returns>Componente <see cref="IComponent"/>.</returns>
@@ -49,7 +50,7 @@ namespace Proyecto.Factory.CSharp
             {
                 this.factory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.CSharp.Factory" + tag.Nombre)) as CFactory;
             }
-            catch(System.Exception)
+            catch (System.Exception)
             {
                 throw new System.Exception($"Invalid Tag Name: {tag.Nombre}");
             }
@@ -62,7 +63,7 @@ namespace Proyecto.Factory.CSharp
                     IComponent component = this.componentFactories[type.Key].MakeComponent(tag);
                     return component;
                 }
-                catch(System.Exception)
+                catch (System.Exception)
                 {
                     throw new System.Exception($"Factory \"{type.Value}\" not found.");
                 }

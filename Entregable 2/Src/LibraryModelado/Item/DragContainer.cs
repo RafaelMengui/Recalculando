@@ -31,7 +31,7 @@ namespace Proyecto.Item
         }
 
         /// <summary>
-        /// Gets or sets la lista de objetos items que son soltados dentro del container.
+        /// Gets la lista de objetos items que son soltados dentro del container.
         /// </summary>
         /// <value>Lista de items.</value>
         public List<Items> SavedItems { get; }

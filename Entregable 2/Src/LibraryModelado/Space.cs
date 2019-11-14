@@ -35,7 +35,7 @@ namespace Proyecto.LibraryModelado
             this.ID = this.id;
             this.Width = 1270;
             this.Height = 570;
-            this.World = world;
+            this.World = this.world;
             this.ItemList = new List<Items>();
             this.IsActive = true;
         }

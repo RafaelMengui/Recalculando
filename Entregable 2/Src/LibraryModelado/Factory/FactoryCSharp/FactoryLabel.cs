@@ -99,15 +99,15 @@ namespace Proyecto.Factory.CSharp
                 this.bold = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Bold"; }).Valor);
                 this.italic = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Italic"; }).Valor);
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 throw new NullReferenceException($"Missing attribute in tag \"{tag.Nombre}\".");
             }
-            catch(InvalidCastException)
+            catch (InvalidCastException)
             {
                 throw new InvalidCastException($"Failed cast operation in tag \"{tag.Nombre}\".");
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }

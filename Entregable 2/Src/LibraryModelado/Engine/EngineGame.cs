@@ -64,7 +64,7 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Gets or sets del diccionario de motores y niveles.
+        /// Gets del diccionario de motores y niveles.
         /// </summary>
         /// <value>Diccionario de clave <see cref="Space"/> y valor <see cref="IEngine"/>.</value>
         public Dictionary<Space, ILevelEngine> LevelEngines { get; set; }

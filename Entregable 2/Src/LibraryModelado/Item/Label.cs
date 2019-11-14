@@ -39,7 +39,7 @@ namespace Proyecto.Item
         /// <summary>
         /// Gets or sets del texto.
         /// </summary>
-        /// <value></value>
+        /// <value>string text.</value>
         public string Text { get; set; }
 
         /// <summary>

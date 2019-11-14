@@ -100,7 +100,7 @@ namespace Proyecto.LibraryModelado.Engine
         public int LevelCounter { get; private set; }
 
         /// <summary>
-        /// Gets or sets de los resultados del nivel.
+        /// Gets de los resultados del nivel.
         /// Por predeterminado los dos parametros son False.
         /// true = Completo una pagina correctamente (los dos parametros de this.ResultsOfPage son true).
         /// false = No completo las dos operaciones de la pagina.
