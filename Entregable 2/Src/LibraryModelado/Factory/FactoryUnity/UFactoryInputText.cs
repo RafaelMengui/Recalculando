@@ -40,6 +40,9 @@ namespace Proyecto.Factory.Unity
 
             // Se crea el objeto en unity y se obtiene el UnityID.
             this.input.ID = adapter.CreateInputField(this.input.PositionX, this.input.PositionY, this.input.Width, this.input.Height, this.input.Change, this.input.Edit);
+
+            // Se actualiza el tipo de letra.
+            adapter.SetFont(this.input.ID, this.input.Bold, this.input.Italic, this.input.Size);
         }
     }
 }

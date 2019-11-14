@@ -47,6 +47,24 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private Space level;
 
+        /// <summary>
+        /// Tamaño del texto.
+        /// </summary>
+        private int size;
+
+        /// <summary>
+        /// Bool si el texto va en negrita.
+        /// </summary>
+        private bool bold;
+
+        /// <summary>
+        /// Bool si el texto va en cursiva.
+        /// </summary>
+        private bool italic;
+
+        /// <summary>
+        /// Imagen del input.
+        /// </summary>
         private string photo;
 
         /// <summary>
@@ -71,6 +89,9 @@ namespace Proyecto.Factory.CSharp
                 this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
                 this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
                 this.photo = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
+                this.size = Convert.ToInt32(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Size"; }).Valor);
+                this.bold = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Bold"; }).Valor);
+                this.italic = Convert.ToBoolean(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Italic"; }).Valor);
             }
             catch(NullReferenceException)
             {
@@ -85,7 +106,7 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Items input = new InputText(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo);
+            Items input = new InputText(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.photo, this.size, this.bold, this.italic);
             this.level.ItemList.Add(input);
             return input;
         }

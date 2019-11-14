@@ -73,11 +73,20 @@ namespace Proyecto.Item
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
+            EngineGame engineGame = Singleton<EngineGame>.Instance;
             if (this.Pushable)
             {
-                Space page = this.Level.World.SpaceList.Find(delegate (Space level) { return level.Name == this.imageName; });
-                Singleton<EngineGame>.Instance.CurrentPage = page;
-                this.Event(page.ID);
+                if (this.ImageName == this.Name)
+                {
+                    // Si el boton que mostrara este boton es este mismo boton, se ocultara a el mismo.
+                    engineGame.SetActive(this, false);
+                }
+                else
+                {
+                    // En caso contrario, mostrara el boton.
+                    Items image = this.Level.ItemList.Find(delegate (Items item) { return item.Name == this.ImageName; });
+                    engineGame.SetActive(image, true);
+                }
             }
         }
     }

@@ -165,7 +165,7 @@ namespace Proyecto.LibraryModelado.Engine
         {
             if (this.ResultsOfLevel[0] && this.ResultsOfLevel[1])
             {
-                string text = "Excelente! Has contestado correctamente las dos preguntas. Puedes continuar al siguiente nivel.";
+                string text = "Excelente! Has contestado correctamente las dos preguntas.";
                 this.engineGame.UpdateFeedback(this.LevelFeedback, text);
                 this.engineGame.SetActive(this.ButtonNextLevel, true);
                 return true;
@@ -221,7 +221,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateFeedback()
         {
-            Feedback feedback = new Feedback("Feedback4", this.Level, 710, 70, 320, 400, "Vacio.png", string.Empty, 30, true, false);
+            Feedback feedback = new Feedback("Feedback4", this.Level, 720, 86, 320, 400, "Vacio.png", string.Empty, 33, true, false);
             this.engineGame.CreateInUnity(feedback);
             this.LevelFeedback = feedback;
         }
