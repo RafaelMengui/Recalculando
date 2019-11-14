@@ -1,10 +1,16 @@
+//--------------------------------------------------------------------------------
+// <copyright file="ILevelEngine.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
 using System.Collections.Generic;
 using Proyecto.Item;
 
 namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
-    /// Interfaz para los motores de los niveles.
+    /// Interfaz implementada por los motores especificos de niveles.
+    /// Contiene todos los metodos, atributos y herramientas utilizadas para el funcionamiento de cada uno.
     /// </summary>
     public interface ILevelEngine
     {

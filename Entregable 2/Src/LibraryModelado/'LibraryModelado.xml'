@@ -83,7 +83,7 @@
             Metodo responsable de delegar la responsabilidad al motor de unity, de crear un
             objeto en unity.
             </summary>
-            <param name="component"></param>
+            <param name="component">Componente</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.UpdateFeedback(Proyecto.Item.Feedback,System.String)">
             <summary>
@@ -106,28 +106,28 @@
             </summary>
             <param name="level">Nivel que este asociado al motor a iniciar.</param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.CenterInContainer(Proyecto.LibraryModelado.IDraggable)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.CenterInContainer(Proyecto.LibraryModelado.Items)">
             <summary>
             Metodo responsable de llamar al motor de unity para Centrar un IDraggable en
             un IContainer.
             </summary>
-            <param name="item">IDraggableItem.</param>
+            <param name="item">Item de tipo IDraggable.</param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.SetItemDraggable(Proyecto.LibraryModelado.IDraggable,System.Boolean)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.SetItemDraggable(Proyecto.LibraryModelado.Items,System.Boolean)">
             <summary>
             Metodo responsable de llamar al motor de unity para actualizar un item
             para que sea arrastrable o no.
             Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
             </summary>
-            <param name="draggableItem">Item que se va a actualizar.</param>
+            <param name="item">Item que se va a actualizar.</param>
             <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.SetActive(Proyecto.LibraryModelado.IComponent,System.Boolean)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineGame.SetActive(Proyecto.LibraryModelado.Items,System.Boolean)">
             <summary>
             Metodo responsable de llamar al motor de unity para actualizar si un item es
             mostrado por pantalla u ocultado.
             </summary>
-            <param name="component">Componente que se va a actualizar.</param>
+            <param name="item">item que se va a actualizar.</param>
             <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1">
@@ -1070,23 +1070,23 @@
             <summary>
             Si existe un container en esas coordenadas, lo devolvera.
             </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <returns></returns>
+            <param name="x">Coordenada en X en donde se solto el item.</param>
+            <param name="y">Coordenada en Y en donde se solto el item.</param>
+            <returns>IContainer.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.FindItem(System.String)">
             <summary>
             Metodo responnsable de buscar en la pagina en la que se encuentre el usuario,
             un Item que tenga el mismo UnityID que el entrante por parametro.
             </summary>
-            <param name="unityID"></param>
+            <param name="unityID">ID de unity del item.</param>
             <returns>Devuelve el item encontrado.</returns>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SendComponentToUFactory(Proyecto.LibraryModelado.IComponent)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.CreateInUnity(Proyecto.LibraryModelado.IComponent)">
             <summary>
             Metodo responsable de enviar un IComponent a la UnityFactory.
             </summary>
-            <param name="component"></param>
+            <param name="component">Component.</param>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.UpdateFeedback(Proyecto.Item.Feedback,System.String)">
             <summary>
@@ -1102,38 +1102,67 @@
             <param name="item">Item que se vaya a actualizar.</param>
             <param name="text">Nuevo texto.</param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.UpdateItemImage(Proyecto.LibraryModelado.Items,System.String)">
-            <summary>
-            Metodo que actualiza la imagen de un unity item.
-            </summary>
-            <param name="items">Item que se va cambiar la imagen.</param>
-            <param name="image">string del nombre de la nueva imagen.</param>
-        </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.CenterInUnity(Proyecto.LibraryModelado.IDraggable)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.CenterInUnity(Proyecto.LibraryModelado.Items,Proyecto.LibraryModelado.Items)">
             <summary>
             Metodo responsable de Centrar un IDraggable en su IContainer.
             </summary>
             <param name="item">IDraggableItem.</param>
+            <param name="container">IContainer.</param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SetItemDraggable(Proyecto.LibraryModelado.IDraggable,System.Boolean)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SetItemDraggable(Proyecto.LibraryModelado.Items,System.Boolean)">
             <summary>
             Metodo responsable actualizar un item para que sea arrastrable o no.
             Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
             </summary>
-            <param name="draggableItem">Item que se va a actualizar.</param>
+            <param name="item">Item que se va a actualizar.</param>
             <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SetActive(Proyecto.LibraryModelado.IComponent,System.Boolean)">
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineUnity.SetActive(Proyecto.LibraryModelado.Items,System.Boolean)">
             <summary>
             Metodo responsable de actualizar si un item es mostrado por pantalla u ocultado.
             </summary>
-            <param name="component">Componente que se va a actualizar.</param>
+            <param name="item">Componente que se va a actualizar.</param>
             <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.IEngine">
             <summary>
             Clase abstracta de motores.
             </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.IEngine.CreateInUnity(Proyecto.LibraryModelado.IComponent)">
+            <summary>
+            Metodo responsable de enviar un IComponent a la UnityFactory.
+            </summary>
+            <param name="component">Component.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.IEngine.UpdateFeedback(Proyecto.Item.Feedback,System.String)">
+            <summary>
+            Metodo responsable de actualizar el mensaje de feedback mostrado en pantalla.
+            </summary>
+            <param name="feedback">Feedback que se vaya a actualizar.</param>
+            <param name="text">Nuevo texto.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.IEngine.UpdateText(Proyecto.LibraryModelado.Items,System.String)">
+            <summary>
+            Metodo responsable de actualizar el texto que aparece sobre un objeto.
+            </summary>
+            <param name="items">Item que se vaya actualizar.</param>
+            <param name="text">Nuevo texto del item.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.IEngine.SetItemDraggable(Proyecto.LibraryModelado.Items,System.Boolean)">
+            <summary>
+            Metodo responsable de actualizar un item para que sea arrastrable o no.
+            Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
+            </summary>
+            <param name="item">Item que se va a actualizar.</param>
+            <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.IEngine.SetActive(Proyecto.LibraryModelado.Items,System.Boolean)">
+            <summary>
+            Metodo responsable actualizar si un item para que sea mostrado por pantalla u ocultado.
+            </summary>
+            <param name="item">item que se va a actualizar.</param>
+            <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.ILevelEngine">
             <summary>
@@ -1195,7 +1224,7 @@
             En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
             ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
             que definen comportamientos, las clases que necesiten de estos comportamientos van a
-            implementar esta interfaz.Ejemplo: Botón 
+            implementar esta interfaz. Ejemplo: Botón 
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.IButton.Pushable">
@@ -1221,21 +1250,14 @@
             En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
             ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
             que definen comportamientos, las clases que necesiten de estos comportamientos van a
-            implementar esta interfaz.Ejemplo: Space, World
+            implementar esta interfaz. Ejemplo: Space, World
             </summary>
         </member>
-        <member name="P:Proyecto.LibraryModelado.IComponent.ID">
+        <member name="P:Proyecto.LibraryModelado.IComponent.Name">
             <summary>
-            Gets or sets del ID de un objeto asignado al crearlo en unity.
+            Gets or sets del Nombre del componente.
             </summary>
-            <value></value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.IComponent.IsActive">
-            <summary>
-            Gets or sets que indican si el item esta actualmente activo en pantalla.
-            Por predeterminado para todos los items, el valor sera true.
-            </summary>
-            <value></value>
+            <value>String.</value>
         </member>
         <member name="T:Proyecto.LibraryModelado.IContainer">
             <summary>
@@ -1377,19 +1399,19 @@
             almacenar todos los containers utilizados en una sola cuenta.
             </summary>
         </member>
-        <member name="M:Proyecto.LibraryModelado.Operations.#ctor(Proyecto.LibraryModelado.Space,System.Collections.Generic.List{Proyecto.LibraryModelado.Items})">
+        <member name="M:Proyecto.LibraryModelado.Operations.#ctor(System.String,Proyecto.LibraryModelado.Space,System.Collections.Generic.List{Proyecto.LibraryModelado.Items})">
             <summary>
             Constructor.
             </summary>
+            <param name="name">Nombre de la operacion.</param>
             <param name="level">Nivel al que pertenece la operacion.</param>
             <param name="components">Lista de componentes.</param>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Operations.IsActive">
+        <member name="P:Proyecto.LibraryModelado.Operations.Name">
             <summary>
-            Gets or sets que indican si el item esta actualmente activo en pantalla.
-            Por predeterminado sera true.
+            Gets or sets del Nombre de la operacion.
             </summary>
-            <value></value>
+            <value>String.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Operations.Level">
             <summary>
@@ -1401,14 +1423,7 @@
             <summary>
             Gets or sets de la lista de componentes.
             </summary>
-            <value></value>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.Operations.ID">
-            <summary>
-            Gets or sets del ID del objeto, siempre tendra valor null debido a que la Operation no sera un
-            objeto unity, sino que solamente una herramienta.
-            </summary>
-            <value></value>
+            <value>Lista de items.</value>
         </member>
         <member name="T:Proyecto.LibraryModelado.Level">
             <summary>
@@ -1517,6 +1532,60 @@
             </summary>
             <value>Lista de objetos tipo <see cref="T:Proyecto.LibraryModelado.Items"/>.</value>
         </member>
+        <member name="T:Proyecto.LibraryModelado.User">
+            <summary>
+            Clase responable de crear un usuario.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.User.name">
+            <summary>
+            Nombre del usuario.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.User.age">
+            <summary>
+            Edad del usuario.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.User.genre">
+            <summary>
+            Genero del usuario.
+            </summary>
+        </member>
+        <member name="F:Proyecto.LibraryModelado.User.birth">
+            <summary>
+            Fecha de nacimiento del usuario.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.User.#ctor">
+            <summary>
+            Constructor del usuario.
+            </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.User.Genre">
+            <summary>
+            Gets or sets del Sexo del usuario.
+            </summary>
+            <value>string.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.User.Name">
+            <summary>
+            Gets or sets del nombre del usuario.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.User.Age">
+            <summary>
+            Gets or sets de la edad del usuario.
+            </summary>
+            <value>Int.</value>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.User.Birth">
+            <summary>
+            string Fecha de nacimiento del usuario.
+            </summary>
+            <value>String.</value>
+        </member>
         <member name="T:Proyecto.LibraryModelado.World">
             <summary>
             Clase responsable de crear objetos mundo.
@@ -1546,12 +1615,6 @@
             </summary>
             <value>String nombre del mundo.</value>
         </member>
-        <member name="P:Proyecto.LibraryModelado.World.ID">
-            <summary>
-            Gets or sets del ID.
-            </summary>
-            <value></value>
-        </member>
         <member name="P:Proyecto.LibraryModelado.World.SpaceList">
             <summary>
             Gets de la lista de espacios pertenecientes a un mundo.
@@ -1561,7 +1624,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryBowl">
             <summary>
             Esta clase es la responsable de crear objetos Container.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryBowl.name">
@@ -1620,7 +1683,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryButton">
             <summary>
             Esta clase es la responsable de crear objetos Botones Genéricos.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryButton.name">
@@ -1679,7 +1742,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryButtonAudio">
             <summary>
             Esta clase es la responsable de crear objetos BotonAudio.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryButtonAudio.name">
@@ -1743,7 +1806,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryButtonGoToPage">
             <summary>
             Esta clase es la responsable de crear objetos Boton para ir a la próxima página.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryButtonGoToPage.name">
@@ -1807,7 +1870,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryButtonShowImage">
             <summary>
             Esta clase es la responsable de crear objetos Boton para mostrar la imagen.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryButtonShowImage.name">
@@ -1876,7 +1939,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryButtonStartLevel">
             <summary>
             Esta clase es la responsable de crear objetos Boton para ir a la próxima página.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryButtonStartLevel.name">
@@ -1940,7 +2003,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryButtonTrueFalse">
             <summary>
             Esta clase es la responsable de crear objetos Botones Genéricos.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryButtonTrueFalse.name">
@@ -2008,7 +2071,7 @@
             deben ser abiertas a la extensión, pero cerradas a la modificación.Esto ocurre en
             esta clase debido a que, en caso de querer crear más componentes lo podemos hacer
             sin necesidad de modificar el código.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryComponent.componentFactories">
@@ -2025,7 +2088,7 @@
             <summary>
             Metodo estatico reponsable de instanciar la clase FactoryComponent.
             </summary>
-            <returns><see cref="T:Proyecto.Factory.CSharp.IFactoryComponent"/>.</returns>
+            <returns><see cref="T:Proyecto.Factory.CSharp.CFactory"/>.</returns>
         </member>
         <member name="M:Proyecto.Factory.CSharp.FactoryComponent.MakeComponent(Proyecto.LeerHTML.Tag)">
             <summary>
@@ -2039,7 +2102,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryDragContainer">
             <summary>
             Esta clase es la responsable de crear objetos Container.
-            Utiliza la in.terfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryDragContainer.name">
@@ -2093,7 +2156,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryDraggableItem">
             <summary>
             Esta clase es la responsable de crear items que van a ser arrastables.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryDraggableItem.name">
@@ -2157,7 +2220,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryFeedback">
             <summary>
             Esta clase es la responsable de crear las etiquetas.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryFeedback.name">
@@ -2231,7 +2294,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryFood">
             <summary>
             Esta clase es la responsable de crear items que van a ser arrastables.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryFood.name">
@@ -2295,7 +2358,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryImage">
             <summary>
             Esta clase es la responsable de crear las imagenes.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryImage.name">
@@ -2349,7 +2412,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryInputText">
             <summary>
             Esta clase es la responsable de crear las InputText.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryInputText.name">
@@ -2418,7 +2481,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryInputVerifyText">
             <summary>
             Esta clase es la responsable de crear las InputText.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryInputVerifyText.name">
@@ -2492,7 +2555,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryLabel">
             <summary>
             Esta clase es la responsable de crear las etiquetas.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryLabel.name">
@@ -2566,7 +2629,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryMoney">
             <summary>
             Esta clase es la responsable de crear objetos Money arrastables.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryMoney.name">
@@ -2619,6 +2682,11 @@
             Valor del dinero.
             </summary>
         </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryMoney.container">
+            <summary>
+            Container en donde sera creado el dinero.
+            </summary>
+        </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryMoney.world">
             <summary>
             Instancia del mundo.
@@ -2635,7 +2703,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryMoneyContainer">
             <summary>
             Esta clase es la responsable de crear objetos Container.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryMoneyContainer.name">
@@ -2694,12 +2762,22 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryOperations">
             <summary>
             Esta clase es la responsable de crear las Operationsnes.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryOperations.components">
+            <summary>
+            Componentes.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryOperations.level">
             <summary>
             Nivel al que pertenece.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.CSharp.FactoryOperations.name">
+            <summary>
+            Nombre de la operacion.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryOperations.componentList">
@@ -2723,7 +2801,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryRecipe">
             <summary>
             Esta clase es la responsable de crear items que van a ser arrastables.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryRecipe.name">
@@ -2767,7 +2845,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactorySpace">
             <summary>
             Esta clase es la responsable de crear objetos Space.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactorySpace.name">
@@ -2796,7 +2874,7 @@
         <member name="T:Proyecto.Factory.CSharp.FactoryWorld">
             <summary>
             Esta clase es la responsable de crear objetos Mundo.
-            Utiliza la interfaz IFactoryComponent.
+            Hereda de la clase abstracta <see cref="T:Proyecto.Factory.CSharp.CFactory"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryWorld.name">
@@ -2812,29 +2890,29 @@
             <param name="tag">Tag <see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns>Componente <see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
         </member>
-        <member name="T:Proyecto.Factory.CSharp.IFactoryComponent">
+        <member name="T:Proyecto.Factory.CSharp.CFactory">
             <summary>
-            Interfaz IFactoryComponent.
-            Todos los Factory serán de tipo IFactoryComponent.
+            Clase abstracta de la fabrica de objetos IComponent en el modelado de C#.
+            Todos los Factory serán de tipo CFactory.
             </summary>
         </member>
-        <member name="M:Proyecto.Factory.CSharp.IFactoryComponent.MakeComponent(Proyecto.LeerHTML.Tag)">
+        <member name="M:Proyecto.Factory.CSharp.CFactory.MakeComponent(Proyecto.LeerHTML.Tag)">
             <summary>
             Metodo Abstracto para crear un objeto Componente a partir de un tag.
             </summary>
             <param name="tag"><see cref="T:Proyecto.LeerHTML.Tag"/>.</param>
             <returns><see cref="T:Proyecto.LibraryModelado.IComponent"/>.</returns>
         </member>
-        <member name="T:Proyecto.Factory.Unity.IFactoryUnity">
+        <member name="T:Proyecto.Factory.Unity.FactoryUnity">
             <summary>
-            Interfaz IFactoryUnity.
+            Clase Abstacta FactoryUnity.
             En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
             ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
             que definen comportamientos, las clases que necesiten de estos comportamientos van a
             implementar esta interfaz.En este caso, todos los factory de unity utiluzan esta interfaz. 
             </summary>
         </member>
-        <member name="M:Proyecto.Factory.Unity.IFactoryUnity.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
+        <member name="M:Proyecto.Factory.Unity.FactoryUnity.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
             Metodo Abstracto para agregar un objeto <see cref="T:Proyecto.LibraryModelado.IComponent"/>, a unity.
             </summary>
@@ -2853,7 +2931,7 @@
             objetos, no necesita conocer a los objetos indirectos.
             Como dijimos anteriormente, esto lo hacemos para que Unity quede lo mas desacoplado posible de nuestro
             código.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactory.componentUFactories">
@@ -2870,7 +2948,7 @@
             <summary>
             Metodo estatico reponsable de instanciar la clase UFactory.
             </summary>
-            <returns><see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.</returns>
+            <returns><see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.</returns>
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactory.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
@@ -2883,7 +2961,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryButtonAudio">
             <summary>
             Esta clase es la resposable de agregar los componentes ButtonAudio al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryButtonAudio.buttonAudio">
@@ -2893,7 +2971,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryButtonAudio.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ButtonAudio"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -2902,7 +2980,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryButtonGoToPage">
             <summary>
             Esta clase es la resposable de agregar los componentes ButtonGoToPage al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryButtonGoToPage.buttonGoToPage">
@@ -2912,7 +2990,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryButtonGoToPage.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ButtonGoToPage"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -2921,7 +2999,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryButtonShowImage">
             <summary>
             Esta clase es la resposable de agregar los componentes ButtonShowImage al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryButtonShowImage.buttonShowImage">
@@ -2931,7 +3009,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryButtonShowImage.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ButtonGoToPage"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -2940,7 +3018,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryButtonStartLevel">
             <summary>
             Esta clase es la resposable de agregar los componentes ButtonGoToPage al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryButtonStartLevel.buttonStartLevel">
@@ -2950,7 +3028,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryButtonStartLevel.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ButtonGoToPage"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -2959,7 +3037,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryButtonTrueFalse">
             <summary>
             Esta clase es la resposable de agregar los componentes ButtonTrueFalse al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryButtonTrueFalse.buttonTrueFalse">
@@ -2969,7 +3047,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryButtonTrueFalse.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ScientistLevel.ButtonTrueFalse"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -2978,7 +3056,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryDragContainer">
             <summary>
             Esta clase es la resposable de agregar los componentes DragContainer al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryDragContainer.dragContainer">
@@ -2988,7 +3066,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryDragContainer.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.DragContainer"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -2997,7 +3075,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryDraggableItem">
             <summary>
             Esta clase es la resposable de agregar los componentes DraggableItem al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryDraggableItem.draggableItem">
@@ -3005,9 +3083,14 @@
             Objeto DraggableItem que se agregara a Unity.
             </summary>
         </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryDraggableItem.engineUnity">
+            <summary>
+            Instancia del motor.
+            </summary>
+        </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryDraggableItem.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.DraggableItem"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3016,7 +3099,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryFeedback">
             <summary>
             Esta clase es la resposable de agregar los componentes feedback al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryFeedback.feedback">
@@ -3026,7 +3109,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryFeedback.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="F:Proyecto.Factory.Unity.UFactoryFeedback.feedback"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3035,7 +3118,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryFood">
             <summary>
             Esta clase es la resposable de agregar los componentes Food al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryFood.food">
@@ -3050,7 +3133,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryFood.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.KitchenLevel.Food"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3059,7 +3142,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryFoodContainer">
             <summary>
             Esta clase es la resposable de agregar los componentes Bowl al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryFoodContainer.bowl">
@@ -3069,7 +3152,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryFoodContainer.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.KitchenLevel.Bowl"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3078,7 +3161,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryImage">
             <summary>
             Esta clase es la resposable de agregar los componentes Image al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryImage.image">
@@ -3088,7 +3171,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryImage.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.Image"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3097,7 +3180,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryInputText">
             <summary>
             Esta clase es la resposable de agregar los componentes InputText al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryInputText.input">
@@ -3107,7 +3190,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryInputText.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.InputText"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3116,7 +3199,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryInputVerifyText">
             <summary>
             Esta clase es la resposable de agregar los componentes InputText al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryInputVerifyText.inputVerify">
@@ -3126,7 +3209,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryInputVerifyText.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.InputText"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3135,7 +3218,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryLabel">
             <summary>
             Esta clase es la resposable de agregar los componentes Label al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryLabel.label">
@@ -3145,7 +3228,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryLabel.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.Label"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3154,7 +3237,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryLevel">
             <summary>
             Esta clase es la resposable de agregar los componentes Space al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryLevel.level">
@@ -3164,7 +3247,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryLevel.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.LibraryModelado.Space"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3173,7 +3256,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryMoney">
             <summary>
             Esta clase es la resposable de agregar los componentes Money al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryMoney.money">
@@ -3188,7 +3271,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryMoney.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ScientistLevel.Money"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3197,7 +3280,7 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryMoneyContainer">
             <summary>
             Esta clase es la resposable de agregar los componentes MoneyContainer al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.Unity.UFactoryMoneyContainer.moneyContainer">
@@ -3207,7 +3290,7 @@
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryMoneyContainer.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de agregar el componente de tipo <see cref="T:Proyecto.Item.ScientistLevel.MoneyContainer"/> a Unity.
             </summary>
             <param name="adapter">Adapter <see cref="T:Proyecto.Common.IMainViewAdapter"/>.</param>
@@ -3216,12 +3299,22 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryOperations">
             <summary>
             Esta clase es la resposable de agregar los componentes Operation al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryOperations.engineGame">
+            <summary>
+            Instancia del motor general del juego.
+            </summary>
+        </member>
+        <member name="F:Proyecto.Factory.Unity.UFactoryOperations.operations">
+            <summary>
+            Operacion.
             </summary>
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryOperations.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Tiene la responsabilidad de asignarle la operacion a su respectivo motor de su nivel.
             No se creara el objeto en unity, debido a que las operaciones no son objetos, sino que una herramienta.
             </summary>
@@ -3231,12 +3324,12 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryRecipe">
             <summary>
             Esta clase es la resposable de agregar los componentes Recipe al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryRecipe.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Debido a que no crearemos un objeto Recipe en unity, esta clase no tiene ninguna responsabilidad,
             mas que asignarle al motor de unity el adaptador de tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
             </summary>
@@ -3246,12 +3339,12 @@
         <member name="T:Proyecto.Factory.Unity.UFactoryWorld">
             <summary>
             Esta clase es la resposable de agregar los componentes World al juego.
-            Implementa la interfaz <see cref="T:Proyecto.Factory.Unity.IFactoryUnity"/>.
+            Hereda de la Clase abstracta <see cref="T:Proyecto.Factory.Unity.FactoryUnity"/>.
             </summary>
         </member>
         <member name="M:Proyecto.Factory.Unity.UFactoryWorld.MakeUnityItem(Proyecto.Common.IMainViewAdapter,Proyecto.LibraryModelado.IComponent)">
             <summary>
-            Sobrescribe el metodo abstracto de IFactoryUnity.
+            Sobrescribe el metodo abstracto de FactoryUnity.
             Debido a que no crearemos un objeto World en unity, esta clase no tiene ninguna responsabilidad,
             mas que asignarle al motor de unity el adaptador de tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.
             </summary>
@@ -3769,22 +3862,15 @@
             <param name="level">Level que contiene la recipe.</param>
             <param name="foodList">Lista de alimentos.</param>
         </member>
-        <member name="P:Proyecto.Item.KitchenLevel.Recipe.IsActive">
-            <summary>
-            Gets or sets que indican si el item esta actualmente activo en pantalla.
-            Por predeterminado sera true.
-            </summary>
-            <value></value>
-        </member>
         <member name="P:Proyecto.Item.KitchenLevel.Recipe.FoodList">
             <summary>
             Gets lista de objetos Food, que deberan ser soltados dentro del container para ganar el juego.
             </summary>
             <value>Alimentos<see cref="T:Proyecto.Item.KitchenLevel.Food"/>.</value>
         </member>
-        <member name="P:Proyecto.Item.KitchenLevel.Recipe.ID">
+        <member name="P:Proyecto.Item.KitchenLevel.Recipe.Name">
             <summary>
-            Gets y Sets del ID.
+            Gets y Sets del Nombre de la receta.
             </summary>
             <value>ID</value>
         </member>

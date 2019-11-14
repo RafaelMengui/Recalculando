@@ -10,21 +10,14 @@ namespace Proyecto.LibraryModelado
     /// En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
     /// ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
     /// que definen comportamientos, las clases que necesiten de estos comportamientos van a
-    /// implementar esta interfaz.Ejemplo: Space, World
+    /// implementar esta interfaz. Ejemplo: Space, World
     /// </summary>
     public interface IComponent
     {
         /// <summary>
-        /// Gets or sets del ID de un objeto asignado al crearlo en unity.
+        /// Gets or sets del Nombre del componente.
         /// </summary>
-        /// <value></value>
-        string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets que indican si el item esta actualmente activo en pantalla.
-        /// Por predeterminado para todos los items, el valor sera true.
-        /// </summary>
-        /// <value></value>
-        bool IsActive { get; set; }
+        /// <value>String.</value>
+        string Name { get; set; }
     }
 }

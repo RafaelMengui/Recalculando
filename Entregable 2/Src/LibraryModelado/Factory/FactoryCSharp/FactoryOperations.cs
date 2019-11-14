@@ -13,16 +13,24 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear las Operationsnes.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryOperations : IFactoryComponent
+    public class FactoryOperations : CFactory
     {
+        /// <summary>
+        /// Componentes.
+        /// </summary>
         private string components;
 
         /// <summary>
         /// Nivel al que pertenece.
         /// </summary>
         private Space level;
+
+        /// <summary>
+        /// Nombre de la operacion.
+        /// </summary>
+        private string name;
 
         /// <summary>
         /// Lista en donde se guardaran los componentes asociados a la operacion.
@@ -44,6 +52,7 @@ namespace Proyecto.Factory.CSharp
         {
             try
             {
+                this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
                 this.level = this.world.SpaceList.Last();
                 this.components = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Components"; }).Valor;
             }
@@ -73,7 +82,7 @@ namespace Proyecto.Factory.CSharp
                 }
             }
 
-            Operations operation = new Operations(this.level, this.componentList);
+            Operations operation = new Operations(this.name, this.level, this.componentList);
             return operation;
         }
     }

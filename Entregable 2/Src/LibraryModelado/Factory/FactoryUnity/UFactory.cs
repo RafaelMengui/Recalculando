@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Proyecto.Common;
-using Proyecto.Item;
 using Proyecto.LibraryModelado;
 
 namespace Proyecto.Factory.Unity
@@ -23,25 +22,25 @@ namespace Proyecto.Factory.Unity
     /// objetos, no necesita conocer a los objetos indirectos.
     /// Como dijimos anteriormente, esto lo hacemos para que Unity quede lo mas desacoplado posible de nuestro
     /// código.
-    /// Implementa la interfaz <see cref="IFactoryUnity"/>.
+    /// Hereda de la Clase abstracta <see cref="FactoryUnity"/>.
     /// </summary>
-    public class UFactory : IFactoryUnity
+    public class UFactory : FactoryUnity
     {
         /// <summary>
         /// Diccionario en donde se asociara un componente con su respectivo Unity factory.
         /// </summary>
-        private Dictionary<IFactoryUnity, string> componentUFactories = new Dictionary<IFactoryUnity, string>();
+        private Dictionary<FactoryUnity, string> componentUFactories = new Dictionary<FactoryUnity, string>();
 
         /// <summary>
         /// Fabrica de unity generica utilizada para delegar la responsabilidad de agregar cada componente a su respectivo unity factory Concreto.
         /// </summary>
-        private IFactoryUnity uFactory;
+        private FactoryUnity uFactory;
 
         /// <summary>
         /// Metodo estatico reponsable de instanciar la clase UFactory.
         /// </summary>
-        /// <returns><see cref="IFactoryUnity"/>.</returns>
-        public static IFactoryUnity InitializeUnityFactories() => new UFactory();
+        /// <returns><see cref="FactoryUnity"/>.</returns>
+        public static FactoryUnity InitializeUnityFactories() => new UFactory();
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
@@ -54,7 +53,7 @@ namespace Proyecto.Factory.Unity
             string[] componentType = Convert.ToString(component.GetType()).Split('.');
             try
             {
-                this.uFactory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.Unity.UFactory" + componentType.Last())) as IFactoryUnity;
+                this.uFactory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.Unity.UFactory" + componentType.Last())) as FactoryUnity;
                 this.componentUFactories.Add(this.uFactory, componentType.Last());
                 this.uFactory.MakeUnityItem(adapter, component);
             }

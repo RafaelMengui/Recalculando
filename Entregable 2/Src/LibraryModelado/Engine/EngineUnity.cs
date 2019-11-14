@@ -12,7 +12,7 @@ namespace Proyecto.LibraryModelado.Engine
     /// <summary>
     /// Motor resposable de conocer y asignar los metodos relacionados a Unity.
     /// </summary>
-    public class EngineUnity
+    public class EngineUnity : IEngine
     {
         /// <summary>
         /// Instancia de la UnityFactory.
@@ -65,21 +65,21 @@ namespace Proyecto.LibraryModelado.Engine
                 // Se actualiza el container del item.
                 draggableItem.Container.SavedItems.Remove(draggableItem as Items);
                 destination.SavedItems.Add(draggableItem as Items);
-                this.Adapter.Center(draggableItem.ID, destination.ID);
-                this.Adapter.MakeDraggable(draggableItem.ID, false);
+                this.Adapter.Center((draggableItem as Items).ID, (destination as Items).ID);
+                this.Adapter.MakeDraggable((draggableItem as Items).ID, false);
             }
             else
             {
-                this.Adapter.Center(draggableItem.ID, draggableItem.Container.ID);
+                this.Adapter.Center((draggableItem as Items).ID, (draggableItem.Container as Items).ID);
             }
         }
 
         /// <summary>
         /// Si existe un container en esas coordenadas, lo devolvera.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
+        /// <param name="x">Coordenada en X en donde se solto el item.</param>
+        /// <param name="y">Coordenada en Y en donde se solto el item.</param>
+        /// <returns>IContainer.</returns>
         private IContainer FindDragContainer(float x, float y)
         {
             foreach (Items item in Singleton<EngineGame>.Instance.CurrentPage.ItemList)
@@ -96,7 +96,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// Metodo responnsable de buscar en la pagina en la que se encuentre el usuario,
         /// un Item que tenga el mismo UnityID que el entrante por parametro.
         /// </summary>
-        /// <param name="unityID"></param>
+        /// <param name="unityID">ID de unity del item.</param>
         /// <returns>Devuelve el item encontrado.</returns>
         private static Items FindItem(string unityID)
         {
@@ -113,8 +113,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// <summary>
         /// Metodo responsable de enviar un IComponent a la UnityFactory.
         /// </summary>
-        /// <param name="component"></param>
-        public void SendComponentToUFactory(IComponent component)
+        /// <param name="component">Component.</param>
+        public void CreateInUnity(IComponent component)
         {
             this.unityFactory.MakeUnityItem(this.Adapter, component);
         }
@@ -140,43 +140,37 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Metodo que actualiza la imagen de un unity item.
-        /// </summary>
-        /// <param name="items">Item que se va cambiar la imagen.</param>
-        /// <param name="image">string del nombre de la nueva imagen.</param>
-        public void UpdateItemImage(Items items, string image)
-        {
-            this.Adapter.SetImage(items.ID, image);
-        }
-
-        /// <summary>
         /// Metodo responsable de Centrar un IDraggable en su IContainer.
         /// </summary>
         /// <param name="item">IDraggableItem.</param>
-        public void CenterInUnity(IDraggable item)
+        /// <param name="container">IContainer.</param>
+        public void CenterInUnity(Items item, Items container)
         {
-            this.Adapter.Center(item.ID, item.Container.ID);
+            this.Adapter.Center(item.ID, container.ID);
         }
 
         /// <summary>
         /// Metodo responsable actualizar un item para que sea arrastrable o no.
         /// Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
         /// </summary>
-        /// <param name="draggableItem">Item que se va a actualizar.</param>
+        /// <param name="item">Item que se va a actualizar.</param>
         /// <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
-        public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
+        public void SetItemDraggable(Items item, bool isDraggable)
         {
-            this.Adapter.MakeDraggable(draggableItem.ID, isDraggable);
+            if (item is IDraggable)
+            {
+                this.Adapter.MakeDraggable(item.ID, isDraggable);
+            }
         }
 
         /// <summary>
         /// Metodo responsable de actualizar si un item es mostrado por pantalla u ocultado.
         /// </summary>
-        /// <param name="component">Componente que se va a actualizar.</param>
+        /// <param name="item">Componente que se va a actualizar.</param>
         /// <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
-        public void SetActive(IComponent component, bool active)
+        public void SetActive(Items item, bool active)
         {
-            this.Adapter.SetActive(component.ID, active);
+            this.Adapter.SetActive(item.ID, active);
         }
     }
 }

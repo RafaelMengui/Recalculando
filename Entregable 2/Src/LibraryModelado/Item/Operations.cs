@@ -18,21 +18,21 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Constructor.
         /// </summary>
+        /// <param name="name">Nombre de la operacion.</param>
         /// <param name="level">Nivel al que pertenece la operacion.</param>
         /// <param name="components">Lista de componentes.</param>
-        public Operations(Space level, List<Items> components)
+        public Operations(string name, Space level, List<Items> components)
         {
+            this.Name = name;
             this.Level = level;
             this.Components = components;
-            this.IsActive = true;
         }
 
         /// <summary>
-        /// Gets or sets que indican si el item esta actualmente activo en pantalla.
-        /// Por predeterminado sera true.
+        /// Gets or sets del Nombre de la operacion.
         /// </summary>
-        /// <value></value>
-        public bool IsActive { get; set; }
+        /// <value>String.</value>
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets del nivel a que pertenece la operacion.
@@ -43,14 +43,7 @@ namespace Proyecto.LibraryModelado
         /// <summary>
         /// Gets or sets de la lista de componentes.
         /// </summary>
-        /// <value></value>
+        /// <value>Lista de items.</value>
         public List<Items> Components { get; set; }
-
-        /// <summary>
-        /// Gets or sets del ID del objeto, siempre tendra valor null debido a que la Operation no sera un
-        /// objeto unity, sino que solamente una herramienta.
-        /// </summary>
-        /// <value></value>
-        public string ID { get; set; }
     }
 }

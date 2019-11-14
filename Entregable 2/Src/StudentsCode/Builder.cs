@@ -11,7 +11,6 @@ using Proyecto.Factory.Unity;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
 using Proyecto.LibraryModelado.Engine;
-using Proyecto.Item;
 
 namespace Proyecto.StudentsCode
 {
@@ -61,10 +60,10 @@ namespace Proyecto.StudentsCode
             this.adapter.AfterBuild = this.Setup;
             this.engineUnity.Adapter = this.adapter;
 
-            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\1920x1080.xml";
-            List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
+            // const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\1920x1080.xml";
+            // List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
 
-            // List<Tag> tags = Parser.ParserHTML(this.adapter.GetFileContents("html.xml"));
+            List<Tag> tags = Parser.ParserHTML(this.adapter.GetFileContents("html.xml"));
             List<IComponent> componentList = new List<IComponent>();
 
             foreach (Tag tag in tags)
@@ -97,8 +96,3 @@ namespace Proyecto.StudentsCode
         }
     }
 }
-
-
-/*
-static Method() => Setup de tests, despues se llama al metodo en cada caso.
-*/

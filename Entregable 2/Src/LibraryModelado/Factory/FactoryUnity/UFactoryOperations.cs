@@ -11,16 +11,22 @@ namespace Proyecto.Factory.Unity
 {
     /// <summary>
     /// Esta clase es la resposable de agregar los componentes Operation al juego.
-    /// Implementa la interfaz <see cref="IFactoryUnity"/>.
+    /// Hereda de la Clase abstracta <see cref="FactoryUnity"/>.
     /// </summary>
-    public class UFactoryOperations : IFactoryUnity
+    public class UFactoryOperations : FactoryUnity
     {
+        /// <summary>
+        /// Instancia del motor general del juego.
+        /// </summary>
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
+        /// <summary>
+        /// Operacion.
+        /// </summary>
         private Operations operations;
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de IFactoryUnity.
+        /// Sobrescribe el metodo abstracto de FactoryUnity.
         /// Tiene la responsabilidad de asignarle la operacion a su respectivo motor de su nivel.
         /// No se creara el objeto en unity, debido a que las operaciones no son objetos, sino que una herramienta.
         /// </summary>

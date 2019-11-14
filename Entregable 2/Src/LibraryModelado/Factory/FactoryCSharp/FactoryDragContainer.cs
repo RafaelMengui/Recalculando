@@ -13,9 +13,9 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear objetos Container.
-    /// Utiliza la in.terfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryDragContainer : IFactoryComponent
+    public class FactoryDragContainer : CFactory
     {
         /// <summary>
         /// Nombre del container.

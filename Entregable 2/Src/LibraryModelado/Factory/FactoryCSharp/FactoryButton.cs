@@ -13,9 +13,9 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear objetos Botones Genéricos.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryButton : IFactoryComponent
+    public class FactoryButton : CFactory
     {
         /// <summary>
         /// Nombre del boton.

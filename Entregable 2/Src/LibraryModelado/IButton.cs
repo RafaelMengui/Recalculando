@@ -10,9 +10,9 @@ namespace Proyecto.LibraryModelado
     /// En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
     /// ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
     /// que definen comportamientos, las clases que necesiten de estos comportamientos van a
-    /// implementar esta interfaz.Ejemplo: Botón 
+    /// implementar esta interfaz. Ejemplo: Botón 
     /// </summary>
-    public interface IButton
+    public interface IButton : IComponent
     {
         /// <summary>
         /// Gets or sets indicating whether el boton es presionable.

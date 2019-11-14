@@ -109,7 +109,7 @@ namespace Proyecto.LibraryModelado.Engine
                             this.LevelEngines.Add(level, this.engine);
                         }
                     }
-                    catch(System.Exception)
+                    catch (System.Exception)
                     {
                         throw new Exception($"Engine \"Engine{level.Name}\" does not exist or couldn't be created.");
                     }
@@ -121,10 +121,10 @@ namespace Proyecto.LibraryModelado.Engine
         /// Metodo responsable de delegar la responsabilidad al motor de unity, de crear un
         /// objeto en unity.
         /// </summary>
-        /// <param name="component"></param>
+        /// <param name="component">Componente</param>
         public void CreateInUnity(IComponent component)
         {
-            this.engineUnity.SendComponentToUFactory(component);
+            this.engineUnity.CreateInUnity(component);
         }
 
         /// <summary>
@@ -162,10 +162,14 @@ namespace Proyecto.LibraryModelado.Engine
         /// Metodo responsable de llamar al motor de unity para Centrar un IDraggable en
         /// un IContainer.
         /// </summary>
-        /// <param name="item">IDraggableItem.</param>
-        public void CenterInContainer(IDraggable item)
+        /// <param name="item">Item de tipo IDraggable.</param>
+        public void CenterInContainer(Items item)
         {
-            this.engineUnity.CenterInUnity(item);
+            if (item is IDraggable)
+            {
+                IContainer container = (item as IDraggable).Container;
+                this.engineUnity.CenterInUnity(item, container as Items);
+            }
         }
 
         /// <summary>
@@ -173,14 +177,18 @@ namespace Proyecto.LibraryModelado.Engine
         /// para que sea arrastrable o no.
         /// Si el item ya es arrastrable, no se ejecutara el metodo de unity para evitar errores.
         /// </summary>
-        /// <param name="draggableItem">Item que se va a actualizar.</param>
+        /// <param name="item">Item que se va a actualizar.</param>
         /// <param name="isDraggable">Bool que indica si va a ser arrastrable.</param>
-        public void SetItemDraggable(IDraggable draggableItem, bool isDraggable)
+        public void SetItemDraggable(Items item, bool isDraggable)
         {
-            if (!draggableItem.Draggable.Equals(isDraggable))
+            if (item is IDraggable)
             {
-                this.engineUnity.SetItemDraggable(draggableItem, isDraggable);
-                draggableItem.Draggable = isDraggable;
+                IDraggable draggableItem = item as IDraggable;
+                if (!draggableItem.Draggable.Equals(isDraggable))
+                {
+                    this.engineUnity.SetItemDraggable(item, isDraggable);
+                    draggableItem.Draggable = isDraggable;
+                }
             }
         }
 
@@ -188,14 +196,14 @@ namespace Proyecto.LibraryModelado.Engine
         /// Metodo responsable de llamar al motor de unity para actualizar si un item es
         /// mostrado por pantalla u ocultado.
         /// </summary>
-        /// <param name="component">Componente que se va a actualizar.</param>
+        /// <param name="item">item que se va a actualizar.</param>
         /// <param name="active">Bool que indica si se va a mostrar u ocultar.</param>
-        public void SetActive(IComponent component, bool active)
+        public void SetActive(Items item, bool active)
         {
-            if (!component.IsActive.Equals(active))
+            if (!item.IsActive.Equals(active))
             {
-                this.engineUnity.SetActive(component, active);
-                component.IsActive = active;
+                this.engineUnity.SetActive(item, active);
+                item.IsActive = active;
             }
         }
     }

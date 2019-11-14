@@ -17,7 +17,7 @@ namespace Proyecto.LibraryModelado.Engine
     /// este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
     /// Hereda de las clases abstractas <see cref="IEngine"/> y <see cref="ILevelEngine"/>.
     /// </summary>
-    public class EngineMagician : IEngine, ILevelEngine
+    public class EngineMagician : ILevelEngine
     {
         /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
