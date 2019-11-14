@@ -9,10 +9,10 @@ using Proyecto.LibraryModelado;
 namespace Proyecto.Factory.CSharp
 {
     /// <summary>
-    /// Interfaz IFactoryComponent.
-    /// Todos los Factory serán de tipo IFactoryComponent.
+    /// Clase abstracta de la fabrica de objetos IComponent en el modelado de C#.
+    /// Todos los Factory serán de tipo CFactory.
     /// </summary>
-    public abstract class IFactoryComponent
+    public abstract class CFactory
     {
         /// <summary>
         /// Metodo Abstracto para crear un objeto Componente a partir de un tag.

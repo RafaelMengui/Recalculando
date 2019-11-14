@@ -11,9 +11,9 @@ namespace Proyecto.Factory.Unity
 {
     /// <summary>
     /// Esta clase es la resposable de agregar los componentes InputText al juego.
-    /// Implementa la interfaz <see cref="IFactoryUnity"/>.
+    /// Hereda de la Clase abstracta <see cref="FactoryUnity"/>.
     /// </summary>
-    public class UFactoryInputText : IFactoryUnity
+    public class UFactoryInputText : FactoryUnity
     {
         /// <summary>
         /// Objeto InputText que se agregara a Unity.
@@ -21,7 +21,7 @@ namespace Proyecto.Factory.Unity
         private InputText input;
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de IFactoryUnity.
+        /// Sobrescribe el metodo abstracto de FactoryUnity.
         /// Tiene la responsabilidad de agregar el componente de tipo <see cref="InputText"/> a Unity.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
@@ -39,7 +39,10 @@ namespace Proyecto.Factory.Unity
             }
 
             // Se crea el objeto en unity y se obtiene el UnityID.
-            this.input.ID = adapter.CreateInputField(this.input.PositionX, this.input.PositionY, this.input.Width, this.input.Height, this.input.OnChange, this.input.OnEdited);
+            this.input.ID = adapter.CreateInputField(this.input.PositionX, this.input.PositionY, this.input.Width, this.input.Height, this.input.Change, this.input.Edit);
+
+            // Se actualiza el tipo de letra.
+            adapter.SetFont(this.input.ID, this.input.Bold, this.input.Italic, this.input.Size);
         }
     }
 }

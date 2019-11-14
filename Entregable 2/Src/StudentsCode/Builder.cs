@@ -31,6 +31,11 @@ namespace Proyecto.StudentsCode
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
         /// <summary>
+        /// Instancia del motor de unity.
+        /// </summary>
+        private EngineUnity engineUnity = Singleton<EngineUnity>.Instance;
+
+        /// <summary>
         /// Adapter del tipo <see cref="IMainViewAdapter"/>.
         /// </summary>
         private IMainViewAdapter adapter;
@@ -52,10 +57,13 @@ namespace Proyecto.StudentsCode
         public void Build(IMainViewAdapter providedAdapter)
         {
             this.adapter = providedAdapter ?? throw new ArgumentNullException(nameof(providedAdapter));
-            this.adapter.AfterBuild += this.Setup;
+            this.adapter.AfterBuild = this.Setup;
+            this.engineUnity.Adapter = this.adapter;
 
-            const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\Niveles.xml";
-            List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
+            // const string XMLfile = @"..\..\..\Code\Entregable 2\Src\ArchivosHTML\1920x1080.xml";
+            // List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
+
+            List<Tag> tags = Parser.ParserHTML(this.adapter.GetFileContents("html.xml"));
             List<IComponent> componentList = new List<IComponent>();
 
             foreach (Tag tag in tags)
@@ -64,15 +72,12 @@ namespace Proyecto.StudentsCode
                 componentList.Add(component);
             }
 
-            this.engineGame.Asociate(componentList);
+            this.engineGame.AsociateLevelsWithEngines(componentList);
+
             foreach (IComponent component in componentList)
             {
                 UFactory.InitializeUnityFactories().MakeUnityItem(this.adapter, component);
             }
-
-            this.firstPage = this.world.SpaceList[0];
-            this.engineGame.MainPage = this.firstPage;
-            this.adapter.AfterBuild();
         }
 
         /// <summary>
@@ -80,8 +85,13 @@ namespace Proyecto.StudentsCode
         /// </summary>
         private void Setup()
         {
-            this.engineGame.ButtonGoToMain();
-            this.adapter.ChangeLayout(Layout.ContentSizeFitter);
+            // Layout del programa.
+            this.adapter.ChangeLayout(Layout.Horizontal);
+
+            // Se asigna la primera pagina.
+            this.firstPage = this.engineGame.MainPage;
+
+            // Se muestra la primera pagina.
             this.adapter.ShowPage(this.firstPage.ID);
         }
     }

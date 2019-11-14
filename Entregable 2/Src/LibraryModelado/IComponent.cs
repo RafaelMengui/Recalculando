@@ -7,9 +7,17 @@ namespace Proyecto.LibraryModelado
 {
     /// <summary>
     /// Interfaz IComponent.
-    /// Todos los objetos creados en el modelado(World, Space, Items) seran de tipo IComponent.
+    /// En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
+    /// ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
+    /// que definen comportamientos, las clases que necesiten de estos comportamientos van a
+    /// implementar esta interfaz. Ejemplo: Space, World
     /// </summary>
     public interface IComponent
     {
+        /// <summary>
+        /// Gets or sets del Nombre del componente.
+        /// </summary>
+        /// <value>String.</value>
+        string Name { get; set; }
     }
 }

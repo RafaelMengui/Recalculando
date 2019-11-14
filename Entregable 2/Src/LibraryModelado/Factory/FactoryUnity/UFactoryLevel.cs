@@ -10,9 +10,9 @@ namespace Proyecto.Factory.Unity
 {
     /// <summary>
     /// Esta clase es la resposable de agregar los componentes Space al juego.
-    /// Implementa la interfaz <see cref="IFactoryUnity"/>.
+    /// Hereda de la Clase abstracta <see cref="FactoryUnity"/>.
     /// </summary>
-    public class UFactoryLevel : IFactoryUnity
+    public class UFactoryLevel : FactoryUnity
     {
         /// <summary>
         /// Objeto Space que se agregara a Unity.
@@ -20,7 +20,7 @@ namespace Proyecto.Factory.Unity
         private Space level;
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de IFactoryUnity.
+        /// Sobrescribe el metodo abstracto de FactoryUnity.
         /// Tiene la responsabilidad de agregar el componente de tipo <see cref="Space"/> a Unity.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
@@ -36,6 +36,10 @@ namespace Proyecto.Factory.Unity
             {
                 throw new System.Exception("Fail to cast component as Space");
             }
+
+            // Se reajustan las correnadas de la pantalla.
+            this.level.Width = adapter.WorldWidth;
+            this.level.Height = adapter.WorldHeight;
 
             // Se crea la pagina en unity y obtiene el UnityID.
             this.level.ID = adapter.AddPage();

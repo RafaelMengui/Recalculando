@@ -13,9 +13,9 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear las imagenes.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryImage : IFactoryComponent
+    public class FactoryImage : CFactory
     {
         /// <summary>
         /// Nombre de la imagen.

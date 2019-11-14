@@ -20,6 +20,11 @@
             </summary>
             <returns>.</returns>
         </member>
+        <member name="F:Proyecto.StudentsCode.Builder.engineUnity">
+            <summary>
+            Instancia del motor de unity.
+            </summary>
+        </member>
         <member name="F:Proyecto.StudentsCode.Builder.adapter">
             <summary>
             Adapter del tipo <see cref="T:Proyecto.Common.IMainViewAdapter"/>.

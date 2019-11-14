@@ -11,9 +11,9 @@ namespace Proyecto.Factory.CSharp
 {
     /// <summary>
     /// Esta clase es la responsable de crear objetos Mundo.
-    /// Utiliza la interfaz IFactoryComponent.
+    /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryWorld : IFactoryComponent
+    public class FactoryWorld : CFactory
     {
         /// <summary>
         /// Nombre del mundo.

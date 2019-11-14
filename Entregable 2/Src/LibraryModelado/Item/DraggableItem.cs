@@ -12,12 +12,12 @@ namespace Proyecto.Item
     /// Clase responsable de crear items arrastrables en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
-    public class DraggableItem : Items
+    public class DraggableItem : Items, IDraggable
     {
         /// <summary>
         /// Accion que se ejecutara al soltar un item.
         /// </summary>
-        private Action<string, float, float> onDrop;
+        private Action<DraggableItem, DragContainer> onDrop;
 
         /// <summary>
         /// Initializes a new instance of DraggableItem.
@@ -31,7 +31,7 @@ namespace Proyecto.Item
         /// <param name="image">Imagen del Item.</param>
         /// <param name="draggable">Bool que define si es arrastrable.</param>
         /// <param name="container">Container en donde es creado el item.</param>
-        public DraggableItem(string name, Space level, float positionX, float positionY, float width, float height, string image, bool draggable, Items container)
+        public DraggableItem(string name, Space level, float positionX, float positionY, float width, float height, string image, bool draggable, IContainer container)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Draggable = draggable;
@@ -43,7 +43,7 @@ namespace Proyecto.Item
         /// Gets or sets del container.
         /// </summary>
         /// <value><see cref="Items"/>.</value>
-        public Items Container { get; set; }
+        public IContainer Container { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether el item es arrastrable.
@@ -55,14 +55,24 @@ namespace Proyecto.Item
         /// Gets or sets de la accion a realizar al soltar el item.
         /// </summary>
         /// <value>Action.</value>
-        public Action<string, float, float> OnDrop { get; set; }
+        public Action<DraggableItem, DragContainer> OnDrop { get; set; }
 
         /// <summary>
         /// Accion realizada al soltar el Item.
         /// </summary>
-        public void Drop()
+        public bool Drop(IContainer container)
         {
-            this.OnDrop(this.ID, this.PositionX, this.PositionY);
+            DragContainer dragContainer;
+            try
+            {
+                dragContainer = container as DragContainer;
+            }
+            catch (System.InvalidCastException)
+            {
+                throw new System.InvalidCastException($"Invalid cast operation as DragContainer.");
+            }
+
+            return this.Draggable;
         }
     }
 }

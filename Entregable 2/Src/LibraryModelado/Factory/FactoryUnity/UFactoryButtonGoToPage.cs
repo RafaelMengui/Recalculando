@@ -11,9 +11,9 @@ namespace Proyecto.Factory.Unity
 {
     /// <summary>
     /// Esta clase es la resposable de agregar los componentes ButtonGoToPage al juego.
-    /// Implementa la interfaz <see cref="IFactoryUnity"/>.
+    /// Hereda de la Clase abstracta <see cref="FactoryUnity"/>.
     /// </summary>
-    public class UFactoryButtonGoToPage : IFactoryUnity
+    public class UFactoryButtonGoToPage : FactoryUnity
     {
         /// <summary>
         /// Objeto ButtonGoToPage que se agregara a Unity.
@@ -21,7 +21,7 @@ namespace Proyecto.Factory.Unity
         private ButtonGoToPage buttonGoToPage;
 
         /// <summary>
-        /// Sobrescribe el metodo abstracto de IFactoryUnity.
+        /// Sobrescribe el metodo abstracto de FactoryUnity.
         /// Tiene la responsabilidad de agregar el componente de tipo <see cref="ButtonGoToPage"/> a Unity.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
@@ -40,6 +40,9 @@ namespace Proyecto.Factory.Unity
 
             // Asignar evento del boton.
             this.buttonGoToPage.Event = adapter.ShowPage;
+
+            // Convierte a la pagina en donde debe ser creado el boton, en la pagina activa.
+            adapter.ShowPage(this.buttonGoToPage.Level.ID);
 
             // Crear objeto en unity y obtener el UnityID.
             this.buttonGoToPage.ID = adapter.CreateButton(this.buttonGoToPage.PositionX, this.buttonGoToPage.PositionY, this.buttonGoToPage.Width, this.buttonGoToPage.Height, this.buttonGoToPage.Color, this.buttonGoToPage.Click);

@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 using System;
 using Proyecto.LibraryModelado;
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Item
 {
@@ -37,7 +38,15 @@ namespace Proyecto.Item
             this.Color = color;
             this.PageName = pageName;
             this.Event = this.evento;
+            this.Pushable = true;
         }
+
+        /// <summary>
+        /// Gets or sets indicating whether el boton es presionable.
+        /// Por defecto es true.
+        /// </summary>
+        /// <value>Bool.</value>
+        public bool Pushable { get; set; }
 
         /// <summary>
         /// Gets or sets del Color del Boton.
@@ -64,7 +73,12 @@ namespace Proyecto.Item
         /// <param name="text">Sin funcionalidad.</param>
         public void Click(string text)
         {
-            this.Event(this.Level.World.SpaceList.Find(delegate(Space level) { return level.Name == this.PageName; }).ID);
+            if (this.Pushable)
+            {
+                Space page = this.Level.World.SpaceList.Find(delegate (Space level) { return level.Name == this.PageName; });
+                Singleton<EngineGame>.Instance.CurrentPage = page;
+                this.Event(page.ID);
+            }
         }
     }
 }

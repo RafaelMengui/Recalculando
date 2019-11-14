@@ -13,17 +13,12 @@ namespace Proyecto.Item.ScientistLevel
     /// Clase responsable de crear dinero arrastrable en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
-    public class Money : Items
+    public class Money : Items, IDraggable
     {
         /// <summary>
         /// Valor del dinero.
         /// </summary>
         private float valor;
-
-        /// <summary>
-        /// Accion que se ejecutara al soltar el dinero.
-        /// </summary>
-        private Action<string, float, float> onDropMoney;
 
         /// <summary>
         /// Initializes a new instance of Money.
@@ -38,18 +33,17 @@ namespace Proyecto.Item.ScientistLevel
         /// <param name="draggable">Bool que define si es arrastrable.</param>
         /// <param name="container">Container Source en donde es creado.</param>
         /// <param name="valor">Valor de la moneda.</param>
-        public Money(string name, Space level, float positionX, float positionY, float width, float height, string image, bool draggable, MoneyContainer container, float valor)
+        public Money(string name, Space level, float positionX, float positionY, float width, float height, string image, bool draggable, IContainer container, float valor)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.Value = valor;
             this.Draggable = draggable;
             this.Container = container;
-            this.OnDropMoney = this.onDropMoney;
         }
 
         /// <summary>
         /// Gets or sets del valor de la moneda.
-        /// En caso que, la moneda sea de un valor negativo, se ejecuta la exepción.
+        /// En caso que, la moneda sea de un valor negativo, se vuelve positivo.
         /// </summary>
         /// <value>float valor de la moneda.</value>
         public float Value
@@ -58,24 +52,9 @@ namespace Proyecto.Item.ScientistLevel
             {
                 return this.valor;
             }
-
             set
             {
-                if (value < 0)
-                {
-                    try
-                    {
-                        throw new ArithmeticException($"Invalid Money Value: {this.Name} has negative value.");
-                    }
-                    finally
-                    {
-                        this.valor = Math.Abs(value);
-                    }
-                }
-                else
-                {
-                    this.valor = value;
-                }
+                this.valor = Math.Abs(value);
             }
         }
 
@@ -83,7 +62,7 @@ namespace Proyecto.Item.ScientistLevel
         /// Gets or sets del container en el que se encuentra.
         /// </summary>
         /// <value><see cref="DragContainer"/>.</value>
-        public MoneyContainer Container { get; set; }
+        public IContainer Container { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether el item es arrastrable.
@@ -92,40 +71,23 @@ namespace Proyecto.Item.ScientistLevel
         public bool Draggable { get; set; }
 
         /// <summary>
-        /// Gets or sets de la accion a realizar al soltar el dinero.
-        /// </summary>
-        /// <value>Action.</value>
-        public Action<string, float, float> OnDropMoney { get; set; }
-
-        /// <summary>
         /// Accion realizada al soltar el dinero.
         /// </summary>
-        /// <param name="moneyContainer">Container donde es soltado el dinero.</param>
-        /// <returns>Bool si es el dinero correcto.</returns>
-        public bool Drop(MoneyContainer moneyContainer)
+        public bool Drop(IContainer container)
         {
-            if (this.Draggable)
-            {
-                EngineScientificExercise1 engineScientific = Singleton<EngineScientificExercise1>.Instance;
-                if (engineScientific.VerifyExercise(moneyContainer, this))
-                {
-                    // this.OnDropMoney(this.Name, this.PositionX, this.PositionY);
-                    return true;
-                }
+            EngineGame engineGame = Singleton<EngineGame>.Instance;
+            MoneyContainer moneyContainer;
 
-                return false;
-            }
-            else
+            try
             {
-                try
-                {
-                    throw new ArgumentException($"Invalid action: Object not draggable {this.Name}.");
-                }
-                catch (ArgumentException)
-                {
-                    return false;
-                }
+                moneyContainer = container as MoneyContainer;
             }
+            catch (System.InvalidCastException)
+            {
+                throw new System.InvalidCastException($"Invalid cast operation as MoneyContainer.");
+            }
+
+            return (engineGame.LevelEngines[this.Level] as EngineScientificExercise1).VerifyExercise(moneyContainer, this);
         }
     }
 }

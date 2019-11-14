@@ -13,25 +13,34 @@ namespace Proyecto.Factory.Unity
 {
     /// <summary>
     /// Esta clase es la responsable de delegar la responsabilidad de agregar los componentes al juego.
-    /// Implementa la interfaz <see cref="IFactoryUnity"/>.
+    /// En esta clase se ve claramente el Patrón de BAJO ACOMPLAMIENTO, debido a que nuestro juego
+    /// esta completamente desacomplado de Unity, en caso de querer desplegar nuestro juego en otra
+    /// plataforma podemos realizarlo. 
+    /// Esta clase tiene un acomplamiento bajo, de la mano con esto podemos darnos cuenta que también
+    /// cumple con el patron DON’T TALK TO STRANGERS. Esto se debe a que UFactory no conoce las conexiones
+    /// internas y estructuras de otro objeto, sino que, se basa solamente en sí mismo para la creación de
+    /// objetos, no necesita conocer a los objetos indirectos.
+    /// Como dijimos anteriormente, esto lo hacemos para que Unity quede lo mas desacoplado posible de nuestro
+    /// código.
+    /// Hereda de la Clase abstracta <see cref="FactoryUnity"/>.
     /// </summary>
-    public class UFactory : IFactoryUnity
+    public class UFactory : FactoryUnity
     {
         /// <summary>
         /// Diccionario en donde se asociara un componente con su respectivo Unity factory.
         /// </summary>
-        private Dictionary<string, IFactoryUnity> componentUFactories = new Dictionary<string, IFactoryUnity>();
+        private Dictionary<FactoryUnity, string> componentUFactories = new Dictionary<FactoryUnity, string>();
 
         /// <summary>
         /// Fabrica de unity generica utilizada para delegar la responsabilidad de agregar cada componente a su respectivo unity factory Concreto.
         /// </summary>
-        private IFactoryUnity uFactory;
+        private FactoryUnity uFactory;
 
         /// <summary>
         /// Metodo estatico reponsable de instanciar la clase UFactory.
         /// </summary>
-        /// <returns><see cref="IFactoryUnity"/>.</returns>
-        public static IFactoryUnity InitializeUnityFactories() => new UFactory();
+        /// <returns><see cref="FactoryUnity"/>.</returns>
+        public static FactoryUnity InitializeUnityFactories() => new UFactory();
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryUnity.
@@ -44,24 +53,13 @@ namespace Proyecto.Factory.Unity
             string[] componentType = Convert.ToString(component.GetType()).Split('.');
             try
             {
-                this.uFactory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.Unity.UFactory" + componentType.Last())) as IFactoryUnity;
+                this.uFactory = Activator.CreateInstance(Type.GetType("Proyecto.Factory.Unity.UFactory" + componentType.Last())) as FactoryUnity;
+                this.componentUFactories.Add(this.uFactory, componentType.Last());
+                this.uFactory.MakeUnityItem(adapter, component);
             }
-            catch (System.Exception)
+            catch(System.ArgumentNullException)
             {
-                throw new System.Exception($"Unity Factory of {componentType.Last()} not found.");
-            }
-
-            this.componentUFactories.Add(componentType.Last(), this.uFactory);
-            foreach (var type in this.componentUFactories)
-            {
-                try
-                {
-                    this.componentUFactories[type.Key].MakeUnityItem(adapter, component);
-                }
-                catch (System.Exception)
-                {
-                    throw new System.Exception($"Unity Factory of {type.Value} not found.");
-                }
+                throw new System.ArgumentNullException($"Unity Factory of {componentType.Last()} not found.");
             }
         }
     }

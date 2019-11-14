@@ -37,7 +37,15 @@ namespace Proyecto.LibraryModelado
             this.Height = 570;
             this.World = this.world;
             this.ItemList = new List<Items>();
+            this.IsActive = true;
         }
+
+        /// <summary>
+        /// Gets or sets que indican si el item esta actualmente activo en pantalla.
+        /// Por predeterminado sera true.
+        /// </summary>
+        /// <value></value>
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Gets or sets del nombre del espacio.
@@ -61,13 +69,13 @@ namespace Proyecto.LibraryModelado
         /// Gets del ancho del nivel.
         /// </summary>
         /// <value>float ancho del nivel.</value>
-        public float Width { get; }
+        public float Width { get; set; }
 
         /// <summary>
         /// Gets de la altura del nivel.
         /// </summary>
         /// <value>float altura del nivel.</value>
-        public float Height { get; }
+        public float Height { get; set; }
 
         /// <summary>
         /// Gets or sets del nombre del mundo al que pertenece.

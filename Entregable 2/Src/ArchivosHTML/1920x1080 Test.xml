@@ -1,0 +1,57 @@
+<World Name="world1">
+
+	<Space Name="MainPage" Background="page1.png">
+
+		<ButtonGoToPage Name="gotoscientistMenu" PositionX="-750" PositionY="-250" Width="240" Height="300" Photo="Cientifica.png" Color="#FCFCFC" GoToPage="MenuScientific">
+		<ButtonStartLevel Name="StartMagician1" PositionX="0" PositionY="0" Width="240" Height="300" Photo="Mago.png" Color="#FCFCFC" Level="Magician">
+
+
+	</Space>
+
+	<Space Name="Magician" Background="page2.png">
+
+		<Image Name="mago" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Mago.png">
+		<Image Name="nube5" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+
+		<Label Name="arbol16" PositionX="-400" PositionY="-200" Width="50" Height="50" Photo="Vacio.png" Text="16" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol17" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="17" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol19" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="19" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol20" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="20" Bold="true" Italic="false" Size="35">
+		<Image Name="questionIcon1" PositionX="700" PositionY="160" Width="420" Height="470" Photo="questionIcon.png">
+		<InputVerifyText Name="verify1" PositionX="710" PositionY="-300" Width="400" Height="530" Value="18" Photo="Vacio.png">
+
+		<Label Name="arbol97" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="16" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol98" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="17" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol99" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="19" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol101" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="20" Bold="true" Italic="false" Size="35">
+		<Image Name="questionIcon2" PositionX="700" PositionY="160" Width="420" Height="470" Photo="questionIcon.png">
+		<InputVerifyText Name="verify2" PositionX="710" PositionY="-300" Width="400" Height="530" Value="100" Photo="Vacio.png">
+
+		<Label Name="arbol50" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="16" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol49" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="17" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol47" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="19" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol46" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="20" Bold="true" Italic="false" Size="35">
+		<Image Name="questionIcon3" PositionX="700" PositionY="160" Width="420" Height="470" Photo="questionIcon.png">
+		<InputVerifyText Name="verify3" PositionX="710" PositionY="-300" Width="400" Height="530" Value="48" Photo="Vacio.png">
+
+		<Label Name="arbol2" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="16" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol4" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="17" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol8" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="19" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol10" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="20" Bold="true" Italic="false" Size="35">
+		<Image Name="questionIcon4" PositionX="700" PositionY="160" Width="420" Height="470" Photo="questionIcon.png">
+		<InputVerifyText Name="verify4" PositionX="710" PositionY="-300" Width="400" Height="530" Value="6" Photo="Vacio.png">
+
+		<Label Name="arbol15" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="16" Bold="true" Italic="false" Size="35">
+		<Label Name="a_rbol20" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="17" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol30" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="19" Bold="true" Italic="false" Size="35">
+		<Label Name="arbol35" PositionX="-200" PositionY="150" Width="50" Height="50" Photo="Vacio.png" Text="20" Bold="true" Italic="false" Size="35">
+		<Image Name="questionIcon5" PositionX="700" PositionY="160" Width="420" Height="470" Photo="questionIcon.png">
+		<InputVerifyText Name="verify5" PositionX="710" PositionY="-300" Width="400" Height="530" Value="25" Photo="Vacio.png">
+
+		<Operations Components="arbol16,arbol17,arbol19,arbol20,questionIcon1,verify1">
+		<Operations Components="arbol97,arbol98,arbol99,arbol101,questionIcon2,verify2">
+		<Operations Components="arbol50,arbol49,arbol47,arbol46,questionIcon3,verify3">
+		<Operations Components="arbol2,arbol4,arbol8,arbol10,questionIcon4,verify4">
+		<Operations Components="arbol15,a_rbol20,arbol30,arbol35,questionIcon5,verify5">
+
+</World>

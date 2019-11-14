@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Xunit;
 using System;
 using Proyecto.LeerHTML;
+using Proyecto.LibraryModelado;
+using Proyecto.Factory.CSharp;
 
 namespace Proyecto.LeerHTML.test
 {
@@ -25,6 +27,16 @@ namespace Proyecto.LeerHTML.test
 
             //assert
             Assert.Throws<ArgumentNullException>(() => Parser.ParserHTML(ReadHTML.ReturnHTML(path)));
+        }
+
+        [Fact]
+        public void NullTagName()
+        {
+
+            Tag tag = new Tag(null, null);
+            List<IComponent> componentList = new List<IComponent>();
+
+            Assert.Throws<System.Exception>(() => FactoryComponent.InitializeFactories().MakeComponent(tag));
         }
     }
 }
