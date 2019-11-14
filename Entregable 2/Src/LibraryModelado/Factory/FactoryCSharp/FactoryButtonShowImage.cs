@@ -8,7 +8,7 @@ using System.Linq;
 using Proyecto.Item;
 using Proyecto.LeerHTML;
 using Proyecto.LibraryModelado;
-
+using Proyecto.LibraryModelado.Engine;
 
 namespace Proyecto.Factory.CSharp
 {
@@ -64,6 +64,11 @@ namespace Proyecto.Factory.CSharp
         private Space level;
 
         /// <summary>
+        /// Nombre de la imagen (o boton) que mostrara.
+        /// </summary>
+        private string imageName;
+
+        /// <summary>
         /// Instancia del mundo.
         /// </summary>
         private World world = Singleton<World>.Instance;
@@ -101,7 +106,7 @@ namespace Proyecto.Factory.CSharp
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
 
-            Items buttonShowImage = new ButtonShowImage(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.color, this.imageName);
+            ButtonShowImage buttonShowImage = new ButtonShowImage(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image, this.color, this.imageName);
             this.level.ItemList.Add(buttonShowImage);
             return buttonShowImage;
         }

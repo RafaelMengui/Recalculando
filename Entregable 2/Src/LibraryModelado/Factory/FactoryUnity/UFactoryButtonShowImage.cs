@@ -38,9 +38,6 @@ namespace Proyecto.Factory.Unity
                 throw new System.Exception("Fail to cast component as ButtonShowImage");
             }
 
-            // Asignar evento del boton.
-            this.buttonShowImage.Event = adapter.ShowPage;
-
             // Convierte a la pagina en donde debe ser creado el boton, en la pagina activa.
             adapter.ShowPage(this.buttonShowImage.Level.ID);
 
@@ -52,6 +49,13 @@ namespace Proyecto.Factory.Unity
 
             // Se quita la palabra "Button".
             adapter.SetText(this.buttonShowImage.ID, string.Empty);
+
+            // Si la image que mostrara es este mimso item, inicialmente no aparecera en pantalla.
+            if (this.buttonShowImage.Name.Equals(this.buttonShowImage.ImageName))
+            {
+                this.buttonShowImage.IsActive = false;
+                adapter.SetActive(this.buttonShowImage.ID, false);
+            }
         }
     }
 }

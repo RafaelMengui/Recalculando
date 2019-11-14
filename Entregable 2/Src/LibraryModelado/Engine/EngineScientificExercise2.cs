@@ -203,7 +203,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateFeedback()
         {
-            Feedback feedback = new Feedback("Feedback2", this.Level, 720, 90, 320, 400, "Vacio.png", string.Empty, 30, true, false);
+            Feedback feedback = new Feedback("Feedback2", this.Level, 705, 82, 320, 400, "Vacio.png", string.Empty, 34, true, false);
             this.engineGame.CreateInUnity(feedback);
             this.LevelFeedback = feedback;
         }
