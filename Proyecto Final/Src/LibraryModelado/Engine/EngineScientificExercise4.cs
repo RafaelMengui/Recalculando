@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 using Proyecto.Item;
 using System.Collections.Generic;
+using System.Linq;
 using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
@@ -152,6 +153,11 @@ namespace Proyecto.LibraryModelado.Engine
                 foreach (Items item in operation.Components)
                 {
                     this.engineGame.SetActive(item, false);
+
+                    if (item is IButton)
+                    {
+                        (item as IButton).Pushable = true;
+                    }
                 }
             }
 
@@ -259,17 +265,30 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void ChangeOperation()
         {
-            foreach (Items item in this.CurrentOperation.Components)
+            if (!this.CurrentOperation.Equals(this.Operations.Last()))
             {
-                this.engineGame.SetActive(item, false);
-            }
-
-            if (this.LevelCounter < this.Operations.Count)
-            {
-                this.CurrentOperation = this.Operations[this.LevelCounter];
-                foreach (Items newItem in this.CurrentOperation.Components)
+                foreach (Items item in this.CurrentOperation.Components)
                 {
-                    this.engineGame.SetActive(newItem, true);
+                    this.engineGame.SetActive(item, false);
+                }
+
+                if (this.LevelCounter < this.Operations.Count)
+                {
+                    this.CurrentOperation = this.Operations[this.LevelCounter];
+                    foreach (Items newItem in this.CurrentOperation.Components)
+                    {
+                        this.engineGame.SetActive(newItem, true);
+                    }
+                }
+            }
+            else
+            {
+                foreach (Items item in this.CurrentOperation.Components)
+                {
+                    if (item is IButton)
+                    {
+                        (item as IButton).Pushable = false;
+                    }
                 }
             }
         }

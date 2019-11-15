@@ -2,9 +2,10 @@
 
 	<Space Name="MainPage" Background="page1.png">
 
-		<ButtonGoToPage Name="gotoscientistMenu" PositionX="65" PositionY="-235" Width="290" Height="410" Photo="Cientifica.png" Color="#FCFCFC" GoToPage="MenuScientific">
-		<ButtonGoToPage Name="gotoNerdMenu" PositionX="-680" PositionY="-315" Width="370" Height="405" Photo="SabeloTodo.png" Color="#FCFCFC" GoToPage="MenuNerd">
+		<ButtonGoToPage Name="gotoscientistMenu1" PositionX="65" PositionY="-235" Width="290" Height="410" Photo="Cientifica.png" Color="#FCFCFC" GoToPage="MenuScientific">
+		<ButtonGoToPage Name="gotoNerdMenu1" PositionX="-680" PositionY="-315" Width="370" Height="405" Photo="SabeloTodo.png" Color="#FCFCFC" GoToPage="MenuNerd">
 		<ButtonStartLevel Name="StartMagician1" PositionX="200" PositionY="315" Width="340" Height="435" Photo="Mago.png" Color="#FCFCFC" Level="Magician">
+		<ButtonStartLevel Name="StartKitchen1" PositionX="-738" PositionY="273" Width="358" Height="472" Photo="cocinera.png" Color="#FCFCFC" Level="KitchenExercise1">
 
 	</Space>
 
@@ -221,4 +222,54 @@
 		<ButtonShowImage Name="Numeros1al10Image" PositionX="0" PositionY="0" Width="1300" Height="1042" Photo="num.png" Color="#FCFCFC" ShowImage="Numeros1al10Image">
 
 	</Space>
+
+		<Space Name="KitchenExercise1" Background="page6.png">
+
+		<Image Name="cocinera" PositionX="-662" PositionY="-196" Width="479" Height="707" Photo="cocinera.png">
+		<Image Name="nube" PositionX="-670" PositionY="263" Width="426" Height="489" Photo="nube2.png">
+		<Image Name="mesa" PositionX="-1" PositionY="-344" Width="500" Height="400" Photo="table.png">
+		<Image Name="receta" PositionX="655" PositionY="-135" Width="500" Height="600" Photo="Receta.png">
+
+		<FoodContainer Name="Resultbowl" PositionX="0" PositionY="-108" Width="300" Height="171" Photo="bowl.png">
+
+		<FoodContainer Name="bananaContainer" PositionX="-330" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="chocolateContainer" PositionX="-150" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="quesoContainer" PositionX="30" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="carneContainer" PositionX="210" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="tomateContainer" PositionX="390" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="huevoContainer" PositionX="-150" PositionY="230" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="lecheContainer" PositionX="30" PositionY="230" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="papaContainer" PositionX="210" PositionY="230" Width="180" Height="180" Photo="recuadro.png">
+
+		<Food Name="banana1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="banana.png" Container="bananaContainer" Type="Banana" Draggable="true">
+		<Food Name="banana2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="banana.png" Container="bananaContainer" Type="Banana" Draggable="true">
+		<Food Name="chocolate1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="chocolate.png" Container="chocolateContainer" Type="Chocolate" Draggable="true">
+		<Food Name="chocolate2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="chocolate.png" Container="chocolateContainer" Type="Chocolate" Draggable="true">
+		<Food Name="queso1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="queso.png" Container="quesoContainer" Type="Queso" Draggable="true">
+		<Food Name="queso2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="queso.png" Container="quesoContainer" Type="Queso" Draggable="true">
+		<Food Name="tomate1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="Tomate.png" Container="tomateContainer" Type="Tomate" Draggable="true">
+		<Food Name="tomate2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="Tomate.png" Container="tomateContainer" Type="Tomate" Draggable="true">
+		<Food Name="carne1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="carne.png" Container="carneContainer" Type="Carne" Draggable="true">
+		<Food Name="carne2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="carne.png" Container="carneContainer" Type="Carne" Draggable="true">
+		<Food Name="huevo1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="huevo.png" Container="huevoContainer" Type="Huevo" Draggable="true">
+		<Food Name="huevo2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="huevo.png" Container="huevoContainer" Type="Huevo" Draggable="true">
+		<Food Name="leche1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="leche.png" Container="lecheContainer" Type="Leche" Draggable="true">
+		<Food Name="leche2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="leche.png" Container="lecheContainer" Type="Leche" Draggable="true">
+		<Food Name="papa1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="papa.png" Container="papaContainer" Type="Papa" Draggable="true">
+		<Food Name="papa2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="papa.png" Container="papaContainer" Type="Papa" Draggable="true">
+
+		<Recipe Name="recipe1" Food="Leche,Huevo,Chocolate" Quantity="1,3,2">
+		<Recipe Name="recipe2" Food="Carne,Tomate,Queso" Quantity="1,2,1">
+		<Recipe Name="recipe3" Food="Papa,Carne,Leche" Quantity="2,1,4">
+
+		<Label Name="pedido1" PositionX="652" PositionY="-118" Width="395" Height="209" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="40">
+		<Label Name="pedido2" PositionX="653" PositionY="-220" Width="395" Height="209" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="40">
+		<Label Name="pedido3" PositionX="653" PositionY="-315" Width="395" Height="209" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="40">
+
+		<Operations Name="DraggableItems" Components="banana1,banana2,chocolate1,chocolate2,queso1,queso2,tomate1,tomate2,carne1,carne2,huevo1,huevo2,papa1,papa2">
+		<Operations Name="PedidosDeLaReceta" Components="pedido1,pedido2,pedido3">
+		<Operations Name="Bowl" Components="bowl">
+
+	</Space>
+
 </World>

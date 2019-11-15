@@ -29,25 +29,26 @@ namespace Proyecto.Factory.CSharp
         /// </summary>
         private Space level;
         /// <summary>
-        /// Lista de objetos food de item.
+        /// Lista de tipos de food.
         /// </summary>
-        private List<Food> foodList;
+        private Dictionary<string, int> foodList = new Dictionary<string, int>();
 
         /// <summary>
         /// Lista de strings con los tipos de food.
         /// </summary>
-        public Array foodListString;
+        public string[] foodTypes;
+
         /// <summary>
         /// Lista con la cantidad de objetos food.
         /// </summary>
-        public Array foodQuantityInt;
+        public string[] foodTypesQuantity;
 
         /// <summary>
         /// Instancia del mundo.
         /// </summary>
         private World world = Singleton<World>.Instance;
 
-        private EngineKitchenExercise1 engine = Singleton<EngineKitchenExercise1>.Instance;
+        private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryComponent.
@@ -61,29 +62,13 @@ namespace Proyecto.Factory.CSharp
             {
                 this.name = tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Name"; }).Valor;
                 this.level = this.world.SpaceList.Last();
-                this.foodListString = (tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Food"; }).Valor).Split(',');
-                this.foodQuantityInt = (tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Quantity"; }).Valor).Split(',');
-                foreach (string foodString in this.foodListString)
-                {
-                    foreach (Food food in this.level.ItemList)
-                    {
-                        try
-                        {
-                            if (food.Type == foodString)
-                            {
-                                int index = Array.IndexOf(this.foodListString, foodString);
+                this.foodTypes = (tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Food"; }).Valor).Split(',');
+                this.foodTypesQuantity = (tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Quantity"; }).Valor).Split(',');
 
-                                for (int i = 0; i < Convert.ToInt32(this.foodQuantityInt.GetValue(index)); i++)
-                                {
-                                    this.foodList.Add(food);
-                                }
-                            }
-                        }
-                        catch (IndexOutOfRangeException)
-                        {
-                            throw new IndexOutOfRangeException($"The index got out of range \"{tag.Nombre}\".");
-                        }
-                    }
+                for (int i = 0; i < this.foodTypes.Length; i++)
+                {
+                    int quantity = Convert.ToInt32(this.foodTypesQuantity[i]);
+                    this.foodList.Add(this.foodTypes[i], quantity);
                 }
             }
             catch (NullReferenceException)
@@ -100,7 +85,6 @@ namespace Proyecto.Factory.CSharp
             }
 
             Recipe recipe = new Recipe(this.name, this.level, this.foodList);
-            this.engine.recipeList.Add(recipe);
             return recipe;
         }
     }

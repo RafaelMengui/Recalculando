@@ -20,7 +20,7 @@ namespace Proyecto.LibraryModelado.test
         [Fact]
         public void TestFactoryComponents()
         {
-            const string XMLfile = @"..\..\..\..\..\Src\ArchivosHTML\1920x1080 Test.xml";
+            const string XMLfile = @"..\..\..\..\..\Src\ArchivosHTML\Cocina.xml";
 
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
             List<IComponent> componentList = new List<IComponent>();
@@ -31,7 +31,11 @@ namespace Proyecto.LibraryModelado.test
                 componentList.Add(component);
             }
 
+            
+
             this.engineGame.AsociateLevelsWithEngines(componentList);
+
+            Assert.True(tags.Count == componentList.Count);
         }
     }
 }
