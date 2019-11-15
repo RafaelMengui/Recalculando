@@ -118,7 +118,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
+            string text = "Hola! Soy la Científica, en este juego deberas completar la suma, arrastrando el dinero correcto.";
 
             if (this.ButtonGoToMain is null)
             {

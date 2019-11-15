@@ -102,7 +102,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! En este juego deberas seleccionar la respuesta correcta.";
+            string text = "¡Hola de nuevo!";
 
             if (this.ButtonGoToMain is null)
             {
