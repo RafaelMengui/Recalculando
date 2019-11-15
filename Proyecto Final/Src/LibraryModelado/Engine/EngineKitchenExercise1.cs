@@ -29,10 +29,17 @@ namespace Proyecto.LibraryModelado.Engine
         /// Variable Recipe utilizada para guardar la recipe actual.
         /// </summary>
         private Recipe recipe;
+
         /// <summary>
         /// Lista con las recipes del nivel
         /// </summary>
-        public List<Recipe> recipeList { get; set; }
+        private List<Recipe> recipeList = new List<Recipe>();
+
+        /// <summary>
+        /// Gets y Sets de la lista de recetas.
+        /// </summary>
+        /// <value>Recipe</value>
+        public List<Recipe> RecipeList {get; set;}
 
         /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
@@ -70,6 +77,7 @@ namespace Proyecto.LibraryModelado.Engine
             this.LevelFeedback = this.levelFeedback;
             this.ButtonGoToMain = this.buttonGoToMain;
             this.Operations = new List<Operations>();
+            this.RecipeList = recipeList;
         }
 
         /// <summary>

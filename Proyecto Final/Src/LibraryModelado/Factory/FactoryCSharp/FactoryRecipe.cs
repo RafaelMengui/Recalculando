@@ -31,16 +31,16 @@ namespace Proyecto.Factory.CSharp
         /// <summary>
         /// Lista de objetos food de item.
         /// </summary>
-        private List<Food> foodList;
+        private List<Food> foodList = new List<Food>();
 
         /// <summary>
         /// Lista de strings con los tipos de food.
         /// </summary>
-        public Array foodListString;
+        public string[] foodListString;
         /// <summary>
         /// Lista con la cantidad de objetos food.
         /// </summary>
-        public Array foodQuantityInt;
+        public string[] foodQuantityInt;
 
         /// <summary>
         /// Instancia del mundo.
@@ -65,25 +65,30 @@ namespace Proyecto.Factory.CSharp
                 this.foodQuantityInt = (tag.Atributos.Find(delegate (Atributos atr) { return atr.Clave == "Quantity"; }).Valor).Split(',');
                 foreach (string foodString in this.foodListString)
                 {
-                    foreach (Food food in this.level.ItemList)
-                    {
-                        try
-                        {
-                            if (food.Type == foodString)
-                            {
-                                int index = Array.IndexOf(this.foodListString, foodString);
 
-                                for (int i = 0; i < Convert.ToInt32(this.foodQuantityInt.GetValue(index)); i++)
+                    Items food = this.level.ItemList.Find( x => x.Name == "Food"+foodString );
+
+                        if (food is Food)
+                            try
+                            {
+                                Food _food = food as Food;
+
+
+                                if (_food.Type == foodString)
                                 {
-                                    this.foodList.Add(food);
+                                    int index = Array.IndexOf(this.foodListString, foodString);
+
+                                    for (int i = 0; i < Convert.ToInt32(this.foodQuantityInt[index]); i++)
+                                    {
+                                        this.foodList.Add(_food);
+                                    }
                                 }
                             }
-                        }
-                        catch (IndexOutOfRangeException)
-                        {
-                            throw new IndexOutOfRangeException($"The index got out of range \"{tag.Nombre}\".");
-                        }
-                    }
+                            catch (IndexOutOfRangeException)
+                            {
+                                throw new IndexOutOfRangeException($"The index got out of range \"{tag.Nombre}\".");
+                            }
+                    
                 }
             }
             catch (NullReferenceException)
@@ -100,7 +105,7 @@ namespace Proyecto.Factory.CSharp
             }
 
             Recipe recipe = new Recipe(this.name, this.level, this.foodList);
-            this.engine.recipeList.Add(recipe);
+            this.engine.RecipeList.Add(recipe);
             return recipe;
         }
     }

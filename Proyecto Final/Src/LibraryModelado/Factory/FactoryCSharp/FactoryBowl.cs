@@ -53,11 +53,6 @@ namespace Proyecto.Factory.CSharp
         private Space level;
 
         /// <summary>
-        /// Valor que aceptara el container.
-        /// </summary>
-        private float acceptableValue = 0;
-
-        /// <summary>
         /// Instancia del mundo.
         /// </summary>
         private World world = Singleton<World>.Instance;
@@ -79,7 +74,6 @@ namespace Proyecto.Factory.CSharp
                 this.positionX = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionX"; }).Valor);
                 this.positionY = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "PositionY"; }).Valor);
                 this.image = tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Photo"; }).Valor;
-                this.acceptableValue = Convert.ToSingle(tag.Atributos.Find(delegate(Atributos atr) { return atr.Clave == "Value"; }).Valor);
             }
             catch(NullReferenceException)
             {

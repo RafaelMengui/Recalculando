@@ -142,7 +142,7 @@
             caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineKitchenExcerise1, por esto, es la experta.
             Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
             llevar a cabo sus tareas.
-            Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
+            Hereda de la interfaz <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.recipe">
@@ -150,10 +150,16 @@
             Variable Recipe utilizada para guardar la recipe actual.
             </summary>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.recipeList">
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.recipeList">
             <summary>
             Lista con las recipes del nivel
             </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.RecipeList">
+            <summary>
+            Gets y Sets de la lista de recetas.
+            </summary>
+            <value>Recipe</value>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.level">
             <summary>
@@ -301,7 +307,7 @@
             relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
             y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineMagician
             este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
-            Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
+            Hereda de la interfaz <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineMagician.level">
@@ -459,7 +465,7 @@
             caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise1, por esto, es la experta.
             Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
             llevar a cabo sus tareas.
-            Hereda de las clases abstractas <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/> y <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
+            Hereda de la interfaz <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise1.level">
@@ -614,6 +620,7 @@
             caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise2, por esto, es la experta.
             Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
             llevar a cabo sus tareas.
+            Hereda de la interfaz <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise2.level">
@@ -739,6 +746,7 @@
             caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise3, por esto, es la experta.
             Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
             llevar a cabo sus tareas.
+            Hereda de la interfaz <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise3.level">
@@ -893,6 +901,7 @@
             caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise4, por esto, es la experta.
             Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
             llevar a cabo sus tareas.
+            Hereda de la interfaz <see cref="T:Proyecto.LibraryModelado.Engine.ILevelEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineScientificExercise4.level">
@@ -1035,6 +1044,7 @@
         <member name="T:Proyecto.LibraryModelado.Engine.EngineUnity">
             <summary>
             Motor resposable de conocer y asignar los metodos relacionados a Unity.
+            Hereda de la clase <see cref="T:Proyecto.LibraryModelado.Engine.IEngine"/>.
             </summary>
         </member>
         <member name="F:Proyecto.LibraryModelado.Engine.EngineUnity.unityFactory">
@@ -1663,11 +1673,6 @@
         <member name="F:Proyecto.Factory.CSharp.FactoryBowl.level">
             <summary>
             Nivel al que pertenece el item.
-            </summary>
-        </member>
-        <member name="F:Proyecto.Factory.CSharp.FactoryBowl.acceptableValue">
-            <summary>
-            Valor que aceptara el container.
             </summary>
         </member>
         <member name="F:Proyecto.Factory.CSharp.FactoryBowl.world">
@@ -3876,7 +3881,13 @@
             <summary>
             Gets y Sets del Nombre de la receta.
             </summary>
-            <value>ID</value>
+            <value>Name</value>
+        </member>
+        <member name="P:Proyecto.Item.KitchenLevel.Recipe.Level">
+            <summary>
+            Gets y Sets del level de la receta.
+            </summary>
+            <value>Space</value>
         </member>
         <member name="T:Proyecto.Item.Label">
             <summary>
