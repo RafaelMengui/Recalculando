@@ -45,7 +45,7 @@ En cada una de las pantallas, hay varios árboles con números los cuales repres
 _Estas instrucciones te permitirán tener el juego en tu celular, ya sea Android o iOS._
 
 ### Pre-requisitos 📋
-_Que cosas necesitas para instalar el juego y como instalarlas_
+_Que cosas necesitas para instalar el juego_
 
 Para comenzar a jugar lo único que se debe hacer es autorizar tu celular para descargar aplicaciones que no necesariamente sean descargadas desde la plataforma de tu celular. ¡Tranquilo nuestro juego es seguro!
 
@@ -53,7 +53,7 @@ Para comenzar a jugar lo único que se debe hacer es autorizar tu celular para d
 
 Una vez que ya esta la aplicación en tu celular, lo único que resta es abrirla. Dentro de la misma se verán los distintos personajes, al elegir uno se abrirá su juego correspondiente. 
 
-** ¡Ya estás listo para jugar! Esperamos que disfrutes de RECALCULANDO. **
+**¡Ya estás listo para jugar! Esperamos que disfrutes de RECALCULANDO.**
 
 
 
