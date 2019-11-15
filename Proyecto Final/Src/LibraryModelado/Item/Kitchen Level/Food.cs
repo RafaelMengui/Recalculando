@@ -65,18 +65,20 @@ namespace Proyecto.Item.KitchenLevel
         public bool Drop(IContainer container)
         {
             EngineGame engineGame = Singleton<EngineGame>.Instance;
-            Bowl bowl;
+            FoodContainer bowl;
 
             try
             {
-                bowl = container as Bowl;
+                bowl = container as FoodContainer;
             }
             catch(System.InvalidCastException)
             {
-                throw new System.InvalidCastException($"Invalid cast operation as MoneyContainer.");
+                throw new System.InvalidCastException($"Invalid cast operation as Bowl.");
             }
+            
+            (engineGame.LevelEngines[this.Level] as EngineKitchenExercise1).VerifyExercise(bowl, this);
 
-            return (engineGame.LevelEngines[this.Level] as EngineKitchenExercise1).VerifyExercise(bowl, this);
+            return false;
         }
     }
 }

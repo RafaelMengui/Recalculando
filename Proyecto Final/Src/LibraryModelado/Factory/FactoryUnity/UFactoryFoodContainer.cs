@@ -18,11 +18,11 @@ namespace Proyecto.Factory.Unity
         /// <summary>
         /// Objeto Bowl que se agregara a Unity.
         /// </summary>
-        private Bowl bowl;
+        private FoodContainer bowl;
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de FactoryUnity.
-        /// Tiene la responsabilidad de agregar el componente de tipo <see cref="Bowl"/> a Unity.
+        /// Tiene la responsabilidad de agregar el componente de tipo <see cref="FoodContainer"/> a Unity.
         /// </summary>
         /// <param name="adapter">Adapter <see cref="IMainViewAdapter"/>.</param>
         /// <param name="component">Componente que se agregara a Unity <see cref="IComponent"/>.</param>
@@ -31,7 +31,7 @@ namespace Proyecto.Factory.Unity
             try
             {
                 // Castear como Bowl.
-                this.bowl = component as Bowl;
+                this.bowl = component as FoodContainer;
             }
             catch (System.Exception)
             {

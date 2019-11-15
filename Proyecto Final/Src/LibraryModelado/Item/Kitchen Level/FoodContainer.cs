@@ -12,7 +12,7 @@ namespace Proyecto.Item.KitchenLevel
     /// Clase responsable de crear containers para alimentos en el modelado.
     /// Hereda de la clase abstracta <see cref="Items"/>.
     /// </summary>
-    public class Bowl : Items, IContainer
+    public class FoodContainer : Items, IContainer
     {
         /// <summary>
         /// Initializes a new instance of Bowl.
@@ -24,7 +24,7 @@ namespace Proyecto.Item.KitchenLevel
         /// <param name="width">Ancho en pixeles.</param>
         /// <param name="height">Altura en pixeles.</param>
         /// <param name="image">Imagen del Item.</param>
-        public Bowl(string name, Space level, float positionX, float positionY, float width, float height, string image)
+        public FoodContainer(string name, Space level, float positionX, float positionY, float width, float height, string image)
         : base(name, level, positionX, positionY, width, height, image)
         {
             this.SavedItems = new List<Items>();

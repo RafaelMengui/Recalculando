@@ -15,7 +15,6 @@ namespace Proyecto.Item.KitchenLevel
     {   
         
         private Space level;
-        private List<Food> foodList;
 
         /// <summary>
         /// Initializes a new instance of Recipe.
@@ -23,7 +22,7 @@ namespace Proyecto.Item.KitchenLevel
         /// <param name="name">Nombre del Item.</param>
         /// <param name="level">Level que contiene la recipe.</param>
         /// <param name="foodList">Lista de alimentos.</param>
-        public Recipe(string name, Space level, List<Food> foodList)
+        public Recipe(string name, Space level, Dictionary<string, int> foodList)
         {
             this.Name = name;
             this.FoodList = foodList;
@@ -34,7 +33,7 @@ namespace Proyecto.Item.KitchenLevel
         /// Gets lista de objetos Food, que deberan ser soltados dentro del container para ganar el juego.
         /// </summary>
         /// <value>Alimentos<see cref="Food"/>.</value>
-        public List<Food> FoodList { get; private set; }
+        public Dictionary<string, int> FoodList { get; set; }
 
         /// <summary>
         /// Gets y Sets del Nombre de la receta.

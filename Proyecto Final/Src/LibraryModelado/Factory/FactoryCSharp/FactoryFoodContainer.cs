@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="FactoryBowl.cs" company="Universidad Católica del Uruguay">
+// <copyright file="FactoryFoodContainer.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -15,7 +15,7 @@ namespace Proyecto.Factory.CSharp
     /// Esta clase es la responsable de crear objetos Container.
     /// Hereda de la clase abstracta <see cref="CFactory"/>.
     /// </summary>
-    public class FactoryBowl : CFactory
+    public class FactoryFoodContainer : CFactory
     {
         /// <summary>
         /// Nombre del container.
@@ -59,7 +59,7 @@ namespace Proyecto.Factory.CSharp
 
         /// <summary>
         /// Sobrescribe el metodo abstracto de IFactoryComponent.
-        /// Tiene la responsabilidad de crear el componente de tipo <see cref="Bowl"/>.
+        /// Tiene la responsabilidad de crear el componente de tipo <see cref="FoodContainer"/>.
         /// </summary>
         /// <param name="tag">Tag <see cref="Tag"/>.</param>
         /// <returns>Componente <see cref="IComponent"/>.</returns>
@@ -87,9 +87,9 @@ namespace Proyecto.Factory.CSharp
             {
                 throw new FormatException($"Invalid attribute format in tag \"{tag.Nombre}\".");
             }
-            Items bowl = new Bowl(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image);
-            this.level.ItemList.Add(bowl);
-            return bowl;
+            Items foodContainer = new FoodContainer(this.name, this.level, this.positionX, this.positionY, this.width, this.height, this.image);
+            this.level.ItemList.Add(foodContainer);
+            return foodContainer;
         }
     }
 }

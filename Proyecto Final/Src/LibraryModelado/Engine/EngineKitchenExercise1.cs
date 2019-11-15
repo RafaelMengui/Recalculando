@@ -26,22 +26,6 @@ namespace Proyecto.LibraryModelado.Engine
     public class EngineKitchenExercise1 : ILevelEngine
     {
         /// <summary>
-        /// Variable Recipe utilizada para guardar la recipe actual.
-        /// </summary>
-        private Recipe recipe;
-
-        /// <summary>
-        /// Lista con las recipes del nivel
-        /// </summary>
-        private List<Recipe> recipeList = new List<Recipe>();
-
-        /// <summary>
-        /// Gets y Sets de la lista de recetas.
-        /// </summary>
-        /// <value>Recipe</value>
-        public List<Recipe> RecipeList {get; set;}
-
-        /// <summary>
         /// Variable Level utilizada para instanciar un nivel asignable.
         /// </summary>
         private Space level;
@@ -52,20 +36,27 @@ namespace Proyecto.LibraryModelado.Engine
         private Feedback levelFeedback;
 
         /// <summary>
-        /// Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
-        /// </summary>
-        private ButtonStartLevel buttonNextLevel;
-
-        /// <summary>
         /// Boton que al apretarlo aparecera la pantalla principal.
         /// </summary>
         private ButtonGoToPage buttonGoToMain;
 
+        /// <summary>
+        /// Contador de receta actual.
+        /// </summary>
+        /// <value>Int.</value>
+        private int recipeCounter;
 
         /// <summary>
         /// Instancia unica del motor general.
         /// </summary>
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
+
+        /// <summary>
+        /// Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+        /// </summary>
+        private ButtonGoToPage buttonNextLevel;
+
+        private Dictionary<string, int> currentRecipe;
 
         /// <summary>
         /// Constructor del motor.
@@ -77,13 +68,24 @@ namespace Proyecto.LibraryModelado.Engine
             this.LevelFeedback = this.levelFeedback;
             this.ButtonGoToMain = this.buttonGoToMain;
             this.Operations = new List<Operations>();
-            this.RecipeList = recipeList;
+            this.RecipeList = new List<Recipe>();
+            this.ButtonNextLevel = this.buttonNextLevel;
+            this.recipeCounter = 0;
+            this.CurrentRecipe = this.currentRecipe;
         }
 
         /// <summary>
         /// Gets or sets Boton que al apretarlo aparecera la pantalla principal.
         /// </summary>
         public ButtonGoToPage ButtonGoToMain { get; set; }
+
+        public Dictionary<string, int> CurrentRecipe { get; set; }
+
+        /// <summary>
+        /// Gets y Sets de la lista de recetas.
+        /// </summary>
+        /// <value>Recipe</value>
+        public List<Recipe> RecipeList { get; set; }
 
         /// <summary>
         /// Gets de lista de operaciones del nivel.
@@ -102,6 +104,10 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         /// <value>Level.</value>
         public Space Level { get; set; }
+        /// <summary>
+        /// Gets or sets del boton que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
+        /// </summary>
+        public ButtonGoToPage ButtonNextLevel { get; set; }
 
         /// <summary>
         /// Gets or sets de contador utilizado para saber en que operacion de la pagina nos encontramos.
@@ -109,12 +115,6 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         /// <value>Int.</value>
         public int OperationCounter { get; private set; }
-
-        /// <summary>
-        /// Gets or sets del contador de receta actual.
-        /// </summary>
-        /// <value>Int.</value>
-        public int actualRecipe { get; set; }
 
         /// <summary>
         /// Gets or sets de los resultados del nivel.
@@ -130,11 +130,14 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
-
+            string text = "Hola!";
             if (this.ButtonGoToMain is null)
             {
                 this.CreateButtonGoToMain();
+            }
+            if (this.ButtonNextLevel is null)
+            {
+                this.CreateButtonGoToNextLevel();
             }
             if (this.LevelFeedback is null)
             {
@@ -143,38 +146,47 @@ namespace Proyecto.LibraryModelado.Engine
 
             this.ResultsOfLevel = new bool[3];
             this.OperationCounter = 0;
-            this.actualRecipe = 0;
+            this.recipeCounter = 0;
+            this.CurrentRecipe = new Dictionary<string, int>(this.RecipeList[this.recipeCounter].FoodList);
+            this.UpdateRecipe();
+
+            this.engineGame.SetActive(this.ButtonNextLevel, false);
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
+
+            foreach (Operations operation in this.Operations)
+            {
+                foreach (Items item in operation.Components)
+                {
+                    this.engineGame.SetItemDraggable(item, true);
+                }
+            }
             this.RestartContainers();
-
         }
-
-
 
         /// <summary>
         /// Metodo responsable de verificar si el objeto tipo Food soltado dentro del Bowl,
         /// tiene el tipo que aceptado por la.
         /// </summary>
-        /// <param name="bowl">Container tipo <see cref="Bowl"/>.</param>
-        /// <param name="food">DraggableItem tipo <see cref="Food"/>.</param>
+        /// <param name="bowl">Container tipo <see cref="FoodContainer"/>.</param>
+        /// <param name="droppedFood">DraggableItem tipo <see cref="Food"/>.</param>
         /// <returns>Bool si el alimento está en la receta o no.</returns>
-        public bool VerifyOperation(Bowl bowl, Food food)
+        public bool VerifyOperation(FoodContainer bowl, Food droppedFood)
         {
-            bool result = false;
-
-            this.recipe = this.recipeList[this.actualRecipe];  //acá podría regenerarse la lista (cuidado de error)
-
-            foreach (Food _food in this.recipe.FoodList)
+            foreach (var foodType in this.CurrentRecipe)
             {
-                if (food.Type == _food.Type)
+                if (droppedFood.Type.Equals(foodType.Key))
                 {
-                    this.recipe.FoodList.Remove(_food);
-                    result = true;
-                    break;
+                    this.CurrentRecipe[foodType.Key] -= 1;
+
+                    if (this.CurrentRecipe[foodType.Key] == 0)
+                    {
+                        this.CurrentRecipe.Remove(foodType.Key);
+                    }
+                    return true;
                 }
             }
 
-            return result;
+            return false;
         }
 
         /// <summary>
@@ -189,8 +201,16 @@ namespace Proyecto.LibraryModelado.Engine
                 string text = "Excelente trabajo! Completaste todas las recetas.";
                 this.engineGame.UpdateFeedback(this.LevelFeedback, text);
 
+                foreach (Operations operation in this.Operations)
+                {
+                    foreach (Items item in operation.Components)
+                    {
+                        this.engineGame.SetItemDraggable(item, false);
+                    }
+                }
+
                 // Se muestra el boton para volver al inicio.
-                this.engineGame.SetActive(this.buttonGoToMain, true);
+                this.engineGame.SetActive(this.ButtonNextLevel, true);
                 return true;
             }
 
@@ -203,13 +223,17 @@ namespace Proyecto.LibraryModelado.Engine
         /// <returns>Bool.</returns>
         public bool VerifyRecipe()
         {
-            if (this.recipe.FoodList.Count == 0)
+            if (this.CurrentRecipe.Count == 0)
             {
-                this.actualRecipe += 1;
                 this.ResultsOfLevel[this.OperationCounter] = true;
                 this.OperationCounter += 1;
-                this.VerifyWinLevel();
-                this.RestartContainers();
+                this.recipeCounter += 1;
+
+                if (this.recipeCounter < this.RecipeList.Count)
+                {
+                    this.CurrentRecipe = new Dictionary<string, int>(this.RecipeList[this.recipeCounter].FoodList);
+                    this.UpdateRecipe();
+                }
 
                 return true;
             }
@@ -217,7 +241,6 @@ namespace Proyecto.LibraryModelado.Engine
             {
                 return false;
             }
-
         }
 
         /// <summary>
@@ -228,21 +251,24 @@ namespace Proyecto.LibraryModelado.Engine
         /// <param name="bowl">Container de alimentos donde se encuentra la receta.</param>
         /// <param name="food">Alimento arrastrado.</param>
         /// <returns>Bool si el alimento soltado es correcto.</returns>
-        public bool VerifyExercise(Bowl bowl, Food food)
+        public bool VerifyExercise(FoodContainer bowl, Food food)
         {
-            if (this.VerifyOperation(bowl, food))
+            if (bowl.Name.Contains("Result"))
             {
-                this.engineGame.SetItemDraggable(food, false);
-                this.GoodFeedback();
-                this.VerifyRecipe();
-                return true;
+                if (this.VerifyOperation(bowl, food))
+                {
+                    this.VerifyRecipe();
+                    this.GoodFeedback();
+                    this.UpdateRecipe();
+                    this.VerifyWinLevel();
+                    return true;
+                }
+                else
+                {
+                    this.BadFeedback();
+                }
             }
-            else
-            {
-                this.BadFeedback();
-                return false;
-            }
-
+            return false;
         }
 
         /// <summary>
@@ -250,7 +276,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void GoodFeedback()
         {
-            string text = "Muy buen trabajo, ¡Continua asi!";
+            string text = "Bien!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
@@ -259,20 +285,16 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void BadFeedback()
         {
-            string text = "Esa suma no es correcta, ¡Intentalo de nuevo!";
+            string text = "Mmm eso no lo necesito";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
-
-        /// <summary>
-        /// Sobrescribe el metodo abstracto de <see cref="IEngine"/>, crea el boton que mostrara la pagina principal al ejecutarlo.
-        /// </summary>
 
         /// <summary>
         /// Metodo responsable de Crear y asignarle al motor, su respectivo objeto feedback.
         /// </summary>
         public void CreateFeedback()
         {
-            Feedback feedback = new Feedback("Feedback1", this.Level, 710, 70, 320, 400, "Vacio.png", string.Empty, 30, true, false);
+            Feedback feedback = new Feedback("Feedback1", this.Level, -580, 165, 325, 400, "Vacio.png", string.Empty, 35, true, false);
             this.engineGame.CreateInUnity(feedback);
             this.LevelFeedback = feedback;
         }
@@ -289,23 +311,68 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Método que devuelve cada objeto a su container originario.
+        /// Metodo para crear un boton que al ejecutarlo ira al proximo nivel del nivel cientifico.
+        /// Este boton aparecera en pantalla al terminar un nivel.
+        /// </summary>
+        public void CreateButtonGoToNextLevel()
+        {
+            ButtonGoToPage goToNext = new ButtonGoToPage("kitchenToMain", this.Level, 0, 0, 500, 300, "botonToMain.png", "#FCFCFC", "MainPage");
+            this.Level.ItemList.Add(goToNext);
+            this.engineGame.CreateInUnity(goToNext);
+            this.ButtonNextLevel = goToNext;
+        }
+
+        /// <summary>
+        /// Método que devuelve cada Alimento a su container originario.
         /// </summary>
         public void RestartContainers()
         {
             foreach (Operations operation in this.Operations)
             {
-                Items item = operation.Components.Last();
-                if (item is IContainer)
+                foreach (Items item in operation.Components)
                 {
-                    IContainer resultContainer = item as IContainer;
-                    foreach (Items savedItem in resultContainer.SavedItems)
+                    if (item is FoodContainer)
                     {
-                        this.engineGame.SetItemDraggable(savedItem, true);
-                        this.engineGame.CenterInContainer(savedItem);
+                        FoodContainer bowl = item as FoodContainer;
+                        bowl.SavedItems.Clear();
                     }
+                }
+            }
+        }
 
-                    resultContainer.SavedItems.Clear();
+        public string GetOrder()
+        {
+            string order = string.Empty;
+            if (this.CurrentRecipe.Count > 0)
+            {
+                foreach (var foods in this.CurrentRecipe)
+                {
+                    order += $"{foods.Value} {foods.Key}";
+
+                    if (foods.Value > 1)
+                    {
+                        order += "s";
+                    }
+                    order += ",";
+                }
+            }
+            return order;
+        }
+
+        public void UpdateRecipe()
+        {
+            string[] orders = this.GetOrder().Split(',');
+            int counter = 0;
+            foreach (Operations operation in this.Operations)
+            {
+                foreach (Items item in operation.Components)
+                {
+                    if (item is Label && counter < orders.Length)
+                    {
+                        string text = orders[counter];
+                        this.engineGame.UpdateText(item, text);
+                        counter += 1;
+                    }
                 }
             }
         }
