@@ -11,6 +11,9 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineScientificExercise4, responsable de implementar la logica del nivel scientific ejercicio 4.
+    /// En este juego se debe decidir si la operación que aparece en pantalla esta hecha de forma correcta,
+    /// en caso que sea así se debe seleccionar la opción verde, sino la roja.
+    /// En este motor esta toda la lógica necesaria para que funcione el juego de forma correctas
     /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise4

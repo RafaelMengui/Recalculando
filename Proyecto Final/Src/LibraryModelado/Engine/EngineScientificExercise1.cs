@@ -12,6 +12,8 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
+    /// En este juego se deben realizar las sumas y restas pedidas, se arrastra la solución hacía el container
+    /// correspondiente. Este motor se encarga de que esta lógica funcione.
     /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise1

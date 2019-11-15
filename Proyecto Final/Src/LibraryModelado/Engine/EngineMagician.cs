@@ -11,6 +11,8 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineMagician, responsable de implementar la logica del ejercicio 1 del nivel scientific.
+    /// El objetivo de este juego es continuar la secuencia númerica, se ingresará el número faltante por
+    /// pantalla. Este motor se encarga de que esta lógica funcione.
     /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineMagician
