@@ -21,8 +21,9 @@ La aplicación consta de cuatro diferentes personajes, cada uno ayuda al niño a
 ### ✔️ Científico :
 _Este juego consta de tres pequeños dentro, todos ayudan al niño con la sustracción y suma_
 
-* El niño debe realizar las sumas pedidas, arrastrando los billetes dependiendo de la opción que crea correcta.
+* El niño debe realizar las sumas pedidas, arrastrando los billetes dependiendo de la opción que crea correcta
 * Por pantalla se muestra una consigna, la cual, pide realizar una cuenta dada. Hay dos botones con diferentes opciones, el niño debe elegir cual es la respuesta correcta, de acuerdo a la suma que se dio. 
+* En este nivel se plantea una pregunta respecto a un problema matemático, el niño debe elegir que operación es la indicada para el problema, ya sea, sustracción o adición.
 * Aparecen sumas por pantalla realizadas de manera que el niño pueda visualizarlas, con un resultado, la idea del juego es que se elija si la suma fue realiza de forma correcta o no. 
 
 ### ✔️Sabelotodo: 
