@@ -133,6 +133,8 @@
         <member name="T:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1">
             <summary>
             Clase EngineKitchenExercise1, responsable de implementar la logica del ejercicio 1 del nivel Kitchen.
+            En este juego se debe arrastrar los ingredientes que se piden por pantalla.La lógica se encarga de chequear
+            que los ingredientes sean los correctos
             Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
             relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
             y debe estar (en la medida de lo posible) relacionada con la clase. Esto sucede claramente en EngineKitchenExercise1
@@ -176,6 +178,13 @@
             Button que aparecera al completarse el nivel, con la funcionalidad de empezar el proximo nivel.
             </summary>
         </member>
+        <member name="F:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.currentRecipe">
+            <summary>
+            Diccionario en donde se guardara la informacion de la receta.
+            Clave = Tipo de alimento.
+            Valor = Cantidad de alimentos.
+            </summary>
+        </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.#ctor">
             <summary>
             Constructor del motor.
@@ -185,6 +194,14 @@
             <summary>
             Gets or sets Boton que al apretarlo aparecera la pantalla principal.
             </summary>
+        </member>
+        <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.CurrentRecipe">
+            <summary>
+            Gets or sets del diccionario en donde se guardara la informacion de la receta.
+            Clave = Tipo de alimento.
+            Valor = Cantidad de alimentos.
+            </summary>
+            <value>Diccionario.</value>
         </member>
         <member name="P:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.RecipeList">
             <summary>
@@ -254,14 +271,14 @@
         <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.VerifyRecipe">
             <summary>
             Verifica que se haya completado la receta.
+            Si fue completada, se actualiza la receta.
             </summary>
             <returns>Bool.</returns>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.VerifyExercise(Proyecto.Item.KitchenLevel.FoodContainer,Proyecto.Item.KitchenLevel.Food)">
             <summary>
-            Metodo que se utiliza para verificar que este correctamente realizada una de las operaciones.
-            Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
-            Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
+            Metodo que se utiliza para verificar que se haya soltado el item correcto dentro del bowl.
+            Solamente se podra soltar un item dentro de un FoodContainer que se encuentre dentro de algun operation.
             </summary>
             <param name="bowl">Container de alimentos donde se encuentra la receta.</param>
             <param name="food">Alimento arrastrado.</param>
@@ -289,18 +306,33 @@
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.CreateButtonGoToNextLevel">
             <summary>
-            Metodo para crear un boton que al ejecutarlo ira al proximo nivel del nivel cientifico.
             Este boton aparecera en pantalla al terminar un nivel.
             </summary>
         </member>
         <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.RestartContainers">
             <summary>
-            Método que devuelve cada Alimento a su container originario.
+            Metodo utilizado para vaciar el Food Container de los resultados.
+            Es utilizado para evitar errores.
+            </summary>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.GetOrder">
+            <summary>
+            Metodo utilizado para obtener informacion de un objeto <see cref="T:Proyecto.Item.KitchenLevel.Recipe"/>,
+            y devuelve un texto con el formato necesario para mostrarlo por pantalla.
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:Proyecto.LibraryModelado.Engine.EngineKitchenExercise1.UpdateRecipe">
+            <summary>
+            Metod que actualiza la receta mostrada por pantalla, obtiene la informacion necesaria del metodo
+            GetOrder().
             </summary>
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineMagician">
             <summary>
             Clase EngineMagician, responsable de implementar la logica del ejercicio 1 del nivel scientific.
+            El objetivo de este juego es continuar la secuencia númerica, se ingresará el número faltante por
+            pantalla. Este motor se encarga de que esta lógica funcione.
             Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
             relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
             y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineMagician
@@ -454,6 +486,8 @@
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise1">
             <summary>
             Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
+            En este juego se deben realizar las sumas y restas pedidas, se arrastra la solución hacía el container
+            correspondiente. Este motor se encarga de que esta lógica funcione.
             Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
             relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
             y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise1
@@ -609,6 +643,8 @@
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise2">
             <summary>
             Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
+            En este juego se debe seleccionar cual es la opción correcta para el problema matemático que se plantea.
+            El motor se encarga de que esta lógica funcione.
             Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
             relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
             y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise2
@@ -735,6 +771,9 @@
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise3">
             <summary>
             Clase EngineScientificExercise3, responsable de implementar la logica del nivel scientific ejercicio 3.
+            En este juego se debe seleccionar que tipo de operación matemática se debe realizar de acuerdo
+            al problema que se plantea, ya sea sustracción o adición.
+            En este motor se realiza la lógica de este juego.
             Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
             relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
             y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise3
@@ -889,7 +928,10 @@
         </member>
         <member name="T:Proyecto.LibraryModelado.Engine.EngineScientificExercise4">
             <summary>
-            Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 4.
+            Clase EngineScientificExercise4, responsable de implementar la logica del nivel scientific ejercicio 4.
+            En este juego se debe decidir si la operación que aparece en pantalla esta hecha de forma correcta,
+            en caso que sea así se debe seleccionar la opción verde, sino la roja.
+            En este motor esta toda la lógica necesaria para que funcione el juego de forma correctas
             Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
             relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
             y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise4
@@ -1326,7 +1368,6 @@
             a asegurarnos de que cuando extendemos una clase no estamos alterando el comportamiento. En este
             caso, podemos utilizar Items o cualquiera de sus clases hijas como Button y nuestro programa
             funcionará de igual forma.
-            de la padre.
             Implementa la interfaz <see cref="T:Proyecto.LibraryModelado.IComponent"/>.
             </summary>
         </member>

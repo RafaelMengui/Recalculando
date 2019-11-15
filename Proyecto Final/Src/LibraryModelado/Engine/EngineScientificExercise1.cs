@@ -120,7 +120,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! Soy la Científica, en este juego deberas completar la suma, arrastrando el dinero correcto.";
+            string text = "Hola! Completa la suma arrastrando el dinero correcto.";
 
             if (this.ButtonGoToMain is null)
             {
@@ -229,7 +229,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateFeedback()
         {
-            Feedback feedback = new Feedback("Feedback1", this.Level, 710, 70, 320, 400, "Vacio.png", string.Empty, 30, true, false);
+            Feedback feedback = new Feedback("Feedback1", this.Level, 710, 70, 320, 400, "Vacio.png", string.Empty, 34, true, false);
             this.engineGame.CreateInUnity(feedback);
             this.LevelFeedback = feedback;
         }

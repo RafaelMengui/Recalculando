@@ -143,7 +143,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "¡Hola! Necesito ayuda para completar mi receta. ¿Puedes ayudarme? Arrastra el ingrediente que necesito al bowl";
+            string text = "¡Hola! ¿Puedes ayudarme? Arrastra los ingredientes de la receta al bowl.";
 
             if (this.ButtonGoToMain is null)
             {
@@ -310,7 +310,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateFeedback()
         {
-            Feedback feedback = new Feedback("Feedback1", this.Level, -580, 165, 325, 400, "Vacio.png", string.Empty, 35, true, false);
+            Feedback feedback = new Feedback("Feedback1", this.Level, -656, 194, 330, 400, "Vacio.png", string.Empty, 35, true, false);
             this.engineGame.CreateInUnity(feedback);
             this.LevelFeedback = feedback;
         }

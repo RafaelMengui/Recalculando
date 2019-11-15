@@ -126,7 +126,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Bienvenido! Puedes ayudarme decirme cual número falta en esta secuencia?";
+            string text = "Bienvenido! Puedes decirme cual número falta en esta secuencia?";
 
             if (this.ButtonGoToMain is null)
             {
@@ -232,7 +232,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void BadFeedback()
         {
-            string text = "No es correcto, tu puedes vuelve a pensarlo!";
+            string text = "No es correcto, vuelve a pensarlo!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 

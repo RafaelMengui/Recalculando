@@ -230,7 +230,7 @@
 		<Image Name="mesa" PositionX="-1" PositionY="-344" Width="500" Height="400" Photo="table.png">
 		<Image Name="receta" PositionX="655" PositionY="-135" Width="500" Height="600" Photo="Receta.png">
 
-		<FoodContainer Name="Resultbowl" PositionX="0" PositionY="-108" Width="300" Height="171" Photo="bowl.png">
+		<FoodContainer Name="bowl" PositionX="0" PositionY="-108" Width="300" Height="171" Photo="bowl.png">
 
 		<FoodContainer Name="bananaContainer" PositionX="-330" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
 		<FoodContainer Name="chocolateContainer" PositionX="-150" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
@@ -268,7 +268,7 @@
 
 		<Operations Name="DraggableItems" Components="banana1,banana2,chocolate1,chocolate2,queso1,queso2,tomate1,tomate2,carne1,carne2,huevo1,huevo2,papa1,papa2">
 		<Operations Name="PedidosDeLaReceta" Components="pedido1,pedido2,pedido3">
-		<Operations Name="Bowl" Components="bowl">
+		<Operations Name="ResultBowl" Components="bowl">
 
 	</Space>
 
