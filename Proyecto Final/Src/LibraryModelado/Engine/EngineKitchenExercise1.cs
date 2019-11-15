@@ -56,6 +56,11 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         private ButtonGoToPage buttonNextLevel;
 
+        /// <summary>
+        /// Diccionario en donde se guardara la informacion de la receta.
+        /// Clave = Tipo de alimento.
+        /// Valor = Cantidad de alimentos.
+        /// </summary>
         private Dictionary<string, int> currentRecipe;
 
         /// <summary>
@@ -79,6 +84,12 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public ButtonGoToPage ButtonGoToMain { get; set; }
 
+        /// <summary>
+        /// Gets or sets del diccionario en donde se guardara la informacion de la receta.
+        /// Clave = Tipo de alimento.
+        /// Valor = Cantidad de alimentos.
+        /// </summary>
+        /// <value>Diccionario.</value>
         public Dictionary<string, int> CurrentRecipe { get; set; }
 
         /// <summary>
@@ -219,6 +230,7 @@ namespace Proyecto.LibraryModelado.Engine
 
         /// <summary>
         /// Verifica que se haya completado la receta.
+        /// Si fue completada, se actualiza la receta.
         /// </summary>
         /// <returns>Bool.</returns>
         public bool VerifyRecipe()
@@ -231,41 +243,42 @@ namespace Proyecto.LibraryModelado.Engine
 
                 if (this.recipeCounter < this.RecipeList.Count)
                 {
+                    string text = "Receta Completada! Continuemos con la proxima.";
+                    this.engineGame.UpdateFeedback(this.LevelFeedback, text);
                     this.CurrentRecipe = new Dictionary<string, int>(this.RecipeList[this.recipeCounter].FoodList);
                     this.UpdateRecipe();
                 }
 
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         /// <summary>
-        /// Metodo que se utiliza para verificar que este correctamente realizada una de las operaciones.
-        /// Si esta bien hecha la operacion, el bool (en this.ResultsOfPage) asociado a la parte del nivel pasa a ser true.
-        /// Al contador se le suma 1, y el container del money, pasa a ser el container en donde es dropeado.
+        /// Metodo que se utiliza para verificar que se haya soltado el item correcto dentro del bowl.
+        /// Solamente se podra soltar un item dentro de un FoodContainer que se encuentre dentro de algun operation.
         /// </summary>
         /// <param name="bowl">Container de alimentos donde se encuentra la receta.</param>
         /// <param name="food">Alimento arrastrado.</param>
         /// <returns>Bool si el alimento soltado es correcto.</returns>
         public bool VerifyExercise(FoodContainer bowl, Food food)
         {
-            if (bowl.Name.Contains("Result"))
+            foreach (Operations operation in this.Operations)
             {
-                if (this.VerifyOperation(bowl, food))
+                if (operation.Components.Contains(bowl))
                 {
-                    this.VerifyRecipe();
-                    this.GoodFeedback();
-                    this.UpdateRecipe();
-                    this.VerifyWinLevel();
-                    return true;
-                }
-                else
-                {
-                    this.BadFeedback();
+                    if (this.VerifyOperation(bowl, food))
+                    {
+                        this.VerifyRecipe();
+                        this.GoodFeedback();
+                        this.UpdateRecipe();
+                        this.VerifyWinLevel();
+                        return true;
+                    }
+                    else
+                    {
+                        this.BadFeedback();
+                    }
                 }
             }
             return false;
@@ -311,7 +324,6 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Metodo para crear un boton que al ejecutarlo ira al proximo nivel del nivel cientifico.
         /// Este boton aparecera en pantalla al terminar un nivel.
         /// </summary>
         public void CreateButtonGoToNextLevel()
@@ -323,7 +335,8 @@ namespace Proyecto.LibraryModelado.Engine
         }
 
         /// <summary>
-        /// Método que devuelve cada Alimento a su container originario.
+        /// Metodo utilizado para vaciar el Food Container de los resultados.
+        /// Es utilizado para evitar errores.
         /// </summary>
         public void RestartContainers()
         {
@@ -340,6 +353,11 @@ namespace Proyecto.LibraryModelado.Engine
             }
         }
 
+        /// <summary>
+        /// Metodo utilizado para obtener informacion de un objeto <see cref="Recipe"/>,
+        /// y devuelve un texto con el formato necesario para mostrarlo por pantalla.
+        /// </summary>
+        /// <returns>String</returns>
         public string GetOrder()
         {
             string order = string.Empty;
@@ -359,6 +377,10 @@ namespace Proyecto.LibraryModelado.Engine
             return order;
         }
 
+        /// <summary>
+        /// Metod que actualiza la receta mostrada por pantalla, obtiene la informacion necesaria del metodo
+        /// GetOrder().
+        /// </summary>
         public void UpdateRecipe()
         {
             string[] orders = this.GetOrder().Split(',');
