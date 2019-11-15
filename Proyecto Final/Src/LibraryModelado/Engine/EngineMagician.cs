@@ -124,7 +124,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
+            string text = "Bienvenido! Puedes ayudarme decirme cual número falta en esta secuencia?";
 
             if (this.ButtonGoToMain is null)
             {
@@ -221,7 +221,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void GoodFeedback()
         {
-            string text = "Muy buen trabajo, ¡Continua asi!";
+            string text = "Muy bien!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
@@ -230,7 +230,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void BadFeedback()
         {
-            string text = "Esa suma no es correcta, ¡Intentalo de nuevo!";
+            string text = "No es correcto, tu puedes vuelve a pensarlo!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 

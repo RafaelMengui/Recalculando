@@ -122,7 +122,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
+            string text = "¡Hola! Necesito ayuda para completar mi receta. ¿Puedes ayudarme? Arrastra el ingrediente que necesito al bowl";
 
             if (this.ButtonGoToMain is null)
             {
@@ -242,7 +242,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void GoodFeedback()
         {
-            string text = "Muy buen trabajo, ¡Continua asi!";
+            string text = "¡Muy bien, ahora estoy lista para hacer mi receta";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
@@ -251,7 +251,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void BadFeedback()
         {
-            string text = "Esa suma no es correcta, ¡Intentalo de nuevo!";
+            string text = "Este ingrediente no lo necesito ahora, ¡vuelve a intentarlo!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
