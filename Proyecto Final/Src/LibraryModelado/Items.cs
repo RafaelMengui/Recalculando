@@ -18,7 +18,6 @@ namespace Proyecto.LibraryModelado
     /// a asegurarnos de que cuando extendemos una clase no estamos alterando el comportamiento. En este
     /// caso, podemos utilizar Items o cualquiera de sus clases hijas como Button y nuestro programa
     /// funcionará de igual forma.
-    /// de la padre.
     /// Implementa la interfaz <see cref="IComponent"/>.
     /// </summary>
     public abstract class Items : IComponent
