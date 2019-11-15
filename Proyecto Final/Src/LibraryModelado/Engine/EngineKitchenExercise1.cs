@@ -12,6 +12,8 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineKitchenExercise1, responsable de implementar la logica del ejercicio 1 del nivel Kitchen.
+    /// En este juego se debe arrastrar los ingredientes que se piden por pantalla.La lógica se encarga de chequear
+    /// que los ingredientes sean los correctos
     /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase. Esto sucede claramente en EngineKitchenExercise1
@@ -141,7 +143,8 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola!";
+            string text = "¡Hola! Necesito ayuda para completar mi receta. ¿Puedes ayudarme? Arrastra el ingrediente que necesito al bowl";
+
             if (this.ButtonGoToMain is null)
             {
                 this.CreateButtonGoToMain();
@@ -289,7 +292,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void GoodFeedback()
         {
-            string text = "Bien!";
+            string text = "¡Muy bien, sigue asi!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
@@ -298,7 +301,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void BadFeedback()
         {
-            string text = "Mmm eso no lo necesito";
+            string text = "Este ingrediente no lo necesito ahora, ¡vuelve a intentarlo!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 

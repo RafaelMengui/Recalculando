@@ -11,6 +11,9 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineScientificExercise3, responsable de implementar la logica del nivel scientific ejercicio 3.
+    /// En este juego se debe seleccionar que tipo de operación matemática se debe realizar de acuerdo
+    /// al problema que se plantea, ya sea sustracción o adición.
+    /// En este motor se realiza la lógica de este juego.
     /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise3
@@ -172,7 +175,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! En este juego deberas seleccionar la respuesta correcta.";
+            string text = "Hola! Ayudame a pensar si esta operación esta bien hecha.";
             if (this.ButtonGoToMain is null)
             {
                 this.CreateButtonGoToMain();

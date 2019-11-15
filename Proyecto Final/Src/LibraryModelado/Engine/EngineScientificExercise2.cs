@@ -11,6 +11,8 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 2.
+    /// En este juego se debe seleccionar cual es la opción correcta para el problema matemático que se plantea.
+    /// El motor se encarga de que esta lógica funcione.
     /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise2
@@ -102,7 +104,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! En este juego deberas seleccionar la respuesta correcta.";
+            string text = "¡Hola de nuevo!";
 
             if (this.ButtonGoToMain is null)
             {
