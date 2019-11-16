@@ -2,6 +2,9 @@
 
 	<Space Name="MainPage" Background="page1.png">
 
+		<Image Name="titulo" PositionX="587" PositionY="-453" Width="724" Height="151" Photo="titulo.png">
+		<Image Name="subtitulo" PositionX="730" PositionY="0" Width="391" Height="479" Photo="subtitulo.png">
+
 		<ButtonGoToPage Name="gotoscientistMenu1" PositionX="65" PositionY="-235" Width="290" Height="410" Photo="Cientifica.png" Color="#FCFCFC" GoToPage="MenuScientific">
 		<ButtonGoToPage Name="gotoNerdMenu1" PositionX="-680" PositionY="-315" Width="370" Height="405" Photo="SabeloTodo.png" Color="#FCFCFC" GoToPage="MenuNerd">
 		<ButtonStartLevel Name="StartMagician1" PositionX="200" PositionY="315" Width="340" Height="435" Photo="Mago.png" Color="#FCFCFC" Level="Magician">
@@ -208,12 +211,15 @@
 		<Label Name="etiqueta1Nerd" PositionX="6" PositionY="61" Width="290" Height="470" Photo="Vacio.png" Text="Soy_el_Sabelotodo,_todo_lo_que_necesitás_saber_está_aquí." Bold="true" Italic="false" Size="35">
 		<ButtonGoToPage Name="GoToMainPage" PositionX="-890" PositionY="470" Width="125" Height="125" Photo="GoToMain.png" Color="#FCFCFC" GoToPage="MainPage">
 
+		<Image Name="recuadro1" PositionX="586" PositionY="468" Width="288" Height="119" Photo="recuadro2.png">
 		<Label Name="TablaMultiplicarNerd" PositionX="650" PositionY="415" Width="350" Height="209" Photo="Vacio.png" Text="Tabla_Multiplicar" Bold="true" Italic="false" Size="45">
 		<ButtonShowImage Name="TablaMultiplicarBoton" PositionX="592" PositionY="245" Width="330" Height="321" Photo="tablanum.png" Color="#FCFCFC" ShowImage="TablaDeMultiplicarImage">
 
+		<Image Name="recuadro2" PositionX="-598" PositionY="140" Width="421" Height="89" Photo="recuadro2.png">
 		<Label Name="RectaNumericaNerd" PositionX="-586" PositionY="60" Width="350" Height="209" Photo="Vacio.png" Text="Recta_númerica" Bold="true" Italic="false" Size="45">
 		<ButtonShowImage Name="RectaNumericaBoton" PositionX="-603" PositionY="-31" Width="605" Height="236" Photo="RectaNumerica.png" Color="#FCFCFC" ShowImage="RectaNumericaImage">
 
+		<Image Name="recuadro3" PositionX="592" PositionY="-71" Width="370" Height="119" Photo="recuadro2.png">
 		<Label Name="NumerosNerd" PositionX="617" PositionY="-125" Width="350" Height="209" Photo="Vacio.png" Text="Números_del_1_al_10" Bold="true" Italic="false" Size="45">
 		<ButtonShowImage Name="Numeros1al10Boton" PositionX="590" PositionY="-300" Width="350" Height="300" Photo="num.png" Color="#FCFCFC" ShowImage="Numeros1al10Image">
 
