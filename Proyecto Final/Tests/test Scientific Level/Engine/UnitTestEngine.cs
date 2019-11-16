@@ -10,10 +10,13 @@ namespace Proyecto.LibraryModelado.Engine.test
     {
         private EngineGame engineGame = Singleton<EngineGame>.Instance;
 
+        /// <summary>
+        /// Testea la asociación del Motor.
+        /// </summary>
         [Fact]
         public void TestEngineAsociate()
         {
-            const string XMLfile = @"..\..\..\..\..\..\Src\ArchivosHTML\Niveles.xml";
+            const string XMLfile = @"..\..\..\..\..\..\Src\ArchivosHTML\html.xml";
             List<Tag> tags = Parser.ParserHTML(ReadHTML.ReturnHTML(XMLfile));
             List<IComponent> componentList = new List<IComponent>();
 
