@@ -41,12 +41,23 @@ En este caso, el personaje le pedirá al niño que arrastre una cantidad determi
 En este juego lo central es que el niño pueda prácticar la secuencia numérica, es decir, el orden de los números. Tendrá cinco pantallas con diferentes ejercicios para realizar. 
 En cada una de las pantallas, hay varios árboles con números los cuales representan secuencias de números, hay un número que falta en la misma, lo que debe hacer el niño es escribir por pantalla cual es el número que no esta presente. 
 
+## Como descargar el repositorio? 📋
+_Para poder utilizar este codigo debes seguir las siguientes instrucciones._
+
+1. Descargar o clonar este repositorio en una carpeta cualquiera.
+2. Descargar o clonar el repositorio que utilizamos para poder conectar nuestro codigo con Unity,       en la misma carpeta donde se descargo nuestro repositorio, es decir que deben ser hermanas:
+                    - https://github.com/ucudal/PII_Proyecto2019.git
+3. La carpeta que contiene este ultimo repositorio descargado debe llamarse "UnityCode". En caso        contrario, nuestro codigo no podra funcionar.
+4. Dentro de nuestro repositorio, se podra encontrar una carpeta llamada "Assets" dentro de la          carpeta "Proyecto Final". Dentro de Assets se encontraran todos las imagenes y archivos             necesarios. Solamente se debe copiar todo el contenido de la carpeta, y pegarlo en la siguiente     ubicacion del repositorio de Unity: 
+                    - UnityCode\Unity\Assets\StreamingAssets
+5. Abrir el proyecto en Unity y listo! El codigo ya estara funcionando.
+    
 
 ## Comencemos a jugar 🚀 
 _Estas instrucciones te permitirán tener el juego en tu celular, ya sea Android o iOS._
 
 ### Pre-requisitos 📋
-_Que cosas necesitas para instalar el juego_
+_Que cosas necesitas para instalar el juego._
 
 Para comenzar a jugar lo único que se debe hacer es autorizar tu celular para descargar aplicaciones que no necesariamente sean descargadas desde la plataforma de tu celular. ¡Tranquilo nuestro juego es seguro!
 
