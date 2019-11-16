@@ -67,9 +67,10 @@ Una vez que ya esta la aplicación en tu celular, lo único que resta es abrirla
 
 **¡Ya estás listo para jugar! Esperamos que disfrutes de RECALCULANDO.**
 
+### Video del juego
 
-
-
+Podras encontrar un video ejemplo del juego en el siguiente link:
+                    https://youtu.be/_YQU8CrdY6U
 
 ## Autores ✒️
 **Agustina Marrero, Nicolas Puig, Rafael Mengui, Santiago Omodey**
