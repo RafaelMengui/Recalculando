@@ -97,7 +97,7 @@
 		<Image Name="nube3" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
 
 		<Image Name="recuadrotexto1" PositionX="-200" PositionY="205" Width="1300" Height="242" Photo="recuadroTexto1.png">
-		<Label Name="etiqueta1" PositionX="-191" PositionY="191" Width="1100" Height="150" Photo="Vacio.png" Text="Tengo_15_manzanas._Si_le_doy_4_a_mi_hermano,_¿Cuántas_me_quedan?" Bold="true" Italic="false" Size="35">
+		<Label Name="etiqueta1" PositionX="-191" PositionY="191" Width="1100" Height="150" Photo="Vacio.png" Text="Tengo_15_manzanas._Si_le_doy_4_a_mi_hermano,_¿Cuántas_me_quedan?" Bold="true" Italic="false" Size="50">
 
 		<ButtonTrueFalse Name="opcion11" PositionX="-600" PositionY="-100" Width="300" Height="300" Photo="manzana9.png" Color="#FCFCFC" Value="false">
 		<ButtonTrueFalse Name="opcion21" PositionX="-200" PositionY="-100" Width="300" Height="300" Photo="manzana11.png" Color="#FCFCFC" Value="true">

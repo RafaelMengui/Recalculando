@@ -272,8 +272,8 @@ namespace Proyecto.LibraryModelado.Engine
                 {
                     if (this.VerifyOperation(bowl, food))
                     {
-                        this.VerifyRecipe();
                         this.GoodFeedback();
+                        this.VerifyRecipe();
                         this.UpdateRecipe();
                         this.VerifyWinLevel();
                         return true;
