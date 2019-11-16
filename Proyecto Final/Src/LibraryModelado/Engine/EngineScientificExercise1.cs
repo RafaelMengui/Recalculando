@@ -12,6 +12,8 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineScientificExercise1, responsable de implementar la logica del ejercicio 1 del nivel scientific.
+    /// En este juego se deben realizar las sumas y restas pedidas, se arrastra la solución hacía el container
+    /// correspondiente. Este motor se encarga de que esta lógica funcione.
     /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise1
@@ -21,7 +23,7 @@ namespace Proyecto.LibraryModelado.Engine
     /// caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise1, por esto, es la experta.
     /// Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
     /// llevar a cabo sus tareas.
-    /// Hereda de las clases abstractas <see cref="IEngine"/> y <see cref="ILevelEngine"/>.
+    /// Hereda de la interfaz <see cref="ILevelEngine"/>.
     /// </summary>
     public class EngineScientificExercise1 : ILevelEngine
     {
@@ -118,7 +120,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
+            string text = "Hola! Completa la suma arrastrando el dinero correcto.";
 
             if (this.ButtonGoToMain is null)
             {
@@ -227,7 +229,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateFeedback()
         {
-            Feedback feedback = new Feedback("Feedback1", this.Level, 710, 70, 320, 400, "Vacio.png", string.Empty, 30, true, false);
+            Feedback feedback = new Feedback("Feedback1", this.Level, 710, 70, 320, 400, "Vacio.png", string.Empty, 34, true, false);
             this.engineGame.CreateInUnity(feedback);
             this.LevelFeedback = feedback;
         }

@@ -11,11 +11,13 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Clase EngineMagician, responsable de implementar la logica del ejercicio 1 del nivel scientific.
+    /// El objetivo de este juego es continuar la secuencia númerica, se ingresará el número faltante por
+    /// pantalla. Este motor se encarga de que esta lógica funcione.
     /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineMagician
     /// este motor tiene solamente lo que le interesa para funcionar, por esto decidimos realizar un motor para cada ejercicio.
-    /// Hereda de las clases abstractas <see cref="IEngine"/> y <see cref="ILevelEngine"/>.
+    /// Hereda de la interfaz <see cref="ILevelEngine"/>.
     /// </summary>
     public class EngineMagician : ILevelEngine
     {
@@ -124,7 +126,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void StartLevel()
         {
-            string text = "Hola! En este juego deberas completar la suma, arrastrando el dinero correcto.";
+            string text = "Bienvenido! Puedes decirme cual número falta en esta secuencia?";
 
             if (this.ButtonGoToMain is null)
             {
@@ -221,7 +223,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void GoodFeedback()
         {
-            string text = "Muy buen trabajo, ¡Continua asi!";
+            string text = "Muy bien!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
@@ -230,7 +232,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void BadFeedback()
         {
-            string text = "Esa suma no es correcta, ¡Intentalo de nuevo!";
+            string text = "No es correcto, vuelve a pensarlo!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 

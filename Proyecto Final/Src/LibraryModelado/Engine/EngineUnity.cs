@@ -11,6 +11,7 @@ namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
     /// Motor resposable de conocer y asignar los metodos relacionados a Unity.
+    /// Hereda de la clase <see cref="IEngine"/>.
     /// </summary>
     public class EngineUnity : IEngine
     {

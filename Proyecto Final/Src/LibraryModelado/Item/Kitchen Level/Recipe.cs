@@ -12,31 +12,39 @@ namespace Proyecto.Item.KitchenLevel
     /// Clase responsable de crear recetas en el modelado.
     /// </summary>
     public class Recipe : IComponent
-    {
+    {   
+        
+        private Space level;
+
         /// <summary>
         /// Initializes a new instance of Recipe.
         /// </summary>
         /// <param name="name">Nombre del Item.</param>
         /// <param name="level">Level que contiene la recipe.</param>
         /// <param name="foodList">Lista de alimentos.</param>
-        public Recipe(string name, Space level, List<Food> foodList)
+        public Recipe(string name, Space level, Dictionary<string, int> foodList)
         {
             this.Name = name;
             this.FoodList = foodList;
+            this.Level = level;
         }
-
-        private List<Food> foodList;
 
         /// <summary>
         /// Gets lista de objetos Food, que deberan ser soltados dentro del container para ganar el juego.
         /// </summary>
         /// <value>Alimentos<see cref="Food"/>.</value>
-        public List<Food> FoodList { get; private set; }
+        public Dictionary<string, int> FoodList { get; set; }
 
         /// <summary>
         /// Gets y Sets del Nombre de la receta.
         /// </summary>
-        /// <value>ID</value>
+        /// <value>Name</value>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets y Sets del level de la receta.
+        /// </summary>
+        /// <value>Space</value>
+        public Space Level {get; set;}
     }
 }

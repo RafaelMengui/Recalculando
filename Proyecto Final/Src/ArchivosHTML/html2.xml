@@ -2,9 +2,6 @@
 
 	<Space Name="MainPage" Background="page1.png">
 
-		<Image Name="titulo" PositionX="587" PositionY="-453" Width="724" Height="151" Photo="titulo.png">
-		<Image Name="subtitulo" PositionX="730" PositionY="0" Width="391" Height="479" Photo="subtitulo.png">
-
 		<ButtonGoToPage Name="gotoscientistMenu1" PositionX="65" PositionY="-235" Width="290" Height="410" Photo="Cientifica.png" Color="#FCFCFC" GoToPage="MenuScientific">
 		<ButtonGoToPage Name="gotoNerdMenu1" PositionX="-680" PositionY="-315" Width="370" Height="405" Photo="SabeloTodo.png" Color="#FCFCFC" GoToPage="MenuNerd">
 		<ButtonStartLevel Name="StartMagician1" PositionX="200" PositionY="315" Width="340" Height="435" Photo="Mago.png" Color="#FCFCFC" Level="Magician">
@@ -161,46 +158,46 @@
 		<Image Name="nube5" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
 		<Image Name="Verificacion" PositionX="-500" PositionY="350" Width="470" Height="250" Photo="verificacionNumero.png">
 
-		<Image Name="num16" PositionX="-800" PositionY="-30" Width="150" Height="150" Photo="num16.png">
-		<Image Name="num17" PositionX="-450" PositionY="30" Width="100" Height="100" Photo="num17.png">
-		<Image Name="questionIcon1" PositionX="-150" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
-		<Image Name="num19" PositionX="220" PositionY="240" Width="80" Height="80" Photo="num19.png">
-		<Image Name="num20" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num20.png">
+		<Image Name="num16" PositionX="-950" PositionY="-30" Width="150" Height="150" Photo="num16.png">
+		<Image Name="num17" PositionX="-550" PositionY="30" Width="100" Height="100" Photo="num17.png">
+		<Image Name="questionIcon1" PositionX="-200" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num19" PositionX="270" PositionY="240" Width="80" Height="80" Photo="num19.png">
+		<Image Name="num20" PositionX="270" PositionY="460" Width="60" Height="60" Photo="num20.png">
 		<InputVerifyText Name="verify1" PositionX="-500" PositionY="310" Width="420" Height="150" Value="18" Photo="Vacio.png" Bold="true" Italic="false" Size="20">
 
-		<Image Name="num97" PositionX="-800" PositionY="-30" Width="150" Height="150" Photo="num97.png">
-		<Image Name="num98" PositionX="-450" PositionY="30" Width="100" Height="100" Photo="num98.png">
-		<Image Name="num99" PositionX="-150" PositionY="150" Width="90" Height="90" Photo="num99.png">
-		<Image Name="questionIcon2" PositionX="220" PositionY="240" Width="80" Height="80" Height="90" Photo="questionIcon.png">
-		<Image Name="num101" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num101.png">
+		<Image Name="num97" PositionX="-880" PositionY="-30" Width="150" Height="150" Photo="num97.png">
+		<Image Name="num98" PositionX="-500" PositionY="30" Width="100" Height="100" Photo="num98.png">
+		<Image Name="num99" PositionX="-170" PositionY="150" Width="90" Height="90" Photo="num99.png">
+		<Image Name="questionIcon2" PositionX="250" PositionY="240" Width="80" Height="80" Height="90" Photo="questionIcon.png">
+		<Image Name="num101" PositionX="250" PositionY="460" Width="60" Height="60" Photo="num101.png">
 		<InputVerifyText Name="verify2" PositionX="-500" PositionY="310" Width="420" Height="150" Value="100" Photo="Vacio.png" Bold="true" Italic="false" Size="20">
 
-		<Image Name="num50" PositionX="-800" PositionY="-30" Width="150" Height="150" Photo="num50.png">
-		<Image Name="num49" PositionX="-450" PositionY="30" Width="100" Height="100" Photo="num49.png">
-		<Image Name="questionIcon3" PositionX="-150" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
-		<Image Name="num47" PositionX="220" PositionY="240" Width="80" Height="80" Photo="num47.png">
-		<Image Name="num46" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num46.png">
+		<Image Name="num50" PositionX="-880" PositionY="-30" Width="150" Height="150" Photo="num50.png">
+		<Image Name="num49" PositionX="-500" PositionY="30" Width="100" Height="100" Photo="num49.png">
+		<Image Name="questionIcon3" PositionX="-170" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num47" PositionX="250" PositionY="240" Width="80" Height="80" Photo="num47.png">
+		<Image Name="num46" PositionX="250" PositionY="460" Width="60" Height="60" Photo="num46.png">
 		<InputVerifyText Name="verify3" PositionX="-500" PositionY="310" Width="420" Height="150" Value="48" Photo="Vacio.png" Bold="true" Italic="false" Size="20">
 
-		<Image Name="num2" PositionX="-800" PositionY="-30" Width="150" Height="150" Photo="num2.png">
-		<Image Name="num4" PositionX="-450" PositionY="30" Width="100" Height="100" Photo="num4.png">
-		<Image Name="questionIcon4" PositionX="-150" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
-		<Image Name="num8" PositionX="220" PositionY="240" Width="80" Height="80" Photo="num8.png">
-		<Image Name="num10" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num10.png">
+		<Image Name="num2" PositionX="-880" PositionY="-30" Width="150" Height="150" Photo="num2.png">
+		<Image Name="num4" PositionX="-500" PositionY="30" Width="100" Height="100" Photo="num4.png">
+		<Image Name="questionIcon4" PositionX="-170" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num8" PositionX="250" PositionY="240" Width="80" Height="80" Photo="num8.png">
+		<Image Name="num10" PositionX="250" PositionY="460" Width="60" Height="60" Photo="num10.png">
 		<InputVerifyText Name="verify4" PositionX="-500" PositionY="310" Width="420" Height="150" Value="6" Photo="Vacio.png" Bold="true" Italic="false" Size="20">
 
-		<Image Name="num15" PositionX="-800" PositionY="-30" Width="150" Height="150" Photo="num15.png">
-		<Image Name="N_um20" PositionX="-450" PositionY="30" Width="100" Height="100" Photo="num20.png">
-		<Image Name="questionIcon5" PositionX="-150" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
-		<Image Name="num30" PositionX="220" PositionY="240" Width="80" Height="80" Photo="num30.png">
-		<Image Name="num35" PositionX="215" PositionY="460" Width="60" Height="60" Photo="num35.png">
+		<Image Name="num15" PositionX="-950" PositionY="-30" Width="150" Height="150" Photo="num15.png">
+		<Image Name="Num20" PositionX="-530" PositionY="30" Width="100" Height="100" Photo="num20.png">
+		<Image Name="questionIcon5" PositionX="-190" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num30" PositionX="270" PositionY="240" Width="80" Height="80" Photo="num30.png">
+		<Image Name="num35" PositionX="270" PositionY="460" Width="60" Height="60" Photo="num35.png">
 		<InputVerifyText Name="verify5" PositionX="-500" PositionY="310" Width="420" Height="150" Value="25" Photo="Vacio.png" Bold="true" Italic="false" Size="20">
 
 		<Operations Name="op10" Components="num16,num17,num19,num20,questionIcon1,verify1">
 		<Operations Name="op11" Components="num97,num98,num99,num101,questionIcon2,verify2">
 		<Operations Name="op12" Components="num50,num49,num47,num46,questionIcon3,verify3">
 		<Operations Name="op13" Components="num2,num4,num8,num10,questionIcon4,verify4">
-		<Operations Name="op14" Components="num15,N_um20,num30,num35,questionIcon5,verify5">
+		<Operations Name="op14" Components="num15,Num20,num30,num35,questionIcon5,verify5">
       
   </Space>
 
@@ -211,15 +208,12 @@
 		<Label Name="etiqueta1Nerd" PositionX="6" PositionY="61" Width="290" Height="470" Photo="Vacio.png" Text="Soy_el_Sabelotodo,_todo_lo_que_necesitás_saber_está_aquí." Bold="true" Italic="false" Size="35">
 		<ButtonGoToPage Name="GoToMainPage" PositionX="-890" PositionY="470" Width="125" Height="125" Photo="GoToMain.png" Color="#FCFCFC" GoToPage="MainPage">
 
-		<Image Name="recuadro1" PositionX="586" PositionY="468" Width="288" Height="119" Photo="recuadro2.png">
 		<Label Name="TablaMultiplicarNerd" PositionX="650" PositionY="415" Width="350" Height="209" Photo="Vacio.png" Text="Tabla_Multiplicar" Bold="true" Italic="false" Size="45">
 		<ButtonShowImage Name="TablaMultiplicarBoton" PositionX="592" PositionY="245" Width="330" Height="321" Photo="tablanum.png" Color="#FCFCFC" ShowImage="TablaDeMultiplicarImage">
 
-		<Image Name="recuadro2" PositionX="-598" PositionY="140" Width="421" Height="89" Photo="recuadro2.png">
 		<Label Name="RectaNumericaNerd" PositionX="-586" PositionY="60" Width="350" Height="209" Photo="Vacio.png" Text="Recta_númerica" Bold="true" Italic="false" Size="45">
 		<ButtonShowImage Name="RectaNumericaBoton" PositionX="-603" PositionY="-31" Width="605" Height="236" Photo="RectaNumerica.png" Color="#FCFCFC" ShowImage="RectaNumericaImage">
 
-		<Image Name="recuadro3" PositionX="592" PositionY="-71" Width="370" Height="119" Photo="recuadro2.png">
 		<Label Name="NumerosNerd" PositionX="617" PositionY="-125" Width="350" Height="209" Photo="Vacio.png" Text="Números_del_1_al_10" Bold="true" Italic="false" Size="45">
 		<ButtonShowImage Name="Numeros1al10Boton" PositionX="590" PositionY="-300" Width="350" Height="300" Photo="num.png" Color="#FCFCFC" ShowImage="Numeros1al10Image">
 

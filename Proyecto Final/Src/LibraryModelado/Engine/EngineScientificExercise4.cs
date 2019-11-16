@@ -5,12 +5,16 @@
 //--------------------------------------------------------------------------------
 using Proyecto.Item;
 using System.Collections.Generic;
+using System.Linq;
 using Proyecto.Item.ScientistLevel;
 
 namespace Proyecto.LibraryModelado.Engine
 {
     /// <summary>
-    /// Clase EngineScientificExercise2, responsable de implementar la logica del nivel scientific ejercicio 4.
+    /// Clase EngineScientificExercise4, responsable de implementar la logica del nivel scientific ejercicio 4.
+    /// En este juego se debe decidir si la operación que aparece en pantalla esta hecha de forma correcta,
+    /// en caso que sea así se debe seleccionar la opción verde, sino la roja.
+    /// En este motor esta toda la lógica necesaria para que funcione el juego de forma correctas
     /// Este motor presenta una ALTA COHESIÓN, debido a que, una clase con responsabilidades alta o fuertemente
     /// relacionadas tiene alta cohesión. Esto nos dice que, la información que almacena una clase debe ser coherente
     /// y debe estar (en la medida de lo posible) relacionada con la clase.Esto sucede claramente en EngineScientificExercise4
@@ -20,6 +24,7 @@ namespace Proyecto.LibraryModelado.Engine
     /// caso, la clase que tiene toda la información lógica del ejercicio 1 es EngineScientificExcerise4, por esto, es la experta.
     /// Utilzamos este patrón porque se mantiene el encapsulamiento, los objetos utilizan su propia información para
     /// llevar a cabo sus tareas.
+    /// Hereda de la interfaz <see cref="ILevelEngine"/>.
     /// </summary>
     public class EngineScientificExercise4 : ILevelEngine
     {
@@ -148,6 +153,11 @@ namespace Proyecto.LibraryModelado.Engine
                 foreach (Items item in operation.Components)
                 {
                     this.engineGame.SetActive(item, false);
+
+                    if (item is IButton)
+                    {
+                        (item as IButton).Pushable = true;
+                    }
                 }
             }
 
@@ -203,7 +213,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void GoodFeedback()
         {
-            string text = "Correcto!";
+            string text = "Excelente!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
@@ -212,7 +222,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void BadFeedback()
         {
-            string text = "Intentalo de nuevo ¡Tu puedes!";
+            string text = "Eso no esta bien, ¡Intentalo denuevo!";
             this.engineGame.UpdateFeedback(this.LevelFeedback, text);
         }
 
@@ -255,17 +265,30 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void ChangeOperation()
         {
-            foreach (Items item in this.CurrentOperation.Components)
+            if (!this.CurrentOperation.Equals(this.Operations.Last()))
             {
-                this.engineGame.SetActive(item, false);
-            }
-
-            if (this.LevelCounter < this.Operations.Count)
-            {
-                this.CurrentOperation = this.Operations[this.LevelCounter];
-                foreach (Items newItem in this.CurrentOperation.Components)
+                foreach (Items item in this.CurrentOperation.Components)
                 {
-                    this.engineGame.SetActive(newItem, true);
+                    this.engineGame.SetActive(item, false);
+                }
+
+                if (this.LevelCounter < this.Operations.Count)
+                {
+                    this.CurrentOperation = this.Operations[this.LevelCounter];
+                    foreach (Items newItem in this.CurrentOperation.Components)
+                    {
+                        this.engineGame.SetActive(newItem, true);
+                    }
+                }
+            }
+            else
+            {
+                foreach (Items item in this.CurrentOperation.Components)
+                {
+                    if (item is IButton)
+                    {
+                        (item as IButton).Pushable = false;
+                    }
                 }
             }
         }
