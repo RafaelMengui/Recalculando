@@ -1,0 +1,8 @@
+Al proceder con la implementación del motor para funcionar en Unity, indispensablemente tuvimos que acoplar ciertas partes del motor a Unity, esas ciertas funciones no pueden ser testeadas. Probamos la solución que nos dió Federico Martino para la realización de una clase dummy, con poco exito desistimos y aceptamos que parte del motor simplemente tiene que estar acoplada a Unity para su correcto funcionamiento. 
+
+Hablando con Fernando Machado, pudimos llegar a la conclusión anterior, para ésta última entrega, el partes del motor deben estar acopladas a Unity.
+
+Varios de los tests que están incluidos son los usados anteriormente para testear la funcionalidad del motor cuando no estaba acoplado a Unity (Entrega3), varios otros fueron cambiados (ya que no dependen de unity para funcionar) a la entrega actual.
+
+Para concluir, la verificación en los motores para cuando un juego es completado, está acoplada a Unity, tenemos métodos intermedios en el procedimiento para el chequeo de que el nivel sea completado, sin embargo, alguno de ellos encadenan la verificación del nivel (si el nivel ha sido completado), impidiendonos probar esos métodos, que no están acoplados a Unity directamente pero sí lo utilizan directamente para cumplir con el propósito del Engine mismo. 
+En algunos otros casos, la inicialización del nivel crea botones los cuales pasan por unity primero, causando otra vez el mismo problema.

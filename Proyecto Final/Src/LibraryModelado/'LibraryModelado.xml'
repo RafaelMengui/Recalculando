@@ -1317,7 +1317,7 @@
             En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
             ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
             que definen comportamientos, las clases que necesiten de estos comportamientos van a
-            implementar esta interfaz..
+            implementar esta interfaz.
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.IContainer.SavedItems">
@@ -1328,12 +1328,11 @@
         </member>
         <member name="T:Proyecto.LibraryModelado.IDraggable">
             <summary>
-            Interfaz de Botones.
-            Esta interfaz es creada, debido a que, cuando en un futuro querramos
-            tener difrentes tipos de botones lo podamos hacer. Por ejemplo, un botón
-            que sea una imagen,un botón contador, botón audio, etc.
-            En este caso, estamos pensando en la funcionalidad futura del código,
-            para cuando debamos ampliar el juego.
+            Interfaz de Objetos Arrastrables.
+            En esta interfaz utilizamos el Principio de SEGREGACIÓN de INTERFACES, este nos dice que,
+            ninguna clase debería depender de métodos que no usa. Por tanto, creamos interfaces
+            que definen comportamientos, las clases que necesiten de estos comportamientos van a
+            implementar esta interfaz.
             </summary>
         </member>
         <member name="P:Proyecto.LibraryModelado.IDraggable.Container">
@@ -1535,13 +1534,6 @@
             <param name="name">Nombre del Espacio.</param>
             <param name="image">Nombre de la imagen de fondo del espacio.</param>
         </member>
-        <member name="P:Proyecto.LibraryModelado.Space.IsActive">
-            <summary>
-            Gets or sets que indican si el item esta actualmente activo en pantalla.
-            Por predeterminado sera true.
-            </summary>
-            <value></value>
-        </member>
         <member name="P:Proyecto.LibraryModelado.Space.Name">
             <summary>
             Gets or sets del nombre del espacio.
@@ -1599,13 +1591,6 @@
             <summary>
             Initializes a new instance of world.
             </summary>
-        </member>
-        <member name="P:Proyecto.LibraryModelado.World.IsActive">
-            <summary>
-            Gets or sets que indican si el item esta actualmente activo en pantalla.
-            Por predeterminado sera true.
-            </summary>
-            <value></value>
         </member>
         <member name="P:Proyecto.LibraryModelado.World.Name">
             <summary>

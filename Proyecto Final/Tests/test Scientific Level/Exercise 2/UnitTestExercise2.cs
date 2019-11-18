@@ -3,6 +3,8 @@ using Xunit;
 
 namespace Proyecto.LibraryModelado.Engine.test
 {
+    // Éste motor no puede ser testeado ya que para realizar el Verify y el WinLevel, utiliza el adapter de Unity el cual no podemos invocar de manera simple.
+    // Probamos usar una clase que implemente MainViewAdapter para usarla como dummy pero se tornó demasiado complejo. Éstos son los tests que se usaban antes.
     public class UnitTextScientificExercise2
     {
         private Level level = new Level("level", null);

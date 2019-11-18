@@ -17,6 +17,9 @@ namespace Proyecto.LibraryModelado.test
         private Space level;
         private ButtonStartLevel buttonStart;
 
+        /// <summary>
+        /// Testea que se creen todos los objetos en el XML.
+        /// </summary>
         [Fact]
         public void TestFactoryComponents()
         {
@@ -30,8 +33,6 @@ namespace Proyecto.LibraryModelado.test
                 IComponent component = FactoryComponent.InitializeFactories().MakeComponent(tag);
                 componentList.Add(component);
             }
-
-            
 
             this.engineGame.AsociateLevelsWithEngines(componentList);
 
