@@ -1,0 +1,281 @@
+<World Name="world1">
+
+	<Space Name="MainPage" Background="page1.png">
+
+		<Image Name="titulo" PositionX="780" PositionY="-453" Width="724" Height="151" Photo="titulo.png">
+		<Image Name="subtitulo" PositionX="868" PositionY="0" Width="391" Height="479" Photo="subtitulo.png">
+
+		<ButtonGoToPage Name="gotoscientistMenu1" PositionX="65" PositionY="-235" Width="290" Height="410" Photo="Cientifica.png" Color="#FCFCFC" GoToPage="MenuScientific">
+		<ButtonGoToPage Name="gotoNerdMenu1" PositionX="-680" PositionY="-315" Width="370" Height="405" Photo="SabeloTodo.png" Color="#FCFCFC" GoToPage="MenuNerd">
+		<ButtonStartLevel Name="StartMagician1" PositionX="200" PositionY="315" Width="340" Height="435" Photo="Mago.png" Color="#FCFCFC" Level="Magician">
+		<ButtonStartLevel Name="StartKitchen1" PositionX="-738" PositionY="273" Width="358" Height="472" Photo="cocinera.png" Color="#FCFCFC" Level="KitchenExercise1">
+
+	</Space>
+
+	<Space Name="MenuScientific" Background="page4.png">
+
+		<Image Name="Cientifica" PositionX="0" PositionY="-300" Width="400" Height="530" Photo="Cientifica.png">
+		<Image Name="nube1" PositionX="0" PositionY="170" Width="515" Height="545" Photo="nube2.png">
+		<Label Name="etiqueta1" PositionX="-3" PositionY="60" Width="392" Height="490" Photo="Vacio.png" Text="Hola!_Soy_la_Científica_y_me_encanta_hacer_cálculos._Selecciona_el_nivel_que_quieras_jugar." Bold="true" Italic="false" Size="35">
+		<ButtonGoToPage Name="GoToMainPage" PositionX="-1000" PositionY="470" Width="125" Height="125" Photo="GoToMain.png" Color="#FCFCFC" GoToPage="MainPage">
+
+		<Image Name="recuadro1" PositionX="-501" PositionY="441" Width="421" Height="79" Photo="recuadro2.png">
+		<Label Name="ejercicio1" PositionX="-495" PositionY="357" Width="395" Height="209" Photo="Vacio.png" Text="Suma_y_resta_de_dinero" Bold="true" Italic="false" Size="35">
+		<ButtonStartLevel Name="StartExercise1" PositionX="-500" PositionY="240" Width="350" Height="300" Photo="botonExercise1.png" Color="#FCFCFC" Level="ScientificExercise1">
+
+		<Image Name="recuadro2" PositionX="-502" PositionY="-89" Width="403" Height="107" Photo="recuadro2.png">
+		<Label Name="ejercicio2" PositionX="-479" PositionY="-153" Width="395" Height="209" Photo="Vacio.png" Text="Cantidad_correcta_de_manzanas." Bold="true" Italic="false" Size="35">
+		<ButtonStartLevel Name="StartExercise2" PositionX="-500" PositionY="-300" Width="350" Height="300" Photo="botonExercise2.png" Color="#FCFCFC" Level="ScientificExercise2">
+
+		<Image Name="recuadro3" PositionX="501" PositionY="-91" Width="375" Height="95" Photo="recuadro2.png">
+		<Label Name="ejercicio3" PositionX="570" PositionY="-156" Width="395" Height="209" Photo="Vacio.png" Text="Suma_realizada_correctamente." Bold="true" Italic="false" Size="35">
+		<ButtonStartLevel Name="StartExercise3" PositionX="500" PositionY="-300" Width="350" Height="300" Photo="botonExercise3.png" Color="#FCFCFC" Level="ScientificExercise3">
+
+		<Image Name="recuadro4" PositionX="500" PositionY="439" Width="420" Height="106" Photo="recuadro2.png">
+		<Label Name="ejercicio4" PositionX="520" PositionY="374" Width="395" Height="209" Photo="Vacio.png" Text="Seleccionar_operacion_correcta." Bold="true" Italic="false" Size="35">
+		<ButtonStartLevel Name="StartExercise4" PositionX="500" PositionY="240" Width="350" Height="300" Photo="botonExercise4.png" Color="#FCFCFC" Level="ScientificExercise4">
+
+	</Space>
+
+	<Space Name="ScientificExercise1" Background="page4.png">
+
+		<Image Name="Cientifica" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Cientifica.png">
+		<Image Name="nube2" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+		<Image Name="linea" PositionX="-220" PositionY="-250" Width="1400" Height="12" Photo="resta.png">
+		
+
+		<MoneyContainer Name="moneyContainer11" PositionX="-390" PositionY="400" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainer21" PositionX="-10" PositionY="400" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="resultContainer1" PositionX="370" PositionY="400" Width="180" Height="105" Photo="recuadro2.png" Value="5">
+		<Image Name="resta1" PositionX="-200" PositionY="400" Width="110" Height="30" Photo="resta.png">
+		<Image Name="igual1" PositionX="180" PositionY="400" Width="110" Height="70" Photo="igual.png">
+		<Money Name="1bill10" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill10.png" Draggable="false" Container="moneyContainer11" Value="10">
+		<Money Name="1coin5" PositionX="0" PositionY="0" Width="100" Height="100" Photo="coin5.png" Draggable="false" Container="moneyContainer21" Value="5">
+
+
+		<MoneyContainer Name="moneyContainer12" PositionX="-770" PositionY="150" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainer22" PositionX="-390" PositionY="150" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainer32" PositionX="-10" PositionY="150" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="resultContainer2" PositionX="370" PositionY="150" Width="180" Height="105" Photo="recuadro2.png" Value="20">
+		<Image Name="resta2" PositionX="-200" PositionY="150" Width="110" Height="30" Photo="resta.png">
+		<Image Name="resta3" PositionX="-580" PositionY="150" Width="110" Height="30" Photo="resta.png">
+		<Image Name="igual1" PositionX="180" PositionY="150" Width="110" Height="70" Photo="igual.png">
+		<Money Name="1bill50" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill50.png" Draggable="false" Container="moneyContainer12" Value="50">
+		<Money Name="1bill20" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill20.png" Draggable="false" Container="moneyContainer22" Value="20">
+		<Money Name="2bill10" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill10.png" Draggable="false" Container="moneyContainer32" Value="10">
+
+
+		<MoneyContainer Name="moneyContainer13" PositionX="-770" PositionY="-100" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainer23" PositionX="-390" PositionY="-100" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainer33" PositionX="-10" PositionY="-100" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="resultContainer3" PositionX="370" PositionY="-100" Width="180" Height="105" Photo="recuadro2.png" Value="500">
+		<Image Name="resta4" PositionX="-200" PositionY="-100" Width="110" Height="30" Photo="resta.png">
+		<Image Name="suma1" PositionX="-580" PositionY="-100" Width="110" Height="110" Photo="suma.png">
+		<Image Name="igual1" PositionX="180" PositionY="-100" Width="110" Height="70" Photo="igual.png">
+		<Money Name="1bill200" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill200.png" Draggable="false" Container="moneyContainer13" Value="200">
+		<Money Name="1bill500" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill500.png" Draggable="false" Container="moneyContainer23" Value="500">
+		<Money Name="2bill200" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill200.png" Draggable="false" Container="moneyContainer33" Value="200">
+
+
+		<MoneyContainer Name="moneyContainerDrag1" PositionX="-700" PositionY="-400" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainerDrag2" PositionX="-450" PositionY="-400" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainerDrag3" PositionX="-200" PositionY="-400" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainerDrag4" PositionX="50" PositionY="-400" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<MoneyContainer Name="moneyContainerDrag5" PositionX="300" PositionY="-400" Width="180" Height="105" Photo="recuadro2.png" Value="-1">
+		<Money Name="3bill10" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill10.png" Draggable="true" Container="moneyContainerDrag1" Value="10">
+		<Money Name="4coin5" PositionX="0" PositionY="0" Width="100" Height="100" Photo="coin5.png" Draggable="true" Container="moneyContainerDrag2" Value="5">
+		<Money Name="3bill200" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill200.png" Draggable="true" Container="moneyContainerDrag3" Value="200">
+		<Money Name="2bil500" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill500.png" Draggable="true" Container="moneyContainerDrag4" Value="500">
+		<Money Name="2bill20" PositionX="0" PositionY="0" Width="185" Height="135" Photo="bill20.png" Draggable="true" Container="moneyContainerDrag5" Value="20">
+
+		<Operations Name="op1" Components="moneyContainer11,moneyContainer21,resultContainer1">
+		<Operations Name="op2" Components="moneyContainer12,moneyContainer22,moneyContainer32,resultContainer2">
+		<Operations Name="op3" Components="moneyContainer13,moneyContainer23,moneyContainer33,resultContainer3">
+
+	</Space>
+
+	<Space Name="ScientificExercise2" Background="page4.png">
+
+		<Image Name="Cientifica" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Cientifica.png">
+		<Image Name="nube3" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+
+		<Image Name="recuadrotexto1" PositionX="-200" PositionY="205" Width="1300" Height="242" Photo="recuadroTexto1.png">
+		<Label Name="etiqueta1" PositionX="-191" PositionY="191" Width="1100" Height="150" Photo="Vacio.png" Text="Tengo_15_manzanas._Si_le_doy_4_a_mi_hermano,_¿Cuántas_me_quedan?" Bold="true" Italic="false" Size="50">
+
+		<ButtonTrueFalse Name="opcion11" PositionX="-600" PositionY="-100" Width="300" Height="300" Photo="manzana9.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion21" PositionX="-200" PositionY="-100" Width="300" Height="300" Photo="manzana11.png" Color="#FCFCFC" Value="true">
+		<ButtonTrueFalse Name="opcion31" PositionX="200" PositionY="-100" Width="300" Height="300" Photo="manzana13.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion41" PositionX="-400" PositionY="-400" Width="300" Height="300" Photo="manzana22.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="opcion51" PositionX="0" PositionY="-400" Width="300" Height="300" Photo="manzana19.png" Color="#FCFCFC" Value="false">
+
+		<Operations Name="op4" Components="opcion11,opcion21,opcion31,opcion41,opcion51">
+
+	</Space>
+
+	<Space Name="ScientificExercise3" Background="page4.png">
+
+		<Image Name="Cientifica" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Cientifica.png">
+		<Image Name="nube4" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+
+		<Image Name="suma1" PositionX="-400" PositionY="0" Width="800" Height="1000" Photo="suma1.png">
+		<ButtonTrueFalse Name="CorrectoSuma1" PositionX="200" PositionY="200" Width="300" Height="300" Photo="correcto.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="IncorrectoSuma1" PositionX="200" PositionY="-200" Width="300" Height="300" Photo="incorrecto.png" Color="#FCFCFC" Value="true">
+
+		<Image Name="suma2" PositionX="-400" PositionY="0" Width="800" Height="1000" Photo="suma2.png">
+		<ButtonTrueFalse Name="CorrectoSuma2" PositionX="200" PositionY="200" Width="300" Height="300" Photo="correcto.png" Color="#FCFCFC" Value="true">
+		<ButtonTrueFalse Name="IncorrectoSuma2" PositionX="200" PositionY="-200" Width="300" Height="300" Photo="incorrecto.png" Color="#FCFCFC" Value="false">
+
+		<Image Name="suma3" PositionX="-400" PositionY="0" Width="800" Height="1000" Photo="suma3.png">
+		<ButtonTrueFalse Name="CorrectoSuma3" PositionX="200" PositionY="200" Width="300" Height="300" Photo="correcto.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="IncorrectoSuma3" PositionX="200" PositionY="-200" Width="300" Height="300" Photo="incorrecto.png" Color="#FCFCFC" Value="true">
+
+		<Operations Name="op5" Components="suma1,CorrectoSuma1,IncorrectoSuma1">
+		<Operations Name="op6" Components="suma2,CorrectoSuma2,IncorrectoSuma2">
+		<Operations Name="op7" Components="suma3,CorrectoSuma3,IncorrectoSuma3">
+
+	</Space>
+
+	<Space Name="ScientificExercise4" Background="page4.png">
+
+		<Image Name="Cientifica" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Cientifica.png">
+		<Image Name="nube5" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+		<Image Name="recuadrotexto2" PositionX="-200" PositionY="150" Width="1300" Height="500" Photo="recuadroTexto1.png">
+
+
+		<ButtonTrueFalse Name="sumaIcon1" PositionX="-500" PositionY="-300" Width="300" Height="300" Photo="sumaIcon.png" Color="#FCFCFC" Value="true">
+		<ButtonTrueFalse Name="restaICon1" PositionX="100" PositionY="-300" Width="300" Height="300" Photo="restaIcon.png" Color="#FCFCFC" Value="false">
+		<Label Name="texto1" PositionX="-200" PositionY="100" Width="1100" Height="400" Photo="Vacio.png" Text="En_el_supermercado_compro_5_manzanas,_7_peras_y_9_uvas._¿Que_operación_debo_realizar_para_saber_cuántas_frutas_compré_en_total?" Bold="true" Italic="false" Size="60">
+		
+		<ButtonTrueFalse Name="sumaIcon2" PositionX="-500" PositionY="-300" Width="300" Height="300" Photo="sumaIcon.png" Color="#FCFCFC" Value="false">
+		<ButtonTrueFalse Name="restaICon2" PositionX="100" PositionY="-300" Width="300" Height="300" Photo="restaIcon.png" Color="#FCFCFC" Value="true">
+		<Label Name="texto2" PositionX="-200" PositionY="100" Width="1100" Height="400" Photo="Vacio.png" Text="En_el_supermercado_tengo_que_pagar_$352,_si_pago_con_un_billete_de_$500,_¿Que_operación_debo_realizar_para_saber_cuánto_dinero_me_devolverá_la_cajera?" Bold="true" Italic="false" Size="60">
+
+		<Operations Name="op8" Components="sumaIcon1,restaICon1,texto1">
+		<Operations Name="op9" Components="sumaIcon2,restaICon2,texto2">
+
+	</Space>
+
+	<Space Name="Magician" Background="page2.png">
+
+		<Image Name="mago" PositionX="710" PositionY="-300" Width="400" Height="530" Photo="Mago.png">
+		<Image Name="nube5" PositionX="700" PositionY="160" Width="420" Height="470" Photo="nube2.png">
+		<Image Name="Verificacion" PositionX="-500" PositionY="350" Width="470" Height="250" Photo="verificacionNumero.png">
+
+		<Image Name="num16" PositionX="-975" PositionY="-30" Width="150" Height="150" Photo="num16.png">
+		<Image Name="num17" PositionX="-555" PositionY="30" Width="100" Height="100" Photo="num17.png">
+		<Image Name="questionIcon1" PositionX="-189" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num19" PositionX="265" PositionY="240" Width="80" Height="80" Photo="num19.png">
+		<Image Name="num20" PositionX="266" PositionY="460" Width="60" Height="60" Photo="num20.png">
+		<InputVerifyText Name="verify1" PositionX="-500" PositionY="310" Width="420" Height="150" Value="18" Photo="Vacio.png" Bold="true" Italic="false" Size="20">
+
+		<Image Name="num97" PositionX="-975" PositionY="-30" Width="150" Height="150" Photo="num97.png">
+		<Image Name="num98" PositionX="-555" PositionY="30" Width="100" Height="100" Photo="num98.png">
+		<Image Name="num99" PositionX="-189" PositionY="150" Width="90" Height="90" Photo="num99.png">
+		<Image Name="questionIcon2" PositionX="265" PositionY="240" Width="80" Height="80" Height="90" Photo="questionIcon.png">
+		<Image Name="num101" PositionX="266" PositionY="460" Width="60" Height="60" Photo="num101.png">
+		<InputVerifyText Name="verify2" PositionX="-500" PositionY="310" Width="420" Height="150" Value="100" Photo="Vacio.png" Bold="true" Italic="false" Size="20">
+
+		<Image Name="num50" PositionX="-975" PositionY="-30" Width="150" Height="150" Photo="num50.png">
+		<Image Name="num49" PositionX="-555" PositionY="30" Width="100" Height="100" Photo="num49.png">
+		<Image Name="questionIcon3" PositionX="-189" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num47" PositionX="265" PositionY="240" Width="80" Height="80" Photo="num47.png">
+		<Image Name="num46" PositionX="266" PositionY="460" Width="60" Height="60" Photo="num46.png">
+		<InputVerifyText Name="verify3" PositionX="-500" PositionY="310" Width="420" Height="150" Value="48" Photo="Vacio.png" Bold="true" Italic="false" Size="20">
+
+		<Image Name="num2" PositionX="-975" PositionY="-30" Width="150" Height="150" Photo="num2.png">
+		<Image Name="num4" PositionX="-555" PositionY="30" Width="100" Height="100" Photo="num4.png">
+		<Image Name="questionIcon4" PositionX="-189" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num8" PositionX="265" PositionY="240" Width="80" Height="80" Photo="num8.png">
+		<Image Name="num10" PositionX="266" PositionY="460" Width="60" Height="60" Photo="num10.png">
+		<InputVerifyText Name="verify4" PositionX="-500" PositionY="310" Width="420" Height="150" Value="6" Photo="Vacio.png" Bold="true" Italic="false" Size="20">
+
+		<Image Name="num15" PositionX="-975" PositionY="-30" Width="150" Height="150" Photo="num15.png">
+		<Image Name="N_um20" PositionX="-555" PositionY="30" Width="100" Height="100" Photo="num20.png">
+		<Image Name="questionIcon5" PositionX="-189" PositionY="150" Width="90" Height="90" Photo="questionIcon.png">
+		<Image Name="num30" PositionX="265" PositionY="240" Width="80" Height="80" Photo="num30.png">
+		<Image Name="num35" PositionX="266" PositionY="460" Width="60" Height="60" Photo="num35.png">
+		<InputVerifyText Name="verify5" PositionX="-500" PositionY="310" Width="420" Height="150" Value="25" Photo="Vacio.png" Bold="true" Italic="false" Size="20">
+
+		<Operations Name="op10" Components="num16,num17,num19,num20,questionIcon1,verify1">
+		<Operations Name="op11" Components="num97,num98,num99,num101,questionIcon2,verify2">
+		<Operations Name="op12" Components="num50,num49,num47,num46,questionIcon3,verify3">
+		<Operations Name="op13" Components="num2,num4,num8,num10,questionIcon4,verify4">
+		<Operations Name="op14" Components="num15,N_um20,num30,num35,questionIcon5,verify5">
+      
+  </Space>
+
+	<Space Name="MenuNerd" Background="page5.png">
+
+		<Image Name="Nerd" PositionX="0" PositionY="-285" Width="425" Height="525" Photo="SabeloTodo.png">
+		<Image Name="nube2" PositionX="0" PositionY="167" Width="420" Height="470" Photo="nube2.png">
+		<Label Name="etiqueta1Nerd" PositionX="6" PositionY="61" Width="290" Height="470" Photo="Vacio.png" Text="Soy_el_Sabelotodo,_todo_lo_que_necesitás_saber_está_aquí." Bold="true" Italic="false" Size="35">
+		<ButtonGoToPage Name="GoToMainPage" PositionX="-1000" PositionY="470" Width="125" Height="125" Photo="GoToMain.png" Color="#FCFCFC" GoToPage="MainPage">
+
+		<Image Name="recuadro1" PositionX="586" PositionY="468" Width="295" Height="119" Photo="recuadro2.png">
+		<Label Name="TablaMultiplicarNerd" PositionX="650" PositionY="415" Width="350" Height="209" Photo="Vacio.png" Text="Tabla_Multiplicar" Bold="true" Italic="false" Size="45">
+		<ButtonShowImage Name="TablaMultiplicarBoton" PositionX="592" PositionY="245" Width="330" Height="321" Photo="tablanum.png" Color="#FCFCFC" ShowImage="TablaDeMultiplicarImage">
+
+		<Image Name="recuadro2" PositionX="-598" PositionY="140" Width="430" Height="89" Photo="recuadro2.png">
+		<Label Name="RectaNumericaNerd" PositionX="-586" PositionY="60" Width="350" Height="209" Photo="Vacio.png" Text="Recta_númerica" Bold="true" Italic="false" Size="45">
+		<ButtonShowImage Name="RectaNumericaBoton" PositionX="-603" PositionY="-31" Width="605" Height="236" Photo="RectaNumerica.png" Color="#FCFCFC" ShowImage="RectaNumericaImage">
+
+		<Image Name="recuadro3" PositionX="592" PositionY="-71" Width="375" Height="119" Photo="recuadro2.png">
+		<Label Name="NumerosNerd" PositionX="617" PositionY="-125" Width="350" Height="209" Photo="Vacio.png" Text="Números_del_1_al_10" Bold="true" Italic="false" Size="45">
+		<ButtonShowImage Name="Numeros1al10Boton" PositionX="590" PositionY="-300" Width="350" Height="300" Photo="num.png" Color="#FCFCFC" ShowImage="Numeros1al10Image">
+
+		<ButtonShowImage Name="TablaDeMultiplicarImage" PositionX="0" PositionY="0" Width="1335" Height="1050" Photo="tablanum.png" Color="#FCFCFC" ShowImage="TablaDeMultiplicarImage">
+		<ButtonShowImage Name="RectaNumericaImage" PositionX="0" PositionY="0" Width="1811" Height="882" Photo="RectaNumerica.png" Color="#FCFCFC" ShowImage="RectaNumericaImage">
+		<ButtonShowImage Name="Numeros1al10Image" PositionX="0" PositionY="0" Width="1300" Height="1042" Photo="num.png" Color="#FCFCFC" ShowImage="Numeros1al10Image">
+
+	</Space>
+
+		<Space Name="KitchenExercise1" Background="page6.png">
+
+		<Image Name="cocinera" PositionX="-662" PositionY="-196" Width="479" Height="707" Photo="cocinera.png">
+		<Image Name="nube" PositionX="-670" PositionY="263" Width="426" Height="489" Photo="nube2.png">
+		<Image Name="mesa" PositionX="-1" PositionY="-344" Width="500" Height="400" Photo="table.png">
+		<Image Name="receta" PositionX="655" PositionY="-135" Width="500" Height="600" Photo="Receta.png">
+
+		<FoodContainer Name="bowl" PositionX="0" PositionY="-108" Width="300" Height="171" Photo="bowl.png">
+
+		<FoodContainer Name="bananaContainer" PositionX="-330" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="chocolateContainer" PositionX="-150" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="quesoContainer" PositionX="30" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="carneContainer" PositionX="210" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="tomateContainer" PositionX="390" PositionY="410" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="huevoContainer" PositionX="-150" PositionY="230" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="lecheContainer" PositionX="30" PositionY="230" Width="180" Height="180" Photo="recuadro.png">
+		<FoodContainer Name="papaContainer" PositionX="210" PositionY="230" Width="180" Height="180" Photo="recuadro.png">
+
+		<Food Name="banana1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="banana.png" Container="bananaContainer" Type="Banana" Draggable="true">
+		<Food Name="banana2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="banana.png" Container="bananaContainer" Type="Banana" Draggable="true">
+		<Food Name="chocolate1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="chocolate.png" Container="chocolateContainer" Type="Chocolate" Draggable="true">
+		<Food Name="chocolate2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="chocolate.png" Container="chocolateContainer" Type="Chocolate" Draggable="true">
+		<Food Name="queso1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="queso.png" Container="quesoContainer" Type="Queso" Draggable="true">
+		<Food Name="queso2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="queso.png" Container="quesoContainer" Type="Queso" Draggable="true">
+		<Food Name="tomate1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="Tomate.png" Container="tomateContainer" Type="Tomate" Draggable="true">
+		<Food Name="tomate2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="Tomate.png" Container="tomateContainer" Type="Tomate" Draggable="true">
+		<Food Name="carne1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="carne.png" Container="carneContainer" Type="Carne" Draggable="true">
+		<Food Name="carne2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="carne.png" Container="carneContainer" Type="Carne" Draggable="true">
+		<Food Name="huevo1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="huevo.png" Container="huevoContainer" Type="Huevo" Draggable="true">
+		<Food Name="huevo2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="huevo.png" Container="huevoContainer" Type="Huevo" Draggable="true">
+		<Food Name="leche1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="leche.png" Container="lecheContainer" Type="Leche" Draggable="true">
+		<Food Name="leche2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="leche.png" Container="lecheContainer" Type="Leche" Draggable="true">
+		<Food Name="papa1" PositionX="0" PositionY="0" Width="140" Height="140" Photo="papa.png" Container="papaContainer" Type="Papa" Draggable="true">
+		<Food Name="papa2" PositionX="0" PositionY="0" Width="140" Height="140" Photo="papa.png" Container="papaContainer" Type="Papa" Draggable="true">
+
+		<Recipe Name="recipe1" Food="Leche,Huevo,Chocolate" Quantity="1,3,2">
+		<Recipe Name="recipe2" Food="Carne,Tomate,Queso" Quantity="1,2,1">
+		<Recipe Name="recipe3" Food="Papa,Carne,Leche" Quantity="2,1,4">
+
+		<Label Name="pedido1" PositionX="652" PositionY="-118" Width="395" Height="209" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="40">
+		<Label Name="pedido2" PositionX="653" PositionY="-220" Width="395" Height="209" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="40">
+		<Label Name="pedido3" PositionX="653" PositionY="-315" Width="395" Height="209" Photo="Vacio.png" Text="." Bold="true" Italic="false" Size="40">
+
+		<Operations Name="DraggableItems" Components="banana1,banana2,chocolate1,chocolate2,queso1,queso2,tomate1,tomate2,carne1,carne2,huevo1,huevo2,papa1,papa2">
+		<Operations Name="PedidosDeLaReceta" Components="pedido1,pedido2,pedido3">
+		<Operations Name="ResultBowl" Components="bowl">
+
+	</Space>
+
+</World>

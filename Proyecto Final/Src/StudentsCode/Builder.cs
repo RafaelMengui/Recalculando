@@ -60,7 +60,7 @@ namespace Proyecto.StudentsCode
             this.adapter.AfterBuild = this.Setup;
             this.engineUnity.Adapter = this.adapter;
 
-            List<Tag> tags = Parser.ParserHTML(this.adapter.GetFileContents("html.xml"));
+            List<Tag> tags = Parser.ParserHTML(this.adapter.GetFileContents("1920x1080.xml"));
             List<IComponent> componentList = new List<IComponent>();
 
             foreach (Tag tag in tags)
