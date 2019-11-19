@@ -310,7 +310,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateFeedback()
         {
-            Feedback feedback = new Feedback("Feedback1", this.Level, -656, 194, 330, 400, "Vacio.png", string.Empty, 35, true, false);
+            Feedback feedback = new Feedback("Feedback1", this.Level, -450, 30, 231, 400, "Vacio.png", string.Empty, 23, true, false);
             this.engineGame.CreateInUnity(feedback);
             this.LevelFeedback = feedback;
         }
@@ -320,7 +320,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateButtonGoToMain()
         {
-            ButtonGoToPage goToMain = new ButtonGoToPage("Kitchen1ToMain", this.Level, -890, 470, 125, 125, "GoToMain.png", "#FCFCFC", "MainPage");
+            ButtonGoToPage goToMain = new ButtonGoToPage("Kitchen1ToMain", this.Level, -610, 315, 100, 100, "GoToMain.png", "#FCFCFC", "MainPage");
             this.Level.ItemList.Add(goToMain);
             this.engineGame.CreateInUnity(goToMain);
             this.ButtonGoToMain = goToMain;
@@ -331,7 +331,7 @@ namespace Proyecto.LibraryModelado.Engine
         /// </summary>
         public void CreateButtonGoToNextLevel()
         {
-            ButtonGoToPage goToNext = new ButtonGoToPage("kitchenToMain", this.Level, 0, 0, 500, 300, "botonToMain.png", "#FCFCFC", "MainPage");
+            ButtonGoToPage goToNext = new ButtonGoToPage("kitchenToMain", this.Level, 0, 0, 450, 250, "botonToMain.png", "#FCFCFC", "MainPage");
             this.Level.ItemList.Add(goToNext);
             this.engineGame.CreateInUnity(goToNext);
             this.ButtonNextLevel = goToNext;
